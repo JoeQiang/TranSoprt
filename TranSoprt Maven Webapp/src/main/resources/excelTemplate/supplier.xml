@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 供应商信息 -->
+<supplier>
+	<thead>
+		<tr>
+			<th value="经销商" />
+			<th value="电话号码" />
+			<th value="所在省市" />
+			<th value="货物数量(箱)" />
+			<th value="货品品类" />
+			<th value="货品规格" />
+			<th value="下单时间" />
+			<th value="发货时间" />
+			<th value="发货厂家" />
+			<th value="发货后规定到达时间" />
+			<th value="到货时间" />
+			<th value="状态" />
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<!-- 经销商名称 -->
+			<td type="string" />
+			<!-- 经销商联系电话 -->
+			<td type="numeric" />
+			<!-- 经销商地址 -->
+			<td type="string" />
+			<!-- 货物数量 -->
+			<td type="numeric" />
+			<!-- 货品品类 -->
+			<td type="string" />
+			<!-- 货品规格 -->
+			<td type="string" />
+			<!-- 下单时间 -->
+			<td type="date" />
+			<!-- 发货时间 -->
+			<td type="date" />
+			<!-- 发货厂家 -->
+			<td type="string" />
+			<!-- 货物规定到达日期 -->
+			<td type="date" />
+			<!-- 到货时间 -->
+			<td type="date" />
+			<!-- 状态 -->
+			<td type="string" />
+		</tr>
+	</tbody>
+</supplier>
