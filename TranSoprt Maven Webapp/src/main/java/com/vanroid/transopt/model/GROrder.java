@@ -25,7 +25,12 @@ public class GROrder extends Model<GROrder> {
 
 	// 负责该订单发货的厂家
 	public GRFactory getFactory() {
-		return GRFactory.dao.findById(getInt("oid"));
+		try{
+			return GRFactory.dao.findById(getInt("oid"));
+		}catch(NullPointerException e){
+			 return null;
+		}
+
 	}
 	//订单下所有货物的种类，规格和数量
 	public List<HashMap<String, Object>> getGoods() {

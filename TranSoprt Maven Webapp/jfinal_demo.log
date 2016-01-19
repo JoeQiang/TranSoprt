@@ -452,3 +452,1030 @@ java.lang.NumberFormatException: For input string: "ssd"
 
 2016-01-16 16:51:08
 [WARN]-[Thread: main]-[com.vanroid.transopt.uitls.SupplierExcel.createExcelTemplate()]: supplier.xml文件查找成功
+
+2016-01-19 11:10:15
+[ERROR]-[Thread: main]-[com.vanroid.transopt.service.GoodsManageService.createGoods()]: 插入1成功
+
+2016-01-19 11:10:15
+[ERROR]-[Thread: main]-[com.vanroid.transopt.service.GoodsManageService.createGoods()]: gid:15
+
+2016-01-19 11:16:56
+[ERROR]-[Thread: main]-[com.vanroid.transopt.service.GoodsManageService.createGoods()]: 插入1成功
+
+2016-01-19 11:16:56
+[ERROR]-[Thread: main]-[com.vanroid.transopt.service.GoodsManageService.createGoods()]: gid:16
+
+2016-01-19 11:20:04
+[ERROR]-[Thread: main]-[com.vanroid.transopt.service.GoodsManageService.createGoods()]: 插入1成功
+: 插入1成功
+
+2016-01-19 11:23:18
+[INFO]-[Thread: main]-[com.mchange.v2.log.MLog.<clinit>()]: MLog clients using log4j logging.
+
+2016-01-19 11:23:18
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.C3P0Registry.banner()]: Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+
+2016-01-19 11:23:18
+[DEBUG]-[Thread: main]-[com.mchange.v2.c3p0.management.DynamicPooledDataSourceManagerMBean.reinitialize()]: MBean: com.mchange.v2.c3p0:type=PooledDataSource[1hge1389eoe37ka1g28he7|1ae7ead] registered.
+
+2016-01-19 11:23:18
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.incrementPendingAcquires()]: incremented pending_acquires: 1
+
+2016-01-19 11:23:18
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.incrementPendingAcquires()]: incremented pending_acquires: 2
+
+2016-01-19 11:23:18
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.incrementPendingAcquires()]: incremented pending_acquires: 3
+
+2016-01-19 11:23:18
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.incrementPendingAcquires()]: incremented pending_acquires: 4
+
+2016-01-19 11:23:18
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.incrementPendingAcquires()]: incremented pending_acquires: 5
+
+2016-01-19 11:23:18
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.incrementPendingAcquires()]: incremented pending_acquires: 6
+
+2016-01-19 11:23:18
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.incrementPendingAcquires()]: incremented pending_acquires: 7
+
+2016-01-19 11:23:18
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.incrementPendingAcquires()]: incremented pending_acquires: 8
+
+2016-01-19 11:23:18
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.incrementPendingAcquires()]: incremented pending_acquires: 9
+
+2016-01-19 11:23:18
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.incrementPendingAcquires()]: incremented pending_acquires: 10
+
+2016-01-19 11:23:18
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.<init>()]: com.mchange.v2.resourcepool.BasicResourcePool@180deea config: [start -> 10; min -> 10; max -> 100; inc -> 2; num_acq_attempts -> 30; acq_attempt_delay -> 1000; check_idle_resources_delay -> 0; mox_resource_age -> 0; max_idle_time -> 20000; excess_max_idle_time -> 0; destroy_unreturned_resc_time -> 0; expiration_enforcement_delay -> 5000; break_on_acquisition_failure -> false; debug_store_checkout_exceptions -> false]
+
+2016-01-19 11:23:18
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getPoolManager()]: Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1389eoe37ka1g28he7|1ae7ead, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1389eoe37ka1g28he7|1ae7ead, idleConnectionTestPeriod -> 0, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/transport?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 20, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 100, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 10, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+
+2016-01-19 11:23:18
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource()]: acquire test -- pool size: 0; target_pool_size: 10; desired target? 1
+
+2016-01-19 11:23:18
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.awaitAvailable()]: awaitAvailable(): [unknown]
+
+2016-01-19 11:23:18
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 0, unused: 0, excluded: 0]
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2]-[com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource()]: com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@8d02e8.acquireResource() returning. 
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0]-[com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource()]: com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@8d02e8.acquireResource() returning. 
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1]-[com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource()]: com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@8d02e8.acquireResource() returning. 
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 1, unused: 1, excluded: 0]
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2]-[com.mchange.v2.resourcepool.BasicResourcePool.decrementPendingAcquires()]: decremented pending_acquires: 9
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 2, unused: 2, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@452c0f)
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1]-[com.mchange.v2.resourcepool.BasicResourcePool.decrementPendingAcquires()]: decremented pending_acquires: 8
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 3, unused: 2, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@452c0f)
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0]-[com.mchange.v2.resourcepool.BasicResourcePool.decrementPendingAcquires()]: decremented pending_acquires: 7
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 3, unused: 2, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@452c0f)
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2]-[com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource()]: com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@8d02e8.acquireResource() returning. 
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1]-[com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource()]: com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@8d02e8.acquireResource() returning. 
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 4, unused: 3, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@452c0f)
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 5, unused: 4, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@452c0f)
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2]-[com.mchange.v2.resourcepool.BasicResourcePool.decrementPendingAcquires()]: decremented pending_acquires: 6
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1]-[com.mchange.v2.resourcepool.BasicResourcePool.decrementPendingAcquires()]: decremented pending_acquires: 5
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0]-[com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource()]: com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@8d02e8.acquireResource() returning. 
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 6, unused: 5, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@452c0f)
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0]-[com.mchange.v2.resourcepool.BasicResourcePool.decrementPendingAcquires()]: decremented pending_acquires: 4
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1]-[com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource()]: com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@8d02e8.acquireResource() returning. 
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 7, unused: 6, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@452c0f)
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1]-[com.mchange.v2.resourcepool.BasicResourcePool.decrementPendingAcquires()]: decremented pending_acquires: 3
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0]-[com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource()]: com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@8d02e8.acquireResource() returning. 
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2]-[com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource()]: com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@8d02e8.acquireResource() returning. 
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 8, unused: 7, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@452c0f)
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 9, unused: 8, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@452c0f)
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2]-[com.mchange.v2.resourcepool.BasicResourcePool.decrementPendingAcquires()]: decremented pending_acquires: 2
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0]-[com.mchange.v2.resourcepool.BasicResourcePool.decrementPendingAcquires()]: decremented pending_acquires: 1
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1]-[com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource()]: com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@8d02e8.acquireResource() returning. 
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 10, unused: 9, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@452c0f)
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1]-[com.mchange.v2.resourcepool.BasicResourcePool.decrementPendingAcquires()]: decremented pending_acquires: 0
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 10, unused: 9, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@452c0f)
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 10, unused: 9, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@452c0f)
+
+2016-01-19 11:23:19
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 10, unused: 9, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@452c0f)
+
+2016-01-19 11:23:51
+[INFO]-[Thread: main]-[com.mchange.v2.log.MLog.<clinit>()]: MLog clients using log4j logging.
+
+2016-01-19 11:23:51
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.C3P0Registry.banner()]: Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: main]-[com.mchange.v2.c3p0.management.DynamicPooledDataSourceManagerMBean.reinitialize()]: MBean: com.mchange.v2.c3p0:type=PooledDataSource[1hge1389eoe3wjz5jqk4h|1ae7ead] registered.
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.incrementPendingAcquires()]: incremented pending_acquires: 1
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.incrementPendingAcquires()]: incremented pending_acquires: 2
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.incrementPendingAcquires()]: incremented pending_acquires: 3
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.incrementPendingAcquires()]: incremented pending_acquires: 4
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.incrementPendingAcquires()]: incremented pending_acquires: 5
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.incrementPendingAcquires()]: incremented pending_acquires: 6
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.incrementPendingAcquires()]: incremented pending_acquires: 7
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.incrementPendingAcquires()]: incremented pending_acquires: 8
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.incrementPendingAcquires()]: incremented pending_acquires: 9
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.incrementPendingAcquires()]: incremented pending_acquires: 10
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.<init>()]: com.mchange.v2.resourcepool.BasicResourcePool@180deea config: [start -> 10; min -> 10; max -> 100; inc -> 2; num_acq_attempts -> 30; acq_attempt_delay -> 1000; check_idle_resources_delay -> 0; mox_resource_age -> 0; max_idle_time -> 20000; excess_max_idle_time -> 0; destroy_unreturned_resc_time -> 0; expiration_enforcement_delay -> 5000; break_on_acquisition_failure -> false; debug_store_checkout_exceptions -> false]
+
+2016-01-19 11:23:51
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getPoolManager()]: Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1389eoe3wjz5jqk4h|1ae7ead, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1389eoe3wjz5jqk4h|1ae7ead, idleConnectionTestPeriod -> 0, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/transport?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 20, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 100, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 10, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource()]: acquire test -- pool size: 0; target_pool_size: 10; desired target? 1
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.awaitAvailable()]: awaitAvailable(): [unknown]
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 0, unused: 0, excluded: 0]
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0]-[com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource()]: com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@1e99fb5.acquireResource() returning. 
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1]-[com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource()]: com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@1e99fb5.acquireResource() returning. 
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2]-[com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource()]: com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@1e99fb5.acquireResource() returning. 
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 1, unused: 1, excluded: 0]
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 2, unused: 2, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1a03995)
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 3, unused: 2, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1a03995)
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1]-[com.mchange.v2.resourcepool.BasicResourcePool.decrementPendingAcquires()]: decremented pending_acquires: 9
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 3, unused: 2, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1a03995)
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2]-[com.mchange.v2.resourcepool.BasicResourcePool.decrementPendingAcquires()]: decremented pending_acquires: 8
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0]-[com.mchange.v2.resourcepool.BasicResourcePool.decrementPendingAcquires()]: decremented pending_acquires: 7
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0]-[com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource()]: com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@1e99fb5.acquireResource() returning. 
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 4, unused: 3, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1a03995)
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0]-[com.mchange.v2.resourcepool.BasicResourcePool.decrementPendingAcquires()]: decremented pending_acquires: 6
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2]-[com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource()]: com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@1e99fb5.acquireResource() returning. 
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 5, unused: 4, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1a03995)
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2]-[com.mchange.v2.resourcepool.BasicResourcePool.decrementPendingAcquires()]: decremented pending_acquires: 5
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1]-[com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource()]: com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@1e99fb5.acquireResource() returning. 
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 6, unused: 5, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1a03995)
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1]-[com.mchange.v2.resourcepool.BasicResourcePool.decrementPendingAcquires()]: decremented pending_acquires: 4
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0]-[com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource()]: com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@1e99fb5.acquireResource() returning. 
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 7, unused: 6, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1a03995)
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0]-[com.mchange.v2.resourcepool.BasicResourcePool.decrementPendingAcquires()]: decremented pending_acquires: 3
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1]-[com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource()]: com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@1e99fb5.acquireResource() returning. 
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2]-[com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource()]: com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@1e99fb5.acquireResource() returning. 
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 8, unused: 7, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1a03995)
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 9, unused: 8, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1a03995)
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2]-[com.mchange.v2.resourcepool.BasicResourcePool.decrementPendingAcquires()]: decremented pending_acquires: 2
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1]-[com.mchange.v2.resourcepool.BasicResourcePool.decrementPendingAcquires()]: decremented pending_acquires: 1
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0]-[com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource()]: com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@1e99fb5.acquireResource() returning. 
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 10, unused: 9, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1a03995)
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0]-[com.mchange.v2.resourcepool.BasicResourcePool.decrementPendingAcquires()]: decremented pending_acquires: 0
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 10, unused: 9, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1a03995)
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 10, unused: 9, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1a03995)
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 10, unused: 9, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1a03995)
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 10, unused: 9, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1a03995)
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 10, unused: 9, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1a03995)
+
+2016-01-19 11:23:51
+[ERROR]-[Thread: main]-[com.vanroid.transopt.service.GoodsManageService.createGoods()]: 插入1成功
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 10, unused: 9, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1a03995)
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 10, unused: 9, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1a03995)
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: main]-[com.vanroid.transopt.service.GoodsManageService.createGoods()]: gid:22
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 10, unused: 9, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1a03995)
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 10, unused: 9, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1a03995)
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 10, unused: 8, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1a03995)
+
+2016-01-19 11:23:51
+[DEBUG]-[Thread: main]-[com.mchange.v2.resourcepool.BasicResourcePool.trace()]: trace com.mchange.v2.resourcepool.BasicResourcePool@180deea [managed: 10, unused: 9, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1a03995)
+
+2016-01-19 11:24:35
+[INFO]-[Thread: main]-[com.mchange.v2.log.MLog.<clinit>()]: MLog clients using log4j logging.
+
+2016-01-19 11:24:35
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.C3P0Registry.banner()]: Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+
+2016-01-19 11:24:35
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getPoolManager()]: Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1389eoe4uugggt0iu|1ae7ead, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1389eoe4uugggt0iu|1ae7ead, idleConnectionTestPeriod -> 0, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/transport?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 20, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 100, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 10, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+
+2016-01-19 11:24:36
+[INFO]-[Thread: main]-[com.vanroid.transopt.service.GoodsManageService.createGoods()]: 插入1成功
+
+2016-01-19 11:24:36
+[INFO]-[Thread: main]-[com.vanroid.transopt.service.GoodsManageService.createGoods()]: gid:23
+
+2016-01-19 11:25:36
+[INFO]-[Thread: main]-[com.mchange.v2.log.MLog.<clinit>()]: MLog clients using log4j logging.
+
+2016-01-19 11:25:36
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.C3P0Registry.banner()]: Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+
+2016-01-19 11:25:36
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getPoolManager()]: Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1389eoe65z21vjy7k3|1ae7ead, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1389eoe65z21vjy7k3|1ae7ead, idleConnectionTestPeriod -> 0, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/transport?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 20, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 100, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 10, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+
+2016-01-19 11:25:37
+[INFO]-[Thread: main]-[com.vanroid.transopt.service.GoodsManageService.createGoods()]: 插入1成功
+
+2016-01-19 11:26:29
+[INFO]-[Thread: main]-[com.mchange.v2.log.MLog.<clinit>()]: MLog clients using log4j logging.
+
+2016-01-19 11:26:29
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.C3P0Registry.banner()]: Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+
+2016-01-19 11:26:29
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getPoolManager()]: Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1389eoe7as41kvislf|39ca2c, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1389eoe7as41kvislf|39ca2c, idleConnectionTestPeriod -> 0, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/transport?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 20, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 100, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 10, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+
+2016-01-19 11:26:29
+[INFO]-[Thread: main]-[com.vanroid.transopt.service.GoodsManageService.createGoods()]: 插入1成功
+
+2016-01-19 11:35:52
+[INFO]-[Thread: main]-[com.mchange.v2.log.MLog.<clinit>()]: MLog clients using log4j logging.
+
+2016-01-19 11:35:52
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.C3P0Registry.banner()]: Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+
+2016-01-19 11:35:52
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getPoolManager()]: Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1389eoejd9gk8q9xl|198d24f, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1389eoejd9gk8q9xl|198d24f, idleConnectionTestPeriod -> 0, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/transport?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 20, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 100, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 10, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+
+2016-01-19 11:35:53
+[INFO]-[Thread: main]-[com.vanroid.transopt.service.GoodsManageService.createGoods()]: 插入1成功
+
+2016-01-19 11:36:23
+[INFO]-[Thread: main]-[com.mchange.v2.log.MLog.<clinit>()]: MLog clients using log4j logging.
+
+2016-01-19 11:36:23
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.C3P0Registry.banner()]: Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+
+2016-01-19 11:36:23
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getPoolManager()]: Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1389eoek0zx1kgycfz|198d24f, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1389eoek0zx1kgycfz|198d24f, idleConnectionTestPeriod -> 0, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/transport?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 20, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 100, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 10, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+
+2016-01-19 11:36:23
+[INFO]-[Thread: main]-[com.vanroid.transopt.service.GoodsManageService.createGoods()]: 插入1成功
+
+2016-01-19 11:41:03
+[INFO]-[Thread: main]-[com.mchange.v2.log.MLog.<clinit>()]: MLog clients using log4j logging.
+
+2016-01-19 11:41:03
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.C3P0Registry.banner()]: Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+
+2016-01-19 11:41:03
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getPoolManager()]: Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1389eoeq11ad0oar9|a9a7bb, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1389eoeq11ad0oar9|a9a7bb, idleConnectionTestPeriod -> 0, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/transport?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 20, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 100, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 10, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+
+2016-01-19 11:41:04
+[INFO]-[Thread: main]-[com.vanroid.transopt.service.GoodsManageService.createGoods()]: gid:28
+
+2016-01-19 11:41:38
+[INFO]-[Thread: main]-[com.mchange.v2.log.MLog.<clinit>()]: MLog clients using log4j logging.
+
+2016-01-19 11:41:38
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.C3P0Registry.banner()]: Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+
+2016-01-19 11:41:38
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getPoolManager()]: Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1389eoeqs4y1gvesrx|a9a7bb, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1389eoeqs4y1gvesrx|a9a7bb, idleConnectionTestPeriod -> 0, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/transport?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 20, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 100, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 10, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+
+2016-01-19 11:46:28
+[INFO]-[Thread: main]-[com.mchange.v2.log.MLog.<clinit>()]: MLog clients using log4j logging.
+
+2016-01-19 11:46:29
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.C3P0Registry.banner()]: Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+
+2016-01-19 11:46:29
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getPoolManager()]: Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1389eoex0dqw0fu9n|1928b7c, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1389eoex0dqw0fu9n|1928b7c, idleConnectionTestPeriod -> 0, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/transport?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 20, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 100, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 10, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+
+2016-01-19 11:47:03
+[INFO]-[Thread: main]-[com.mchange.v2.log.MLog.<clinit>()]: MLog clients using log4j logging.
+
+2016-01-19 11:47:04
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.C3P0Registry.banner()]: Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+
+2016-01-19 11:47:04
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getPoolManager()]: Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1389eoexred1n6g2zy|38f36, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1389eoexred1n6g2zy|38f36, idleConnectionTestPeriod -> 0, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/transport?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 20, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 100, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 10, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+
+2016-01-19 11:49:59
+[INFO]-[Thread: main]-[com.mchange.v2.log.MLog.<clinit>()]: MLog clients using log4j logging.
+
+2016-01-19 11:49:59
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.C3P0Registry.banner()]: Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+
+2016-01-19 11:49:59
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getPoolManager()]: Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1389eof1ing1p7203|38f36, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1389eof1ing1p7203|38f36, idleConnectionTestPeriod -> 0, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/transport?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 20, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 100, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 10, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+
+2016-01-19 13:46:18
+[INFO]-[Thread: main]-[com.mchange.v2.log.MLog.<clinit>()]: MLog clients using log4j logging.
+
+2016-01-19 13:46:18
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.C3P0Registry.banner()]: Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+
+2016-01-19 13:46:18
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getPoolManager()]: Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1389eoj73ri1gjtfy8|652548, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1389eoj73ri1gjtfy8|652548, idleConnectionTestPeriod -> 0, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/transport?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 20, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 100, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 10, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+
+2016-01-19 13:46:19
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:46:19
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:46:19
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:46:19
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:46:19
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:46:19
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:46:19
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:46:19
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:46:19
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:46:19
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:46:19
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:46:19
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:46:19
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:46:19
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:46:19
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:46:19
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:46:19
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:46:19
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:46:19
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:46:19
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:51:36
+[INFO]-[Thread: main]-[com.mchange.v2.log.MLog.<clinit>()]: MLog clients using log4j logging.
+
+2016-01-19 13:51:36
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.C3P0Registry.banner()]: Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+
+2016-01-19 13:51:36
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getPoolManager()]: Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1389eojdx202iatoc|652548, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1389eojdx202iatoc|652548, idleConnectionTestPeriod -> 0, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/transport?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 20, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 100, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 10, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+
+2016-01-19 13:51:37
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:51:37
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:51:37
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:51:37
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:51:37
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:51:37
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:51:37
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:51:37
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:51:37
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:51:37
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:51:37
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:51:37
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:51:37
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:51:37
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:51:37
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:51:37
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:51:37
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:51:37
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:51:37
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:51:37
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[com.mchange.v2.log.MLog.<clinit>()]: MLog clients using log4j logging.
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.C3P0Registry.banner()]: Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getPoolManager()]: Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1389eojgyg0x3fdvh|652548, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1389eojgyg0x3fdvh|652548, idleConnectionTestPeriod -> 0, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/transport?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 20, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 100, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 10, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 1kg
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 2kg
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 1kg
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 2kg
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 1kg
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 2kg
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 1kg
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 2kg
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 1kg
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 2kg
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 1kg
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 2kg
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 1kg
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 2kg
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 1kg
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 2kg
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 1kg
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 2kg
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 1kg
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 2kg
+
+2016-01-19 13:53:58
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: null下有:
+
+2016-01-19 13:54:16
+[INFO]-[Thread: main]-[com.mchange.v2.log.MLog.<clinit>()]: MLog clients using log4j logging.
+
+2016-01-19 13:54:16
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.C3P0Registry.banner()]: Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+
+2016-01-19 13:54:16
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getPoolManager()]: Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1389eojhcmr1py4fua|146d950, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1389eojhcmr1py4fua|146d950, idleConnectionTestPeriod -> 0, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/transport?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 20, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 100, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 10, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+
+2016-01-19 13:54:16
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 蛋糕下有:
+
+2016-01-19 13:54:16
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 1kg
+
+2016-01-19 13:54:16
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 2kg
+
+2016-01-19 13:54:16
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 奶酪4下有:
+
+2016-01-19 13:54:16
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 1kg
+
+2016-01-19 13:54:16
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 2kg
+
+2016-01-19 13:54:16
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 奶酪5下有:
+
+2016-01-19 13:54:16
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 1kg
+
+2016-01-19 13:54:16
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 2kg
+
+2016-01-19 13:54:16
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 奶酪6下有:
+
+2016-01-19 13:54:16
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 1kg
+
+2016-01-19 13:54:16
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 2kg
+
+2016-01-19 13:54:16
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 奶酪7下有:
+
+2016-01-19 13:54:17
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 1kg
+
+2016-01-19 13:54:17
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 2kg
+
+2016-01-19 13:54:17
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 奶酪8下有:
+
+2016-01-19 13:54:17
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 1kg
+
+2016-01-19 13:54:17
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 2kg
+
+2016-01-19 13:54:17
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 奶酪9下有:
+
+2016-01-19 13:54:17
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 1kg
+
+2016-01-19 13:54:17
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 2kg
+
+2016-01-19 13:54:17
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 奶酪10下有:
+
+2016-01-19 13:54:17
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 1kg
+
+2016-01-19 13:54:17
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 2kg
+
+2016-01-19 13:54:17
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 奶酪11下有:
+
+2016-01-19 13:54:17
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 1kg
+
+2016-01-19 13:54:17
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 2kg
+
+2016-01-19 13:54:17
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 奶酪12下有:
+
+2016-01-19 13:54:17
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 奶酪13下有:
+
+2016-01-19 13:54:17
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 奶酪15下有:
+
+2016-01-19 13:54:17
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 1kg
+
+2016-01-19 13:54:17
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 2kg
+
+2016-01-19 13:54:17
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoods()]: 奶酪16下有:
+
+2016-01-19 14:52:54
+[INFO]-[Thread: main]-[com.mchange.v2.log.MLog.<clinit>()]: MLog clients using log4j logging.
+
+2016-01-19 14:52:54
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.C3P0Registry.banner()]: Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+
+2016-01-19 14:52:54
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getPoolManager()]: Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1389eolkr1zxopbc0|1eca9d2, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1389eolkr1zxopbc0|1eca9d2, idleConnectionTestPeriod -> 0, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/transport?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 20, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 100, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 10, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+
+2016-01-19 14:53:18
+[INFO]-[Thread: main]-[com.mchange.v2.log.MLog.<clinit>()]: MLog clients using log4j logging.
+
+2016-01-19 14:53:18
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.C3P0Registry.banner()]: Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+
+2016-01-19 14:53:19
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getPoolManager()]: Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1389eoll9xeqe7bzo|1eca9d2, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1389eoll9xeqe7bzo|1eca9d2, idleConnectionTestPeriod -> 0, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/transport?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 20, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 100, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 10, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+
+2016-01-19 14:54:17
+[INFO]-[Thread: main]-[com.mchange.v2.log.MLog.<clinit>()]: MLog clients using log4j logging.
+
+2016-01-19 14:54:17
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.C3P0Registry.banner()]: Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+
+2016-01-19 14:54:17
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getPoolManager()]: Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1389eolmj8tay6mrb|812a5d, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1389eolmj8tay6mrb|812a5d, idleConnectionTestPeriod -> 0, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/transport?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 20, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 100, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 10, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+
+2016-01-19 14:54:27
+[INFO]-[Thread: main]-[com.mchange.v2.log.MLog.<clinit>()]: MLog clients using log4j logging.
+
+2016-01-19 14:54:28
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.C3P0Registry.banner()]: Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+
+2016-01-19 14:54:28
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getPoolManager()]: Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1389eolmrbfplzmet|1eca9d2, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1389eolmrbfplzmet|1eca9d2, idleConnectionTestPeriod -> 0, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/transport?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 20, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 100, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 10, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+
+2016-01-19 14:55:25
+[INFO]-[Thread: main]-[com.mchange.v2.log.MLog.<clinit>()]: MLog clients using log4j logging.
+
+2016-01-19 14:55:26
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.C3P0Registry.banner()]: Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+
+2016-01-19 14:55:26
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getPoolManager()]: Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1389eolo02js36ege|1eca9d2, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1389eolo02js36ege|1eca9d2, idleConnectionTestPeriod -> 0, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/transport?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 20, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 100, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 10, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+
+2016-01-19 14:58:25
+[INFO]-[Thread: main]-[com.mchange.v2.log.MLog.<clinit>()]: MLog clients using log4j logging.
+
+2016-01-19 14:58:25
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.C3P0Registry.banner()]: Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+
+2016-01-19 14:58:25
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getPoolManager()]: Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1389eolrua6e51s8v|812a5d, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1389eolrua6e51s8v|812a5d, idleConnectionTestPeriod -> 0, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/transport?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 20, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 100, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 10, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+
+2016-01-19 14:58:25
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: size:1
+
+2016-01-19 14:58:25
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: size:10
+
+2016-01-19 15:21:33
+[INFO]-[Thread: main]-[com.mchange.v2.log.MLog.<clinit>()]: MLog clients using log4j logging.
+
+2016-01-19 15:21:33
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.C3P0Registry.banner()]: Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+
+2016-01-19 15:21:33
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getPoolManager()]: Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1389eomllipvjnky8|4764b, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1389eomllipvjnky8|4764b, idleConnectionTestPeriod -> 0, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/transport?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 20, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 100, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 10, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+
+2016-01-19 15:21:34
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: standard:[1kg, 2kg]
+
+2016-01-19 15:21:34
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: standard:[1kg, 2kg]
+
+2016-01-19 15:21:34
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: standard:[1kg, 2kg]
+
+2016-01-19 15:21:34
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: standard:[1kg, 2kg]
+
+2016-01-19 15:21:34
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: standard:[1kg, 2kg]
+
+2016-01-19 15:21:34
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: standard:[1kg, 2kg]
+
+2016-01-19 15:21:34
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: standard:[1kg, 2kg]
+
+2016-01-19 15:21:34
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: standard:[1kg, 2kg]
+
+2016-01-19 15:21:34
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: standard:[1kg, 2kg]
+
+2016-01-19 15:21:34
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: standard:[]
+
+2016-01-19 15:22:27
+[INFO]-[Thread: main]-[com.mchange.v2.log.MLog.<clinit>()]: MLog clients using log4j logging.
+
+2016-01-19 15:22:27
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.C3P0Registry.banner()]: Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+
+2016-01-19 15:22:27
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getPoolManager()]: Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1389eommqvqu8eefs|4764b, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1389eommqvqu8eefs|4764b, idleConnectionTestPeriod -> 0, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/transport?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 20, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 100, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 10, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+
+2016-01-19 15:22:27
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: standard:[1kg, 2kg]
+
+2016-01-19 15:22:27
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: standard:[1kg, 2kg]
+
+2016-01-19 15:22:27
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: standard:[1kg, 2kg]
+
+2016-01-19 15:22:27
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: standard:[1kg, 2kg]
+
+2016-01-19 15:22:27
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: standard:[1kg, 2kg]
+
+2016-01-19 15:22:27
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: standard:[1kg, 2kg]
+
+2016-01-19 15:22:27
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: standard:[1kg, 2kg]
+
+2016-01-19 15:22:27
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: standard:[1kg, 2kg]
+
+2016-01-19 15:22:27
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: standard:[2kg]
+
+2016-01-19 15:22:27
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: standard:[]
+
+2016-01-19 16:00:24
+[INFO]-[Thread: main]-[com.mchange.v2.log.MLog.<clinit>()]: MLog clients using log4j logging.
+
+2016-01-19 16:00:24
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.C3P0Registry.banner()]: Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+
+2016-01-19 16:00:24
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getPoolManager()]: Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1389eonzjvc1aniyv7|4764b, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1389eonzjvc1aniyv7|4764b, idleConnectionTestPeriod -> 0, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/transport?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 20, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 100, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 10, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+
+2016-01-19 16:00:24
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: standard:[1kg, 2kg]
+
+2016-01-19 16:00:24
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: standard:[1kg, 2kg]
+
+2016-01-19 16:00:24
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: standard:[1kg, 2kg]
+
+2016-01-19 16:00:24
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: standard:[1kg, 2kg]
+
+2016-01-19 16:00:24
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: standard:[1kg, 2kg]
+
+2016-01-19 16:00:24
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: standard:[1kg, 2kg]
+
+2016-01-19 16:00:24
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: standard:[1kg, 2kg]
+
+2016-01-19 16:00:24
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: standard:[1kg, 2kg]
+
+2016-01-19 16:00:24
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: standard:[2kg]
+
+2016-01-19 16:00:24
+[INFO]-[Thread: main]-[test.TestGoodsService.testGetGoodsFrom()]: standard:[]
+
+2016-01-19 17:54:26
+[INFO]-[Thread: main]-[com.mchange.v2.log.MLog.<clinit>()]: MLog clients using log4j logging.
+
+2016-01-19 17:54:27
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.C3P0Registry.banner()]: Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+
+2016-01-19 17:54:27
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getPoolManager()]: Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1389eos27uztyhx4m|23a923, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1389eos27uztyhx4m|23a923, idleConnectionTestPeriod -> 0, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/transport?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 20, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 100, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 10, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+
+2016-01-19 17:55:54
+[INFO]-[Thread: main]-[com.mchange.v2.log.MLog.<clinit>()]: MLog clients using log4j logging.
+
+2016-01-19 17:55:54
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.C3P0Registry.banner()]: Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+
+2016-01-19 17:55:55
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getPoolManager()]: Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1389eos43nr1n4cvpc|23a923, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1389eos43nr1n4cvpc|23a923, idleConnectionTestPeriod -> 0, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/transport?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 20, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 100, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 10, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+
+2016-01-19 17:56:31
+[INFO]-[Thread: main]-[com.mchange.v2.log.MLog.<clinit>()]: MLog clients using log4j logging.
+
+2016-01-19 17:56:31
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.C3P0Registry.banner()]: Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+
+2016-01-19 17:56:31
+[INFO]-[Thread: main]-[com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getPoolManager()]: Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1389eos4w0v1qk3jiv|1ae9e9b, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1389eos4w0v1qk3jiv|1ae9e9b, idleConnectionTestPeriod -> 0, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/transport?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 20, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 100, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 10, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]

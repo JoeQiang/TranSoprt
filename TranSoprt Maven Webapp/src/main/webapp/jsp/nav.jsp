@@ -39,7 +39,7 @@
 							<li class="active"><a href="#">订单分配</a></li>
 							<li><a href="index_2.html">厂家订单</a></li>
 							<li><a href="index_2.html">经销商管理</a></li>
-							<li><a href="index_2.html">商品管理</a></li>
+							<li><a href="/goods/list">商品管理</a></li>
 							<li><a href="index_2.html">厂家设置</a></li>
 						</ul></li>
 					<!-- 厂家模块 -->

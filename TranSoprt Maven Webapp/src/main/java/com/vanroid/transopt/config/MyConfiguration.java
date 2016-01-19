@@ -8,9 +8,11 @@ import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
+import com.jfinal.plugin.activerecord.tx.Tx;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.plugin.ehcache.EhCachePlugin;
 import com.jfinal.render.ViewType;
+import com.vanroid.transopt.controller.GoodsControlller;
 import com.vanroid.transopt.controller.TestController;
 import com.vanroid.transopt.model.Dealer;
 import com.vanroid.transopt.model.GRFactory;
@@ -37,6 +39,7 @@ public class MyConfiguration extends JFinalConfig {
 	@Override
 	public void configRoute(Routes me) {
 		me.add("/", TestController.class);
+		me.add("/goods",GoodsControlller.class);
 	}
 
 	/**
