@@ -10,11 +10,12 @@
 <meta name="keywords" content="港荣食品物流跟踪系统">
 <meta name="description" content="港荣食品物流跟踪系统">
 
- <link href="../css/bootstrap.min.css?v=3.4.0" rel="stylesheet">
-    <link href="../font-awesome/css/font-awesome.css?v=4.3.0" rel="stylesheet">
-    <link href="../css/plugins/iCheck/custom.css" rel="stylesheet">
-    <link href="../css/animate.css" rel="stylesheet">
-    <link href="../css/style.css?v=2.2.0" rel="stylesheet">
+<link href="../css/bootstrap.min.css?v=3.4.0" rel="stylesheet">
+<link href="../font-awesome/css/font-awesome.css?v=4.3.0"
+	rel="stylesheet">
+<link href="../css/plugins/iCheck/custom.css" rel="stylesheet">
+<link href="../css/animate.css" rel="stylesheet">
+<link href="../css/style.css?v=2.2.0" rel="stylesheet">
 
 </head>
 
@@ -74,9 +75,13 @@
 							</div>
 							<div class="ibox-content">
 								<div class="">
-									<a  data-toggle="modal" class="btn btn-primary" href="form_basic.html#modal-form">
-										添加商品</a>
+									<a data-toggle="modal" onclick="addgoods()" class="btn btn-primary"
+										> 添加商品</a> <a data-toggle="modal"
+										class="btn btn-primary" href="#modal-form2"> 添加规格</a>
+										<a data-toggle="modal" onclick="showsta()"
+										class="btn btn-primary">删除规格</a>
 								</div>
+
 								<table class="table table-striped table-bordered table-hover "
 									id="editable">
 									<thead>
@@ -91,10 +96,15 @@
 											<tr class="gradeB" id="tr${goods.gid}">
 												<td>${goods.gname}</td>
 												<td><c:forEach items="${goods.standard}" var="sd">
-												<div id="div${goods.gid}${sd.sid }">
-													${sd.sname}&nbsp;<a href="javascript:delSta(${goods.gid},${sd.sid })">X</a></div>
-											</c:forEach></td>
-												<td><a type="button" class="btn btn-danger" href="javascript:delGoods(${goods.gid})">删除</a></td>
+														<div id="div${goods.gid}${sd.sid }">
+															${sd.sname}&nbsp;
+														</div>
+													</c:forEach></td>
+												<td><a type="button" class="btn btn-danger"
+													href="javascript:delGoods(${goods.gid})">删除</a>
+													<a type="button" class="btn btn-warning"
+													href="javascript:updGoods(${goods.gid},'${goods.gname}')">修改</a>
+													</td>
 											</tr>
 										</c:forEach>
 									</tbody>
@@ -113,51 +123,148 @@
 					</div>
 				</div>
 
-			<!-- 新增商品表单 -->
-			<div id="modal-form" class="modal fade" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-6 b-r">
-                            <h3 class="m-t-none m-b">新增商品</h3>
+				<!-- 新增商品表单 -->
+				<div id="modal-form1" class="modal fade" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-body">
+								<div class="row">
+									<div class="col-sm-6 b-r">
+										<h3 class="m-t-none m-b">新增商品</h3>
 
-                            <form role="form" action="${pageContext.request.contextPath}/goods/addgoods" method="post">
-                                <div class="form-group">
-                                    <label>商品名称：</label>
-                                    <input type="text"  name="gname" placeholder="请输入商品名称" class="form-control">
-                                </div>
-                                
-                               <div class="hr-line-dashed"></div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">重量规格</label>
+										<form role="form"
+											action="${pageContext.request.contextPath}/goods/addgoods"
+											method="post">
+											<div class="form-group">
+												<label>商品名称：</label> <input type="text" name="gname"
+													placeholder="请输入商品名称" class="form-control">
+											</div>
 
-                                        <div class="col-sm-10">
-                                             <div class="col-sm-10">
-                                             <label class="checkbox-inline i-checks">
-                                                <input type="checkbox" value="1" name="weight">800g</label>
-                                            <label class="checkbox-inline i-checks">
-                                                <input type="checkbox" value="2" name="weight">1kg</label>
-                                            <label class="checkbox-inline i-checks">
-                                                <input type="checkbox" value="3" name="weight">2kg</label>
-                                            <label class="checkbox-inline i-checks">
-                                                <input type="checkbox" value="4" name="weight">1.5kg</label>
-                                        </div>
-                                        </div>
-                                    </div>
-                                <div>
-                                    <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>添加</strong>
-                                    </button>
-                                    
-                                </div>
-                            </form>
-                        </div>
-                       
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+											<div class="hr-line-dashed"></div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label">重量规格</label>
+
+												<div class="col-sm-10">
+													<div id="divgetsta" class="col-sm-10">
+													
+														<!-- <label class="checkbox-inline i-checks"> <input
+															type="checkbox" value="1" name="weight">800g -->
+														</label>
+													</div>
+												</div>
+											</div>
+											<div>
+												<button class="btn btn-sm btn-primary pull-right m-t-n-xs"
+													type="submit">
+													<strong>添加</strong>
+												</button>
+
+											</div>
+										</form>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 修改商品表单 -->
+				<div id="modal-form4" class="modal fade" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-body">
+								<div class="row">
+									<div class="col-sm-6 b-r">
+										<h3 class="m-t-none m-b">修改商品</h3>
+
+										<form role="form" id="updform"
+											<%-- action="${pageContext.request.contextPath}/goods/updgoods?gid" --%>
+											method="post">
+											<div class="form-group">
+												<label>商品名称：</label> <input type="text" id="ingname" name="gname"
+													class="form-control">
+											</div>
+
+											<div class="hr-line-dashed"></div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label">重量规格</label>
+
+												<div class="col-sm-10">
+													<div id="divgetsta1" class="col-sm-10">
+													
+														<!-- <label class="checkbox-inline i-checks"> <input
+															type="checkbox" value="1" name="weight">800g 
+														</label>-->
+													</div>
+												</div>
+											</div>
+											<div>
+												<button class="btn btn-sm btn-primary pull-right m-t-n-xs"
+													type="submit">
+													<strong>修改</strong>
+												</button>
+
+											</div>
+										</form>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--增加商品规格 -->
+				<div id="modal-form2" class="modal fade" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-body">
+								<div class="row">
+									<div class="col-sm-6 b-r">
+										<h3 class="m-t-none m-b">新增规格</h3>
+
+										<form role="form"
+											action="${pageContext.request.contextPath}/goods/addsta"
+											method="post">
+											<div class="form-group">
+												<label>商品规格：</label> <input type="text" name="sname"
+													placeholder="请输入商品规格，如：1Kg" class="form-control">
+											</div>
+											<div>
+												<button class="btn btn-sm btn-primary pull-right m-t-n-xs"
+													type="submit">
+													<strong>添加</strong>
+												</button>
+
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 删除规格 -->
+				<div id="modal-form3" class="modal fade" aria-hidden="false">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-body">
+								<div class="row">
+									<div class="col-sm-6 b-r">
+									<h2>商品规格：</h2>
+										<div id="showsta"></div>
+
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			<!-- 触发标签 -->
+			<a data-toggle="modal" id="aid1" href="#modal-form1"></a>
+			<a data-toggle="modal" id="aid4" href="#modal-form4"></a>
+			<a data-toggle="modal" id="aid3" href="#modal-form3"></a>
+			</div>
 			<!-- 内容主体结束 -->
 			<!-- 脚部 -->
 			<div class="footer">
@@ -172,51 +279,137 @@
 		</div>
 		<!-- 脚部 -->
 	</div>
-<!-- Mainly scripts -->
-    <script src="../js/jquery-2.1.1.min.js"></script>
-    <script src="../js/bootstrap.min.js?v=3.4.0"></script>
-    <script src="../js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="../js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<!-- Mainly scripts -->
+	<script src="../js/jquery-2.1.1.min.js"></script>
+	<script src="../js/bootstrap.min.js?v=3.4.0"></script>
+	<script src="../js/plugins/metisMenu/jquery.metisMenu.js"></script>
+	<script src="../js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
-    <!-- Custom and plugin javascript -->
-    <script src="../js/hplus.js?v=2.2.0"></script>
-    <script src="../js/plugins/pace/pace.min.js"></script>
+	<!-- Custom and plugin  -->
+	<script src="../js/hplus.js?v=2.2.0"></script>
+	<script src="../js/plugins/pace/pace.min.js"></script>
 
-    <!-- iCheck -->
-    <script src="../js/plugins/iCheck/icheck.min.js"></script>
+	<!-- iCheck -->
+	<script src="../js/plugins/iCheck/icheck.min.js"></script>
 	<script>
-	$(document).ready(function () {
-            $('.i-checks').iCheck({
-                checkboxClass: 'icheckbox_square-green',
-                radioClass: 'iradio_square-green',
-            });
-        });
+		$(document).ready(function() {
+			$('.i-checks').iCheck({
+				checkboxClass : 'icheckbox_square-green',
+				radioClass : 'iradio_square-green',
+			});
+		});
 		function delGoods(gid) {
-		if(window.confirm('确定要删除该商品吗？')){
-			$.ajax({
-				type : 'GET',
-				url : '${pageContext.request.contextPath}/goods/delete?gid='
-						+ gid,
-				success : function(data) {
-					$("#tr"+gid).hide();
-				},
-				dataType : 'json'
-			});}
+			if (window.confirm('确定要删除该商品吗？')) {
+				$
+						.ajax({
+							type : 'GET',
+							url : '${pageContext.request.contextPath}/goods/delete?gid='
+									+ gid,
+							success : function(data) {
+								$("#tr" + gid).hide();
+							},
+							dataType : 'json'
+						});
+			}
 		}
-		function delSta(gid,sid){
-		if(window.confirm('确定要删除该规格吗？')){
-			$.ajax({
-				type : 'GET',
-				url : '${pageContext.request.contextPath}/goods/delsta?gid='
-						+ gid+"&sid="+sid,
-				success : function(data) {
-				$("#div"+gid+sid).hide();
-				/* alert(data); */
-				},
-				dataType : 'json'
-			});}
+		function delSta(gid, sid) {
+			if (window.confirm('确定要删除该规格吗？')) {
+				$
+						.ajax({
+							type : 'GET',
+							url : '${pageContext.request.contextPath}/goods/delsta?gid='
+									+ gid + "&sid=" + sid,
+							success : function(data) {
+								$("#div" + gid + sid).hide();
+								/* alert(data); */
+							},
+							dataType : 'json'
+						});
+			}
 		}
-		
+		function showsta(){
+			$
+						.ajax({
+							type : 'GET',
+							url : '${pageContext.request.contextPath}/goods/getallsta',
+							success : function(data) {
+							
+							$("#showsta").html("");
+								for(i=0;i<data.length;i++){
+								$("#showsta").append("<div id=divsid"+data[i].sid+"><h4>"+data[i].sname+"</h4><a onclick=delGroblSta("+data[i].sid+")>X</a></div>");
+								}
+								$("#aid3").click();
+							},
+							dataType : 'json'
+						});
+		}
+		function delGroblSta(sid){
+			$
+						.ajax({
+							type : 'GET',
+							url : '${pageContext.request.contextPath}/goods/delgroblesta?sid='+sid,
+							success : function(data) {
+								$("#divsid"+sid).hide();
+								
+							},
+							dataType : 'json'
+						});
+		}
+		function addgoods(){
+		$
+						.ajax({
+							type : 'GET',
+							url : '${pageContext.request.contextPath}/goods/getallsta',
+							success : function(data) {
+							$("#divgetsta").html("");
+							for(i=0;i<data.length;i++){
+								$("#divgetsta").append("<label class='checkbox-inline i-checks'> <input type='checkbox'  value='"+data[i].sid+"' name='weight'>"+data[i].sname+"</label> ").trigger("create");
+							}
+							$("#aid1").click();
+							},
+							dataType : 'json'
+						});
+		}
+		/* 修改商品 */
+		function updGoods(gid,gname){
+		var allsta;
+		$("#ingname").val(gname);//显示原来商品名称
+		//查询所有的规格
+		$
+						.ajax({
+							type : 'GET',
+							url : '${pageContext.request.contextPath}/goods/getallsta',
+							success : function(data) {
+							$("#divgetsta1").html("");
+							var j=0;
+							for(i=0;i<data.length;i++){
+								$("#divgetsta1").append("<label class='checkbox-inline i-checks'> <input id='updchebox"+j+"' type='checkbox' value='"+data[i].sid+"' name='weight'>"+data[i].sname+"</label> ").trigger("create");
+								j++;
+							}
+								allsta=j;
+							},
+							dataType : 'json'
+						});
+		//查询本商品有的规格
+		$
+						.ajax({
+							type : 'GET',
+							url : '${pageContext.request.contextPath}/goods/getstabygid?gid='+gid,
+							success : function(data) {
+							//返回的是一个goods对象
+							var stalist=data.standard;
+							for(i =0;i<stalist.length;i++)
+							for(j=0;j<allsta;j++){
+								if($("#updchebox"+j).val()==stalist[i].sid){
+									$("#updchebox"+j).attr("checked","true");
+								}
+							}
+							$("#updform").attr("action","${pageContext.request.contextPath}/goods/updgoods?gid="+gid);
+							},
+							dataType : 'json'
+						});
+						$("#aid4").click();
+		}
 	</script>
 </body>
 

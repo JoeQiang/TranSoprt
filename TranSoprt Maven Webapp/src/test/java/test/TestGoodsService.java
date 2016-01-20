@@ -24,7 +24,7 @@ public class TestGoodsService {
 	@Test
 	public void testCreateGoods() {
 		
-		gs.createGoods("奶酪16", new int[]{1,2});
+		gs.createGoods("奶酪16", new Integer[]{1,2});
 	}
 	@Test
 	public void testDeleteGoods() {
@@ -51,5 +51,10 @@ public class TestGoodsService {
 	@Test
 	public void testDelSta(){
 		gs.delSta(11, 1);
+	}
+	@Test
+	//gname=蛋糕  gid=11  weight[]={1,2}
+	public void testUpdateByGid(){
+		gs.updateByGid(11, "蛋糕", new Integer[]{8});
 	}
 }

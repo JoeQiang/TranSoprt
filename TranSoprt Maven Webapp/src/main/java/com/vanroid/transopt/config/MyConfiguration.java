@@ -18,6 +18,7 @@ import com.vanroid.transopt.model.Dealer;
 import com.vanroid.transopt.model.GRFactory;
 import com.vanroid.transopt.model.GRGoods;
 import com.vanroid.transopt.model.GROrder;
+import com.vanroid.transopt.model.Standard;
 import com.vanroid.transopt.model.User;
 
 public class MyConfiguration extends JFinalConfig {
@@ -65,6 +66,7 @@ public class MyConfiguration extends JFinalConfig {
 		arp.addMapping("grorder", "oid", GROrder.class); 
 		arp.addMapping("grfactory", "fid", GRFactory.class); 
 		arp.addMapping("grgoods", "gid", GRGoods.class); 
+		arp.addMapping("standard", "sid", Standard.class); 
 
 	}
 

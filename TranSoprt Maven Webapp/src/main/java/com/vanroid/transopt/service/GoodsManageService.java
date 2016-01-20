@@ -1,7 +1,9 @@
 package com.vanroid.transopt.service;
 
+import java.util.Arrays;
 import java.util.List;
 
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.log4j.Logger;
 
 import com.jfinal.aop.Before;
@@ -10,6 +12,7 @@ import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.Record;
 import com.jfinal.plugin.activerecord.tx.Tx;
 import com.vanroid.transopt.model.GRGoods;
+import com.vanroid.transopt.model.Standard;
 
 /**
  * 商品管理业务逻辑类crud
@@ -48,7 +51,30 @@ public class GoodsManageService {
 		// Db.deleteById("goods_standard", gid); //数据库已经做了级联
 	}
 
-	public void updateByGid(String gname, int[] sids) {
+	@Before(Tx.class)
+	public void updateByGid(int gid, String gname, Integer[] sids) {
+		GRGoods goods = GRGoods.dao.findById(gid);
+		goods.set("gname", gname).update();
+		List<Record> list = Db.find(
+				"select sid from goods_standard where gid=?", gid);
+		int[] dbsids = new int[list.size()];//数据库中的
+		int i = 0;
+		for (Record record : list) {
+			dbsids[i++] = record.getInt("sid");
+		}
+		//新的中有的，旧的没有-->插入数据库
+		//新的中没有的，旧的有的-->删除数据库国
+		for(int j=0;j<dbsids.length;j++){
+			if(!ArrayUtils.contains(sids, dbsids[j])){
+				Db.deleteById("goods_standard", "gid,sid", gid, dbsids[j]);
+			}
+		}
+		for(int j=0;j<sids.length;j++){
+			if(!ArrayUtils.contains(dbsids, sids[j])){
+				Record re = new Record().set("sid", sids[j]).set("gid", gid);
+				Db.save("goods_standard", "gid, sid",re);
+			}
+		}
 	}
 
 	/**
@@ -72,19 +98,50 @@ public class GoodsManageService {
 				"from grgoods");
 		for (GRGoods goods : page.getList()) {
 			/**
-			 * 注意！！！这里要触发获取商品规格的方法，将商品规格put进属性里，
-			 * 否则el找不到规格属性（规格不属于数据库中）
+			 * 注意！！！这里要触发获取商品规格的方法，将商品规格put进属性里， 否则el找不到规格属性（规格不属于数据库中）
 			 */
 			goods.getStandard();
 		}
 		return page;
 	}
+
 	/**
 	 * 删除某个商品下的某个规格
+	 * 
 	 * @param gid
 	 * @param sid
 	 */
 	public void delSta(int gid, int sid) {
-		Db.deleteById("goods_standard","gid,sid", gid,sid);
+		Db.deleteById("goods_standard", "gid,sid", gid, sid);
+	}
+
+	/**
+	 * 增加商品规格
+	 * 
+	 * @param sta
+	 */
+	public void addSta(String sta) {
+		Standard s = Standard.dao.findFirst(
+				"select count(*) from standard where sname=?", sta);
+		if (s.getLong("count(*)") == 0)
+			new Standard().set("sname", sta).save();
+	}
+
+	/**
+	 * 获取全局规格
+	 * 
+	 * @return
+	 */
+	public List<Standard> getAllSta() {
+		return Standard.dao.find("select * from standard");
+	}
+
+	/**
+	 * 删除全局规格中某一个
+	 * 
+	 * @param sid
+	 */
+	public void delGrobleSta(int sid) {
+		Standard.dao.deleteById(sid);
 	}
 }
