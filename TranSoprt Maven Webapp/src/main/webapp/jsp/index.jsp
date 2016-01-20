@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
 <html>
 <head>
 <meta charset="utf-8">
@@ -9,18 +16,18 @@
 <title>港荣食品物流跟踪系统</title>
 <meta name="keywords" content="港荣食品物流跟踪系统">
 <meta name="description" content="港荣食品物流跟踪系统">
-
-<link href="../css/bootstrap.min.css?v=3.4.0" rel="stylesheet">
-<link href="../css/font-awesome.css?v=4.3.0" rel="stylesheet">
-<link href="../css/animate.css" rel="stylesheet">
-<link href="../css/style.css?v=2.2.0" rel="stylesheet">
+<base href="<%=basePath%>">
+<link href="css/bootstrap.min.css?v=3.4.0" rel="stylesheet">
+<link href="css/font-awesome.css?v=4.3.0" rel="stylesheet">
+<link href="css/animate.css" rel="stylesheet">
+<link href="css/style.css?v=2.2.0" rel="stylesheet">
 
 </head>
 
 <body>
 	<div id="wrapper">
 
-		<%@include file="nav.jsp" %>
+		<%@include file="nav.jsp"%>
 		<!--侧边栏结束-->
 		<!-- 搜索栏 -->
 		<div id="page-wrapper" class="gray-bg dashbard-1">
@@ -42,9 +49,13 @@
 						<li><span class="m-r-sm text-muted welcome-message"><a
 								href="index.html" title="返回首页"><i class="fa fa-home"></i></a>欢迎使用港荣后台管理系统</span>
 						</li>
-						<li><a href="login.html"> <i class="fa fa-sign-out"></i>
-								退出
-						</a></li>
+						<li><c:if test="${sessionScope.user == null }">
+								<a href="login"> <i class="fa fa-sign-out"></i> 登录
+								</a>
+							</c:if> <c:if test="${sessionScope.user != null }">
+								<a href="login/exit"> <i class="fa fa-sign-out"></i> 退出
+								</a>
+							</c:if></li>
 					</ul>
 
 				</nav>
@@ -67,13 +78,13 @@
 	</div>
 
 	<!-- Mainly scripts -->
-	<script src="../js/jquery-2.1.1.min.js"></script>
-	<script src="../js/bootstrap.min.js?v=3.4.0"></script>
-	<script src="../js/metisMenu/jquery.metisMenu.js"></script>
-	<script src="../js/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="js/jquery-2.1.1.min.js"></script>
+	<script src="js/bootstrap.min.js?v=3.4.0"></script>
+	<script src="js/metisMenu/jquery.metisMenu.js"></script>
+	<script src="js/slimscroll/jquery.slimscroll.min.js"></script>
 	<!-- Custom and plugin javascript -->
-	<script src="../js/hplus.js?v=2.2.0"></script>
-	<script src="../js/plugins/pace/pace.min.js"></script>
+	<script src="js/hplus.js?v=2.2.0"></script>
+	<script src="js/plugins/pace/pace.min.js"></script>
 </body>
 
 </html>

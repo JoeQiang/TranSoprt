@@ -9,14 +9,14 @@ import com.jfinal.config.Routes;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
-import com.jfinal.plugin.ehcache.EhCachePlugin;
 import com.jfinal.render.ViewType;
-import com.vanroid.transopt.controller.TestController;
+import com.vanroid.transopt.controller.IndexController;
+import com.vanroid.transopt.controller.LoginController;
+import com.vanroid.transopt.model.Admin;
 import com.vanroid.transopt.model.Dealer;
 import com.vanroid.transopt.model.GRFactory;
 import com.vanroid.transopt.model.GRGoods;
 import com.vanroid.transopt.model.GROrder;
-import com.vanroid.transopt.model.User;
 
 public class MyConfiguration extends JFinalConfig {
 	/**
@@ -36,7 +36,8 @@ public class MyConfiguration extends JFinalConfig {
 	 */
 	@Override
 	public void configRoute(Routes me) {
-		me.add("/", TestController.class);
+		me.add("/", IndexController.class);
+		me.add("/login", LoginController.class, "/");
 	}
 
 	/**
@@ -57,12 +58,11 @@ public class MyConfiguration extends JFinalConfig {
 		// 显示SQL语句
 		arp.setShowSql(true);
 		// ORM映射表
-		arp.addMapping("user", User.class);
-		arp.addMapping("dealer", "did", Dealer.class); 
-		arp.addMapping("grorder", "oid", GROrder.class); 
-		arp.addMapping("grfactory", "fid", GRFactory.class); 
-		arp.addMapping("grgoods", "gid", GRGoods.class); 
-
+		arp.addMapping("dealer", "did", Dealer.class);
+		arp.addMapping("grorder", "oid", GROrder.class);
+		arp.addMapping("grfactory", "fid", GRFactory.class);
+		arp.addMapping("grgoods", "gid", GRGoods.class);
+		arp.addMapping("admin", Admin.class);
 	}
 
 	@Override
