@@ -41,7 +41,7 @@ public class TestGoodsService {
 	}
 	@Test
 	public void testGetGoodsFrom(){
-		Page<GRGoods> goodsFrom = gs.getGoodsFrom(1);
+		Page<GRGoods> goodsFrom = gs.getPage(1);
 		List<GRGoods> list = goodsFrom.getList();
 		for (GRGoods grGoods : list) {
 			logger.info("standard:"+grGoods.getStandard());;

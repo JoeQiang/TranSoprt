@@ -122,7 +122,26 @@
 						</div>
 					</div>
 				</div>
-
+	<!--分页 -->
+	<nav>
+  <ul class="pagination">
+   <li id="lipre">
+   <c:if test="${pageNum!=1}"> 
+      <a href="${pageContext.request.contextPath }/goods/list?page=${pageNum-1}" aria-label="Previous">
+       </c:if> <span aria-hidden="true">上一页</span>
+      </a>
+    </li>
+          <c:forEach var="i" begin="1" end="${totalPage}" step="1"> 
+          <li><a href="${pageContext.request.contextPath}/goods/list?page=${i}">${i}</a></li>
+    </c:forEach>
+    <li id="linext">
+    <c:if test="${pageNum<totalPage}">
+      <a href="${pageContext.request.contextPath }/goods/list?page=${pageNum+1}" aria-label="Next">
+       </c:if> <span aria-hidden="true">下一页</span>
+      </a>
+    </li>
+  </ul>
+</nav>
 				<!-- 新增商品表单 -->
 				<div id="modal-form1" class="modal fade" aria-hidden="true">
 					<div class="modal-dialog">
@@ -404,7 +423,7 @@
 									$("#updchebox"+j).attr("checked","true");
 								}
 							}
-							$("#updform").attr("action","${pageContext.request.contextPath}/goods/updgoods?gid="+gid);
+							$("#updform").attr("action","${pageContext.request.contextPath}/goods/updgoods?gid="+gid+"&page=${pageNum}");
 							},
 							dataType : 'json'
 						});

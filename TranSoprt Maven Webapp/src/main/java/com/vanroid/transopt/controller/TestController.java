@@ -19,7 +19,7 @@ public class TestController extends Controller {
 	TestService testService = new TestService();
 
 	public void index() {
-		List<GROrder> newOrder = OrderManageService.getNewOrder();
+		/*List<GROrder> newOrder = new OrderManageService().getNewOrder();
 		System.out.println(newOrder.size());
 		for (GROrder grOrder : newOrder) {
 			System.out.println("--------------");
@@ -31,7 +31,7 @@ public class TestController extends Controller {
 			}
 			
 		}
-		render("page/login.jsp");
+		render("page/login.jsp");*/
 	}
 
 	public void login() {

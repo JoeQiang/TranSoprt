@@ -34,12 +34,13 @@
 					</li>
 					<!-- 账户模块-->
 					<li><a href="index.html"><i class="fa fa-th-large"></i> <span
-							class="nav-label">账户</span> <span class="fa arrow"></span></a>
+							class="nav-label">账户&nbsp;<b
+										class="caret"></b></span> <span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
-							<li class="active"><a href="#">订单分配</a></li>
-							<li><a href="index_2.html">厂家订单</a></li>
+							<li class="active"><a href="${pageContext.request.contextPath}/order/distorder">订单分配</a></li>
+							<li><a href="">厂家订单</a></li>
 							<li><a href="index_2.html">经销商管理</a></li>
-							<li><a href="/goods/list">商品管理</a></li>
+							<li><a href="${pageContext.request.contextPath}/goods/list?page=1">商品管理</a></li>
 							<li><a href="index_2.html">厂家设置</a></li>
 						</ul></li>
 					<!-- 厂家模块 -->

@@ -93,9 +93,9 @@ public class GoodsManageService {
 	 *            从第几个开始
 	 * @return
 	 */
-	public Page<GRGoods> getGoodsFrom(int index) {
+	public Page<GRGoods> getPage(int index) {
 		Page<GRGoods> page = GRGoods.dao.paginate(index, 10, "select *",
-				"from grgoods");
+				"from grgoods order by gid desc");
 		for (GRGoods goods : page.getList()) {
 			/**
 			 * 注意！！！这里要触发获取商品规格的方法，将商品规格put进属性里， 否则el找不到规格属性（规格不属于数据库中）
@@ -143,5 +143,12 @@ public class GoodsManageService {
 	 */
 	public void delGrobleSta(int sid) {
 		Standard.dao.deleteById(sid);
+	}
+	/**
+	 * 得到指定商品信息
+	 * @return
+	 */
+	public GRGoods getGoods(int gid){
+		return GRGoods.dao.findById(gid);
 	}
 }

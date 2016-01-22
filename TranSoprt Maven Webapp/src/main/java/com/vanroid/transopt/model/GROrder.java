@@ -20,13 +20,17 @@ public class GROrder extends Model<GROrder> {
 
 	// 该订单的发起经销商
 	public Dealer getDealer() {
-		return Dealer.dao.findById(getInt("oid"));
+		Dealer dealer = Dealer.dao.findById(getInt("dealerid"));
+		put("dealer",dealer);
+		return dealer;
 	}
 
 	// 负责该订单发货的厂家
 	public GRFactory getFactory() {
 		try{
-			return GRFactory.dao.findById(getInt("oid"));
+			GRFactory factory = GRFactory.dao.findById(getInt("oid"));
+			put("factoryname",factory.get("fname"));
+			return factory;
 		}catch(NullPointerException e){
 			 return null;
 		}
@@ -39,11 +43,12 @@ public class GROrder extends Model<GROrder> {
 		List<Record> list=Db.find(sql,getInt("oid"));
 		for (Record record : list) {
 			HashMap<String,Object> map=new HashMap<String,Object>();
-			map.put("商品名称", record.getStr("gname"));
-			map.put("商品规格", record.getStr("sname"));
-			map.put("商品数量", record.getInt("num"));
+			map.put("gname", record.getStr("gname"));
+			map.put("sname", record.getStr("sname"));
+			map.put("num", record.getInt("num"));
 			goods.add(map);
 		}
+		put("goodsList",goods);
 		return goods;
 	}
 
