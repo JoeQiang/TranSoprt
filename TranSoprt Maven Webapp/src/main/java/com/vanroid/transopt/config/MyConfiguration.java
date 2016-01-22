@@ -10,6 +10,8 @@ import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.render.ViewType;
+import com.vanroid.transopt.controller.DealderController;
+import com.vanroid.transopt.controller.UpDownloadController;
 import com.vanroid.transopt.controller.IndexController;
 import com.vanroid.transopt.controller.LoginController;
 import com.vanroid.transopt.model.Admin;
@@ -28,7 +30,8 @@ public class MyConfiguration extends JFinalConfig {
 		me.setDevMode(true);
 		// 设置默认视图
 		me.setViewType(ViewType.JSP);
-
+		// 配置下载文件下载路径
+		me.setFileRenderPath("/excelTemplate");
 	}
 
 	/**
@@ -38,6 +41,8 @@ public class MyConfiguration extends JFinalConfig {
 	public void configRoute(Routes me) {
 		me.add("/", IndexController.class);
 		me.add("/login", LoginController.class, "/");
+		me.add("/manager/dealer", DealderController.class, "/");
+		me.add("/download", UpDownloadController.class, "/");
 	}
 
 	/**

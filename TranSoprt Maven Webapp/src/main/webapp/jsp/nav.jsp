@@ -1,9 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
 <!DOCTYPE html>
 <html>
 <head>
+<base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
@@ -21,13 +28,13 @@
 						</span> <a data-toggle="dropdown" class="dropdown-toggle"
 							href="index.html#"> <span class="clear"> <span
 								class="block m-t-xs"> <!-- <strong class="font-bold">Beaut-zihan</strong> -->
-							</span> <span class="text-muted text-xs block"> <c:choose>
+							</span> <span class="text-muted text-xs block"> 超级管理员<%-- <c:choose>
 										<c:when test="${sessionScope.rank eq 'admin' }">
 										管理员</c:when>
 										<c:when test="${sessionScope.rank eq 'factory' }">厂家</c:when>
 										<c:when test="${sessionScope.rank eq  'dealer'}">经销商</c:when>
 										<c:otherwise>未登录</c:otherwise>
-									</c:choose> <b class="caret"></b></span>
+									</c:choose>  --%> <b class="caret"></b></span>
 						</span>
 						</a>
 						<ul class="dropdown-menu animated fadeInRight m-t-xs">
@@ -45,7 +52,7 @@
 					<ul class="nav nav-second-level">
 						<li class="active"><a href="#">订单分配</a></li>
 						<li><a href="index_2.html">厂家订单</a></li>
-						<li><a href="index_2.html">经销商管理</a></li>
+						<li><a href="manager/dealer">经销商管理</a></li>
 						<li><a href="index_2.html">商品管理</a></li>
 						<li><a href="index_2.html">厂家设置</a></li>
 					</ul></li>

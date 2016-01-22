@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 供应商信息 -->
+<supplier>
+	<thead>
+		<tr>
+			<th value="经销商" />
+			<th value="电话号码" />
+			<th value="所在省市" />
+			<th value="规定到达天数" />
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<!-- 经销商名称 -->
+			<td type="string" />
+			<!-- 经销商联系电话 -->
+			<td type="numeric" />
+			<!-- 经销商地址 -->
+			<td type="string" />
+			<!-- 规定到达天数 -->
+			<td type="numeric" />
+		</tr>
+	</tbody>
+</supplier>

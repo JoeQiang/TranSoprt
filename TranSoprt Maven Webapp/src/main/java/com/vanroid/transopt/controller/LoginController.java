@@ -3,12 +3,9 @@ package com.vanroid.transopt.controller;
 import com.jfinal.core.Controller;
 import com.jfinal.log.Log4jLogger;
 import com.vanroid.transopt.model.Admin;
-import com.vanroid.transopt.model.Dealer;
 import com.vanroid.transopt.model.GRFactory;
 import com.vanroid.transopt.service.AdminService;
 import com.vanroid.transopt.service.AdminServiceImp;
-import com.vanroid.transopt.service.DealerService;
-import com.vanroid.transopt.service.DealerServiceImp;
 import com.vanroid.transopt.service.GRFActoryServiceImp;
 import com.vanroid.transopt.service.GRFactoryService;
 import com.vanroid.transopt.uitls.Constant;
@@ -41,22 +38,17 @@ public class LoginController extends Controller {
 				setAttr("error", "用户名或密码不正确");
 				forwardAction("/login");
 			}
-		} else if (Constant.USER_TYPE_DEALER.equals(type)) {
-			Dealer dealer = new Dealer();
-			dealer.set("dname", username);
-			dealer.set("dpwd", password);
-			DealerService dealerService = new DealerServiceImp();
-			boolean flag = dealerService.doLogin(dealer);
-			if (flag) {
-				Dealer dl = dealerService.getByName(dealer.getStr("dname"));
-				setSessionAttr("user", dl);
-				setSessionAttr("rank", Constant.USER_TYPE_DEALER);
-				forwardAction("/");
-			} else {
-				setAttr("error", "用户名或密码不正确");
-				forwardAction("/login");
-			}
-		} else if (Constant.USER_TYPE_FACTORY.equals(type)) {
+		}
+		/*
+		 * else if (Constant.USER_TYPE_DEALER.equals(type)) { Dealer dealer =
+		 * new Dealer(); dealer.set("dname", username); dealer.set("dpwd",
+		 * password); DealerService dealerService = new DealerServiceImp();
+		 * boolean flag = dealerService.doLogin(dealer); if (flag) { Dealer dl =
+		 * dealerService.getByName(dealer.getStr("dname"));
+		 * setSessionAttr("user", dl); setSessionAttr("rank",
+		 * Constant.USER_TYPE_DEALER); forwardAction("/"); } else {
+		 * setAttr("error", "用户名或密码不正确"); forwardAction("/login"); } }
+		 */else if (Constant.USER_TYPE_FACTORY.equals(type)) {
 			GRFactory factory = new GRFactory();
 			factory.set("fname", username);
 			factory.set("fpwd", password);

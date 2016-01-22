@@ -17,9 +17,6 @@ public class ExcelTemplateTest {
 	public void test() throws DocumentException {
 
 		ExcelTemplateFactory factory = ExcelTemplateFactory.getInstance();
-		ExcelTemplate template = factory.getTemplate("supplier");
-		// template.createExcelTemplate();
-		
+		factory.getTemplate("supplier").createExcelTemplate();
 	}
-
 }

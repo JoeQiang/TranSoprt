@@ -1,19 +1,36 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : test
-Source Server Version : 50624
+Source Server         : mysql4j
+Source Server Version : 50627
 Source Host           : localhost:3306
 Source Database       : transport
 
 Target Server Type    : MYSQL
-Target Server Version : 50624
+Target Server Version : 50627
 File Encoding         : 65001
 
-Date: 2016-01-18 20:04:52
+Date: 2016-01-22 17:58:45
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `admin`
+-- ----------------------------
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(25) NOT NULL,
+  `password` varchar(32) NOT NULL,
+  `nickname` varchar(26) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of admin
+-- ----------------------------
+INSERT INTO `admin` VALUES ('1', 'Joe', 'f1b24036355f123631e50d86742af8b2', '黄晓强');
 
 -- ----------------------------
 -- Table structure for `dealer`
@@ -23,16 +40,26 @@ CREATE TABLE `dealer` (
   `did` int(11) NOT NULL AUTO_INCREMENT,
   `dname` varchar(255) DEFAULT NULL,
   `dpwd` varchar(255) DEFAULT NULL,
-  `phone` int(11) DEFAULT NULL,
+  `phone` bigint(11) DEFAULT NULL,
   `province` varchar(255) DEFAULT NULL,
   `limitdays` int(11) DEFAULT NULL,
+  `dynamic` varchar(32) DEFAULT NULL COMMENT '动态密码',
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dealer
 -- ----------------------------
-INSERT INTO `dealer` VALUES ('1', '经销商1', '12312', '122121212', '广州', '4');
+INSERT INTO `dealer` VALUES ('2', '小阿三', 'e10adc3949ba59abbe56e057f20f883e', '21', '111', '31', null);
+INSERT INTO `dealer` VALUES ('3', '绝对是', '2121', '32321', '3232', '32', null);
+INSERT INTO `dealer` VALUES ('4', '为车队刷', '21212', '2123', '32321', '32', null);
+INSERT INTO `dealer` VALUES ('5', '程度上', '32', '323', '3232', '3232', null);
+INSERT INTO `dealer` VALUES ('6', '大撒旦撒', '2', '232', '打算', '23', null);
+INSERT INTO `dealer` VALUES ('7', '打算', '2', '232', '大撒旦撒', '22', null);
+INSERT INTO `dealer` VALUES ('8', '大苏打', '3', '23', '大苏打', '21', null);
+INSERT INTO `dealer` VALUES ('9', '大撒旦撒', '32', '3221', '地方法', '231', null);
+INSERT INTO `dealer` VALUES ('10', '恶风', '32', '22', '大苏打', '3', null);
+INSERT INTO `dealer` VALUES ('13', '李毅吧', 'e10adc3949ba59abbe56e057f20f883e', '18826243710', '广东光州', '21', null);
 
 -- ----------------------------
 -- Table structure for `goods_standard`
@@ -77,7 +104,7 @@ CREATE TABLE `grgoods` (
   `gid` int(11) NOT NULL AUTO_INCREMENT,
   `gname` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`gid`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of grgoods
@@ -106,7 +133,7 @@ CREATE TABLE `grorder` (
 -- ----------------------------
 -- Records of grorder
 -- ----------------------------
-INSERT INTO `grorder` VALUES ('1', '1', '2016-01-18', '2016-01-18', '2016-01-18', '1', '未发货');
+INSERT INTO `grorder` VALUES ('1', null, '2016-01-18', '2016-01-18', '2016-01-18', '1', '未发货');
 
 -- ----------------------------
 -- Table structure for `order_goods`
@@ -146,20 +173,3 @@ CREATE TABLE `standard` (
 -- ----------------------------
 INSERT INTO `standard` VALUES ('1', '1kg');
 INSERT INTO `standard` VALUES ('2', '2kg');
-
--- ----------------------------
--- Table structure for `user`
--- ----------------------------
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(25) NOT NULL,
-  `password` varchar(16) NOT NULL,
-  `nickname` varchar(26) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of user
--- ----------------------------
-INSERT INTO `user` VALUES ('1', 'Joe', '19940816', '黄晓强');

@@ -14,5 +14,7 @@ public interface ExcelTemplate {
 	 * 
 	 * @return
 	 */
-	public File createExcelTemplate(String name);
+	public File createExcelTemplate();
+
+	public void setTemplateName(String templateName);
 }

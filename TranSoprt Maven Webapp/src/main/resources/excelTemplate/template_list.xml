@@ -3,4 +3,5 @@
 <list>
 	<!-- 供应商信息统计表 -->
 	<sheet name="supplier" class="com.vanroid.transopt.uitls.SupplierExcel" />
+	<sheet name="dealer" class="com.vanroid.transopt.uitls.DealerExcel" />
 </list>
