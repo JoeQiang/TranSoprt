@@ -37,7 +37,7 @@ public class OrderManageService {
 	public int distributeFactory(int oid, int fid) {
 		try {
 			new GROrder().findById(oid).set("factoryid", fid).update();
-			new GROrder().set("status", "未发货").update();
+			GROrder.dao.findById(oid).set("status", "未发货").update();
 			return 1;
 		} catch (Exception e) {
 			return 0;

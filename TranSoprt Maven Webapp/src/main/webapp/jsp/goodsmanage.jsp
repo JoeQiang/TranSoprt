@@ -10,12 +10,12 @@
 <meta name="keywords" content="港荣食品物流跟踪系统">
 <meta name="description" content="港荣食品物流跟踪系统">
 
-<link href="../css/bootstrap.min.css?v=3.4.0" rel="stylesheet">
-<link href="../font-awesome/css/font-awesome.css?v=4.3.0"
+<link href="${pageContext.request.contextPath }/css/bootstrap.min.css?v=3.4.0" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/font-awesome/css/font-awesome.css?v=4.3.0"
 	rel="stylesheet">
-<link href="../css/plugins/iCheck/custom.css" rel="stylesheet">
-<link href="../css/animate.css" rel="stylesheet">
-<link href="../css/style.css?v=2.2.0" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/plugins/iCheck/custom.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/animate.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/style.css?v=2.2.0" rel="stylesheet">
 
 </head>
 
@@ -127,16 +127,16 @@
   <ul class="pagination">
    <li id="lipre">
    <c:if test="${pageNum!=1}"> 
-      <a href="${pageContext.request.contextPath }/goods/list?page=${pageNum-1}" aria-label="Previous">
+      <a href="${pageContext.request.contextPath }/goods/list/${pageNum-1}" aria-label="Previous">
        </c:if> <span aria-hidden="true">上一页</span>
       </a>
     </li>
           <c:forEach var="i" begin="1" end="${totalPage}" step="1"> 
-          <li><a href="${pageContext.request.contextPath}/goods/list?page=${i}">${i}</a></li>
+          <li><a href="${pageContext.request.contextPath}/goods/list/${i}">${i}</a></li>
     </c:forEach>
     <li id="linext">
     <c:if test="${pageNum<totalPage}">
-      <a href="${pageContext.request.contextPath }/goods/list?page=${pageNum+1}" aria-label="Next">
+      <a href="${pageContext.request.contextPath }/goods/list/${pageNum+1}" aria-label="Next">
        </c:if> <span aria-hidden="true">下一页</span>
       </a>
     </li>
@@ -299,17 +299,17 @@
 		<!-- 脚部 -->
 	</div>
 	<!-- Mainly scripts -->
-	<script src="../js/jquery-2.1.1.min.js"></script>
-	<script src="../js/bootstrap.min.js?v=3.4.0"></script>
-	<script src="../js/plugins/metisMenu/jquery.metisMenu.js"></script>
-	<script src="../js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="${pageContext.request.contextPath }/js/jquery-2.1.1.min.js"></script>
+	<script src="${pageContext.request.contextPath }/js/bootstrap.min.js?v=3.4.0"></script>
+	<script src="${pageContext.request.contextPath }/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+	<script src="${pageContext.request.contextPath }/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
 	<!-- Custom and plugin  -->
-	<script src="../js/hplus.js?v=2.2.0"></script>
-	<script src="../js/plugins/pace/pace.min.js"></script>
+	<script src="${pageContext.request.contextPath }/js/hplus.js?v=2.2.0"></script>
+	<script src="${pageContext.request.contextPath }/js/plugins/pace/pace.min.js"></script>
 
 	<!-- iCheck -->
-	<script src="../js/plugins/iCheck/icheck.min.js"></script>
+	<script src="${pageContext.request.contextPath }/js/plugins/iCheck/icheck.min.js"></script>
 	<script>
 		$(document).ready(function() {
 			$('.i-checks').iCheck({
@@ -322,7 +322,7 @@
 				$
 						.ajax({
 							type : 'GET',
-							url : '${pageContext.request.contextPath}/goods/delete?gid='
+							url : '${pageContext.request.contextPath}/goods/delete/'
 									+ gid,
 							success : function(data) {
 								$("#tr" + gid).hide();
@@ -336,8 +336,8 @@
 				$
 						.ajax({
 							type : 'GET',
-							url : '${pageContext.request.contextPath}/goods/delsta?gid='
-									+ gid + "&sid=" + sid,
+							url : '${pageContext.request.contextPath}/goods/delsta/'
+									+ gid + "-" + sid,
 							success : function(data) {
 								$("#div" + gid + sid).hide();
 								/* alert(data); */
@@ -366,8 +366,9 @@
 			$
 						.ajax({
 							type : 'GET',
-							url : '${pageContext.request.contextPath}/goods/delgroblesta?sid='+sid,
+							url : '${pageContext.request.contextPath}/goods/delgroblesta/'+sid,
 							success : function(data) {
+							if(data==1)
 								$("#divsid"+sid).hide();
 								
 							},
@@ -413,7 +414,7 @@
 		$
 						.ajax({
 							type : 'GET',
-							url : '${pageContext.request.contextPath}/goods/getstabygid?gid='+gid,
+							url : '${pageContext.request.contextPath}/goods/getstabygid/'+gid,
 							success : function(data) {
 							//返回的是一个goods对象
 							var stalist=data.standard;

@@ -15,7 +15,7 @@
 
 						<div class="dropdown profile-element">
 							<span> <img alt="image" class="img-circle"
-								src="../img/profile_small.jpg" />
+								src="${pageContext.request.contextPath }/img/profile_small.jpg" />
 							</span> <a data-toggle="dropdown" class="dropdown-toggle"
 								href="index.html#"> <span class="clear"> <span
 									class="block m-t-xs"> <strong class="font-bold">Beaut-zihan</strong>
@@ -40,7 +40,7 @@
 							<li class="active"><a href="${pageContext.request.contextPath}/order/distorder">订单分配</a></li>
 							<li><a href="">厂家订单</a></li>
 							<li><a href="index_2.html">经销商管理</a></li>
-							<li><a href="${pageContext.request.contextPath}/goods/list?page=1">商品管理</a></li>
+							<li><a href="${pageContext.request.contextPath}/goods/list/1">商品管理</a></li>
 							<li><a href="index_2.html">厂家设置</a></li>
 						</ul></li>
 					<!-- 厂家模块 -->

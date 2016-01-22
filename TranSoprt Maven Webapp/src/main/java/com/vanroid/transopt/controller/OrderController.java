@@ -1,14 +1,13 @@
 package com.vanroid.transopt.controller;
 
-import java.util.List;
-
+import com.jfinal.aop.Duang;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
 import com.vanroid.transopt.model.GROrder;
 import com.vanroid.transopt.service.OrderManageService;
 
 public class OrderController extends Controller {
-	private OrderManageService om = new OrderManageService();
+	private OrderManageService om = Duang.duang(OrderManageService.class);
 
 	// 分配订单
 	public void distorder() {
@@ -20,8 +19,8 @@ public class OrderController extends Controller {
 
 	// 分配厂家ajax
 	public void distfactory() {
-		int result = om.distributeFactory(getParaToInt("oid"),
-				getParaToInt("fid"));
+		int result = om.distributeFactory(getParaToInt(1),
+				getParaToInt(0));
 		renderJson(result);
 	}
 }

@@ -11,12 +11,12 @@
 <meta name="keywords" content="港荣食品物流跟踪系统">
 <meta name="description" content="港荣食品物流跟踪系统">
 
-<link href="../css/bootstrap.min.css?v=3.4.0" rel="stylesheet">
-<link href="../font-awesome/css/font-awesome.css?v=4.3.0"
+<link href="${pageContext.request.contextPath }/css/bootstrap.min.css?v=3.4.0" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/font-awesome/css/font-awesome.css?v=4.3.0"
 	rel="stylesheet">
-<link href="../css/plugins/iCheck/custom.css" rel="stylesheet">
-<link href="../css/animate.css" rel="stylesheet">
-<link href="../css/style.css?v=2.2.0" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/plugins/iCheck/custom.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/animate.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/style.css?v=2.2.0" rel="stylesheet">
 
 </head>
 
@@ -152,24 +152,25 @@
 		<!-- 脚部 -->
 	</div>
 	<!-- Mainly scripts -->
-	<script src="../js/jquery-2.1.1.min.js"></script>
-	<script src="../js/bootstrap.min.js?v=3.4.0"></script>
-	<script src="../js/plugins/metisMenu/jquery.metisMenu.js"></script>
-	<script src="../js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="${pageContext.request.contextPath }/js/jquery-2.1.1.min.js"></script>
+	<script src="${pageContext.request.contextPath }/js/bootstrap.min.js?v=3.4.0"></script>
+	<script src="${pageContext.request.contextPath }/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+	<script src="${pageContext.request.contextPath }/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
 	<!-- Custom and plugin  -->
-	<script src="../js/hplus.js?v=2.2.0"></script>
-	<script src="../js/plugins/pace/pace.min.js"></script>
+	<script src="${pageContext.request.contextPath }/js/hplus.js?v=2.2.0"></script>
+	<script src="${pageContext.request.contextPath }/js/plugins/pace/pace.min.js"></script>
 
 	<script>
 		function disfactory(oid) {
 			var fid = $("#td" + oid).find("select option:selected").val();
 			$
 					.ajax({
-						url : '${pageContext.request.contextPath}/order/distfactory?fid='
-								+ fid + '&oid=' + oid,
+						url : '${pageContext.request.contextPath}/order/distfactory/'
+								+ fid + '-' + oid,
 						type : 'GET',
 						success : function(data) {
+						alert(data);
 							if (data == 1)
 								$("#td" + oid).hide();
 						},
