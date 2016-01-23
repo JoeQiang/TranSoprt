@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -33,23 +34,31 @@ public abstract class BaseExcel implements ExcelTemplate {
 
 	private String templateName;
 
+	/**
+	 * 解析Excel文件
+	 */
 	public List<Map<String, Object>> pasreExcel(File file) {
+		List<Map<String, Object>> list;
 		try {
-			List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+			list = new ArrayList<Map<String, Object>>();
 			// 取得工作簿
 			Workbook wb = Workbook.getWorkbook(file);
 			Sheet sheet = wb.getSheet(0);
 			// 遍历工作表
+
+			String[] keys = colunmName();
 			for (int i = 1; i < sheet.getRows(); i++) {
+				Map<String, Object> map = new HashMap<String, Object>();
 				for (int j = 0; j < sheet.getColumns(); j++) {
 					Cell cell = sheet.getCell(j, i);
-					logger.debug(cell.getContents() + " ");
+					map.put(keys[j], cell.getContents());
 				}
+				list.add(map);
 			}
 		} catch (Exception e) {
 			throw new RuntimeException("解析Excel文件发生错误", e);
 		}
-		return null;
+		return list;
 	}
 
 	/**
@@ -171,6 +180,9 @@ public abstract class BaseExcel implements ExcelTemplate {
 		}
 	}
 
+	/**
+	 * 设置模板名称
+	 */
 	@Override
 	public void setTemplateName(String templateName) {
 		this.templateName = templateName;
@@ -183,4 +195,43 @@ public abstract class BaseExcel implements ExcelTemplate {
 	 * @return Excel文件的名称
 	 */
 	public abstract String sheetName();
+
+	public abstract String[] colunmName();
+
+	@SuppressWarnings("unused")
+	public List<String> validateCellDataType() {
+		InputStream in = getClass().getClassLoader().getResourceAsStream(
+				"excelTemplate/" + templateName + ".xml");
+		List<String> types = null;
+		if (in != null) {
+			logger.warn("supplier.xml文件查找成功");
+			SAXReader reader = new SAXReader();
+			Document doc;
+			try {
+				types = new ArrayList<String>();
+				doc = reader.read(new InputStreamReader(in, "UTF-8"));
+				Element root = doc.getRootElement();
+				Element tbody = root.element("tbody");
+				@SuppressWarnings("unchecked")
+				Iterator<Element> tbody_trs = tbody.elementIterator();
+				while (tbody_trs.hasNext()) {
+					Element tr = tbody_trs.next();
+					@SuppressWarnings("unchecked")
+					Iterator<Element> tds = tr.elementIterator();
+					int colIndex = 0;
+					System.out.println("-------type-------");
+					while (tds.hasNext()) {
+						String type = tds.next().attributeValue("type");
+						System.out.print(type + " ");
+						types.add(type);
+						colIndex++;
+					}
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return types;
+	}
 }

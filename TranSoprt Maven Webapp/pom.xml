@@ -62,7 +62,12 @@
 			<artifactId>dom4j</artifactId>
 			<version>1.6.1</version>
 		</dependency>
-
+		<!-- com.jfinal/cos/26Dec2008 -->
+		<dependency>
+			<groupId>com.jfinal</groupId>
+			<artifactId>cos</artifactId>
+			<version>26Dec2008</version>
+		</dependency>
 
 	</dependencies>
 	<build>

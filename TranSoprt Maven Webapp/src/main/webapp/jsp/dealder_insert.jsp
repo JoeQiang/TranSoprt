@@ -87,7 +87,7 @@
 								<div id="panel1" style="display: none;">
 									<div class="form-group">
 										<label>请选择Excel文件</label> <input type="file"
-											class="form-control">
+											class="form-control" name="excelfile">
 										<p class="help-block">
 											Excel文件必须符合规范，<a
 												href="${pageContext.request.contextPath }/download/supplierTemplate">点击下载</a>经销商导入模版
@@ -167,11 +167,15 @@
 					$("#panel2").css("display", "none");
 					var selectValue = $("#select").val();
 					$("#form").attr("action", selectValue);
+					$("#form").attr("enctype", "multipart/form-data");
+					
 				} else if (selectIndex == 2) {
 					$("#panel2").slideToggle("slow");
 					$("#panel1").css("display", "none");
 					var selectValue = $("#select").val();
 					$("#form").attr("action", selectValue);
+					$("#form").attr("enctype", "");
+					alert($("#form").attr("enctype"));
 				} else {
 					$("#panel2").slideUp("slow");
 					$("#panel1").slideUp("slow");

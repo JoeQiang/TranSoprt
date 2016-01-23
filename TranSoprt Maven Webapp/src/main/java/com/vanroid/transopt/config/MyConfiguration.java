@@ -6,6 +6,7 @@ import com.jfinal.config.Interceptors;
 import com.jfinal.config.JFinalConfig;
 import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
+import com.jfinal.kit.PathKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
@@ -32,6 +33,7 @@ public class MyConfiguration extends JFinalConfig {
 		me.setViewType(ViewType.JSP);
 		// 配置下载文件下载路径
 		me.setFileRenderPath("/excelTemplate");
+		me.setUploadedFileSaveDirectory(PathKit.getWebRootPath() + "/upload");
 	}
 
 	/**

@@ -2,7 +2,9 @@ package com.vanroid.transopt.controller;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
+import com.jfinal.kit.PathKit;
 import com.jfinal.plugin.activerecord.Page;
+import com.jfinal.upload.UploadFile;
 import com.vanroid.transopt.interceptor.DealerValidate;
 import com.vanroid.transopt.model.Dealer;
 import com.vanroid.transopt.service.DealerService;
@@ -34,7 +36,7 @@ public class DealderController extends Controller {
 	}
 
 	/**
-	 * 保存经销商信息
+	 * 单条保存经销商信息
 	 */
 	@Before(DealerValidate.class)
 	public void singleInsert() {
@@ -45,6 +47,13 @@ public class DealderController extends Controller {
 		String dpwd = MD5Utils.MD5("123456");
 		service.saveDealer(dname, dpwd, phone, province, limitdays);
 		forwardAction("/manager/dealer");
+	}
+
+	// Excel批量保存经销商信息
+	public void excelInsert() {
+		UploadFile file = getFile("excelfile", PathKit.getWebRootPath()
+				+ "/upload");
+		renderText("file:" + file.getFileName());
 	}
 
 	/**
