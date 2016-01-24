@@ -81,6 +81,7 @@ public class ExcelTemplateFactory {
 					// 实例化加载类并强制转换为ExcelTemplate类型
 					ExcelTemplate template = (ExcelTemplate) instance
 							.newInstance();
+					template.setTemplateName(templateName);
 					return template;
 				} catch (ClassNotFoundException | InstantiationException
 						| IllegalAccessException e) {

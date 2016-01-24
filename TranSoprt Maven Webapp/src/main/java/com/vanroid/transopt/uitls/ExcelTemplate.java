@@ -1,6 +1,8 @@
 package com.vanroid.transopt.uitls;
 
 import java.io.File;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Excel模板操作接口
@@ -14,5 +16,20 @@ public interface ExcelTemplate {
 	 * 
 	 * @return
 	 */
-	public File createExcelTemplate(String name);
+	public File createExcelTemplate();
+
+	/**
+	 * 解析Excel文件，获取里面内容
+	 * 
+	 * @param file
+	 * @return
+	 */
+	public List<Map<String, Object>> pasreExcel(File file);
+
+	/**
+	 * 设置模板名称
+	 * 
+	 * @param templateName
+	 */
+	public void setTemplateName(String templateName);
 }

@@ -1,19 +1,26 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
-%>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
 <html>
 <head>
-<%-- <base href="<%=basePath%>"> --%>
+<link rel="stylesheet" href="assets/css/reset.css" type="text/css"
+	media="screen" title="no title" charset="utf-8">
+<link rel="stylesheet" href="assets/css/demo.css" type="text/css"
+	media="screen" title="no title" charset="utf-8">
+<link rel="stylesheet" href="../Source/assets/css/simplemodal.css"
+	type="text/css" media="screen" title="no title" charset="utf-8">
+<script src="assets/javascript/mootools-core-1.3.1.js"
+	type="text/javascript" charset="utf-8"></script>
+<script src="assets/javascript/mootools-more-1.3.1.1.js"
+	type="text/javascript" charset="utf-8"></script>
+<script src="../Source/simple-modal.js" type="text/javascript"
+	charset="utf-8"></script>
+<script src="assets/javascript/demo.js" type="text/javascript"
+	charset="utf-8"></script>
 </head>
 
 <body>
-	<h1>${nickname }登陆成功~！</h1>
-
+	<button id="test">点击</button>
 </body>
 </html>
