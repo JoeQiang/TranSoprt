@@ -1,7 +1,5 @@
 package com.vanroid.transopt.service;
 
-import javax.xml.registry.infomodel.User;
-
 import com.vanroid.transopt.model.Admin;
 import com.vanroid.transopt.uitls.MD5Utils;
 

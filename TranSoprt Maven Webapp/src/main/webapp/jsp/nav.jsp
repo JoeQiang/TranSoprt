@@ -50,11 +50,14 @@
 				<li><a href="index.html"><i class="fa fa-th-large"></i> <span
 						class="nav-label">账户</span> <span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
-						<li class="active"><a href="#">订单分配</a></li>
-						<li><a href="index_2.html">厂家订单</a></li>
-						<li><a href="manager/dealer">经销商管理</a></li>
-						<li><a href="index_2.html">商品管理</a></li>
-						<li><a href="index_2.html">厂家设置</a></li>
+						<li class="active"><a
+							href="${pageContext.request.contextPath}/order/distorder">订单管理</a></li>
+						<li><a href="${pageContext.request.contextPath}/factory/manager/1">厂家订单</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/manager/dealer">经销商管理</a></li>
+						<li><a href="${pageContext.request.contextPath}/goods/list/1">商品管理</a></li>
+						<li><a
+							href="${pageContext.request.contextPath }/factory/setting/1">厂家设置</a></li>
 					</ul></li>
 				<!-- 厂家模块 -->
 				<li><a href="#"><i class="fa fa fa-globe"></i> <span

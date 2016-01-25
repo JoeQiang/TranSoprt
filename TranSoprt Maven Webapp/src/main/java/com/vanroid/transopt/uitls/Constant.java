@@ -1,7 +1,5 @@
 package com.vanroid.transopt.uitls;
 
-import com.jfinal.config.Constants;
-
 public class Constant {
 	// Excel单元格数据类型
 	public static final String CELL_TYPE_STRING = "string";

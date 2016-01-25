@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="java.util.Date"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
@@ -24,7 +25,10 @@
 
 <body>
 	<div id="wrapper">
-
+		<%
+			String tokenValue = new Date().getTime() + "";
+			session.setAttribute("token", tokenValue);
+		%>
 		<%@include file="nav.jsp"%>
 		<!--侧边栏结束-->
 		<!-- 搜索栏 -->
@@ -73,21 +77,23 @@
 				</div>
 				<div class="row" style="margin-top: 20px">
 					<div class="col-sm-8">
-						<form id="form" action="" method="post">
-							<input type="hidden" name="operation" value="insert">
-							<div class="form-group">
-								<label>新增经销商</label> <select id="select" name="type"
-									class="form-control" required="">
-									<option value="">选择新增方式</option>
-									<option
-										value="${pageContext.request.contextPath }/manager/dealer/excelInsert">Excel导入</option>
-									<option
-										value="${pageContext.request.contextPath }/manager/dealer/singleInsert">单条导入</option>
-								</select> <label style="color: red;"> <c:out value="${error }" /></label>
-								<div id="panel1" style="display: none;">
+
+						<div class="form-group">
+							<label>新增经销商</label> <select id="select" name="type"
+								class="form-control" required="">
+								<option value="">选择新增方式</option>
+								<option value="">Excel导入</option>
+								<option value="">单条导入</option>
+							</select> <label style="color: red;"> <c:out value="${error }" /></label>
+							<div id="panel1" style="display: none;">
+								<form
+									action="${pageContext.request.contextPath }/manager/dealer/excelInsert"
+									method="post" onsubmit="return dosubmit()"
+									enctype="multipart/form-data">
 									<div class="form-group">
-										<label>请选择Excel文件</label> <input type="file"
-											class="form-control" name="excelfile">
+										<%-- <input type="hidden" name="token" value="<%=tokenValue%>"> --%>
+										<label>请选择Excel文件</label> <input type="file" name="excel"
+											class="form-control" required="">
 										<p class="help-block">
 											Excel文件必须符合规范，<a
 												href="${pageContext.request.contextPath }/download/supplierTemplate">点击下载</a>经销商导入模版
@@ -96,35 +102,41 @@
 									<button class="btn btn-outline btn-primary" type="submit">新增</button>
 									<a class="btn btn-outline btn-default" type="button"
 										href="javascript:history.go(-1);">返回</a>
-								</div>
-								<div id="panel2" style="display: none;">
+								</form>
+							</div>
+							<div id="panel2" style="display: none;">
+								<form
+									action="${pageContext.request.contextPath }/manager/dealer/singleInsert"
+									method="post" onsubmit="return dosubmit()">
+									<input type="hidden" name="token" value="<%=tokenValue%>">
+									<input type="hidden" name="operation" value="insert">
 									<div class="form-group">
 										<label>供应商</label> <input type="text" class="form-control"
-											placeholder="供应商名称" name="dname"> <label
+											placeholder="供应商名称" name="dname" required=""> <label
 											style="color: red;"> <c:out value="${dnameMsg }" /></label>
 									</div>
 									<div class="form-group">
 										<label>联系电话</label> <input type="text" class="form-control"
-											placeholder="联系电话" name="phone"> <label
+											placeholder="联系电话" name="phone" required=""> <label
 											style="color: red;"> <c:out value="${phoneMsg }" /></label>
 									</div>
 									<div class="form-group">
 										<label>所在省市</label> <input type="text" class="form-control"
-											placeholder="所在省市" name="province"> <label
+											placeholder="所在省市" name="province" required=""> <label
 											style="color: red;"> <c:out value="${provinceMsg }" /></label>
 									</div>
 									<div class="form-group">
 										<label>规定到达天数</label> <input type="text" class="form-control"
-											placeholder="天数" name="limitdays"> <label
+											placeholder="天数" name="limitdays" required=""> <label
 											style="color: red;"> <c:out value="${limitdaysMsg }" /></label>
 									</div>
 
 									<button class="btn btn-outline btn-primary" type="submit">新增</button>
 									<a class="btn btn-outline btn-default" type="button"
 										href="javascript:history.go(-1);">返回</a>
-								</div>
+								</form>
 							</div>
-						</form>
+						</div>
 					</div>
 
 				</div>
@@ -159,29 +171,30 @@
 		src="${pageContext.request.contextPath }/js/plugins/pace/pace.min.js"></script>
 
 	<script>
+		var isCommitted = false;//表单是否已经提交标识，默认为false
 		$(document).ready(function() {
 			$("#select").change(function() {
 				var selectIndex = $("#select").get(0).selectedIndex;
 				if (selectIndex == 1) {
 					$("#panel1").slideToggle("slow");
 					$("#panel2").css("display", "none");
-					var selectValue = $("#select").val();
-					$("#form").attr("action", selectValue);
-					$("#form").attr("enctype", "multipart/form-data");
-					
 				} else if (selectIndex == 2) {
 					$("#panel2").slideToggle("slow");
 					$("#panel1").css("display", "none");
-					var selectValue = $("#select").val();
-					$("#form").attr("action", selectValue);
-					$("#form").attr("enctype", "");
-					alert($("#form").attr("enctype"));
 				} else {
 					$("#panel2").slideUp("slow");
 					$("#panel1").slideUp("slow");
 				}
 			});
 		});
+		function dosubmit() {
+			if (isCommitted == false) {
+				isCommitted = true;//提交表单后，将表单是否已经提交标识设置为true
+				return true;//返回true让表单正常提交
+			} else {
+				return false;//返回false那么表单将不提交
+			}
+		}
 	</script>
 </body>
 </html>

@@ -18,18 +18,13 @@ public interface ExcelTemplate {
 	 */
 	public File createExcelTemplate();
 
+	public void setTemplateName(String templateName);
+
 	/**
-	 * 解析Excel文件，获取里面内容
+	 * 解析Excel文件
 	 * 
 	 * @param file
 	 * @return
 	 */
 	public List<Map<String, Object>> pasreExcel(File file);
-
-	/**
-	 * 设置模板名称
-	 * 
-	 * @param templateName
-	 */
-	public void setTemplateName(String templateName);
 }

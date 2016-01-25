@@ -48,11 +48,13 @@
 						<li><span class="m-r-sm text-muted welcome-message"><a
 								href="index.html" title="返回首页"><i class="fa fa-home"></i></a>欢迎使用港荣后台管理系统</span>
 						</li>
-						<li><c:if test="${sessionScope.user == null }">
-								<a href="login"> <i class="fa fa-sign-out"></i> 登录
+						<li><c:if test="${empty user }">
+								<a href="${pageContext.request.contextPath }/account"> <i
+									class="fa fa-sign-out"></i> 登录
 								</a>
-							</c:if> <c:if test="${sessionScope.user != null }">
-								<a href="login/exit"> <i class="fa fa-sign-out"></i> 退出
+							</c:if> <c:if test="${!empty user }">
+								<a href="${pageContext.request.contextPath }/account/logout">
+									<i class="fa fa-sign-out"></i> 退出
 								</a>
 							</c:if></li>
 					</ul>

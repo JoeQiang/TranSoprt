@@ -1,7 +1,5 @@
 package com.vanroid.transopt.uitls;
 
-import java.io.File;
-
 public class SupplierExcel extends BaseExcel {
 
 	@Override
@@ -10,8 +8,8 @@ public class SupplierExcel extends BaseExcel {
 	}
 
 	@Override
-	public String[] colunmName() {
-		String[] colnumName = {};
+	public String[] cellKeys() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }

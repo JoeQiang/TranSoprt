@@ -1,11 +1,12 @@
 package com.vanroid.transopt.controller;
 
+import java.io.File;
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
-import com.jfinal.kit.PathKit;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.upload.UploadFile;
 import com.vanroid.transopt.interceptor.DealerValidate;
+import com.vanroid.transopt.interceptor.UploadExcelValidate;
 import com.vanroid.transopt.model.Dealer;
 import com.vanroid.transopt.service.DealerService;
 import com.vanroid.transopt.service.DealerServiceImp;
@@ -36,24 +37,36 @@ public class DealderController extends Controller {
 	}
 
 	/**
-	 * 单条保存经销商信息
+	 * 保存经销商信息
 	 */
 	@Before(DealerValidate.class)
 	public void singleInsert() {
-		String dname = getPara("dname");
-		long phone = getParaToLong("phone");
-		String province = getPara("province");
-		int limitdays = getParaToInt("limitdays");
-		String dpwd = MD5Utils.MD5("123456");
-		service.saveDealer(dname, dpwd, phone, province, limitdays);
-		forwardAction("/manager/dealer");
+		String token = (String) getSession().getAttribute("token");
+		String tokenValue = getPara("token");
+		if (token != null && token.equals(tokenValue)) {
+			getSession().removeAttribute("token");
+			String dname = getPara("dname");
+			long phone = getParaToLong("phone");
+			String province = getPara("province");
+			int limitdays = getParaToInt("limitdays");
+			String dpwd = MD5Utils.MD5("123456");
+			service.saveDealer(dname, dpwd, phone, province, limitdays);
+			forwardAction("/manager/dealer");
+		} else {
+			forwardAction("/manager/dealer");
+		}
 	}
 
-	// Excel批量保存经销商信息
+	@Before(UploadExcelValidate.class)
 	public void excelInsert() {
-		UploadFile file = getFile("excelfile", PathKit.getWebRootPath()
-				+ "/upload");
-		renderText("file:" + file.getFileName());
+		UploadFile uploadFile = getFile("excel");
+		File file = uploadFile.getFile();
+		boolean validate = service.batchSaveDealer(file, getRequest());
+		if (validate) {
+			forwardAction("/manager/dealer");
+		} else {
+			renderText("数据格式不正确");
+		}
 	}
 
 	/**

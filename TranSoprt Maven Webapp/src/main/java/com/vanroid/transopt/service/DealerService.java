@@ -1,5 +1,9 @@
 package com.vanroid.transopt.service;
 
+import java.io.File;
+
+import javax.servlet.http.HttpServletRequest;
+
 import com.jfinal.plugin.activerecord.Page;
 import com.vanroid.transopt.model.Dealer;
 
@@ -74,4 +78,13 @@ public interface DealerService {
 	 * @param did
 	 */
 	public void deleteDealer(int did);
+
+	/**
+	 * 批量插入
+	 * 
+	 * @param file
+	 * @param httpServletRequest 
+	 * @return
+	 */
+	public boolean batchSaveDealer(File file, HttpServletRequest httpServletRequest);
 }

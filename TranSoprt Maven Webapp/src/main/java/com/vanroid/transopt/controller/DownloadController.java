@@ -7,7 +7,7 @@ import org.dom4j.DocumentException;
 import com.jfinal.core.Controller;
 import com.vanroid.transopt.uitls.ExcelTemplateFactory;
 
-public class UpDownloadController extends Controller {
+public class DownloadController extends Controller {
 	// 上传Excel模版
 	public void upload() {
 

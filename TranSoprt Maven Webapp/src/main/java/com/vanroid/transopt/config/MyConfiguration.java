@@ -6,20 +6,23 @@ import com.jfinal.config.Interceptors;
 import com.jfinal.config.JFinalConfig;
 import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
-import com.jfinal.kit.PathKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.render.ViewType;
 import com.vanroid.transopt.controller.DealderController;
-import com.vanroid.transopt.controller.UpDownloadController;
-import com.vanroid.transopt.controller.IndexController;
+import com.vanroid.transopt.controller.DownloadController;
+import com.vanroid.transopt.controller.GRFactoryController;
+import com.vanroid.transopt.controller.GoodsControlller;
 import com.vanroid.transopt.controller.LoginController;
+import com.vanroid.transopt.controller.OrderController;
+import com.vanroid.transopt.interceptor.LoginInterceptor;
 import com.vanroid.transopt.model.Admin;
 import com.vanroid.transopt.model.Dealer;
 import com.vanroid.transopt.model.GRFactory;
 import com.vanroid.transopt.model.GRGoods;
 import com.vanroid.transopt.model.GROrder;
+import com.vanroid.transopt.model.Standard;
 
 public class MyConfiguration extends JFinalConfig {
 	/**
@@ -33,7 +36,6 @@ public class MyConfiguration extends JFinalConfig {
 		me.setViewType(ViewType.JSP);
 		// 配置下载文件下载路径
 		me.setFileRenderPath("/excelTemplate");
-		me.setUploadedFileSaveDirectory(PathKit.getWebRootPath() + "/upload");
 	}
 
 	/**
@@ -41,10 +43,12 @@ public class MyConfiguration extends JFinalConfig {
 	 */
 	@Override
 	public void configRoute(Routes me) {
-		me.add("/", IndexController.class);
-		me.add("/login", LoginController.class, "/");
+		me.add("/account", LoginController.class, "/");
 		me.add("/manager/dealer", DealderController.class, "/");
-		me.add("/download", UpDownloadController.class, "/");
+		me.add("/download", DownloadController.class, "/");
+		me.add("/factory", GRFactoryController.class, "/");
+		me.add("/goods", GoodsControlller.class);
+		me.add("/order", OrderController.class);
 	}
 
 	/**
@@ -69,11 +73,14 @@ public class MyConfiguration extends JFinalConfig {
 		arp.addMapping("grorder", "oid", GROrder.class);
 		arp.addMapping("grfactory", "fid", GRFactory.class);
 		arp.addMapping("grgoods", "gid", GRGoods.class);
+		arp.addMapping("standard", "sid", Standard.class);
 		arp.addMapping("admin", Admin.class);
 	}
 
 	@Override
 	public void configInterceptor(Interceptors me) {
+		// 添加登录全局拦截器、拦截除登录外其余的请求
+		me.addGlobalActionInterceptor(new LoginInterceptor());
 	}
 
 	@Override

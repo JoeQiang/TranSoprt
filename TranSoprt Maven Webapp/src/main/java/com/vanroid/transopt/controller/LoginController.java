@@ -1,69 +1,66 @@
 package com.vanroid.transopt.controller;
 
 import com.jfinal.core.Controller;
-import com.jfinal.log.Log4jLogger;
+import com.jfinal.kit.PathKit;
 import com.vanroid.transopt.model.Admin;
 import com.vanroid.transopt.model.GRFactory;
 import com.vanroid.transopt.service.AdminService;
 import com.vanroid.transopt.service.AdminServiceImp;
-import com.vanroid.transopt.service.GRFActoryServiceImp;
 import com.vanroid.transopt.service.GRFactoryService;
+import com.vanroid.transopt.service.GRFactoryServiceImp;
 import com.vanroid.transopt.uitls.Constant;
 
 public class LoginController extends Controller {
 	public void index() {
-		render("jsp/login.jsp");
+		render("/jsp/login.jsp");
 	}
 
-	public void dologin() {
+	/**
+	 * 登录操作
+	 */
+	public void login() {
 		String username = getPara("username");
 		String password = getPara("password");
 		String type = getPara("type");
-		Log4jLogger.getLogger(getClass()).debug(
-				"type:" + type + " type==admin"
-						+ (type == Constant.USER_TYPE_ADMIN));
-
+		boolean flag = false;
 		if (Constant.USER_TYPE_ADMIN.equals(type)) {
-			Admin admin = new Admin();
-			admin.set("username", username);
-			admin.set("password", password);
-			AdminService adminService = new AdminServiceImp();
-			boolean flag = adminService.doLogin(admin);
+			Admin admin = new Admin().set("username", username).set("password",
+					password);
+			AdminService as = new AdminServiceImp();
+			flag = as.doLogin(admin);
 			if (flag) {
-				Admin am = adminService.getByName(admin.getStr("username"));
-				setSessionAttr("user", am);
+				admin = as.getByName(username);
+				setSessionAttr("user", admin);
 				setSessionAttr("rank", Constant.USER_TYPE_ADMIN);
-				forwardAction("/");
+				forwardAction("/account/main");
 			} else {
-				setAttr("error", "用户名或密码不正确");
-				forwardAction("/login");
+				setAttr("error", "帐号或密码不正确");
+				forwardAction("/account");
 			}
-		}
-		/*
-		 * else if (Constant.USER_TYPE_DEALER.equals(type)) { Dealer dealer =
-		 * new Dealer(); dealer.set("dname", username); dealer.set("dpwd",
-		 * password); DealerService dealerService = new DealerServiceImp();
-		 * boolean flag = dealerService.doLogin(dealer); if (flag) { Dealer dl =
-		 * dealerService.getByName(dealer.getStr("dname"));
-		 * setSessionAttr("user", dl); setSessionAttr("rank",
-		 * Constant.USER_TYPE_DEALER); forwardAction("/"); } else {
-		 * setAttr("error", "用户名或密码不正确"); forwardAction("/login"); } }
-		 */else if (Constant.USER_TYPE_FACTORY.equals(type)) {
-			GRFactory factory = new GRFactory();
-			factory.set("fname", username);
-			factory.set("fpwd", password);
-			GRFactoryService grFactoryService = new GRFActoryServiceImp();
-			boolean flag = grFactoryService.doLogin(factory);
+		} else if (Constant.USER_TYPE_FACTORY.equals(type)) {
+			GRFactory factory = new GRFactory().set("fname", username).set(
+					"fpwd", password);
+			GRFactoryService fs = new GRFactoryServiceImp();
+			flag = fs.doLogin(factory);
 			if (flag) {
-				GRFactory grf = grFactoryService.getByName(factory
-						.getStr("fname"));
-				setSessionAttr("user", grf);
+				factory = fs.getByName(username);
+				setSessionAttr("user", factory);
 				setSessionAttr("rank", Constant.USER_TYPE_FACTORY);
-				forwardAction("/");
+				forwardAction("/account/main");
 			} else {
-				setAttr("error", "用户名或密码不正确");
-				forwardAction("/login");
+				setAttr("error", "帐号或密码不正确");
+				forwardAction("/account");
 			}
+
 		}
+	}
+
+	public void logout() {
+		getSession().invalidate();
+		forwardAction("/account");
+	}
+
+	public void main() {
+		render("jsp/index.jsp");
 	}
 }

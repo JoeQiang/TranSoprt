@@ -1,11 +1,5 @@
 package com.vanroid.transopt.uitls;
 
-/**
- * 经销商批量增加模板
- * 
- * @author Joe_Huang
- * 
- */
 public class DealerExcel extends BaseExcel {
 
 	@Override
@@ -15,8 +9,7 @@ public class DealerExcel extends BaseExcel {
 	}
 
 	@Override
-	public String[] colunmName() {
-		String[] columnName = { "dname", "phone", "province", "limitdays" };
-		return columnName;
+	public String[] cellKeys() {
+		return new String[] { "dname", "phone", "province", "limitdays" };
 	}
 }

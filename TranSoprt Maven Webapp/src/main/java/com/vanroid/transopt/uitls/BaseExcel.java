@@ -34,26 +34,22 @@ public abstract class BaseExcel implements ExcelTemplate {
 
 	private String templateName;
 
-	/**
-	 * 解析Excel文件
-	 */
 	public List<Map<String, Object>> pasreExcel(File file) {
 		List<Map<String, Object>> list;
 		try {
+			String[] keys = cellKeys();
 			list = new ArrayList<Map<String, Object>>();
 			// 取得工作簿
 			Workbook wb = Workbook.getWorkbook(file);
 			Sheet sheet = wb.getSheet(0);
 			// 遍历工作表
-
-			String[] keys = colunmName();
 			for (int i = 1; i < sheet.getRows(); i++) {
-				Map<String, Object> map = new HashMap<String, Object>();
+				Map<String, Object> cellVal = new HashMap<String, Object>();
 				for (int j = 0; j < sheet.getColumns(); j++) {
 					Cell cell = sheet.getCell(j, i);
-					map.put(keys[j], cell.getContents());
+					cellVal.put(keys[j], cell.getContents());
 				}
-				list.add(map);
+				list.add(cellVal);
 			}
 		} catch (Exception e) {
 			throw new RuntimeException("解析Excel文件发生错误", e);
@@ -180,9 +176,6 @@ public abstract class BaseExcel implements ExcelTemplate {
 		}
 	}
 
-	/**
-	 * 设置模板名称
-	 */
 	@Override
 	public void setTemplateName(String templateName) {
 		this.templateName = templateName;
@@ -196,42 +189,6 @@ public abstract class BaseExcel implements ExcelTemplate {
 	 */
 	public abstract String sheetName();
 
-	public abstract String[] colunmName();
+	public abstract String[] cellKeys();
 
-	@SuppressWarnings("unused")
-	public List<String> validateCellDataType() {
-		InputStream in = getClass().getClassLoader().getResourceAsStream(
-				"excelTemplate/" + templateName + ".xml");
-		List<String> types = null;
-		if (in != null) {
-			logger.warn("supplier.xml文件查找成功");
-			SAXReader reader = new SAXReader();
-			Document doc;
-			try {
-				types = new ArrayList<String>();
-				doc = reader.read(new InputStreamReader(in, "UTF-8"));
-				Element root = doc.getRootElement();
-				Element tbody = root.element("tbody");
-				@SuppressWarnings("unchecked")
-				Iterator<Element> tbody_trs = tbody.elementIterator();
-				while (tbody_trs.hasNext()) {
-					Element tr = tbody_trs.next();
-					@SuppressWarnings("unchecked")
-					Iterator<Element> tds = tr.elementIterator();
-					int colIndex = 0;
-					System.out.println("-------type-------");
-					while (tds.hasNext()) {
-						String type = tds.next().attributeValue("type");
-						System.out.print(type + " ");
-						types.add(type);
-						colIndex++;
-					}
-				}
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		return types;
-	}
 }
