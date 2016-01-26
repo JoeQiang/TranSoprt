@@ -45,13 +45,7 @@
 							href="#">
 							<i class="fa fa-bars"></i>
 						</a>
-						<form role="search" class="navbar-form-custom" method="post"
-							action="search_results.html">
-							<div class="form-group">
-								<input type="text" placeholder="请输入您需要搜索的订单 …"
-									class="form-control" name="top-search" id="top-search">
-							</div>
-						</form>
+						
 					</div>
 					<ul class="nav navbar-top-links navbar-right">
 						<li>
@@ -63,7 +57,7 @@
 							</span>
 						</li>
 						<li>
-							<a href="login.html">
+							<a href="${pageContext.request.contextPath }/account/logout">
 								<i class="fa fa-sign-out"></i>
 								退出
 							</a>
@@ -73,7 +67,7 @@
 				</nav>
 			</div>
 			<!-- 搜索栏结束 -->
-			<!-- 内容主体结束 -->
+			<!-- 内容主体 -->
 			<div class="row wrapper border-bottom white-bg page-heading">
 			<div><div><div>
 				<div class="row">

@@ -77,12 +77,7 @@ public class OrderManageService {
 		return GROrder.dao.find(sql, fid);
 	}
 
-	/**
-	 * 厂家账户下的经销商板块下的订单
-	 */
-	public void getNewOrderByFid(int fid) {
-	}
-
+	
 	/**
 	 * 管理员下所有的订单
 	 */

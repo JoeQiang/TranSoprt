@@ -28,7 +28,8 @@ public class GROrder extends Model<GROrder> {
 	// 负责该订单发货的厂家
 	public GRFactory getFactory() {
 		try {
-			GRFactory factory = GRFactory.dao.findById(getInt("oid"));
+			GROrder order=GROrder.dao.findById(getInt("oid"));
+			GRFactory factory = GRFactory.dao.findById(order.getInt("factoryid"));
 			put("factoryname", factory.get("fname"));
 			return factory;
 		} catch (NullPointerException e) {

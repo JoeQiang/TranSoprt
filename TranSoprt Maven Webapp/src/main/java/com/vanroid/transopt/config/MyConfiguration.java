@@ -43,6 +43,7 @@ public class MyConfiguration extends JFinalConfig {
 	 */
 	@Override
 	public void configRoute(Routes me) {
+		me.add("/", LoginController.class, "/");//默认登陆页
 		me.add("/account", LoginController.class, "/");
 		me.add("/manager/dealer", DealerController.class, "/");
 		me.add("/download", DownloadController.class, "/");

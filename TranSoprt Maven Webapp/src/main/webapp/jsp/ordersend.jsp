@@ -52,7 +52,7 @@
 						<li><span class="m-r-sm text-muted welcome-message"><a
 								href="index.html" title="返回首页"><i class="fa fa-home"></i></a>欢迎使用港荣后台管理系统</span>
 						</li>
-						<li><a href="login.html"> <i class="fa fa-sign-out"></i>
+						<li><a href="${pageContext.request.contextPath }/account/logout"> <i class="fa fa-sign-out"></i>
 								退出
 						</a></li>
 					</ul>

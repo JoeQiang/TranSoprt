@@ -52,7 +52,7 @@
 						class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li class="active"><a
-							href="${pageContext.request.contextPath}/order/distorder">订单管理</a></li>
+							href="${pageContext.request.contextPath}/order/distorder/1">订单管理</a></li>
 						<li><a
 							href="${pageContext.request.contextPath}/factory/manager/1">厂家订单</a></li>
 						<li><a
