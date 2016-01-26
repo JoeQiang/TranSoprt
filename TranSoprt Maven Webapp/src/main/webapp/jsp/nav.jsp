@@ -37,7 +37,7 @@
 							class="nav-label">账户&nbsp;<b
 										class="caret"></b></span> <span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
-							<li class="active"><a href="${pageContext.request.contextPath}/order/distorder">订单分配</a></li>
+							<li class="active"><a href="${pageContext.request.contextPath}/order/distorder/1">订单分配</a></li>
 							<li><a href="">厂家订单</a></li>
 							<li><a href="index_2.html">经销商管理</a></li>
 							<li><a href="${pageContext.request.contextPath}/goods/list/1">商品管理</a></li>
@@ -48,7 +48,7 @@
 							class="nav-label">厂家</span><span class="fa arrow"></span></a>
 						</li>
 					<!-- 经销商管理模块 -->
-					<li><a href="#"><i class="fa fa-bar-chart-o"></i> <span
+					<li><a href="${pageContext.request.contextPath}/order/deliveryorder/1"><i class="fa fa-bar-chart-o"></i> <span
 							class="nav-label">经销商</span><span class="fa arrow"></span></a>
 						</li>
 					

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Record;
@@ -17,7 +19,7 @@ import com.jfinal.plugin.activerecord.Record;
 public class GROrder extends Model<GROrder> {
 	
 	public static final GROrder dao = new GROrder();
-
+Logger logger=Logger.getLogger(GROrder.class);
 	// 该订单的发起经销商
 	public Dealer getDealer() {
 		Dealer dealer = Dealer.dao.findById(getInt("dealerid"));
@@ -28,7 +30,8 @@ public class GROrder extends Model<GROrder> {
 	// 负责该订单发货的厂家
 	public GRFactory getFactory() {
 		try{
-			GRFactory factory = GRFactory.dao.findById(getInt("oid"));
+			GRFactory factory = GRFactory.dao.findById(getInt("factoryid"));
+			logger.info("fname:"+factory.getStr("fname"));
 			put("factoryname",factory.get("fname"));
 			return factory;
 		}catch(NullPointerException e){
@@ -51,5 +54,10 @@ public class GROrder extends Model<GROrder> {
 		put("goodsList",goods);
 		return goods;
 	}
-
+	/**
+	 * 触发三个方法，将数据put到GROrder的实例里面
+	 */
+	public void getAttrFromOtherTable(){
+		getGoods() ;getFactory();getDealer();
+	}
 }

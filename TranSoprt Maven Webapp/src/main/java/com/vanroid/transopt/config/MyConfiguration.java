@@ -10,6 +10,7 @@ import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.render.ViewType;
+import com.vanroid.transopt.controller.DealerController;
 import com.vanroid.transopt.controller.GoodsControlller;
 import com.vanroid.transopt.controller.OrderController;
 import com.vanroid.transopt.controller.TestController;
@@ -41,6 +42,8 @@ public class MyConfiguration extends JFinalConfig {
 		/*me.add("/", TestController.class);*/
 		me.add("/goods",GoodsControlller.class);
 		me.add("/order",OrderController.class);
+		me.add("/dealer", DealerController.class);
+		me.add("/manager/dealer", DealerController.class, "/");
 	}
 
 	/**
