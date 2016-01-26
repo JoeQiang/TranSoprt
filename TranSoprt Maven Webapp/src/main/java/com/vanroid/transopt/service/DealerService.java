@@ -1,10 +1,12 @@
 package com.vanroid.transopt.service;
 
 import java.io.File;
+import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 
 import com.jfinal.plugin.activerecord.Page;
+import com.taobao.api.ApiException;
 import com.vanroid.transopt.model.Dealer;
 
 /**
@@ -21,7 +23,7 @@ public interface DealerService {
 	 *            经销商实体
 	 * @return
 	 */
-	public boolean doLogin(Dealer dealer);
+	public int doLogin(String phone,String pwd);
 
 	/**
 	 * 根据名称查找经销商
@@ -78,13 +80,6 @@ public interface DealerService {
 	 * @param did
 	 */
 	public void deleteDealer(int did);
-
-	/**
-	 * 批量插入
-	 * 
-	 * @param file
-	 * @param httpServletRequest 
-	 * @return
-	 */
-	public boolean batchSaveDealer(File file, HttpServletRequest httpServletRequest);
+	public void getDynamPwd(String phone) throws IOException, ApiException ;
+	public boolean batchSaveDealer(File file, HttpServletRequest request);
 }

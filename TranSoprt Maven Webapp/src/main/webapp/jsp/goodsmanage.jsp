@@ -9,7 +9,11 @@
 <title>港荣食品物流跟踪系统</title>
 <meta name="keywords" content="港荣食品物流跟踪系统">
 <meta name="description" content="港荣食品物流跟踪系统">
-
+<style>
+.staspan{
+	margin:10px;
+}
+</style>
 <link
 	href="${pageContext.request.contextPath }/css/bootstrap.min.css?v=3.4.0"
 	rel="stylesheet">
@@ -38,7 +42,9 @@
 					style="margin-bottom: 0">
 					<div class="navbar-header">
 						<a class="navbar-minimalize minimalize-styl-2 btn btn-primary "
-							href="#"><i class="fa fa-bars"></i> </a>
+							href="#">
+							<i class="fa fa-bars"></i>
+						</a>
 						<form role="search" class="navbar-form-custom" method="post"
 							action="search_results.html">
 							<div class="form-group">
@@ -48,12 +54,20 @@
 						</form>
 					</div>
 					<ul class="nav navbar-top-links navbar-right">
-						<li><span class="m-r-sm text-muted welcome-message"><a
-								href="index.html" title="返回首页"><i class="fa fa-home"></i></a>欢迎使用港荣后台管理系统</span>
+						<li>
+							<span class="m-r-sm text-muted welcome-message">
+								<a href="index.html" title="返回首页">
+									<i class="fa fa-home"></i>
+								</a>
+								欢迎使用港荣后台管理系统
+							</span>
 						</li>
-						<li><a href="login.html"> <i class="fa fa-sign-out"></i>
+						<li>
+							<a href="login.html">
+								<i class="fa fa-sign-out"></i>
 								退出
-						</a></li>
+							</a>
+						</li>
 					</ul>
 
 				</nav>
@@ -61,31 +75,40 @@
 			<!-- 搜索栏结束 -->
 			<!-- 内容主体结束 -->
 			<div class="row wrapper border-bottom white-bg page-heading">
-
+			<div><div><div>
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="ibox float-e-margins">
 							<div class="ibox-title">
 								<h5>商品管理</h5>
 								<div class="ibox-tools">
-									<a class="collapse-link"> <i class="fa fa-chevron-up"></i>
-									</a> <a class="dropdown-toggle" data-toggle="dropdown"
-										href="table_data_tables.html#"> <i class="fa fa-wrench"></i>
+									<a class="collapse-link">
+										<i class="fa fa-chevron-up"></i>
+									</a>
+									<a class="dropdown-toggle" data-toggle="dropdown"
+										href="table_data_tables.html#">
+										<i class="fa fa-wrench"></i>
 									</a>
 									<ul class="dropdown-menu dropdown-user">
-										<li><a href="table_data_tables.html#">选项1</a></li>
-										<li><a href="table_data_tables.html#">选项2</a></li>
+										<li>
+											<a href="table_data_tables.html#">选项1</a>
+										</li>
+										<li>
+											<a href="table_data_tables.html#">选项2</a>
+										</li>
 									</ul>
-									<a class="close-link"> <i class="fa fa-times"></i>
+									<a class="close-link">
+										<i class="fa fa-times"></i>
 									</a>
 								</div>
 							</div>
 							<div class="ibox-content">
 								<div class="">
 									<a data-toggle="modal" onclick="addgoods()"
-										class="btn btn-primary"> 添加商品</a> <a data-toggle="modal"
-										class="btn btn-primary" href="#modal-form2"> 添加规格</a> <a
-										data-toggle="modal" onclick="showsta()"
+										class="btn btn-primary"> 添加商品</a>
+									<a data-toggle="modal" class="btn btn-primary"
+										href="#modal-form2"> 添加规格</a>
+									<a data-toggle="modal" onclick="showsta()"
 										class="btn btn-primary">删除规格</a>
 								</div>
 
@@ -102,14 +125,17 @@
 										<c:forEach items="${goodslist}" var="goods">
 											<tr class="gradeB" id="tr${goods.gid}">
 												<td>${goods.gname}</td>
-												<td><c:forEach items="${goods.standard}" var="sd">
+												<td>
+													<c:forEach items="${goods.standard}" var="sd">
 														<div id="div${goods.gid}${sd.sid }">
 															${sd.sname}&nbsp;</div>
-													</c:forEach></td>
-												<td><a type="button" class="btn btn-danger"
-													href="javascript:delGoods(${goods.gid})">删除</a> <a
-													type="button" class="btn btn-warning"
-													href="javascript:updGoods(${goods.gid},'${goods.gname}')">修改</a>
+													</c:forEach>
+												</td>
+												<td>
+													<a type="button" class="btn btn-danger"
+														href="javascript:delGoods(${goods.gid})">删除</a>
+													<a type="button" class="btn btn-warning"
+														href="javascript:updGoods(${goods.gid},'${goods.gname}')">修改</a>
 												</td>
 											</tr>
 										</c:forEach>
@@ -129,22 +155,31 @@
 					</div>
 				</div>
 				<!--分页 -->
-				<nav>
+				<nav style="float:right">
 					<ul class="pagination">
-						<li id="lipre"><c:if test="${pageNum!=1}">
+						<li id="lipre">
+							<c:if test="${pageNum!=1}">
 								<a
 									href="${pageContext.request.contextPath }/goods/list/${pageNum-1}"
 									aria-label="Previous">
-							</c:if> <span aria-hidden="true">上一页</span> </a></li>
+							</c:if>
+							<span aria-hidden="true">上一页</span>
+							</a>
+						</li>
 						<c:forEach var="i" begin="1" end="${totalPage}" step="1">
-							<li><a
-								href="${pageContext.request.contextPath}/goods/list/${i}">${i}</a></li>
+							<li>
+								<a href="${pageContext.request.contextPath}/goods/list/${i}">${i}</a>
+							</li>
 						</c:forEach>
-						<li id="linext"><c:if test="${pageNum<totalPage}">
+						<li id="linext">
+							<c:if test="${pageNum<totalPage}">
 								<a
 									href="${pageContext.request.contextPath }/goods/list/${pageNum+1}"
 									aria-label="Next">
-							</c:if> <span aria-hidden="true">下一页</span> </a></li>
+							</c:if>
+							<span aria-hidden="true">下一页</span>
+							</a>
+						</li>
 					</ul>
 				</nav>
 				<!-- 新增商品表单 -->
@@ -153,27 +188,26 @@
 						<div class="modal-content">
 							<div class="modal-body">
 								<div class="row">
-									<div class="col-sm-6 b-r">
 										<h3 class="m-t-none m-b">新增商品</h3>
 
 										<form role="form"
 											action="${pageContext.request.contextPath}/goods/addgoods"
 											method="post">
 											<div class="form-group">
-												<label>商品名称：</label> <input type="text" name="gname"
-													placeholder="请输入商品名称" class="form-control">
+												<label>商品名称：</label>
+												<input type="text" name="gname" placeholder="请输入商品名称"
+													class="form-control">
 											</div>
 
 											<div class="hr-line-dashed"></div>
 											<div class="form-group">
-												<label class="col-sm-2 control-label">重量规格</label>
+												<label class="col-sm-2 control-label">重量规格:</label>
 
-												<div class="col-sm-10">
-													<div id="divgetsta" class="col-sm-10">
-
+													<div id="divgetsta" class="col-sm-9">
+													<!-- 多选框 -->
 														<!-- <label class="checkbox-inline i-checks"> <input
-															type="checkbox" value="1" name="weight">800g -->
-														</label>
+															type="checkbox" value="1" name="weight">1800g
+														</label> -->
 													</div>
 												</div>
 											</div>
@@ -198,20 +232,21 @@
 						<div class="modal-content">
 							<div class="modal-body">
 								<div class="row">
-									<div class="col-sm-6 b-r">
+									<!-- <div class="col-sm-6 b-r"> -->
 										<h3 class="m-t-none m-b">修改商品</h3>
 
 										<form role="form" id="updform"
 											<%-- action="${pageContext.request.contextPath}/goods/updgoods?gid" --%>
 											method="post">
 											<div class="form-group">
-												<label>商品名称：</label> <input type="text" id="ingname"
-													name="gname" class="form-control">
+												<label>商品名称：</label>
+												<input type="text" id="ingname" name="gname"
+													class="form-control">
 											</div>
 
 											<div class="hr-line-dashed"></div>
 											<div class="form-group">
-												<label class="col-sm-2 control-label">重量规格</label>
+												<label class="col-sm-2 control-label">重量规格:</label>
 
 												<div class="col-sm-10">
 													<div id="divgetsta1" class="col-sm-10">
@@ -243,15 +278,16 @@
 						<div class="modal-content">
 							<div class="modal-body">
 								<div class="row">
-									<div class="col-sm-6 b-r">
+									<div >
 										<h3 class="m-t-none m-b">新增规格</h3>
 
 										<form role="form"
 											action="${pageContext.request.contextPath}/goods/addsta"
 											method="post">
 											<div class="form-group">
-												<label>商品规格：</label> <input type="text" name="sname"
-													placeholder="请输入商品规格，如：1Kg" class="form-control">
+												<label>商品规格：</label>
+												<input type="text" name="sname" placeholder="请输入商品规格，如：1Kg"
+													class="form-control">
 											</div>
 											<div>
 												<button class="btn btn-sm btn-primary pull-right m-t-n-xs"
@@ -273,7 +309,7 @@
 						<div class="modal-content">
 							<div class="modal-body">
 								<div class="row">
-									<div class="col-sm-6 b-r">
+									<div >
 										<h2>商品规格：</h2>
 										<div id="showsta"></div>
 
@@ -285,9 +321,9 @@
 					</div>
 				</div>
 				<!-- 触发标签 -->
-				<a data-toggle="modal" id="aid1" href="#modal-form1"></a> <a
-					data-toggle="modal" id="aid4" href="#modal-form4"></a> <a
-					data-toggle="modal" id="aid3" href="#modal-form3"></a>
+				<a data-toggle="modal" id="aid1" href="#modal-form1"></a>
+				<a data-toggle="modal" id="aid4" href="#modal-form4"></a>
+				<a data-toggle="modal" id="aid3" href="#modal-form3"></a>
 			</div>
 			<!-- 内容主体结束 -->
 			<!-- 脚部 -->
@@ -296,12 +332,13 @@
 	                               By：<a href="#" target="_blank">港荣</a>
 	                           </div> -->
 				<div>
-					<strong>物流跟踪系统</strong>&copy; 港荣食品有限公司 &nbsp;&nbsp;2016
+					<strong>物流跟踪系统</strong>
+					&copy; 港荣食品有限公司 &nbsp;&nbsp;2016
 				</div>
 			</div>
 
 		</div>
-		<!-- 脚部 -->
+		<!-- 脚部结束 -->
 	</div>
 	<!-- Mainly scripts -->
 	<script
@@ -364,10 +401,10 @@
 					$("#showsta").html("");
 					for (i = 0; i < data.length; i++) {
 						$("#showsta").append(
-								"<div id=divsid"+data[i].sid+"><h4>"
+								"<span class='staspan' id=divsid"+data[i].sid+">"
 										+ data[i].sname
-										+ "</h4><a onclick=delGroblSta("
-										+ data[i].sid + ")>X</a></div>");
+										+ "<a onclick=delGroblSta("
+										+ data[i].sid + ")>X</a></span>");
 					}
 					$("#aid3").click();
 				},
@@ -375,6 +412,7 @@
 			});
 		}
 		function delGroblSta(sid) {
+		if (window.confirm('确定要删除该规格吗？')) {
 			$.ajax({
 				type : 'GET',
 				url : '${pageContext.request.contextPath}/goods/delgroblesta/'
@@ -386,7 +424,7 @@
 				},
 				dataType : 'json'
 			});
-		}
+		}}
 		function addgoods() {
 			$
 					.ajax({
@@ -399,9 +437,13 @@
 										.append(
 												"<label class='checkbox-inline i-checks'> <input type='checkbox'  value='"+data[i].sid+"' name='weight'>"
 														+ data[i].sname
-														+ "</label> ").trigger(
-												"create");
+														+ "</label> ");
 							}
+							/* 让多选框再次应用css */
+							$('.i-checks').iCheck({
+								checkboxClass : 'icheckbox_square-green',
+								radioClass : 'iradio_square-green',
+							});
 							$("#aid1").click();
 						},
 						dataType : 'json'
@@ -418,16 +460,21 @@
 						url : '${pageContext.request.contextPath}/goods/getallsta',
 						success : function(data) {
 							$("#divgetsta1").html("");
+							
 							var j = 0;
 							for (i = 0; i < data.length; i++) {
 								$("#divgetsta1")
 										.append(
-												"<label class='checkbox-inline i-checks'> <input id='updchebox"+j+"' type='checkbox' value='"+data[i].sid+"' name='weight'>"
+												"<label class='checkbox-inline i-checks '> <input id='updchebox"+j+"' type='checkbox' value='"+data[i].sid+"' name='weight'>"
 														+ data[i].sname
-														+ "</label> ").trigger(
-												"create");
+														+ "</label> ");
 								j++;
 							}
+							/* 让多选框再次应用css */
+							$('.i-checks').iCheck({
+								checkboxClass : 'icheckbox_square-green',
+								radioClass : 'iradio_square-green',
+							}); 
 							allsta = j;
 						},
 						dataType : 'json'
@@ -439,6 +486,7 @@
 						+ gid,
 				success : function(data) {
 					//返回的是一个goods对象
+					
 					var stalist = data.standard;
 					for (i = 0; i < stalist.length; i++)
 						for (j = 0; j < allsta; j++) {
@@ -446,6 +494,11 @@
 								$("#updchebox" + j).attr("checked", "true");
 							}
 						}
+						/* 让多选框再次应用css */
+							$('.i-checks').iCheck({
+								checkboxClass : 'icheckbox_square-green',
+								radioClass : 'iradio_square-green',
+							}); 
 					$("#updform").attr(
 							"action",
 							"${pageContext.request.contextPath}/goods/updgoods?gid="

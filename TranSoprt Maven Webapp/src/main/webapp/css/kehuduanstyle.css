@@ -1,0 +1,70 @@
+*{
+    font-family:"Helvetica";
+    font-size:16px;
+}
+body{
+    background:url("../img/back.jpg") no-repeat;
+    background-size:100% 100%;
+    -moz-user-select:none; /*»ðºü*/
+    -webkit-user-select:none; /*webkitä¯ÀÀÆ÷*/
+    -ms-user-select:none; /*IE10*/
+    -o-user-select:none;
+}
+.content{
+    width:250px;
+    margin:0px auto 150px auto;
+}
+input{
+    width: 250px;
+    background-color: transparent;
+    border: #ccc 2px solid;
+    border-radius:5px;
+    color: #fff;
+    padding:10px;
+    margin:2px auto;
+}
+.biaoti{
+    width:9em;
+    color:#fff;
+    font-size: 4rem;
+    margin:150px auto 50px auto;
+}
+.btnConfrim{
+    width:250px;
+    padding:10px 0px;
+    background-color:#888;
+    border-radius:5px;
+    text-align:center;
+    margin:30px 0;
+    color:#fff;
+}
+.btnConfrim:hover{
+    background-color:#0b2160;
+    color:#fff;
+}
+.psd{
+    float: right;
+}
+/*Òþ²Ø¿ò*/
+#modify{
+    position: relative;
+    display: block;
+    width:400px;
+    height:200px;
+    margin:200px auto;
+    background: rgba(8,8,8,0.5);
+    border: solid 1px #ccc;
+    border-radius: 10px;
+}
+.modi-cont{
+    width:250px;
+    margin:10px auto;
+}
+.note{
+    width:120px;
+    position: relative;
+    margin:20px auto;
+    font-size: 3rem;
+    color:#fff;
+
+}

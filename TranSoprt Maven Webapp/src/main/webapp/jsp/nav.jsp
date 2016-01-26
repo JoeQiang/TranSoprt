@@ -48,11 +48,13 @@
 				</li>
 				<!-- 账户模块-->
 				<li><a href="index.html"><i class="fa fa-th-large"></i> <span
-						class="nav-label">账户</span> <span class="fa arrow"></span></a>
+						class="nav-label">账户&nbsp;<b class="caret"></b></span> <span
+						class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li class="active"><a
 							href="${pageContext.request.contextPath}/order/distorder">订单管理</a></li>
-						<li><a href="${pageContext.request.contextPath}/factory/manager/1">厂家订单</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/factory/manager/1">厂家订单</a></li>
 						<li><a
 							href="${pageContext.request.contextPath}/manager/dealer">经销商管理</a></li>
 						<li><a href="${pageContext.request.contextPath}/goods/list/1">商品管理</a></li>
@@ -63,7 +65,7 @@
 				<li><a href="#"><i class="fa fa fa-globe"></i> <span
 						class="nav-label">厂家</span><span class="fa arrow"></span></a></li>
 				<!-- 经销商管理模块 -->
-				<li><a href="#"><i class="fa fa-bar-chart-o"></i> <span
+				<li><a href="${pageContext.request.contextPath}/order/deliveryorder/1"><i class="fa fa-bar-chart-o"></i> <span
 						class="nav-label">经销商</span><span class="fa arrow"></span></a></li>
 
 			</ul>

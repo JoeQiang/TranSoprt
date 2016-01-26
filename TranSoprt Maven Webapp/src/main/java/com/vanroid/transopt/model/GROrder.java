@@ -52,5 +52,10 @@ public class GROrder extends Model<GROrder> {
 		put("goodsList", goods);
 		return goods;
 	}
-
+	/**
+	 * 触发三个方法，将数据put到GROrder的实例里面
+	 */
+	public void getAttrFromOtherTable(){
+		getGoods() ;getFactory();getDealer();
+	}
 }
