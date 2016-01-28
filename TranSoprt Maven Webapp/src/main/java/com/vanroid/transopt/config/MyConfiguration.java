@@ -22,6 +22,7 @@ import com.vanroid.transopt.model.Dealer;
 import com.vanroid.transopt.model.GRFactory;
 import com.vanroid.transopt.model.GRGoods;
 import com.vanroid.transopt.model.GROrder;
+import com.vanroid.transopt.model.ShoppingCart;
 import com.vanroid.transopt.model.Standard;
 
 public class MyConfiguration extends JFinalConfig {
@@ -77,6 +78,7 @@ public class MyConfiguration extends JFinalConfig {
 		arp.addMapping("grgoods", "gid", GRGoods.class);
 		arp.addMapping("standard", "sid", Standard.class);
 		arp.addMapping("admin", Admin.class);
+		arp.addMapping("shoppingcart","shid", ShoppingCart.class);
 	}
 
 	@Override

@@ -11,6 +11,7 @@ import com.vanroid.transopt.model.Dealer;
 import com.vanroid.transopt.model.GRFactory;
 import com.vanroid.transopt.model.GRGoods;
 import com.vanroid.transopt.model.GROrder;
+import com.vanroid.transopt.model.ShoppingCart;
 import com.vanroid.transopt.service.OrderManageService;
 
 public class TestOrderManageService {
@@ -20,6 +21,7 @@ public class TestOrderManageService {
 	public void before(){
 		base.arp.addMapping("dealer","did", Dealer.class);
 		base.arp.addMapping("grfactory","fid", GRFactory.class);
+		base.arp.addMapping("shoppingcart","shid", ShoppingCart.class);
 		base.arp.addMapping("grorder","oid", GROrder.class);
 		base.dp.start();
 		base.arp.start();
@@ -37,5 +39,9 @@ public class TestOrderManageService {
 		int size=os.getDelivOrder(1,1).getList().size();
 			System.out.println("size:"+size);
 		
+	}
+	@Test
+	public void testMakeOrder(){
+		System.out.println("result:"+os.makeOrder(1)); ;
 	}
 }

@@ -17,6 +17,13 @@ import com.vanroid.transopt.uitls.Constant;
 public class OrderController extends Controller {
 	private OrderManageService om = Duang.duang(OrderManageService.class);
 	private Logger logger=Logger.getLogger(OrderController.class);
+	/**
+	 * 下单ajax
+	 */
+	public void makeorder(){
+		om.makeOrder(getParaToInt(0));
+		renderJson(1);
+	}
 
 	// 分配订单
 	public void distorder() {
