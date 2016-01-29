@@ -11,12 +11,19 @@
 <meta name="keywords" content="港荣食品物流跟踪系统">
 <meta name="description" content="港荣食品物流跟踪系统">
 
-<link href="${pageContext.request.contextPath }/css/bootstrap.min.css?v=3.4.0" rel="stylesheet">
-<link href="${pageContext.request.contextPath }/font-awesome/css/font-awesome.css?v=4.3.0"
+<link
+	href="${pageContext.request.contextPath }/css/bootstrap.min.css?v=3.4.0"
 	rel="stylesheet">
-<link href="${pageContext.request.contextPath }/css/plugins/iCheck/custom.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath }/css/animate.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath }/css/style.css?v=2.2.0" rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath }/font-awesome/css/font-awesome.css?v=4.3.0"
+	rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath }/css/plugins/iCheck/custom.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/animate.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/style.css?v=2.2.0"
+	rel="stylesheet">
 
 </head>
 
@@ -28,29 +35,7 @@
 		<!-- 搜索栏 -->
 		<div id="page-wrapper" class="gray-bg dashbard-1">
 			<div class="row border-bottom">
-				<nav class="navbar navbar-static-top" role="navigation"
-					style="margin-bottom: 0">
-					<div class="navbar-header">
-						<a class="navbar-minimalize minimalize-styl-2 btn btn-primary "
-							href="#"><i class="fa fa-bars"></i> </a>
-						<form role="search" class="navbar-form-custom" method="post"
-							action="search_results.html">
-							<div class="form-group">
-								<input type="text" placeholder="请输入您需要搜索的订单 …"
-									class="form-control" name="top-search" id="top-search">
-							</div>
-						</form>
-					</div>
-					<ul class="nav navbar-top-links navbar-right">
-						<li><span class="m-r-sm text-muted welcome-message"><a
-								href="index.html" title="返回首页"><i class="fa fa-home"></i></a>欢迎使用港荣后台管理系统</span>
-						</li>
-						<li><a href="login.html"> <i class="fa fa-sign-out"></i>
-								退出
-						</a></li>
-					</ul>
-
-				</nav>
+				<%@include file="top.jsp"%>
 			</div>
 			<!-- 搜索栏结束 -->
 			<!-- 内容主体结束 -->
@@ -133,30 +118,31 @@
 								</table>
 
 							</div>
-						
+
+						</div>
+					</div>
 				</div>
-			</div></div>	
-				
+
 				<!--分页 -->
-	<nav  style="float:right">
-  <ul class="pagination">
-   <li id="lipre">
-   <c:if test="${pageNum!=1}"> 
-      <a href="${pageContext.request.contextPath }/order/distorder/${pageNum-1}" aria-label="Previous">
-       </c:if> <span aria-hidden="true">上一页</span>
-      </a>
-    </li>
-          <c:forEach var="i" begin="1" end="${totalPage}" step="1"> 
-          <li><a href="${pageContext.request.contextPath}/order/distorder/${i}">${i}</a></li>
-    </c:forEach>
-    <li id="linext">
-    <c:if test="${pageNum<totalPage}">
-      <a href="${pageContext.request.contextPath }/order/distorder/${pageNum+1}" aria-label="Next">
-       </c:if> <span aria-hidden="true">下一页</span>
-      </a>
-    </li>
-  </ul>
-</nav></div>
+				<nav style="float:right">
+					<ul class="pagination">
+						<li id="lipre"><c:if test="${pageNum!=1}">
+								<a
+									href="${pageContext.request.contextPath }/order/distorder/${pageNum-1}"
+									aria-label="Previous">
+							</c:if> <span aria-hidden="true">上一页</span> </a></li>
+						<c:forEach var="i" begin="1" end="${totalPage}" step="1">
+							<li><a
+								href="${pageContext.request.contextPath}/order/distorder/${i}">${i}</a></li>
+						</c:forEach>
+						<li id="linext"><c:if test="${pageNum<totalPage}">
+								<a
+									href="${pageContext.request.contextPath }/order/distorder/${pageNum+1}"
+									aria-label="Next">
+							</c:if> <span aria-hidden="true">下一页</span> </a></li>
+					</ul>
+				</nav>
+			</div>
 			<!-- 内容主体结束 -->
 			<!-- 脚部 -->
 			<div class="footer">
@@ -172,30 +158,34 @@
 		<!-- 脚部 -->
 	</div>
 	<!-- Mainly scripts -->
-	<script src="${pageContext.request.contextPath }/js/jquery-2.1.1.min.js"></script>
-	<script src="${pageContext.request.contextPath }/js/bootstrap.min.js?v=3.4.0"></script>
-	<script src="${pageContext.request.contextPath }/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-	<script src="${pageContext.request.contextPath }/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath }/js/jquery-2.1.1.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath }/js/bootstrap.min.js?v=3.4.0"></script>
+	<script
+		src="${pageContext.request.contextPath }/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+	<script
+		src="${pageContext.request.contextPath }/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
 	<!-- Custom and plugin  -->
 	<script src="${pageContext.request.contextPath }/js/hplus.js?v=2.2.0"></script>
-	<script src="${pageContext.request.contextPath }/js/plugins/pace/pace.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath }/js/plugins/pace/pace.min.js"></script>
 
 	<script>
 		function disfactory(oid) {
 			var fid = $("#td" + oid).find("select option:selected").val();
-			$
-					.ajax({
-						url : '${pageContext.request.contextPath}/order/distfactory/'
-								+ fid + '-' + oid,
-						type : 'GET',
-						success : function(data) {
-						/* alert(data); */
-							if (data == 1)
-								$("#td" + oid).hide();
-						},
-						dataType : 'json'
-					});
+			$.ajax({
+				url : '${pageContext.request.contextPath}/order/distfactory/'
+						+ fid + '-' + oid,
+				type : 'GET',
+				success : function(data) {
+					/* alert(data); */
+					if (data == 1)
+						$("#td" + oid).hide();
+				},
+				dataType : 'json'
+			});
 		}
 	</script>
 </body>

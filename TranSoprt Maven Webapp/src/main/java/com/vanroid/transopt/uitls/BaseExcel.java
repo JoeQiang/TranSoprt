@@ -82,7 +82,6 @@ public abstract class BaseExcel implements ExcelTemplate {
 				file = new File(path, filename);
 				file.delete();
 				file.createNewFile();
-
 				writeToExcel(file, root);
 
 			} else {

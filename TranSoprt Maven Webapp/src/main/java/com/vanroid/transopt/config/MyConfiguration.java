@@ -22,6 +22,7 @@ import com.vanroid.transopt.model.Dealer;
 import com.vanroid.transopt.model.GRFactory;
 import com.vanroid.transopt.model.GRGoods;
 import com.vanroid.transopt.model.GROrder;
+import com.vanroid.transopt.model.ShoppingCart;
 import com.vanroid.transopt.model.Standard;
 
 public class MyConfiguration extends JFinalConfig {
@@ -43,6 +44,7 @@ public class MyConfiguration extends JFinalConfig {
 	 */
 	@Override
 	public void configRoute(Routes me) {
+		me.add("/", LoginController.class, "/");// 默认登陆页
 		me.add("/account", LoginController.class, "/");
 		me.add("/manager/dealer", DealerController.class, "/");
 		me.add("/download", DownloadController.class, "/");
@@ -76,12 +78,12 @@ public class MyConfiguration extends JFinalConfig {
 		arp.addMapping("grgoods", "gid", GRGoods.class);
 		arp.addMapping("standard", "sid", Standard.class);
 		arp.addMapping("admin", Admin.class);
+		arp.addMapping("shoppingcart", "shid", ShoppingCart.class);
 	}
 
 	@Override
 	public void configInterceptor(Interceptors me) {
 		// 添加登录全局拦截器、拦截除登录外其余的请求
-		me.addGlobalActionInterceptor(new LoginInterceptor());
 	}
 
 	@Override

@@ -25,31 +25,19 @@ import com.vanroid.transopt.uitls.ExcelTemplate;
 import com.vanroid.transopt.uitls.ExcelTemplateFactory;
 import com.vanroid.transopt.uitls.MD5Utils;
 import com.vanroid.transopt.uitls.NoteUtil;
+
 /**
- *                 _ooOoo_ 
-                  o8888888o 
-                  88" . "88 
-                  (| -_- |) 
-                  O\  =  /O 
-               ____/`---'\____ 
-             .'  \\|     |//  `. 
-            /  \\|||  :  |||//  \ 
-           /  _||||| -:- |||||-  \ 
-           |   | \\\  -  /// |   | 
-           | \_|  ''\---/''  |   | 
-           \  .-\__  `-`  ___/-. / 
-         ___`. .'  /--.--\  `. . __ 
-      ."" '<  `.___\_<|>_/___.'  >'"". 
-     | | :  `- \`.;`\ _ /`;.`/ - ` : | | 
-     \  \ `-.   \_ __\ /__ _/   .-` /  / 
-======`-.____`-.___\_____/___.-`____.-'====== 
-                   `=---=' 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
-         		佛祖保佑       永无BUG 
-         		
-    经销商服务接口实现类
+ * _ooOoo_ o8888888o 88" . "88 (| -_- |) O\ = /O ____/`---'\____ .' \\| |// `. /
+ * \\||| : |||// \ / _||||| -:- |||||- \ | | \\\ - /// | | | \_| ''\---/'' | | \
+ * .-\__ `-` ___/-. / ___`. .' /--.--\ `. . __ ."" '< `.___\_<|>_/___.' >'"". |
+ * | : `- \`.;`\ _ /`;.`/ - ` : | | \ \ `-. \_ __\ /__ _/ .-` / /
+ * ======`-.____`-.___\_____/___.-`____.-'====== `=---='
+ * ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 佛祖保佑 永无BUG
+ * 
+ * 经销商服务接口实现类
+ * 
  * @author Joe_Huang
- *
+ * 
  */
 @Before(Tx.class)
 public class DealerServiceImp implements DealerService {
@@ -59,8 +47,8 @@ public class DealerServiceImp implements DealerService {
 	 * 
 	 * @param dname
 	 * @return
-	 * @throws IOException 
-	 * @throws ApiException 
+	 * @throws IOException
+	 * @throws ApiException
 	 */
 	public void getDynamPwd(String phone) throws IOException, ApiException {
 		/**
@@ -73,20 +61,20 @@ public class DealerServiceImp implements DealerService {
 		Dealer dealer = Dealer.dao.findFirst(
 				"select * from dealer where phone=?", phone);
 		dealer.set("dynamic", MD5Utils.MD5(dynamPwd)).update();
-		TaobaoClient client=new NoteUtil().getTaobaoClient();
+		TaobaoClient client = new NoteUtil().getTaobaoClient();
 		AlibabaAliqinFcSmsNumSendRequest req = new AlibabaAliqinFcSmsNumSendRequest();
 		req.setSmsType("normal");
 		req.setSmsFreeSignName("活动验证");
-		req.setSmsParamString("{'dynampwd':'"+dynamPwd+"'}");
+		req.setSmsParamString("{'dynampwd':'" + dynamPwd + "'}");
 		req.setRecNum(phone);
 		req.setSmsTemplateCode("SMS_4920215");
 		AlibabaAliqinFcSmsNumSendResponse rsp = client.execute(req);
-		
+
 	}
 
 	/**
-	 * 修改密码
-	 * 修改密码失败返回0
+	 * 修改密码 修改密码失败返回0
+	 * 
 	 * @param oldPwd
 	 * @param newPwd
 	 */
@@ -103,6 +91,7 @@ public class DealerServiceImp implements DealerService {
 		} else
 			return 0;
 	}
+
 	/**
 	 * 
 	 * @param dname
@@ -110,12 +99,12 @@ public class DealerServiceImp implements DealerService {
 	 * @return 1登陆成功，2密码错误，3用户不存在
 	 */
 	@Override
-	public int doLogin(String phone,String pwd) {
+	public int doLogin(String phone, String pwd) {
 		List<Dealer> list = Dealer.dao.find(
 				"select * from dealer where phone=?", phone);
 		if (list.size() == 0)
 			return 3;
-		String digPwd=MD5Utils.MD5(pwd);
+		String digPwd = MD5Utils.MD5(pwd);
 		if (digPwd.equals(list.get(0).getStr("dpwd"))
 				|| pwd.equals(list.get(0).getStr("dynamic")))
 			return 1;
@@ -210,5 +199,4 @@ public class DealerServiceImp implements DealerService {
 		return validate;
 	}
 
-	
 }

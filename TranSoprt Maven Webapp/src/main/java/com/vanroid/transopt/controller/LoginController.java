@@ -56,6 +56,7 @@ public class LoginController extends Controller {
 	}
 
 	public void logout() {
+		getSession().removeAttribute("user");
 		getSession().invalidate();
 		forwardAction("/account");
 	}

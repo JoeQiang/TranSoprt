@@ -4,9 +4,11 @@ import java.io.File;
 
 import org.dom4j.DocumentException;
 
+import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
+import com.vanroid.transopt.interceptor.LoginInterceptor;
 import com.vanroid.transopt.uitls.ExcelTemplateFactory;
-
+@Before(LoginInterceptor.class)
 public class DownloadController extends Controller {
 	// 上传Excel模版
 	public void upload() {

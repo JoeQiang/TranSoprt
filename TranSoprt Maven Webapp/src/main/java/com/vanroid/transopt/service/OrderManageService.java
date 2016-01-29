@@ -39,7 +39,8 @@ import com.vanroid.transopt.uitls.NoteUtil;
  * 
  */
 public class OrderManageService {
-	Logger logger=Logger.getLogger(OrderManageService.class);
+	Logger logger = Logger.getLogger(OrderManageService.class);
+
 	/**
 	 * 管理员管理的新下的订单的分页
 	 */
@@ -50,7 +51,7 @@ public class OrderManageService {
 		for (GROrder order : page.getList()) {
 			order.getDealer();
 			// order.getFactory();
-			order.getGoods();
+			// order.getGoods();
 		}
 		return page;
 	}
@@ -108,9 +109,7 @@ public class OrderManageService {
 		Page<GROrder> page = GROrder.dao.paginate(pageNum, 10, "select *",
 				"from grorder where status=?", "未发货");
 		for (GROrder order : page.getList()) {
-			order.getDealer();
-			order.getFactory();
-			order.getGoods();
+			order.getAttrFromOtherTable();
 		}
 		return page;
 	}
@@ -124,9 +123,7 @@ public class OrderManageService {
 		Page<GROrder> page = GROrder.dao.paginate(pageNum, 10, "select *",
 				"from grorder where factoryid =? and status=?", fid, "未发货");
 		for (GROrder order : page.getList()) {
-			order.getDealer();
-			order.getFactory();
-			order.getGoods();
+			order.getAttrFromOtherTable();
 		}
 		return page;
 	}
@@ -136,14 +133,15 @@ public class OrderManageService {
 	 * 
 	 * @param gid
 	 * @return
-	 * @throws ApiException 
-	 * @throws IOException 
+	 * @throws ApiException
+	 * @throws IOException
 	 */
 	public int deliverGoods(int oid) throws IOException, ApiException {
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-		String today=sdf.format(new Date());
-		GROrder.dao.findById(oid).set("status", "已发货").set("sendday",today).update();
-		return inform(oid);//短信通知
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String today = sdf.format(new Date());
+		GROrder.dao.findById(oid).set("status", "已发货").set("sendday", today)
+				.update();
+		return inform(oid);// 短信通知
 	}
 
 	/**
@@ -154,12 +152,11 @@ public class OrderManageService {
 	 * @return
 	 * @throws IOException
 	 * @throws ApiException
-	 * ${dname}老板，您好！您预订的${order}已经于${sendday}在${fname}厂发货了，
-	 * 大概于${arriveday}，请注意收货，谢谢！
+	 *             ${dname}老板，您好！您预订的${order}已经于${sendday}在${fname}厂发货了，
+	 *             大概于${arriveday}，请注意收货，谢谢！
 	 */
-	public int inform(int oid) throws IOException,
-			ApiException {
-		GROrder order=GROrder.dao.findById(oid);
+	public int inform(int oid) throws IOException, ApiException {
+		GROrder order = GROrder.dao.findById(oid);
 		order.getAttrFromOtherTable();
 		TaobaoClient client = new NoteUtil().getTaobaoClient();
 		AlibabaAliqinFcSmsNumSendRequest req = new AlibabaAliqinFcSmsNumSendRequest();
@@ -168,33 +165,37 @@ public class OrderManageService {
 		/**
 		 * 短信模板內容組合
 		 */
-		NoteTemplate nt=new NoteTemplate();
-		nt.setDname(((Dealer)order.get("dealer")).getStr("dname"));
+		NoteTemplate nt = new NoteTemplate();
+		nt.setDname(((Dealer) order.get("dealer")).getStr("dname"));
 		nt.setFname(order.getStr("factoryname"));
-		String goodsListString="";
+		String goodsListString = "";
 		List<HashMap<String, Object>> list = order.get("goodsList");
 		for (HashMap<String, Object> hashMap : list) {
-			goodsListString+=hashMap.get("num")+"*"+hashMap.get("sname")+"的"+hashMap.get("gname")+",";
+			goodsListString += hashMap.get("num") + "*" + hashMap.get("sname")
+					+ "的" + hashMap.get("gname") + ",";
 		}
 		nt.setOrder(goodsListString);
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-		Date today=new Date();
-		Date arriveDay=DateUtils.addDays(today, ((Dealer)order.get("dealer")).getInt("limitdays"));
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date today = new Date();
+		Date arriveDay = DateUtils.addDays(today,
+				((Dealer) order.get("dealer")).getInt("limitdays"));
 		nt.setSendday(sdf.format(today));
 		nt.setArriveday(sdf.format(arriveDay));
-		Gson gson=new Gson();
+		Gson gson = new Gson();
 		req.setSmsParamString(gson.toJson(nt));
-		logger.info("gsonstr:"+gson.toJson(nt));
-		req.setRecNum(((Dealer)order.get("dealer")).getStr("phone"));
+		logger.info("gsonstr:" + gson.toJson(nt));
+		req.setRecNum(((Dealer) order.get("dealer")).getStr("phone"));
 		req.setSmsTemplateCode("SMS_4955204");
 		AlibabaAliqinFcSmsNumSendResponse rsp = client.execute(req);
-		logger.info("notemes:"+rsp.getBody());
-		if(rsp.getBody().contains("success"))
+		logger.info("notemes:" + rsp.getBody());
+		if (rsp.getBody().contains("success"))
 			return 1;
 		return 0;
 	}
+
 	/**
-	 *客户端下，经销看到自己的所有订单
+	 * 客户端下，经销看到自己的所有订单
+	 * 
 	 * @param pageNum
 	 * @param did
 	 * @return
@@ -203,13 +204,16 @@ public class OrderManageService {
 		return GROrder.dao.paginate(pageNum, 10, "select *",
 				"from grorder where dealerid=? order by oid desc", did);
 	}
+
 	/**
 	 * 客户端下的确认收货
+	 * 
 	 * @param oid
 	 */
-	public void  confirmArrive(int oid){
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-mm-dd");
-		String today=sdf.format(new Data());
-		GROrder.dao.findById(oid).set("status","已收货").set("arriveday",today).update();
+	public void confirmArrive(int oid) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+		String today = sdf.format(new Data());
+		GROrder.dao.findById(oid).set("status", "已收货").set("arriveday", today)
+				.update();
 	}
 }

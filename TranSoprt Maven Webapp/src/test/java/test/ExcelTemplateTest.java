@@ -24,8 +24,6 @@ public class ExcelTemplateTest {
 	public void test() throws DocumentException {
 
 		ExcelTemplateFactory factory = ExcelTemplateFactory.getInstance();
-		List<Map<String, Object>> list = factory.getTemplate("dealer")
-				.pasreExcel(new File("D:" + File.separator + "经销商批量导入.xls"));
-		System.out.println(Long.parseLong((String) list.get(0).get("phone")));
+		factory.getTemplate("supplier").createExcelTemplate();
 	}
 }

@@ -4,25 +4,32 @@ import java.io.File;
 import java.io.IOException;
 
 import com.jfinal.aop.Before;
+import com.jfinal.aop.Clear;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.upload.UploadFile;
 import com.taobao.api.ApiException;
 import com.vanroid.transopt.interceptor.DealerValidate;
+import com.vanroid.transopt.interceptor.LoginInterceptor;
 import com.vanroid.transopt.interceptor.UploadExcelValidate;
 import com.vanroid.transopt.model.Dealer;
 import com.vanroid.transopt.service.DealerService;
 import com.vanroid.transopt.service.DealerServiceImp;
 import com.vanroid.transopt.uitls.MD5Utils;
 
+@Before(LoginInterceptor.class)
 public class DealerController extends Controller {
 	private DealerService service = new DealerServiceImp();
+
+	@Clear(LoginInterceptor.class)
 	public void login() {
-		render("/jsp/dealerlogin.jsp?code="+getParaToInt(0));
+		render("/jsp/dealerlogin.jsp?code=" + getParaToInt(0));
 	}
+
 	/**
 	 * 经销商客户端登陆
 	 */
+	@Clear(LoginInterceptor.class)
 	public void logininput() {
 		String phone = getPara("phone");
 		int result = service.doLogin(phone, getPara("pwd"));
@@ -34,14 +41,18 @@ public class DealerController extends Controller {
 			redirect("/dealer/login/0");
 		}
 	}
+
 	/**
 	 * 动态密码登陆ajax
+	 * 
 	 * @throws IOException
 	 * @throws ApiException
 	 */
-	public void getdynamic() throws IOException, ApiException{
+	@Clear(LoginInterceptor.class)
+	public void getdynamic() throws IOException, ApiException {
 		service.getDynamPwd(getPara(0));
 	}
+
 	public void index() {
 		Integer pageNumber = getParaToInt(0);
 		Integer pageSize = getParaToInt(1);
@@ -83,7 +94,6 @@ public class DealerController extends Controller {
 			forwardAction("/manager/dealer");
 		}
 	}
-
 	@Before(UploadExcelValidate.class)
 	public void excelInsert() {
 		UploadFile uploadFile = getFile("excel");

@@ -536,3 +536,15 @@ java.lang.NumberFormatException: For input string: "ssd"
 
 2016-01-23 19:56:21
 [WARN]-[Thread: main]-[com.vanroid.transopt.uitls.ExcelTemplateFactory.getTemplate()]: 加载template_list文件,文件路径:C:/Users/Joe_Huang/git/TranSoprt/TranSoprt Maven Webapp/target/classes/excelTemplate/template_list.xml
+
+2016-01-27 23:26:35
+[WARN]-[Thread: main]-[com.vanroid.transopt.uitls.ExcelTemplateFactory.getTemplate()]: 加载template_list文件,文件路径:D:/Users/Joe_Huang/git/TranSoprt/TranSoprt Maven Webapp/target/classes/excelTemplate/template_list.xml
+
+2016-01-27 23:26:36
+[WARN]-[Thread: main]-[com.vanroid.transopt.uitls.BaseExcel.createExcelTemplate()]: supplier.xml文件查找成功
+
+2016-01-27 23:31:57
+[WARN]-[Thread: main]-[com.vanroid.transopt.uitls.ExcelTemplateFactory.getTemplate()]: 加载template_list文件,文件路径:D:/Users/Joe_Huang/git/TranSoprt/TranSoprt Maven Webapp/target/classes/excelTemplate/template_list.xml
+
+2016-01-27 23:31:57
+[WARN]-[Thread: main]-[com.vanroid.transopt.uitls.BaseExcel.createExcelTemplate()]: supplier.xml文件查找成功

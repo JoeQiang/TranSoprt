@@ -4,23 +4,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="assets/css/reset.css" type="text/css"
-	media="screen" title="no title" charset="utf-8">
-<link rel="stylesheet" href="assets/css/demo.css" type="text/css"
-	media="screen" title="no title" charset="utf-8">
-<link rel="stylesheet" href="../Source/assets/css/simplemodal.css"
-	type="text/css" media="screen" title="no title" charset="utf-8">
-<script src="assets/javascript/mootools-core-1.3.1.js"
-	type="text/javascript" charset="utf-8"></script>
-<script src="assets/javascript/mootools-more-1.3.1.1.js"
-	type="text/javascript" charset="utf-8"></script>
-<script src="../Source/simple-modal.js" type="text/javascript"
-	charset="utf-8"></script>
-<script src="assets/javascript/demo.js" type="text/javascript"
-	charset="utf-8"></script>
+<link
+	href="${pageContext.request.contextPath }/css/datetimepicker/bootstrap-datetimepicker.min.css"
+	rel="stylesheet">
 </head>
 
 <body>
-	<button id="test">点击</button>
+	<input id="date" class="span2" size="16" type="text" value="12-02-2012">
+
+
+
+
+
+	<!-- spring -->
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath }/js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath }/js/bootstrap.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath }/js/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath }/js/datetimepicker/bootstrap-datetimepicker.fr.js"></script>
+	<script type="text/javascript">
+		$('#date').datetimepicker({
+			format: 'yyyy-mm-dd'
+		});
+	</script>
 </body>
+
 </html>

@@ -35,29 +35,7 @@
 		<!-- 搜索栏 -->
 		<div id="page-wrapper" class="gray-bg dashbard-1">
 			<div class="row border-bottom">
-				<nav class="navbar navbar-static-top" role="navigation"
-					style="margin-bottom: 0">
-					<div class="navbar-header">
-						<a class="navbar-minimalize minimalize-styl-2 btn btn-primary "
-							href="#"><i class="fa fa-bars"></i> </a>
-						<form role="search" class="navbar-form-custom" method="post"
-							action="search_results.html">
-							<div class="form-group">
-								<input type="text" placeholder="请输入您需要搜索的订单 …"
-									class="form-control" name="top-search" id="top-search">
-							</div>
-						</form>
-					</div>
-					<ul class="nav navbar-top-links navbar-right">
-						<li><span class="m-r-sm text-muted welcome-message"><a
-								href="index.html" title="返回首页"><i class="fa fa-home"></i></a>欢迎使用港荣后台管理系统</span>
-						</li>
-						<li><a href="login.html"> <i class="fa fa-sign-out"></i>
-								退出
-						</a></li>
-					</ul>
-
-				</nav>
+				<%@include file="top.jsp"%>
 			</div>
 			<!-- 搜索栏结束 -->
 			<!-- 内容主体结束 -->
@@ -82,63 +60,98 @@
 								</div>
 							</div>
 							<div class="ibox-content">
-								<div class="row">
+								<form class="form-inline"
+									action="${pageContext.request.contextPath}/factory/search"
+									method="post">
+									<input type="hidden" name="fid" value="${fid }">
 									<div class="col-sm-2">
-										<select class="form-control">
-											<option>全部</option>
-											<option>未发货</option>
-											<option>运输中</option>
-											<option>已完成</option>
+										<select name="option" id="option" class="form-control"
+											required="">
+											<option value="">条件查询</option>
+											<option value="4">地域查询</option>
+											<option value="5">货品数量查询</option>
+											<option value="6">品类查询</option>
+											<option value="7">规格查询</option>
 										</select>
 									</div>
-									<div class="col-sm-3">
-										<a href="" class="btn btn-primary">查询</a>
+									<input id="search" name="search" type="text"
+										placeholder="请选择查询条件" class="form-control" required="" />
+									<button type="submit" class="btn btn-info">筛选</button>
+								</form>
+								<form
+									action="${pageContext.request.contextPath}/factory/filterDay"
+									method="post" class="form-inline">
+									<input type="hidden" name="fid" value="${fid }">
+									<div class="col-sm-2">
+										<select name="dateType" id="option" class="form-control"
+											required="">
+											<option value="">时间查询</option>
+											<option value="1">按下单时间查询</option>
+											<option value="2">按发货时间查询</option>
+											<option value="3">按到货时间查询</option>
+										</select>
 									</div>
-								</div>
+									<input name="begin" type="date" placeholder="起始时间"
+										class="form-control" required="" /> <label>-</label> <input
+										style="display: inline;" name="end" type="date"
+										placeholder="结束时间" class="form-control" required="" />
+									<button type="submit" class="btn btn-primary">查询</button>
+								</form>
+							</div>
+							<form
+								action="${pageContext.request.contextPath}/factory/excelOrder"
+								method="post" onsubmit="return checkSelect()">
+								<button type="submit" href="" class="btn btn-warning"
+									style="position:absolute;left:90%;bottom:75%;">数据下载</button>
 								<table class="table table-striped table-bordered table-hover "
 									id="editable">
 									<thead>
 										<tr>
-											<th><input type="checkbox" class="form-control">
-											</th>
+											<th><input id="CheckAll" type="checkbox"
+												class="form-control"></th>
 											<th>经销商</th>
 											<th>电话号码</th>
 											<th>所在省市</th>
-											<th>货物详情</th>
+											<th>货品数量</th>
+											<th>货品品类</th>
+											<th>货品规格</th>
 											<th>下单时间</th>
 											<th>发货时间</th>
 											<th>发货厂家</th>
 											<th>规定到达时间</th>
 											<th>到货时间</th>
 											<th>状态</th>
-											<th>操作</th>
+											<!-- <th>操作</th> -->
 										</tr>
 									</thead>
 									<tbody>
-										<c:if test="${empty pager.list}">
+										<c:if test="${empty list}">
 											<tr class="gradeB">
-												<td colspan="13">暂无未分配订单</td>
+												<td colspan="13">暂无订单</td>
 											</tr>
 										</c:if>
-										<c:if test="${!empty pager.list }">
-											<c:forEach items="${pager.list }" var="order">
-												<tr>
-													<td><input type="checkbox" class="form-control"
-														value="${order.oid }"></td>
-													<td><c:out value="${order.dealer.dname}" /></td>
-													<td><c:out value="${order.dealer.phone}" /></td>
-													<td><c:out value="${order.dealer.province}" /></td>
-													<td><c:forEach items="${order.goodsList}" var="goods">
-															<div>名称：${goods.gname}，数量：${goods.num}，规格：${goods.sname }</div>
-														</c:forEach></td>
-													<td><c:out value="${order.createday}" /></td>
-													<td><c:out value="${order.sendday}" /></td>
-													<td><c:out value="${order.factoryname }" /></td>
-													<td><c:out value="${order.dealer.limitdays }" /></td>
-													<td><c:out value="${order.arriveday }" /></td>
-													<td><c:out value="${order.stauts }" /></td>
-													<td><a href="" class="btn btn-primary">查看</a></td>
-												</tr>
+										<c:if test="${!empty list }">
+											<c:forEach items="${list }" var="order">
+												<c:if
+													test="${!empty order.gname &&!empty order.dealer && !empty order.sname}">
+													<tr>
+														<td><input name="select" type="checkbox"
+															class="form-control" value="${order.oid }"></td>
+														<td><c:out value="${order.dealer.dname}" /></td>
+														<td><c:out value="${order.dealer.phone}" /></td>
+														<td><c:out value="${order.dealer.province}" /></td>
+														<td><c:out value="${order.num }" /></td>
+														<td><c:out value="${order.gname }" /></td>
+														<td><c:out value="${order.sname }" /></td>
+														<td><c:out value="${order.createday}" /></td>
+														<td><c:out value="${order.sendday}" /></td>
+														<td><c:out value="${order.factoryname }" /></td>
+														<td><c:out value="${order.dealer.limitdays }" /></td>
+														<td><c:out value="${order.arriveday }" /></td>
+														<td><c:out value="${order.status }" /></td>
+														<!-- <td><button class="btn btn-primary" onclick="alert('hello')">查看</button></td> -->
+													</tr>
+												</c:if>
 											</c:forEach>
 										</c:if>
 									</tbody>
@@ -148,19 +161,20 @@
 											<th>经销商</th>
 											<th>电话号码</th>
 											<th>所在省市</th>
-											<th>货物详情</th>
+											<th>货品数量</th>
+											<th>货品品类</th>
+											<th>货品规格</th>
 											<th>下单时间</th>
 											<th>发货时间</th>
 											<th>发货厂家</th>
 											<th>规定到达时间</th>
 											<th>到货时间</th>
 											<th>状态</th>
-											<th>操作</th>
+											<!-- <th>操作</th> -->
 										</tr>
 									</tfoot>
 								</table>
-
-							</div>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -172,7 +186,7 @@
 	                               By：<a href="#" target="_blank">港荣</a>
 	                           </div> -->
 				<div>
-					<strong>物流跟踪系统</strong>&copy; 港荣食品有限公司 &nbsp;&nbsp;2016
+					<strong>订单管理系统</strong>&copy; 港荣食品有限公司 &nbsp;&nbsp;2016
 				</div>
 			</div>
 
@@ -193,7 +207,60 @@
 	<script src="${pageContext.request.contextPath }/js/hplus.js?v=2.2.0"></script>
 	<script
 		src="${pageContext.request.contextPath }/js/plugins/pace/pace.min.js"></script>
+	<script>
+		/* 检查是有选择订单 */
+		function checkSelect() {
+			var flag = $("[name=select]:checkbox").is(':checked');
+			if (!flag) {
+				alert("请选择需要导出订单");
+				return false;
+			}
+			return true;
+		}
 
+		/* 	function checkSearch() {
+				alert("Hello:" + $('#option option:selected').val());
+				var selectIndex = $("#option").get(0).selectedIndex;
+				return false;
+			} */
+		$(document).ready(function() {
+			$("#option").change(function() {
+				var selectIndex = $("#option").get(0).selectedIndex;
+				if (selectIndex == 1) {
+					$('#search').attr({
+						'type' : 'text',
+						'placeholder' : '请输入需要查询的地域'
+					});
+				} else if (selectIndex == 2) {
+					$('#search').attr({
+						'type' : 'text',
+						'placeholder' : '请输入货品数量进行查询'
+					});
+				} else if (selectIndex == 3) {
+					$('#search').attr({
+						'type' : 'text',
+						'placeholder' : '请输入货品品类进行查询'
+					});
+				} else if (selectIndex == 4) {
+					$('#search').attr({
+						'type' : 'text',
+						'placeholder' : '请输入货品规格进行查询'
+					});
+				}
+			});
+		});
+
+		/* 全选所有订单*/
+		$(function() {
+			$("#CheckAll").click(function() {
+				var flag = $("#CheckAll").is(':checked');
+				$("[name=select]:checkbox").each(function() {
+					/* $(this).attr("checked", flag); */
+					$("[name=select]:checkbox").prop("checked", flag);
+				});
+			});
+		});
+	</script>
 </body>
 
 </html>
