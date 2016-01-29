@@ -65,12 +65,14 @@
 									id="editable">
 									<thead>
 										<tr>
-											<th>经销商名称</th>
-											<th>经销商号码</th>
-											<th>经销商所在省市</th>
-											<th>货物详情</th>
-											<th>规定到达时间</th>
+											<th>经销商</th>
+											<th>电话号码</th>
+											<th>所在省市</th>
+											<th>货品数量（箱）</th>
+											<th>货品种类</th>
+											<th>货品规格</th>
 											<th>下单时间</th>
+											<th>发货后规定到达时间</th>
 											<th>分配厂家</th>
 										</tr>
 									</thead>
@@ -84,11 +86,12 @@
 												<td>${order.dealer.dname}</td>
 												<td>${order.dealer.phone}</td>
 												<td>${order.dealer.province}</td>
-												<td><c:forEach items="${order.goodsList}" var="goods">
-														<div>名称：${goods.gname}，数量：${goods.num}，规格：${goods.sname }</div>
-													</c:forEach></td>
-												<td>${order.dealer.limitdays}天</td>
+												<td>${order.num }</td>
+												<td>${order.gname }</td>
+												<td>${order.sname}</td>
 												<td>${order.createday}</td>
+												<td>${order.dealer.limitdays}天</td>
+
 												<td><select name="disfactory">
 														<c:forEach items="${factorys}" var="factory">
 															<option value="${factory.fid}">${factory.fname}</option>
@@ -101,11 +104,13 @@
 									<tfoot>
 										<tr>
 											<th>经销商</th>
-											<th>客户号码</th>
+											<th>电话号码</th>
 											<th>所在省市</th>
-											<th>货物详情</th>
-											<th>规定到达时间</th>
+											<th>货品数量（箱）</th>
+											<th>货品种类</th>
+											<th>货品规格</th>
 											<th>下单时间</th>
+											<th>发货后规定到达时间</th>
 											<th>分配厂家</th>
 										</tr>
 									</tfoot>

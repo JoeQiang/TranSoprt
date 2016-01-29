@@ -2,19 +2,29 @@ package com.vanroid.transopt.controller;
 
 import java.io.IOException;
 
-import com.jfinal.aop.Before;
+import org.apache.log4j.Logger;
+
 import com.jfinal.aop.Duang;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
 import com.taobao.api.ApiException;
-import com.vanroid.transopt.interceptor.LoginInterceptor;
 import com.vanroid.transopt.model.Dealer;
+import com.vanroid.transopt.model.GRFactory;
 import com.vanroid.transopt.model.GROrder;
 import com.vanroid.transopt.service.OrderManageService;
+import com.vanroid.transopt.uitls.Constant;
 
-@Before(LoginInterceptor.class)
 public class OrderController extends Controller {
 	private OrderManageService om = Duang.duang(OrderManageService.class);
+	private Logger logger = Logger.getLogger(OrderController.class);
+
+	/**
+	 * 下单ajax
+	 */
+	public void makeorder() {
+		om.makeOrder(getParaToInt(0));
+		renderJson(1);
+	}
 
 	// 分配订单
 	public void distorder() {
@@ -35,13 +45,28 @@ public class OrderController extends Controller {
 	// 经销商模块下订单发货和信息通知的列表
 	public void deliveryorder() {
 		/**
-		 * 此处验证登陆者身份,一下为管理员的权限调用方法
+		 * 管理员权限下可以看到未发货的订单
 		 */
-		Page<GROrder> page = om.getDelivOrder(getParaToInt(0));
-		setAttr("delivOrder", page.getList());
-		setAttr("pageNum", page.getPageNumber());
-		setAttr("totalPage", page.getTotalPage());
-		render("/jsp/ordersend.jsp");
+		if (getSessionAttr("rank").equals(Constant.USER_TYPE_ADMIN)) {
+			Page<GROrder> page = om.getDelivOrder(getParaToInt(0));
+			setAttr("delivOrder", page.getList());
+			setAttr("pageNum", page.getPageNumber());
+			setAttr("totalPage", page.getTotalPage());
+			render("/jsp/ordersend.jsp");
+		}
+		/**
+		 * 厂家权限下看到自己的未发货订单
+		 */
+		else if (getSessionAttr("rank").equals(Constant.USER_TYPE_FACTORY)) {
+			GRFactory factory = getSessionAttr("user");
+			Page<GROrder> page = om.getDelivOrder(factory.getInt("fid"),
+					getParaToInt(0));
+			setAttr("delivOrder", page.getList());
+			setAttr("pageNum", page.getPageNumber());
+			setAttr("totalPage", page.getTotalPage());
+			render("/jsp/ordersend.jsp");
+		}
+
 	}
 
 	// 发货ajax

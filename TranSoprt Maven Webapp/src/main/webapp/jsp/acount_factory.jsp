@@ -45,7 +45,7 @@
 					<div class="col-lg-12">
 						<div class="ibox float-e-margins">
 							<div class="ibox-title">
-								<h5>经销商发货</h5>
+								<h5>厂家管理</h5>
 								<div class="ibox-tools">
 									<a class="collapse-link"> <i class="fa fa-chevron-up"></i>
 									</a> <a class="dropdown-toggle" data-toggle="dropdown"
@@ -65,66 +65,29 @@
 									id="editable">
 									<thead>
 										<tr>
-											<th>经销商</th>
-											<th>电话号码</th>
-											<th>所在省市</th>
-											<th>货品数量（箱）</th>
-											<th>货品种类</th>
-											<th>货品规格</th>
-											<th>下单时间</th>
-											<!-- <th>发货时间</th> -->
-											<th>发货厂家</th>
-											<th>发货后规定到达时间</th>
-											<th>状态</th>
+											<th>厂家</th>
 											<th>操作</th>
 										</tr>
 									</thead>
 									<tbody>
-										<c:if test="${fn:length(delivOrder)==0 }">
-											<tr class="gradeB">
-												<td>暂无未发货订单</td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-										</c:if>
-										<c:forEach items="${delivOrder}" var="order">
-											<tr class="gradeB" id="tr${order.oid }">
-												<td>${order.dealer.dname}</td>
-												<td>${order.dealer.phone}</td>
-												<td>${order.dealer.province}</td>
-												<td>${order.num}</td>
-												<td>${order.gname}</td>
-												<td>${order.sname}</td>
-												<td>${order.createday}</td>
-												<%-- 	<td>${order.sendday}</td> --%>
-												<td>${order.factoryname}</td>
-												<td>${order.dealer.limitdays}天</td>
-												<td>${order.status}</td>
-												<td><a type="button" class="btn btn-warning"
-													href="javascript:delivery(${order.oid})">发货</a></td>
+										<c:if test="${empty pager.list }">
+											<tr>
+												<td colspan="2">暂无厂家</td>
 											</tr>
-										</c:forEach>
+										</c:if>
+										<c:if test="${!empty pager.list }">
+											<c:forEach items="${pager.list }" var="factory">
+												<tr>
+													<td><c:out value="${factory.fname }" /></td>
+													<td style="width: 200px"><a class="btn btn-primary"
+														href="${pageContext.request.contextPath }/factory/showOrder/1-${factory.fid}">查看</a></td>
+												</tr>
+											</c:forEach>
+										</c:if>
 									</tbody>
 									<tfoot>
 										<tr>
-											<th>经销商</th>
-											<th>电话号码</th>
-											<th>所在省市</th>
-											<th>货品数量（箱）</th>
-											<th>货品种类</th>
-											<th>货品规格</th>
-											<th>下单时间</th>
-											<!-- <th>发货时间</th> -->
-											<th>发货厂家</th>
-											<th>发货后规定到达时间</th>
-											<th>状态</th>
+											<th>厂家</th>
 											<th>操作</th>
 										</tr>
 									</tfoot>
@@ -135,41 +98,27 @@
 					</div>
 				</div>
 				<!--分页 -->
+
 				<nav>
 					<ul class="pagination">
-						<li id="lipre"><c:if test="${pageNum!=1}">
+						<li id="lipre"><c:if test="${pager.pageNumber ne 1}">
 								<a
-									href="${pageContext.request.contextPath }/order/deliveryorder/${pageNum-1}"
-									aria-label="Previous">
-							</c:if> <span aria-hidden="true">上一页</span> </a></li>
-						<c:forEach var="i" begin="1" end="${totalPage}" step="1">
+									href="${pageContext.request.contextPath}/factory/manager/${pager.pageNumber-1}"
+									aria-label="Previous"><span aria-hidden="true">上一页</span> </a>
+							</c:if></li>
+						<c:forEach var="i" begin="1" end="${pager.totalPage }" step="1">
 							<li><a
-								href="${pageContext.request.contextPath}/order/deliveryorder/${i}">${i}</a></li>
+								href="${pageContext.request.contextPath}/factory/manager/${i}">${i}</a></li>
 						</c:forEach>
-						<li id="linext"><c:if test="${pageNum<totalPage}">
+
+						<li id="linext"><c:if
+								test="${pager.pageNumber ne pager.totalPage }">
 								<a
-									href="${pageContext.request.contextPath }/order/deliveryorder/${pageNum+1}"
-									aria-label="Next">
-							</c:if> <span aria-hidden="true">下一页</span> </a></li>
+									href="${pageContext.request.contextPath}/factory/manager/${pager.pageNumber+1}"
+									aria-label="Next"><span aria-hidden="true">下一页</span> </a>
+							</c:if></li>
 					</ul>
 				</nav>
-				<!-- 短信信息编辑 -->
-				<div id="modal-form1" class="modal fade" aria-hidden="false">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-body">
-								<div class="row">
-									<div class="col-sm-6 b-r">
-										<h2>短信额外通知：</h2>
-										<div id="showsta"></div>
-
-
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
 			<!-- 内容主体结束 -->
 			<!-- 脚部 -->
@@ -201,18 +150,8 @@
 		src="${pageContext.request.contextPath }/js/plugins/pace/pace.min.js"></script>
 
 	<script>
-		function delivery(oid) {
-			$.ajax({
-				url : '${pageContext.request.contextPath}/order/delivery/'
-						+ oid,
-				type : 'GET',
-				success : function(data) {
-					if (data == 1) {
-						$("#tr" + oid).hide();
-						alert("发货成功！已通知用户！");
-					}
-				},
-				dataType : 'json'
-			});
-		}
-	
+		
+	</script>
+</body>
+
+</html>
