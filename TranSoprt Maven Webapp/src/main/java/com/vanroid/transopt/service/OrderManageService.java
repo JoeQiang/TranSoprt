@@ -1,28 +1,22 @@
 package com.vanroid.transopt.service;
 
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Properties;
 
 import org.apache.commons.lang.time.DateUtils;
 import org.apache.log4j.Logger;
 
 import com.google.gson.Gson;
 import com.jfinal.aop.Before;
+import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Page;
+import com.jfinal.plugin.activerecord.Record;
 import com.jfinal.plugin.activerecord.tx.Tx;
 import com.mysql.fabric.xmlrpc.base.Data;
 import com.taobao.api.ApiException;
-import com.taobao.api.DefaultTaobaoClient;
 import com.taobao.api.TaobaoClient;
 import com.taobao.api.request.AlibabaAliqinFcSmsNumSendRequest;
 import com.taobao.api.response.AlibabaAliqinFcSmsNumSendResponse;
@@ -30,6 +24,7 @@ import com.vanroid.transopt.model.Dealer;
 import com.vanroid.transopt.model.GRFactory;
 import com.vanroid.transopt.model.GROrder;
 import com.vanroid.transopt.model.NoteTemplate;
+import com.vanroid.transopt.model.ShoppingCart;
 import com.vanroid.transopt.uitls.NoteUtil;
 
 /**
@@ -42,6 +37,37 @@ public class OrderManageService {
 	Logger logger = Logger.getLogger(OrderManageService.class);
 
 	/**
+	 * 经销商下确认订单
+	 */
+	@Before(Tx.class)
+	public boolean makeOrder(int did) {
+
+		String today = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		List<ShoppingCart> list = ShoppingCart.dao.find(
+				"select * from shoppingcart where did=?", did);
+		// 先创建订单
+		GROrder order = new GROrder().set("dealerid", did)
+				.set("createday", today).set("status", "未发货");
+		boolean res1 = order.save();
+		if (res1 == false)
+			return false;
+		int oid = order.getInt("oid");
+		// 插入订单的商品项目并且清空购物车
+		for (ShoppingCart shoppingCart : list) {
+			Record record = new Record().set("oid", oid)
+					.set("gid", shoppingCart.getInt("gid"))
+					.set("sid", shoppingCart.getInt("sid"))
+					.set("num", shoppingCart.getInt("num"));
+			boolean res2 = Db.save("order_goods", "oid,gid,sid", record);
+			if (res2 == true)
+				ShoppingCart.dao.deleteById(shoppingCart.getInt("shid"));
+			else
+				return false;
+		}
+		return true;
+	}
+
+	/**
 	 * 管理员管理的新下的订单的分页
 	 */
 	public Page<GROrder> getNewOrderPage(int pageNum) {
@@ -49,9 +75,7 @@ public class OrderManageService {
 		Page<GROrder> page = GROrder.dao.paginate(pageNum, 10, "select *",
 				"from grorder where factoryid is null");
 		for (GROrder order : page.getList()) {
-			order.getDealer();
-			// order.getFactory();
-			// order.getGoods();
+			order.getAttrFromOtherTable();
 		}
 		return page;
 	}
@@ -76,12 +100,6 @@ public class OrderManageService {
 	public List<GROrder> getOrderByFid(int fid) {
 		String sql = "select * from grorder where factoryid=?";
 		return GROrder.dao.find(sql, fid);
-	}
-
-	/**
-	 * 厂家账户下的经销商板块下的订单
-	 */
-	public void getNewOrderByFid(int fid) {
 	}
 
 	/**
