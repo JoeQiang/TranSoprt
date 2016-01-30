@@ -7,9 +7,9 @@
 <meta name="renderer" content="webkit">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<title>港荣食品物流跟踪系统</title>
-<meta name="keywords" content="港荣食品物流跟踪系统">
-<meta name="description" content="港荣食品物流跟踪系统">
+<title>港荣订单管理系统</title>
+<meta name="keywords" content="港荣订单管理系统">
+<meta name="description" content="港荣订单管理系统">
 
 <link
 	href="${pageContext.request.contextPath }/css/bootstrap.min.css?v=3.4.0"
@@ -111,28 +111,33 @@
 					</div>
 				</div>
 			</div>
-			<nav>
-				<ul class="pagination">
-					<li id="lipre"><c:if test="${pager.pageNumber ne 1}">
-							<a
-								href="${pageContext.request.contextPath}/factory/showOrder/${pager.pageNumber-1}-${fid}"
-								aria-label="Previous"><span aria-hidden="true">上一页</span> </a>
-						</c:if></li>
-					<c:forEach var="i" begin="1" end="${pager.totalPage }" step="1">
-						<li><a
-							href="${pageContext.request.contextPath}/factory/manager/${i}-${fid}">${i}</a></li>
-					</c:forEach>
-
-					<li id="linext"><c:if
-							test="${pager.pageNumber ne pager.totalPage }">
-							<a
-								href="${pageContext.request.contextPath}/factory/showOrder/${pager.pageNumber+1}-${fid}"
-								aria-label="Next"><span aria-hidden="true">下一页</span> </a>
-						</c:if></li>
-				</ul>
-			</nav>
-			<!-- 内容主体结束 -->
-
+			<div class="col-sm-6">
+				<div class="dataTables_paginate paging_simple_numbers"
+					id="dataTables-example_paginate">
+					<ul class="pagination">
+						<li class="paginate_button previous" tabindex="0"
+							id="dataTables-example_previous"><a
+							href="${pageContext.request.contextPath }/manager/dealer/${pager.pageNumber-1}">上一页</a></li>
+						<c:forEach var="i" begin="1" end="${pager.totalPage }">
+							<c:if test="${pager.pageNumber eq i}">
+								<li class="paginate_button active disabled" tabindex="0"><a
+									href="${pageContext.request.contextPath }/manager/dealer"><c:out
+											value="${i }" /></a></li>
+							</c:if>
+							<c:if test="${pager.pageNumber ne i}">
+								<li class="paginate_button" tabindex="0"><a
+									href="${pageContext.request.contextPath }/manager/dealer/${i}">
+										<c:out value="${i }" />
+								</a></li>
+							</c:if>
+						</c:forEach>
+						<li class="paginate_button next" tabindex="0"
+							id="dataTables-example_next"><a id="next"
+							href="${pageContext.request.contextPath }/manager/dealer/<c:if test='${pager.pageNumber eq pager.totalPage }'>${pager.totalPage }</c:if>
+											<c:if test='${pager.pageNumber ne pager.totalPage }'>${pager.pageNumber+1}</c:if>">下一页</a></li>
+					</ul>
+				</div>
+			</div>
 			<!-- Modal -->
 			<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 				aria-labelledby="myModalLabel">
@@ -166,7 +171,7 @@
 	                               By：<a href="#" target="_blank">港荣</a>
 	                           </div> -->
 				<div>
-					<strong>物流跟踪系统</strong>&copy; 港荣食品有限公司 &nbsp;&nbsp;2016
+					<strong>订单管理系统</strong>&copy; 港荣食品有限公司 &nbsp;&nbsp;2016
 				</div>
 			</div>
 
@@ -201,8 +206,8 @@
 	<button type="button">点击</button>
 
 	<script>
-	/* jquery写法,这样的话不用显性绑定button,方便代码的维护，
-	而且jquery对于html的DOM操作比原生的js容易多 */
+		/* jquery写法,这样的话不用显性绑定button,方便代码的维护，
+		而且jquery对于html的DOM操作比原生的js容易多 */
 		$(document).ready(function() {
 			$("button").click(function() {
 				alert('hello!');
