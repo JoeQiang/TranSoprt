@@ -5,10 +5,7 @@ import java.io.IOException;
 
 import com.jfinal.aop.Before;
 import com.jfinal.aop.Clear;
-<<<<<<< HEAD
 import com.jfinal.aop.Duang;
-=======
->>>>>>> 8a252c50ec55153ff486ad7a4a233ce1b0aedeb2
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.upload.UploadFile;
@@ -24,19 +21,13 @@ import com.vanroid.transopt.uitls.MD5Utils;
 
 @Before(LoginInterceptor.class)
 public class DealerController extends Controller {
-<<<<<<< HEAD
+
 	private DealerService service = Duang.duang(DealerServiceImp.class);
 
 	@Clear(LoginInterceptor.class)
 	public void login() {
 		render("/jsp/dealer_login.jsp");
-=======
-	private DealerService service = new DealerServiceImp();
 
-	@Clear(LoginInterceptor.class)
-	public void login() {
-		render("/jsp/dealerlogin.jsp?code=" + getParaToInt(0));
->>>>>>> 8a252c50ec55153ff486ad7a4a233ce1b0aedeb2
 	}
 
 	/**
@@ -69,7 +60,7 @@ public class DealerController extends Controller {
 	 */
 	@Clear(LoginInterceptor.class)
 	public void getdynamic() throws IOException, ApiException {
-<<<<<<< HEAD
+
 		int res = service.getDynamPwd(getPara(0));
 		renderJson(res);
 	}
@@ -89,9 +80,7 @@ public class DealerController extends Controller {
 	public void changepwd(){
 		int res=service.changePwd((String)getSessionAttr("user"), getPara("newPwd"));
 		renderJson(res);
-=======
-		service.getDynamPwd(getPara(0));
->>>>>>> 8a252c50ec55153ff486ad7a4a233ce1b0aedeb2
+
 	}
 
 	public void index() {

@@ -52,17 +52,6 @@
 						class="nav-label">账户&nbsp;<b class="caret"></b></span> <span
 						class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
-<<<<<<< HEAD
-						<li class="active"><a
-							href="${pageContext.request.contextPath}/order/distorder/1">订单管理</a></li>
-						<li><a
-							href="${pageContext.request.contextPath}/factory/manager/1">厂家订单</a></li>
-						<li><a
-							href="${pageContext.request.contextPath}/manager/dealer">经销商管理</a></li>
-						<li><a href="${pageContext.request.contextPath}/goods/list/1">商品管理</a></li>
-						<li><a
-							href="${pageContext.request.contextPath }/factory/setting/1">厂家设置</a></li>
-=======
 
 						<c:if test="${!empty user.nickname }">
 							<li class="active"><a
@@ -80,7 +69,6 @@
 						<c:if test="${empty user.nickname}">
 							<li><a href="">修改密码</a></li>
 						</c:if>
->>>>>>> 8a252c50ec55153ff486ad7a4a233ce1b0aedeb2
 					</ul></li>
 				<!-- 厂家模块 -->
 				<li><c:if test="${!empty user.nickname}">

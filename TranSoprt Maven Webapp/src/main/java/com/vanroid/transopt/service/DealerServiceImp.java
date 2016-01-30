@@ -73,20 +73,13 @@ public class DealerServiceImp implements DealerService {
 		TaobaoClient client = new NoteUtil().getTaobaoClient();
 		AlibabaAliqinFcSmsNumSendRequest req = new AlibabaAliqinFcSmsNumSendRequest();
 		req.setSmsType("normal");
-<<<<<<< HEAD
 		req.setSmsFreeSignName(NoteUtil.getSignName());
-=======
-		req.setSmsFreeSignName("活动验证");
->>>>>>> 8a252c50ec55153ff486ad7a4a233ce1b0aedeb2
 		req.setSmsParamString("{'dynampwd':'" + dynamPwd + "'}");
 		req.setRecNum(phone);
 		req.setSmsTemplateCode(NoteUtil.getTemplate2());
 		AlibabaAliqinFcSmsNumSendResponse rsp = client.execute(req);
-<<<<<<< HEAD
 		return 1;
-=======
 
->>>>>>> 8a252c50ec55153ff486ad7a4a233ce1b0aedeb2
 	}
 
 	/**

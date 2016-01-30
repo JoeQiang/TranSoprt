@@ -22,7 +22,6 @@ import com.vanroid.transopt.model.Dealer;
 import com.vanroid.transopt.model.GRFactory;
 import com.vanroid.transopt.model.GRGoods;
 import com.vanroid.transopt.model.GROrder;
-import com.vanroid.transopt.model.ShoppingCart;
 import com.vanroid.transopt.model.Standard;
 
 public class MyConfiguration extends JFinalConfig {
@@ -44,11 +43,7 @@ public class MyConfiguration extends JFinalConfig {
 	 */
 	@Override
 	public void configRoute(Routes me) {
-<<<<<<< HEAD
-		me.add("/", LoginController.class, "/");//默认登陆页
-=======
 		me.add("/", LoginController.class, "/");// 默认登陆页
->>>>>>> 8a252c50ec55153ff486ad7a4a233ce1b0aedeb2
 		me.add("/account", LoginController.class, "/");
 		me.add("/manager/dealer", DealerController.class, "/");
 		me.add("/download", DownloadController.class, "/");
@@ -82,11 +77,6 @@ public class MyConfiguration extends JFinalConfig {
 		arp.addMapping("grgoods", "gid", GRGoods.class);
 		arp.addMapping("standard", "sid", Standard.class);
 		arp.addMapping("admin", Admin.class);
-<<<<<<< HEAD
-		arp.addMapping("shoppingcart","shid", ShoppingCart.class);
-=======
-		arp.addMapping("shoppingcart", "shid", ShoppingCart.class);
->>>>>>> 8a252c50ec55153ff486ad7a4a233ce1b0aedeb2
 	}
 
 	@Override

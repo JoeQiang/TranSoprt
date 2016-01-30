@@ -80,8 +80,6 @@ public class GROrder extends Model<GROrder> {
 	}
 
 	/**
-<<<<<<< HEAD
-=======
 	 * 根据搜索模糊查询品类名
 	 * 
 	 * @param search
@@ -100,20 +98,14 @@ public class GROrder extends Model<GROrder> {
 	}
 
 	/**
->>>>>>> 8a252c50ec55153ff486ad7a4a233ce1b0aedeb2
 	 * 获取重量规格名称
 	 * 
 	 * @return
 	 */
 	public String getStandardName() {
 		Standard standard = Standard.dao.findFirst(
-<<<<<<< HEAD
 				"select sid,sname from standard where sid=?", getInt("sid"));
 		put("sid", standard.getInt("sid"));
-		put("sname", standard.getStr("sname"));
-		return standard.getStr("sname");
-=======
-				"select sname from standard where sid=?", getInt("sid"));
 		put("sname", standard.getStr("sname"));
 		return standard.getStr("sname");
 	}
@@ -160,7 +152,6 @@ public class GROrder extends Model<GROrder> {
 		count = Db.queryLong(sql.toString(), getInt("factoryid"),
 				getInt("sid"), "%" + search + "%");
 		return count;
->>>>>>> 8a252c50ec55153ff486ad7a4a233ce1b0aedeb2
 	}
 
 	/**
