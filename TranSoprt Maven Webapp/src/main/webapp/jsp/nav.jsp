@@ -38,8 +38,7 @@
 						</span>
 						</a>
 						<ul class="dropdown-menu animated fadeInRight m-t-xs">
-							<li><a
-								href="${pageContext.request.contextPath }/account/pwdpage">修改密码</a></li>
+							<li><a href="">修改密码</a></li>
 							<li class="divider"></li>
 							<li><a
 								href="${pageContext.request.contextPath }/account/logout">安全退出</a></li>
@@ -68,8 +67,7 @@
 								href="${pageContext.request.contextPath }/factory/setting/1">厂家设置</a></li>
 						</c:if>
 						<c:if test="${empty user.nickname}">
-							<li><a
-								href=" ${pageContext.request.contextPath }/account/pwdpage">修改密码</a></li>
+							<li><a href="">修改密码</a></li>
 						</c:if>
 					</ul></li>
 				<!-- 厂家模块 -->

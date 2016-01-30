@@ -1,11 +1,7 @@
 package com.vanroid.transopt.controller;
 
-import org.apache.taglibs.standard.lang.jstl.test.beans.Factory;
-
-import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.PathKit;
-import com.vanroid.transopt.interceptor.LoginInterceptor;
 import com.vanroid.transopt.model.Admin;
 import com.vanroid.transopt.model.GRFactory;
 import com.vanroid.transopt.service.AdminService;
@@ -13,7 +9,6 @@ import com.vanroid.transopt.service.AdminServiceImp;
 import com.vanroid.transopt.service.GRFactoryService;
 import com.vanroid.transopt.service.GRFactoryServiceImp;
 import com.vanroid.transopt.uitls.Constant;
-import com.vanroid.transopt.uitls.MD5Utils;
 
 public class LoginController extends Controller {
 	public void index() {
@@ -60,7 +55,6 @@ public class LoginController extends Controller {
 		}
 	}
 
-	@Before(LoginInterceptor.class)
 	public void logout() {
 		getSession().removeAttribute("user");
 		getSession().invalidate();
@@ -69,29 +63,5 @@ public class LoginController extends Controller {
 
 	public void main() {
 		render("jsp/index.jsp");
-	}
-
-	@Before(LoginInterceptor.class)
-	public void pwdpage() {
-		render("/jsp/acount_pwd.jsp");
-	}
-
-	@Before(LoginInterceptor.class)
-	public void cheangepwd() {
-		String pwd = getPara("pwd");
-		String rank = getSessionAttr("rank");
-		if (Constant.USER_TYPE_ADMIN.equals(rank)) {
-			Admin admin = getSessionAttr("user");
-			admin.set("password", MD5Utils.MD5(pwd)).update();
-			setAttr("msg", "修改成功");
-			render("/jsp/acount_pwd.jsp");
-		} else if (Constant.USER_TYPE_FACTORY.equals(rank)) {
-			GRFactory factory = getSessionAttr("user");
-			factory.set("fpwd", MD5Utils.MD5(pwd)).update();
-			setAttr("msg", "修改成功");
-			render("/jsp/acount_pwd.jsp");
-		}
-		setAttr("msg", "修改失败");
-		render("/jsp/acount_pwd.jsp");
 	}
 }
