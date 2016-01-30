@@ -35,33 +35,7 @@
 		<!-- 搜索栏 -->
 		<div id="page-wrapper" class="gray-bg dashbard-1">
 			<div class="row border-bottom">
-				<nav class="navbar navbar-static-top" role="navigation"
-					style="margin-bottom: 0">
-					<div class="navbar-header">
-						<a class="navbar-minimalize minimalize-styl-2 btn btn-primary "><i
-							class="fa fa-bars"></i> </a>
-						<form role="search" class="navbar-form-custom" method="post"
-							action="search_results.html">
-							<div class="form-group">
-								<!-- <input type="text" placeholder="请输入您需要搜索的订单 …"
-									class="form-control" name="top-search" id="top-search"> -->
-							</div>
-						</form>
-					</div>
-					<ul class="nav navbar-top-links navbar-right">
-						<li><span class="m-r-sm text-muted welcome-message"><a
-								href="index.html" title="返回首页"><i class="fa fa-home"></i></a>欢迎使用港荣后台管理系统</span>
-						</li>
-						<li><c:if test="${sessionScope.user == null }">
-								<a href="login"> <i class="fa fa-sign-out"></i> 登录
-								</a>
-							</c:if> <c:if test="${sessionScope.user != null }">
-								<a href="login/exit"> <i class="fa fa-sign-out"></i> 退出
-								</a>
-							</c:if></li>
-					</ul>
-
-				</nav>
+				<%@include file="top.jsp"%>
 			</div>
 			<!-- 搜索栏结束 -->
 			<!-- 内容主体结束 -->
@@ -250,144 +224,145 @@
 						</div>
 						<!-- 脚部 -->
 					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Mainly scripts -->
+	<script
+		src="${pageContext.request.contextPath }/js/jquery-2.1.1.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath }/js/bootstrap.min.js?v=3.4.0"></script>
+	<script
+		src="${pageContext.request.contextPath }/js/metisMenu/jquery.metisMenu.js"></script>
+	<script
+		src="${pageContext.request.contextPath }/js/slimscroll/jquery.slimscroll.min.js"></script>
+	<!-- Custom and plugin javascript -->
+	<script src="${pageContext.request.contextPath }/js/hplus.js?v=2.2.0"></script>
+	<script
+		src="${pageContext.request.contextPath }/js/plugins/pace/pace.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('#savebtn').click(function() {
+				save();
+			});
+		});
+		function save() {
+			if (check()) {
+				savefactory();
+			}
+		}
+		function savefactory() {
+			$
+					.ajax({
+						url : '${pageContext.request.contextPath }/factory/saveFactory',
+						dataType : 'json',
+						type : 'POST',
+						data : {
+							fname : $('#fname').val(),
+							fpwd : $('#fpwd').val(),
+						},
+						beforeSend : function() {
+							$('#msg').html('录入中...请稍等');
+						},
+						success : function(data) {
+							var json = eval(data);
+							var flag = json.info;
+							if (flag === true) {
+								$('#msg').html('录入成功！');
+								location.href = "${pageContext.request.contextPath}/factory/setting/1";
+								$('#myModal1').modal('hide');
+							} else {
+								$('#msg').html('录入失败！');
+							}
+							console.log(data);
+						}
+					});
+		}
+		function check() {
+			if ($('#fname').val() == '') {
+				$('#msg').html('厂家帐号不能为空');
+				$('fname').focus();
+				return false;
+			}
+			if ($('#fpwd').val() == '') {
+				$('#msg').html('登录密码不能为空');
+				$('fpwd').focus();
+				return false;
+			}
+			if ($('#rpwd').val() != $('#fpwd').val()) {
+				$('#msg').html('两次输入密码必须一致');
+				return false;
+			}
+			return true;
+		}
+		function checkUpdate() {
+			if ($('#ufname').val() == '') {
+				$('#umsg').html('厂家帐号不能为空');
+				$('ufname').focus();
+				return false;
+			}
+			if ($('#ufpwd').val() == '') {
+				$('#umsg').html('登录密码不能为空');
+				$('ufpwd').focus();
+				return false;
+			}
+			if ($('#urpwd').val() != $('#ufpwd').val()) {
+				$('#umsg').html('两次输入密码必须一致');
+				return false;
+			}
+			return true;
+		}
+		function getInfo(fid) {
+			var key = fid;
+			$
+					.ajax({
+						url : '${pageContext.request.contextPath}/factory/getFactoryById',
+						type : 'POST',
+						data : {
+							fid : key
+						},
+						dataType : 'json',
+						success : function(data) {
+							console.log(data);
+							var obj = eval(data);
+							$('#ufname').val(obj.fname);
+							$('#ufid').val(obj.fid);
+						}
+					});
+		}
 
-					<!-- Mainly scripts -->
-					<script
-						src="${pageContext.request.contextPath }/js/jquery-2.1.1.min.js"></script>
-					<script
-						src="${pageContext.request.contextPath }/js/bootstrap.min.js?v=3.4.0"></script>
-					<script
-						src="${pageContext.request.contextPath }/js/metisMenu/jquery.metisMenu.js"></script>
-					<script
-						src="${pageContext.request.contextPath }/js/slimscroll/jquery.slimscroll.min.js"></script>
-					<!-- Custom and plugin javascript -->
-					<script
-						src="${pageContext.request.contextPath }/js/hplus.js?v=2.2.0"></script>
-					<script
-						src="${pageContext.request.contextPath }/js/plugins/pace/pace.min.js"></script>
-					<script>
-						$(document).ready(function() {
-							$('#savebtn').click(function() {
-								save();
-							});
+		function doUpadat() {
+			if (checkUpdate()) {
+
+				$
+						.ajax({
+							url : '${pageContext.request.contextPath}/factory/updateFactory',
+							data : {
+								fid : $('#ufid').val(),
+								fname : $('#ufname').val(),
+								fpwd : $('#ufpwd').val()
+							},
+							type : 'POST',
+							beforeSend : function() {
+								$('#umsg').html('正在修改...');
+							},
+							success : function(data) {
+								var json = eval(data);
+								var flag = json.info;
+								if (flag === true) {
+									$('#umsg').html('修改成功！');
+									location.href = "${pageContext.request.contextPath}/factory/setting/1";
+									$('#myModal2').modal('hide');
+								} else {
+									$('#umsg').html('修改失败！');
+								}
+								console.log(data);
+							}
 						});
-						function save() {
-							if (check()) {
-								savefactory();
-							}
-						}
-						function savefactory() {
-							$
-									.ajax({
-										url : '${pageContext.request.contextPath }/factory/saveFactory',
-										dataType : 'json',
-										type : 'POST',
-										data : {
-											fname : $('#fname').val(),
-											fpwd : $('#fpwd').val(),
-										},
-										beforeSend : function() {
-											$('#msg').html('录入中...请稍等');
-										},
-										success : function(data) {
-											var json = eval(data);
-											var flag = json.info;
-											if (flag === true) {
-												$('#msg').html('录入成功！');
-												location.href = "${pageContext.request.contextPath}/factory/setting/1";
-												$('#myModal1').modal('hide');
-											} else {
-												$('#msg').html('录入失败！');
-											}
-											console.log(data);
-										}
-									});
-						}
-						function check() {
-							if ($('#fname').val() == '') {
-								$('#msg').html('厂家帐号不能为空');
-								$('fname').focus();
-								return false;
-							}
-							if ($('#fpwd').val() == '') {
-								$('#msg').html('登录密码不能为空');
-								$('fpwd').focus();
-								return false;
-							}
-							if ($('#rpwd').val() != $('#fpwd').val()) {
-								$('#msg').html('两次输入密码必须一致');
-								return false;
-							}
-							return true;
-						}
-						function checkUpdate() {
-							if ($('#ufname').val() == '') {
-								$('#umsg').html('厂家帐号不能为空');
-								$('ufname').focus();
-								return false;
-							}
-							if ($('#ufpwd').val() == '') {
-								$('#umsg').html('登录密码不能为空');
-								$('ufpwd').focus();
-								return false;
-							}
-							if ($('#urpwd').val() != $('#ufpwd').val()) {
-								$('#umsg').html('两次输入密码必须一致');
-								return false;
-							}
-							return true;
-						}
-						function getInfo(fid) {
-							var key = fid;
-							$
-									.ajax({
-										url : '${pageContext.request.contextPath}/factory/getFactoryById',
-										type : 'POST',
-										data : {
-											fid : key
-										},
-										dataType : 'json',
-										success : function(data) {
-											console.log(data);
-											var obj = eval(data);
-											$('#ufname').val(obj.fname);
-											$('#ufid').val(obj.fid);
-										}
-									});
-						}
-
-						function doUpadat() {
-							if (checkUpdate()) {
-
-								$
-										.ajax({
-											url : '${pageContext.request.contextPath}/factory/updateFactory',
-											data : {
-												fid : $('#ufid').val(),
-												fname : $('#ufname').val(),
-												fpwd : $('#ufpwd').val()
-											},
-											type : 'POST',
-											beforeSend : function() {
-												$('#umsg').html('正在修改...');
-											},
-											success : function(data) {
-												var json = eval(data);
-												var flag = json.info;
-												if (flag === true) {
-													$('#umsg').html('修改成功！');
-													location.href = "${pageContext.request.contextPath}/factory/setting/1";
-													$('#myModal2')
-															.modal('hide');
-												} else {
-													$('#umsg').html('修改失败！');
-												}
-												console.log(data);
-											}
-										});
-							}
-						}
-					</script>
+			}
+		}
+	</script>
 </body>
 
 </html>

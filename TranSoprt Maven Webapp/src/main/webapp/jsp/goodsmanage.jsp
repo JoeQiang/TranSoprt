@@ -38,6 +38,7 @@
 		<!-- 搜索栏 -->
 		<div id="page-wrapper" class="gray-bg dashbard-1">
 			<div class="row border-bottom">
+<<<<<<< HEAD
 				<nav class="navbar navbar-static-top" role="navigation"
 					style="margin-bottom: 0">
 					<div class="navbar-header">
@@ -68,6 +69,12 @@
 			</div>
 			<!-- 搜索栏结束 -->
 			<!-- 内容主体 -->
+=======
+				<%@include file="top.jsp"%>
+			</div>
+			<!-- 搜索栏结束 -->
+	<!-- 内容主体 -->
+>>>>>>> 8a252c50ec55153ff486ad7a4a233ce1b0aedeb2
 			<div class="row wrapper border-bottom white-bg page-heading">
 			<div><div><div>
 				<div class="row">

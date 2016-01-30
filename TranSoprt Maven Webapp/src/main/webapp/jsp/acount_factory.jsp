@@ -45,7 +45,7 @@
 					<div class="col-lg-12">
 						<div class="ibox float-e-margins">
 							<div class="ibox-title">
-								<h5>订单管理</h5>
+								<h5>厂家管理</h5>
 								<div class="ibox-tools">
 									<a class="collapse-link"> <i class="fa fa-chevron-up"></i>
 									</a> <a class="dropdown-toggle" data-toggle="dropdown"
@@ -65,57 +65,30 @@
 									id="editable">
 									<thead>
 										<tr>
-											<th>经销商</th>
-											<th>电话号码</th>
-											<th>所在省市</th>
-											<th>货品数量（箱）</th>
-											<th>货品种类</th>
-											<th>货品规格</th>
-											<th>下单时间</th>
-											<th>发货后规定到达时间</th>
-											<th>分配厂家</th>
+											<th>厂家</th>
+											<th>操作</th>
 										</tr>
 									</thead>
 									<tbody>
-										<c:if test="${fn:length(newOrder)==0 }">
-											<tr class="gradeB">
-												<td colspan="7">暂无未分配订单</td>
-										</c:if>
-										<c:forEach items="${newOrder}" var="order">
-											<tr class="gradeB" id="td${order.oid }">
-												<td>${order.dealer.dname}</td>
-												<td>${order.dealer.phone}</td>
-												<td>${order.dealer.province}</td>
-												<td>${order.num }</td>
-												<td>${order.gname }</td>
-												<td>${order.sname}</td>
-												<td>${order.createday}</td>
-												<td>${order.dealer.limitdays}天</td>
-<<<<<<< HEAD
-												
-=======
-
->>>>>>> 8a252c50ec55153ff486ad7a4a233ce1b0aedeb2
-												<td><select name="disfactory">
-														<c:forEach items="${factorys}" var="factory">
-															<option value="${factory.fid}">${factory.fname}</option>
-														</c:forEach>
-												</select> <a type="button" class="btn btn-warning"
-													href="javascript:disfactory(${order.oid})">确定</a></td>
+										<c:if test="${empty pager.list }">
+											<tr>
+												<td colspan="2">暂无厂家</td>
 											</tr>
-										</c:forEach>
+										</c:if>
+										<c:if test="${!empty pager.list }">
+											<c:forEach items="${pager.list }" var="factory">
+												<tr>
+													<td><c:out value="${factory.fname }" /></td>
+													<td style="width: 200px"><a class="btn btn-primary"
+														href="${pageContext.request.contextPath }/factory/showOrder/1-${factory.fid}">查看</a></td>
+												</tr>
+											</c:forEach>
+										</c:if>
 									</tbody>
 									<tfoot>
 										<tr>
-											<th>经销商</th>
-											<th>电话号码</th>
-											<th>所在省市</th>
-											<th>货品数量（箱）</th>
-											<th>货品种类</th>
-											<th>货品规格</th>
-											<th>下单时间</th>
-											<th>发货后规定到达时间</th>
-											<th>分配厂家</th>
+											<th>厂家</th>
+											<th>操作</th>
 										</tr>
 									</tfoot>
 								</table>
@@ -124,6 +97,28 @@
 						</div>
 					</div>
 				</div>
+				<!--分页 -->
+
+				<nav>
+					<ul class="pagination">
+						<li id="lipre"><c:if test="${pager.pageNumber ne 1}">
+								<a
+									href="${pageContext.request.contextPath}/factory/manager/${pager.pageNumber-1}"
+									aria-label="Previous"><span aria-hidden="true">上一页</span> </a>
+							</c:if></li>
+						<c:forEach var="i" begin="1" end="${pager.totalPage }" step="1">
+							<li><a
+								href="${pageContext.request.contextPath}/factory/manager/${i}">${i}</a></li>
+						</c:forEach>
+
+						<li id="linext"><c:if
+								test="${pager.pageNumber ne pager.totalPage }">
+								<a
+									href="${pageContext.request.contextPath}/factory/manager/${pager.pageNumber+1}"
+									aria-label="Next"><span aria-hidden="true">下一页</span> </a>
+							</c:if></li>
+					</ul>
+				</nav>
 			</div>
 			<!-- 内容主体结束 -->
 			<!-- 脚部 -->
@@ -155,20 +150,7 @@
 		src="${pageContext.request.contextPath }/js/plugins/pace/pace.min.js"></script>
 
 	<script>
-		function disfactory(oid) {
-			var fid = $("#td" + oid).find("select option:selected").val();
-			$.ajax({
-				url : '${pageContext.request.contextPath}/order/distfactory/'
-						+ fid + '-' + oid,
-				type : 'GET',
-				success : function(data) {
-					alert(data);
-					if (data == 1)
-						$("#td" + oid).hide();
-				},
-				dataType : 'json'
-			});
-		}
+		
 	</script>
 </body>
 

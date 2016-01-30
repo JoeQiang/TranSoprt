@@ -6,11 +6,17 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.jfinal.aop.Before;
+<<<<<<< HEAD
 import com.jfinal.aop.Clear;
 import com.jfinal.aop.Duang;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
 import com.vanroid.transopt.interceptor.DealerLoginInterceptor;
+=======
+import com.jfinal.aop.Duang;
+import com.jfinal.core.Controller;
+import com.jfinal.plugin.activerecord.Page;
+>>>>>>> 8a252c50ec55153ff486ad7a4a233ce1b0aedeb2
 import com.vanroid.transopt.interceptor.LoginInterceptor;
 import com.vanroid.transopt.model.GRGoods;
 import com.vanroid.transopt.model.GROrder;
@@ -23,6 +29,7 @@ import com.vanroid.transopt.service.GoodsManageService;
  * @author Jerry
  * 
  */
+@Before(LoginInterceptor.class)
 public class GoodsControlller extends Controller {
 	private GoodsManageService gs = Duang.duang(GoodsManageService.class);
 	Logger logger = Logger.getLogger(GoodsControlller.class);

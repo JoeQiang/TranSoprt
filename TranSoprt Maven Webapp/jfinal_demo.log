@@ -537,6 +537,7 @@ java.lang.NumberFormatException: For input string: "ssd"
 2016-01-23 19:56:21
 [WARN]-[Thread: main]-[com.vanroid.transopt.uitls.ExcelTemplateFactory.getTemplate()]: 加载template_list文件,文件路径:C:/Users/Joe_Huang/git/TranSoprt/TranSoprt Maven Webapp/target/classes/excelTemplate/template_list.xml
 
+<<<<<<< HEAD
 2016-01-26 21:45:40
 [INFO]-[Thread: main]-[test.TestLogin.getpwd()]: pwd：202cb962ac59075b964b07152d234b70
 
@@ -803,3 +804,16 @@ java.lang.NumberFormatException: For input string: "ssd"
 
 2016-01-29 23:37:51
 [INFO]-[Thread: main]-[com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getPoolManager()]: Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1379e13eqd3s5s5juv|1e8e471, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1379e13eqd3s5s5juv|1e8e471, idleConnectionTestPeriod -> 0, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/transport?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 20, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 100, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 10, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+=======
+2016-01-27 23:26:35
+[WARN]-[Thread: main]-[com.vanroid.transopt.uitls.ExcelTemplateFactory.getTemplate()]: 加载template_list文件,文件路径:D:/Users/Joe_Huang/git/TranSoprt/TranSoprt Maven Webapp/target/classes/excelTemplate/template_list.xml
+
+2016-01-27 23:26:36
+[WARN]-[Thread: main]-[com.vanroid.transopt.uitls.BaseExcel.createExcelTemplate()]: supplier.xml文件查找成功
+
+2016-01-27 23:31:57
+[WARN]-[Thread: main]-[com.vanroid.transopt.uitls.ExcelTemplateFactory.getTemplate()]: 加载template_list文件,文件路径:D:/Users/Joe_Huang/git/TranSoprt/TranSoprt Maven Webapp/target/classes/excelTemplate/template_list.xml
+
+2016-01-27 23:31:57
+[WARN]-[Thread: main]-[com.vanroid.transopt.uitls.BaseExcel.createExcelTemplate()]: supplier.xml文件查找成功
+>>>>>>> 8a252c50ec55153ff486ad7a4a233ce1b0aedeb2

@@ -13,15 +13,25 @@ import com.jfinal.core.Controller;
  * 
  */
 public class LoginInterceptor implements Interceptor {
+<<<<<<< HEAD
 	Logger logger = Logger.getLogger(LoginInterceptor.class);
 
+=======
+>>>>>>> 8a252c50ec55153ff486ad7a4a233ce1b0aedeb2
 	@Override
 	public void intercept(Invocation inv) {
 		Controller c = inv.getController();
 		Object user = c.getSessionAttr("user");
 		if (user == null) {
+<<<<<<< HEAD
 			c.redirect("/");//默认就是登陆页面
 		} else
 			inv.invoke();
+=======
+			c.render("/jsp/login.jsp");
+		} else {
+			inv.invoke();
+		}
+>>>>>>> 8a252c50ec55153ff486ad7a4a233ce1b0aedeb2
 	}
 }
