@@ -27,6 +27,10 @@ public class TestDealerService {
 	@Test
 	public void testDoLogin(){
 		
-		System.out.println(ds.doLogin("23432", "12312")); ;
+		System.out.println(ds.doLogin("18826243880", "123")); ;
+	}
+	@Test
+	public void testGetDynamic() throws IOException, ApiException{
+		ds.getDynamPwd("18826243880");
 	}
 }

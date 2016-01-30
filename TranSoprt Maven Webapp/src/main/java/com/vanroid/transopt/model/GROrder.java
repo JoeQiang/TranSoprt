@@ -67,7 +67,8 @@ public class GROrder extends Model<GROrder> {
 	 */
 	public String getStandardName() {
 		Standard standard = Standard.dao.findFirst(
-				"select sname from standard where sid=?", getInt("sid"));
+				"select sid,sname from standard where sid=?", getInt("sid"));
+		put("sid", standard.getInt("sid"));
 		put("sname", standard.getStr("sname"));
 		return standard.getStr("sname");
 	}

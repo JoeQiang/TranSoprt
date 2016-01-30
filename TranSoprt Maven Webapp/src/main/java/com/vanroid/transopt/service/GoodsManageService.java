@@ -83,7 +83,11 @@ public class GoodsManageService {
 	 * @return
 	 */
 	public List<GRGoods> getAllGoods() {
-		return GRGoods.dao.find("select * from grgoods");
+		List<GRGoods> goods = GRGoods.dao.find("select * from grgoods");
+		/*for (GRGoods grGoods : goods) {
+			grGoods.getStandard();
+		}*/
+		return goods;
 	}
 
 	/**

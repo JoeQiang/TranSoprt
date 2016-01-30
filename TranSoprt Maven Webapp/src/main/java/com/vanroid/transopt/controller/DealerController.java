@@ -4,11 +4,15 @@ import java.io.File;
 import java.io.IOException;
 
 import com.jfinal.aop.Before;
+import com.jfinal.aop.Clear;
+import com.jfinal.aop.Duang;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.upload.UploadFile;
 import com.taobao.api.ApiException;
+import com.vanroid.transopt.interceptor.DealerLoginInterceptor;
 import com.vanroid.transopt.interceptor.DealerValidate;
+import com.vanroid.transopt.interceptor.LoginInterceptor;
 import com.vanroid.transopt.interceptor.UploadExcelValidate;
 import com.vanroid.transopt.model.Dealer;
 import com.vanroid.transopt.service.DealerService;
@@ -16,31 +20,62 @@ import com.vanroid.transopt.service.DealerServiceImp;
 import com.vanroid.transopt.uitls.MD5Utils;
 
 public class DealerController extends Controller {
-	private DealerService service = new DealerServiceImp();
+	private DealerService service = Duang.duang(DealerServiceImp.class);
+
+	@Clear(LoginInterceptor.class)
 	public void login() {
-		render("/jsp/dealerlogin.jsp?code="+getParaToInt(0));
+		render("/jsp/dealer_login.jsp");
 	}
+
 	/**
-	 * 经销商客户端登陆
+	 * 经销商客户端登陆ajax
 	 */
+	@Clear(LoginInterceptor.class)
 	public void logininput() {
 		String phone = getPara("phone");
 		int result = service.doLogin(phone, getPara("pwd"));
 		if (result == 1) {
 			setSessionAttr("user", phone);
-			render("/jsp/index.jsp");
-		} else {
-			keepPara("phone");
-			redirect("/dealer/login/0");
-		}
+			}
+		renderJson(result);
 	}
 	/**
+	 * 客端点注销
+	 */
+	@Clear(LoginInterceptor.class)
+	@Before(DealerLoginInterceptor.class)
+	public void logout(){
+		removeSessionAttr("user");
+		redirect("/dealer/login");
+	}
+
+	/**
 	 * 动态密码登陆ajax
+	 * 
 	 * @throws IOException
 	 * @throws ApiException
 	 */
-	public void getdynamic() throws IOException, ApiException{
-		service.getDynamPwd(getPara(0));
+	@Clear(LoginInterceptor.class)
+	public void getdynamic() throws IOException, ApiException {
+		int res = service.getDynamPwd(getPara(0));
+		renderJson(res);
+	}
+	/**
+	 * 跳转修改密码页面
+	 */
+	@Clear(LoginInterceptor.class)
+	@Before(DealerLoginInterceptor.class)
+	public void changepwdpage(){
+		render("/jsp/modify.jsp");
+	}
+	/**
+	 * 修改固定密码ajax
+	 */
+	@Clear(LoginInterceptor.class)
+	@Before(DealerLoginInterceptor.class)
+	public void changepwd(){
+		int res=service.changePwd((String)getSessionAttr("user"), getPara("newPwd"));
+		renderJson(res);
 	}
 	public void index() {
 		Integer pageNumber = getParaToInt(0);

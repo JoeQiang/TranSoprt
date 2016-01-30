@@ -20,6 +20,7 @@ import com.taobao.api.ApiException;
 import com.taobao.api.TaobaoClient;
 import com.taobao.api.request.AlibabaAliqinFcSmsNumSendRequest;
 import com.taobao.api.response.AlibabaAliqinFcSmsNumSendResponse;
+import com.vanroid.transopt.dto.OrderParam;
 import com.vanroid.transopt.model.Dealer;
 import com.vanroid.transopt.model.GRFactory;
 import com.vanroid.transopt.model.GROrder;
@@ -33,38 +34,22 @@ import com.vanroid.transopt.uitls.NoteUtil;
  * @author Jerry
  * 
  */
+@Before(Tx.class)
 public class OrderManageService {
 	Logger logger = Logger.getLogger(OrderManageService.class);
 
 	/**
 	 * 经销商下确认订单
 	 */
-	@Before(Tx.class)
-	public boolean makeOrder(int did) {
-		
+	public boolean makeOrder(int did,int gid,int sid,int num) {
+
 		String today = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-		List<ShoppingCart> list = ShoppingCart.dao.find(
-				"select * from shoppingcart where did=?", did);
-		//先创建订单
 		GROrder order = new GROrder().set("dealerid", did)
-				.set("createday", today).set("status", "未发货");
-		boolean res1=order.save();
-		if(res1==false)
-			return false;
-		int oid = order.getInt("oid");
-		//插入订单的商品项目并且清空购物车
-		for (ShoppingCart shoppingCart : list) {
-			Record record = new Record().set("oid", oid)
-					.set("gid", shoppingCart.getInt("gid"))
-					.set("sid", shoppingCart.getInt("sid"))
-					.set("num", shoppingCart.getInt("num"));
-			boolean res2=Db.save("order_goods","oid,gid,sid", record);
-			if(res2==true)
-				ShoppingCart.dao.deleteById(shoppingCart.getInt("shid"));
-			else 
-				return false;
-		}
-		return true;
+				.set("createday", today).set("status", "未分配")
+				.set("gid", gid)
+				.set("sid", sid)
+				.set("num", num);
+		return order.save();
 	}
 
 	/**
@@ -179,20 +164,17 @@ public class OrderManageService {
 		TaobaoClient client = new NoteUtil().getTaobaoClient();
 		AlibabaAliqinFcSmsNumSendRequest req = new AlibabaAliqinFcSmsNumSendRequest();
 		req.setSmsType("normal");
-		req.setSmsFreeSignName("活动验证");
+		req.setSmsFreeSignName(NoteUtil.getSignName());
+	/*req.setSmsFreeSignName("港荣");*/
 		/**
 		 * 短信模板內容組合
 		 */
 		NoteTemplate nt = new NoteTemplate();
 		nt.setDname(((Dealer) order.get("dealer")).getStr("dname"));
 		nt.setFname(order.getStr("factoryname"));
-		String goodsListString = "";
-		List<HashMap<String, Object>> list = order.get("goodsList");
-		for (HashMap<String, Object> hashMap : list) {
-			goodsListString += hashMap.get("num") + "*" + hashMap.get("sname")
-					+ "的" + hashMap.get("gname") + ",";
-		}
-		nt.setOrder(goodsListString);
+		String goods= order.getInt("num") + "箱" + order.getStr("sname")
+					+ "的" + order.getStr("gname") ;
+		nt.setOrder(goods);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date today = new Date();
 		Date arriveDay = DateUtils.addDays(today,
@@ -203,7 +185,7 @@ public class OrderManageService {
 		req.setSmsParamString(gson.toJson(nt));
 		logger.info("gsonstr:" + gson.toJson(nt));
 		req.setRecNum(((Dealer) order.get("dealer")).getStr("phone"));
-		req.setSmsTemplateCode("SMS_4955204");
+		req.setSmsTemplateCode(NoteUtil.getTemplate());
 		AlibabaAliqinFcSmsNumSendResponse rsp = client.execute(req);
 		logger.info("notemes:" + rsp.getBody());
 		if (rsp.getBody().contains("success"))
@@ -228,10 +210,10 @@ public class OrderManageService {
 	 * 
 	 * @param oid
 	 */
-	public void confirmArrive(int oid) {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
-		String today = sdf.format(new Data());
-		GROrder.dao.findById(oid).set("status", "已收货").set("arriveday", today)
+	public boolean confirmArrive(int oid) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String today = sdf.format(new Date());
+		return GROrder.dao.findById(oid).set("status", "已确认签收").set("arriveday", today)
 				.update();
 	}
 }
