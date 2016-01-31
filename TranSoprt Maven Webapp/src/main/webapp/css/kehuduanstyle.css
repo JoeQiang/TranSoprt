@@ -3,68 +3,156 @@
     font-size:16px;
 }
 body{
-    background:url("../img/back.jpg") no-repeat;
-    background-size:100% 100%;
-    -moz-user-select:none; /*»ðºü*/
-    -webkit-user-select:none; /*webkitä¯ÀÀÆ÷*/
+    -moz-user-select:none; /*���*/
+    -webkit-user-select:none; /*webkit�����*/
     -ms-user-select:none; /*IE10*/
     -o-user-select:none;
 }
-.content{
+
+/*login.html*/
+.login-content{
     width:250px;
     margin:0px auto 150px auto;
 }
-input{
+input {
     width: 250px;
     background-color: transparent;
-    border: #ccc 2px solid;
+    border: #999 2px solid;
     border-radius:5px;
-    color: #fff;
+    color: #444;
     padding:10px;
-    margin:2px auto;
+    margin:3px auto;
+}
+.btn-lg{
+	 width: 250px;
+   
 }
 .biaoti{
-    width:9em;
-    color:#fff;
-    font-size: 4rem;
-    margin:150px auto 50px auto;
+    color:#444;
+    font-size: 3.2rem;
+    margin:30px auto 50px auto;
 }
 .btnConfrim{
     width:250px;
-    padding:10px 0px;
-    background-color:#888;
-    border-radius:5px;
-    text-align:center;
-    margin:30px 0;
-    color:#fff;
-}
-.btnConfrim:hover{
-    background-color:#0b2160;
-    color:#fff;
+    margin:30px auto;
 }
 .psd{
     float: right;
 }
-/*Òþ²Ø¿ò*/
+#mytab{
+    margin-top:50px;
+}
+#mytab li{
+    display: inline-block;
+    float: left;
+    text-align:center;
+}
+.row{
+    margin-bottom: 15px;
+}
+.row .row{
+    margin-top:15px;
+}
+.loginTab{
+    padding:5px 0px;
+    background: #eee;
+    border:1px solid #ddd;
+    border:1px solid rgba(86,61,124,.2);
+}
+.active {
+    background:#449d44;
+    color:#fff;
+}
+.active a{
+    color:#fff;
+}
+.loginTab:hover a{
+    text-decoration: none;
+   
+}
+.hidden{
+    display:none;
+}
+.btn-sm{
+	background:#A5C6F1;
+	border:none;
+}
+
+/*modify.html*/
 #modify{
     position: relative;
     display: block;
-    width:400px;
-    height:200px;
-    margin:200px auto;
+    width:10rem;
+    height:100%;
+    margin:100px auto;
     background: rgba(8,8,8,0.5);
     border: solid 1px #ccc;
     border-radius: 10px;
 }
 .modi-cont{
+    margin:100px auto;
     width:250px;
-    margin:10px auto;
 }
 .note{
-    width:120px;
+    width:150px;
     position: relative;
-    margin:20px auto;
-    font-size: 3rem;
-    color:#fff;
+    margin:50px auto;
+    font-size: 3.5rem;
+    color:#444;
+    align:center;
+}
+#guding-password{
+    margin:0px auto;
+}
+.posi{
+    width:100%;
+    position: fixed;
+    bottom:0px;
+}
+li .orderTab{
+    text-align: center;
+    background: #eee;
+    border:1px solid #ddd;
+    border:1px solid rgba(86,61,124,.2);
+}
+a{
+    color:#444;
+}
+a:hover{
+	text-decoration:none;
+}
+/*booking.html*/
+.booking-content{
+    margin:100px auto 150px auto;
+    color:#444;
+}
+#quantity{
+    width:120px;
+    padding:1px;
+}
+.listview select{
+    width:120px;
+    background: transparent;
+    border: solid 2px #999;
+    border-radius: 5px;
+}
+.listview select option{
+    color:#444;
+}
 
+/*order.html*/
+.list-group{
+    margin-top:60px;
+}
+.more{
+	text-align:center;
+	display:block;
+	padding:5px 0px;
+	background:#DDD;
+	margin:0px;
+	color:#888;
+}
+.history-order{
+	background:#eee;
+	color:#aaa;
 }

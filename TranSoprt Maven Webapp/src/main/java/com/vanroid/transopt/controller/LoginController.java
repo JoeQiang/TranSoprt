@@ -1,7 +1,9 @@
 package com.vanroid.transopt.controller;
 
+import com.jfinal.aop.Clear;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.PathKit;
+import com.vanroid.transopt.interceptor.LoginInterceptor;
 import com.vanroid.transopt.model.Admin;
 import com.vanroid.transopt.model.GRFactory;
 import com.vanroid.transopt.service.AdminService;
@@ -11,6 +13,7 @@ import com.vanroid.transopt.service.GRFactoryServiceImp;
 import com.vanroid.transopt.uitls.Constant;
 
 public class LoginController extends Controller {
+	@Clear(LoginInterceptor.class)
 	public void index() {
 		render("/jsp/login.jsp");
 	}
@@ -18,6 +21,7 @@ public class LoginController extends Controller {
 	/**
 	 * 登录操作
 	 */
+	@Clear(LoginInterceptor.class)
 	public void login() {
 		String username = getPara("username");
 		String password = getPara("password");
@@ -32,7 +36,7 @@ public class LoginController extends Controller {
 				admin = as.getByName(username);
 				setSessionAttr("user", admin);
 				setSessionAttr("rank", Constant.USER_TYPE_ADMIN);
-				forwardAction("/account/main");
+				redirect("/order/distorder/1");//登陆成功跳转到首页
 			} else {
 				setAttr("error", "帐号或密码不正确");
 				forwardAction("/account");
@@ -46,7 +50,7 @@ public class LoginController extends Controller {
 				factory = fs.getByName(username);
 				setSessionAttr("user", factory);
 				setSessionAttr("rank", Constant.USER_TYPE_FACTORY);
-				forwardAction("/account/main");
+				redirect("/account/main");
 			} else {
 				setAttr("error", "帐号或密码不正确");
 				forwardAction("/account");

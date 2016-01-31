@@ -2,7 +2,6 @@ package com.vanroid.transopt.model;
 
 import java.util.HashMap;
 import java.util.List;
-
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Record;
@@ -65,7 +64,11 @@ public class GROrder extends Model<GROrder> {
 	 * goods.add(map); } put("goodsList", goods); return goods; }
 	 */
 	/**
+<<<<<<< HEAD
+	 * 得到商品名称
+=======
 	 * 
+>>>>>>> 8a252c50ec55153ff486ad7a4a233ce1b0aedeb2
 	 * 
 	 * @return
 	 */
@@ -101,7 +104,8 @@ public class GROrder extends Model<GROrder> {
 	 */
 	public String getStandardName() {
 		Standard standard = Standard.dao.findFirst(
-				"select sname from standard where sid=?", getInt("sid"));
+				"select sid,sname from standard where sid=?", getInt("sid"));
+		put("sid", standard.getInt("sid"));
 		put("sname", standard.getStr("sname"));
 		return standard.getStr("sname");
 	}

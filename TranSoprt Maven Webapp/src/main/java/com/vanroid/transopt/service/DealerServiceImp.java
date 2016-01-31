@@ -14,12 +14,14 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.lang.StringUtils;
 
 import com.jfinal.aop.Before;
+import com.jfinal.aop.Clear;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.tx.Tx;
 import com.taobao.api.ApiException;
 import com.taobao.api.TaobaoClient;
 import com.taobao.api.request.AlibabaAliqinFcSmsNumSendRequest;
 import com.taobao.api.response.AlibabaAliqinFcSmsNumSendResponse;
+import com.vanroid.transopt.interceptor.LoginInterceptor;
 import com.vanroid.transopt.model.Dealer;
 import com.vanroid.transopt.uitls.ExcelTemplate;
 import com.vanroid.transopt.uitls.ExcelTemplateFactory;
@@ -46,11 +48,12 @@ public class DealerServiceImp implements DealerService {
 	 * 获取动态密码
 	 * 
 	 * @param dname
-	 * @return
+	 * @return 0不存在该经销商,1获取成功
 	 * @throws IOException
 	 * @throws ApiException
 	 */
-	public void getDynamPwd(String phone) throws IOException, ApiException {
+
+	public int getDynamPwd(String phone) throws IOException, ApiException {
 		/**
 		 * 创建6位数随机数
 		 */
@@ -60,15 +63,18 @@ public class DealerServiceImp implements DealerService {
 			dynamPwd += random.nextInt(9);
 		Dealer dealer = Dealer.dao.findFirst(
 				"select * from dealer where phone=?", phone);
+		if (dealer == null)
+			return 0;
 		dealer.set("dynamic", MD5Utils.MD5(dynamPwd)).update();
 		TaobaoClient client = new NoteUtil().getTaobaoClient();
 		AlibabaAliqinFcSmsNumSendRequest req = new AlibabaAliqinFcSmsNumSendRequest();
 		req.setSmsType("normal");
-		req.setSmsFreeSignName("活动验证");
+		req.setSmsFreeSignName(NoteUtil.getSignName());
 		req.setSmsParamString("{'dynampwd':'" + dynamPwd + "'}");
 		req.setRecNum(phone);
-		req.setSmsTemplateCode("SMS_4920215");
+		req.setSmsTemplateCode(NoteUtil.getTemplate2());
 		AlibabaAliqinFcSmsNumSendResponse rsp = client.execute(req);
+		return 1;
 
 	}
 
@@ -78,17 +84,13 @@ public class DealerServiceImp implements DealerService {
 	 * @param oldPwd
 	 * @param newPwd
 	 */
-	public int changePwd(String phone, String oldPwd, String newPwd) {
+	public int changePwd(String phone, String newPwd) {
 		Dealer dealer = Dealer.dao.findFirst(
 				"select * from dealer where phone=?", phone);
-		// 由动态密码改为固定密码
-		if ("".equals(dealer.getStr("dpwd"))) {
-			dealer.set("dpwd", newPwd).update();
+		boolean update = dealer.set("dpwd", MD5Utils.MD5(newPwd)).update();
+		if (update)
 			return 1;
-		} else if (dealer.getStr("dpwd").equals(oldPwd)) {
-			dealer.set("dpwd", newPwd).update();
-			return 1;
-		} else
+		else
 			return 0;
 	}
 
@@ -106,7 +108,7 @@ public class DealerServiceImp implements DealerService {
 			return 3;
 		String digPwd = MD5Utils.MD5(pwd);
 		if (digPwd.equals(list.get(0).getStr("dpwd"))
-				|| pwd.equals(list.get(0).getStr("dynamic")))
+				|| digPwd.equals(list.get(0).getStr("dynamic")))
 			return 1;
 		else
 			return 2;

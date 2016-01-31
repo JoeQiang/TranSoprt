@@ -1,5 +1,7 @@
 package com.vanroid.transopt.interceptor;
 
+import org.apache.log4j.Logger;
+
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
 import com.jfinal.core.Controller;
@@ -11,14 +13,15 @@ import com.jfinal.core.Controller;
  * 
  */
 public class LoginInterceptor implements Interceptor {
+	Logger logger = Logger.getLogger(LoginInterceptor.class);
+
 	@Override
 	public void intercept(Invocation inv) {
 		Controller c = inv.getController();
 		Object user = c.getSessionAttr("user");
 		if (user == null) {
-			c.render("/jsp/login.jsp");
-		} else {
+			c.redirect("/");//默认就是登陆页面
+		} else
 			inv.invoke();
-		}
 	}
 }

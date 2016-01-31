@@ -215,4 +215,5 @@
 				dataType : 'json'
 			});
 		}
-	
+	</script>
+</body></html>

@@ -37,7 +37,9 @@ public class GoodsManageService {
 		// logger.info("插入1成功");
 		GRGoods g = GRGoods.dao.findFirst(
 				"select gid from grgoods where gname=?", gname);
-		logger.info("gid:" + g.getInt("gid"));
+//		logger.info("gid:" + g.getInt("gid"));
+		if(sids==null)
+			return true;
 		for (int sid : sids) {
 			Record r = new Record().set("gid", g.getInt("gid")).set("sid", sid);
 			Db.save("goods_standard", r);
@@ -52,7 +54,7 @@ public class GoodsManageService {
 	}
 
 	@Before(Tx.class)
-	public void updateByGid(int gid, String gname, Integer[] sids) {
+	public boolean updateByGid(int gid, String gname, Integer[] sids) {
 		GRGoods goods = GRGoods.dao.findById(gid);
 		goods.set("gname", gname).update();
 		List<Record> list = Db.find(
@@ -61,6 +63,14 @@ public class GoodsManageService {
 		int i = 0;
 		for (Record record : list) {
 			dbsids[i++] = record.getInt("sid");
+		}
+		//删除该商品下的所有规格
+		if(sids==null){
+			List<Record> list2 = Db.find("select * from goods_standard where gid=?",gid);
+			for (Record record : list2) {
+				Db.delete("goods_standard", "gid",record);
+			}
+			return true;
 		}
 		// 新的中有的，旧的没有-->插入数据库
 		// 新的中没有的，旧的有的-->删除数据库国
@@ -75,6 +85,7 @@ public class GoodsManageService {
 				Db.save("goods_standard", "gid, sid", re);
 			}
 		}
+		return true;
 	}
 
 	/**
@@ -83,7 +94,11 @@ public class GoodsManageService {
 	 * @return
 	 */
 	public List<GRGoods> getAllGoods() {
-		return GRGoods.dao.find("select * from grgoods");
+		List<GRGoods> goods = GRGoods.dao.find("select * from grgoods");
+		/*for (GRGoods grGoods : goods) {
+			grGoods.getStandard();
+		}*/
+		return goods;
 	}
 
 	/**

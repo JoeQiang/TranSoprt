@@ -1,13 +1,19 @@
 package com.vanroid.transopt.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import com.jfinal.aop.Before;
+import com.jfinal.aop.Clear;
 import com.jfinal.aop.Duang;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
 import com.taobao.api.ApiException;
+import com.vanroid.transopt.dto.OrderParam;
+import com.vanroid.transopt.interceptor.DealerLoginInterceptor;
+import com.vanroid.transopt.interceptor.LoginInterceptor;
 import com.vanroid.transopt.model.Dealer;
 import com.vanroid.transopt.model.GRFactory;
 import com.vanroid.transopt.model.GROrder;
@@ -22,8 +28,13 @@ public class OrderController extends Controller {
 	 * 下单ajax
 	 */
 	public void makeorder() {
-		om.makeOrder(getParaToInt(0));
-		renderJson(1);
+		String phone=getSessionAttr("user");
+		int did=Dealer.dao.findFirst("select did from dealer where phone=?",phone).getInt("did");
+		boolean res = om.makeOrder(did,getParaToInt(0),getParaToInt(1),getParaToInt(2));
+		if (res == true)
+			renderJson(1);
+		else
+			renderJson(0);
 	}
 
 	// 分配订单
@@ -75,12 +86,44 @@ public class OrderController extends Controller {
 		renderJson(result);
 	}
 
-	// 经销商获取自己所有的订单
+	// 经销商获取自己所有的订单默认页（第一页）
+	@Clear(LoginInterceptor.class)
+	@Before(DealerLoginInterceptor.class)
 	public void getOrderbydealer() {
 		String phone = getSessionAttr("user");
 		int did = Dealer.dao.findFirst("select * from dealer where phone=?",
 				phone).getInt("did");
-		om.getOrderByDealer(1, did);
-		render("");
+		List<GROrder> list = om.getOrderByDealer(1, did).getList();
+		for (GROrder grOrder : list) {
+			grOrder.getAttrFromOtherTable();
+		}
+		setAttr("myorders", list);
+		render("/jsp/order_dealer.jsp");
 	}
+
+	// 经销商根据页面数显示订单ajax
+	@Clear(LoginInterceptor.class)
+	@Before(DealerLoginInterceptor.class)
+	public void getOrderbydealerAjax() {
+		String phone = getSessionAttr("user");
+		int did = Dealer.dao.findFirst("select * from dealer where phone=?",
+				phone).getInt("did");
+		List<GROrder> list = om.getOrderByDealer(getParaToInt(0), did)
+				.getList();
+		for (GROrder grOrder : list) {
+			grOrder.getAttrFromOtherTable();
+		}
+		renderJson(list);
+	}
+
+	// 经销商客户端确认收货ajax
+	@Clear(LoginInterceptor.class)
+	@Before(DealerLoginInterceptor.class)
+	public void confirmArrive() {
+		if (om.confirmArrive(getParaToInt(0)))
+			renderJson(1);
+		else
+			renderJson(0);
+	}
+
 }

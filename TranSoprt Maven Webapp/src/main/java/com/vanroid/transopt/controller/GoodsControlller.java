@@ -1,15 +1,19 @@
 package com.vanroid.transopt.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
 import com.jfinal.aop.Before;
+import com.jfinal.aop.Clear;
 import com.jfinal.aop.Duang;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
+import com.vanroid.transopt.interceptor.DealerLoginInterceptor;
 import com.vanroid.transopt.interceptor.LoginInterceptor;
 import com.vanroid.transopt.model.GRGoods;
+import com.vanroid.transopt.model.GROrder;
 import com.vanroid.transopt.model.Standard;
 import com.vanroid.transopt.service.GoodsManageService;
 
@@ -23,6 +27,26 @@ import com.vanroid.transopt.service.GoodsManageService;
 public class GoodsControlller extends Controller {
 	private GoodsManageService gs = Duang.duang(GoodsManageService.class);
 	Logger logger = Logger.getLogger(GoodsControlller.class);
+
+	// 经销商客户端下单页面，即显示所有的货物和规格
+	@Clear(LoginInterceptor.class)
+	@Before(DealerLoginInterceptor.class)
+	public void totalgoods() {
+		List<GRGoods> allGoods = gs.getAllGoods();
+		List<HashMap<String, Object>> standard = allGoods.get(0).getStandard();
+		setAttr("g1standard", standard);
+		setAttr("allgoods", allGoods);
+		render("/jsp/booking.jsp");
+	}
+
+	// 根据gid显示所有的重量规格ajax
+	@Clear(LoginInterceptor.class)
+	@Before(DealerLoginInterceptor.class)
+	public void getStandardByGid() {
+		List<HashMap<String, Object>> standard = GRGoods.dao.findById(
+				getParaToInt(0)).getStandard();
+		renderJson(standard);
+	}
 
 	// 获取商品列表
 	public void list() {
@@ -57,7 +81,11 @@ public class GoodsControlller extends Controller {
 
 	// 添加商品
 	public void addgoods() {
-		gs.createGoods(getPara("gname"), getParaValuesToInt("weight"));
+		try {
+			gs.createGoods(getPara("gname"), getParaValuesToInt("weight"));
+		} catch (NullPointerException e) {
+			gs.createGoods(getPara("gname"), null);
+		}
 		redirect("/goods/list/1");
 
 	}
@@ -65,8 +93,12 @@ public class GoodsControlller extends Controller {
 	// 修改商品ajax
 
 	public void updgoods() {
-		gs.updateByGid(getParaToInt("gid"), getPara("gname"),
-				getParaValuesToInt("weight"));
+		try {
+			gs.updateByGid(getParaToInt("gid"), getPara("gname"),
+					getParaValuesToInt("weight"));
+		} catch (NullPointerException e) {
+			gs.updateByGid(getParaToInt("gid"), getPara("gname"), null);
+		}
 		redirect("/goods/list/" + getParaToInt("page"));
 	}
 
