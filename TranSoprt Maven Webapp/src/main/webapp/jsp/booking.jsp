@@ -87,8 +87,8 @@
 				</div>
 			</div>
 			<div class="btnConfrim">
-				<button onclick="makeOrder()"role="button" value="下单" id="btn_mkorder"
-					class="btn btn-success btn-lg">下单</button>
+				<button onclick="makeOrder()" role="button" value="下单"
+					id="btn_mkorder" class="btn btn-success btn-lg">下单</button>
 			</div>
 		</div>
 	</div>
@@ -118,6 +118,15 @@
 		$(document)
 				.ready(
 						function() {
+							/* 现在数量框只能输入数字 */
+							$("#quantity").keyup(function() {
+								var tmptxt = $(this).val();
+								$(this).val(tmptxt.replace(/\D|^0/g, ''));
+							}).bind("paste", function() {
+								var tmptxt = $(this).val();
+								$(this).val(tmptxt.replace(/\D|^0/g, ''));
+							}).css("ime-mode", "disabled");
+
 							/* 级联下拉列表ajax */
 							$("#cakeType")
 									.change(
@@ -150,26 +159,27 @@
 														});
 											});
 						});
-						function makeOrder(){
-						var gid = $("#cakeType").children(
-														'option:selected')
-														.attr("value");
-						var sid = $("#cakeStandard").children(
-														'option:selected')
-														.attr("value");
-						var num=$("#quantity").val();
-						$("#btn_mkorder").text("正在下单...");
-						$.ajax({
-							url:'${pageContext.request.contextPath}/order/makeorder/'+gid+"-"+sid+"-"+num,
-							dataType:'json',
-							type:'GET',
-							success:function(data){
-							if(data==1)
-							alert("下单成功！");
-							$("#btn_mkorder").text("下单");
-							}
-						});
-						}
+		function makeOrder() {
+			var gid = $("#cakeType").children('option:selected').attr("value");
+			var sid = $("#cakeStandard").children('option:selected').attr(
+					"value");
+			var num = $("#quantity").val();
+			if (num<=0){
+			alert("无效的订单数量！");
+			return;}
+				$("#btn_mkorder").text("正在下单...");
+			$.ajax({
+				url : '${pageContext.request.contextPath}/order/makeorder/'
+						+ gid + "-" + sid + "-" + num,
+				dataType : 'json',
+				type : 'GET',
+				success : function(data) {
+					if (data == 1)
+						alert("下单成功！");
+					$("#btn_mkorder").text("下单");
+				}
+			});
+		}
 	</script>
 </body>
 </html>

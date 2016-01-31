@@ -170,7 +170,16 @@
 				alert("请填写登陆密码！");
 				return;
 			}
-			$("#btn_login2").text("正在登陆...");
+			$.ajax({
+				url : '${pageContext.request.contextPath}/dealer/getdynamic/'
+						+ phone,
+				type : 'GET',
+				dataType : 'json',
+				success : function(data) {
+					if (data == 0)
+						alert("该手机未经注册为经销商！");
+					if (data == 1){
+					$("#btn_login2").text("正在登陆...");
 			$
 					.ajax({
 						url : '${pageContext.request.contextPath }/dealer/logininput',
@@ -191,6 +200,12 @@
 								alert("用户不存在！");$("#btn_login2").text("登陆");}
 						}
 					});
+					
+					}
+						
+				}
+			});
+			
 		}
 	</script>
 </body>

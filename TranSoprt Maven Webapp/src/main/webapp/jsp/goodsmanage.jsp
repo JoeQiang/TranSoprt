@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="renderer" content="webkit">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <title>港荣食品物流跟踪系统</title>
 <meta name="keywords" content="港荣食品物流跟踪系统">
 <meta name="description" content="港荣食品物流跟踪系统">
@@ -90,6 +91,10 @@
 										</tr>
 									</thead>
 									<tbody>
+									<c:if test="${fn:length(goodslist)==0 }">
+											<tr class="gradeB">
+												<td colspan="7">您还未添加任何商品</td>
+										</c:if>
 										<c:forEach items="${goodslist}" var="goods">
 											<tr class="gradeB" id="tr${goods.gid}">
 												<td>${goods.gname}</td>
@@ -369,10 +374,10 @@
 					$("#showsta").html("");
 					for (i = 0; i < data.length; i++) {
 						$("#showsta").append(
-								"<span class='staspan' id=divsid"+data[i].sid+">"
+								"<span style='margin:5dp' class='staspan' id=divsid"+data[i].sid+">"
 										+ data[i].sname
 										+ "<a onclick=delGroblSta("
-										+ data[i].sid + ")>X</a></span>");
+										+ data[i].sid + ")><img width='15dp'  src='${pageContext.request.contextPath}/img/close.png'/></a></span>");
 					}
 					$("#aid3").click();
 				},

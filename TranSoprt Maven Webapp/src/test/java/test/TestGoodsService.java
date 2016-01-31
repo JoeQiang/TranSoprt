@@ -9,6 +9,7 @@ import org.junit.Test;
 import com.jfinal.aop.Enhancer;
 import com.jfinal.plugin.activerecord.Page;
 import com.vanroid.transopt.model.GRGoods;
+import com.vanroid.transopt.model.Standard;
 import com.vanroid.transopt.service.GoodsManageService;
 
 public class TestGoodsService {
@@ -18,6 +19,7 @@ public class TestGoodsService {
 	@Before
 	public void before(){
 		base.arp.addMapping("grgoods","gid", GRGoods.class);
+		base.arp.addMapping("standard","sid", Standard.class);
 		base.dp.start();
 		base.arp.start();
 	}
@@ -51,6 +53,10 @@ public class TestGoodsService {
 	@Test
 	public void testDelSta(){
 		gs.delSta(11, 1);
+	}
+	@Test
+	public void testDelGrobleSta(){
+		gs.delGrobleSta(1);
 	}
 	@Test
 	//gname=蛋糕  gid=11  weight[]={1,2}

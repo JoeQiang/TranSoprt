@@ -81,7 +81,11 @@ public class GoodsControlller extends Controller {
 
 	// 添加商品
 	public void addgoods() {
-		gs.createGoods(getPara("gname"), getParaValuesToInt("weight"));
+		try {
+			gs.createGoods(getPara("gname"), getParaValuesToInt("weight"));
+		} catch (NullPointerException e) {
+			gs.createGoods(getPara("gname"), null);
+		}
 		redirect("/goods/list/1");
 
 	}

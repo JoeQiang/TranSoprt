@@ -91,11 +91,7 @@
 												<td>${order.sname}</td>
 												<td>${order.createday}</td>
 												<td>${order.dealer.limitdays}天</td>
-<<<<<<< HEAD
-												
-=======
 
->>>>>>> 8a252c50ec55153ff486ad7a4a233ce1b0aedeb2
 												<td><select name="disfactory">
 														<c:forEach items="${factorys}" var="factory">
 															<option value="${factory.fid}">${factory.fname}</option>

@@ -37,7 +37,9 @@ public class GoodsManageService {
 		// logger.info("插入1成功");
 		GRGoods g = GRGoods.dao.findFirst(
 				"select gid from grgoods where gname=?", gname);
-		logger.info("gid:" + g.getInt("gid"));
+//		logger.info("gid:" + g.getInt("gid"));
+		if(sids==null)
+			return true;
 		for (int sid : sids) {
 			Record r = new Record().set("gid", g.getInt("gid")).set("sid", sid);
 			Db.save("goods_standard", r);
