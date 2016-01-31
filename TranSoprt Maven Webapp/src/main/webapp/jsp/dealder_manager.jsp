@@ -104,9 +104,9 @@
 														<td class="center">
 															<div class="dropdown">
 																<button type="button"
-																	class="btn dropdown-toggle btn-circle btn-primary"
+																	class="btn dropdown-toggle btn-primary"
 																	id="dropdownMenu1" data-toggle="dropdown">
-																	<i class="fa fa-list"></i>
+																	操作
 																</button>
 																<ul class="dropdown-menu" role="menu" style="width:20px">
 																	<li role="presentation"><a role="menuitem"

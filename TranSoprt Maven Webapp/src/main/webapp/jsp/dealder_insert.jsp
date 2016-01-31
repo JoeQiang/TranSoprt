@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="java.util.Date"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
@@ -25,10 +24,6 @@
 
 <body>
 	<div id="wrapper">
-		<%
-			String tokenValue = new Date().getTime() + "";
-			session.setAttribute("token", tokenValue);
-		%>
 		<%@include file="nav.jsp"%>
 		<!--侧边栏结束-->
 		<!-- 搜索栏 -->
@@ -108,32 +103,30 @@
 								<form
 									action="${pageContext.request.contextPath }/manager/dealer/singleInsert"
 									method="post" onsubmit="return dosubmit()">
-									<input type="hidden" name="token" value="<%=tokenValue%>">
 									<input type="hidden" name="operation" value="insert">
 									<div class="form-group">
 										<label>供应商</label> <input type="text" class="form-control"
-											placeholder="供应商名称" name="dname" required=""> <label
-											style="color: red;"> <c:out value="${dnameMsg }" /></label>
+											placeholder="供应商名称" name="dname" required="">
 									</div>
 									<div class="form-group">
-										<label>联系电话</label> <input type="text" class="form-control"
-											placeholder="联系电话" name="phone" required=""> <label
-											style="color: red;"> <c:out value="${phoneMsg }" /></label>
+										<label>联系电话</label> <input id="phone" type="text"
+											class="form-control" placeholder="联系电话" name="phone"
+											required="">
 									</div>
 									<div class="form-group">
 										<label>所在省市</label> <input type="text" class="form-control"
-											placeholder="所在省市" name="province" required=""> <label
-											style="color: red;"> <c:out value="${provinceMsg }" /></label>
+											placeholder="所在省市" name="province" required="">
 									</div>
 									<div class="form-group">
-										<label>规定到达天数</label> <input type="text" class="form-control"
-											placeholder="天数" name="limitdays" required=""> <label
-											style="color: red;"> <c:out value="${limitdaysMsg }" /></label>
+										<label>规定到达天数</label> <input id="limitdays" type="text"
+											class="form-control" placeholder="天数" name="limitdays"
+											required="">
+										<p style="color: red" id="info"></p>
 									</div>
-
 									<button class="btn btn-outline btn-primary" type="submit">新增</button>
 									<a class="btn btn-outline btn-default" type="button"
 										href="javascript:history.go(-1);">返回</a>
+
 								</form>
 							</div>
 						</div>
@@ -188,12 +181,21 @@
 			});
 		});
 		function dosubmit() {
-			if (isCommitted == false) {
-				isCommitted = true;//提交表单后，将表单是否已经提交标识设置为true
-				return true;//返回true让表单正常提交
-			} else {
-				return false;//返回false那么表单将不提交
+			var limitdays = $('#limitdays').val();
+			var phone = $('#phone').val();
+			if (!/^1[3|4|5|8][0-9]\d{4,8}$/.test(phone)) {
+				$('#info').html('输入手机号码不合法');
+				return false;
 			}
+			if (isNaN(limitdays)) {
+				$('#info').html('天数只能输入数字');
+				return false;
+			}
+			if (limitdays.length >= 4) {
+				$('#info').html('输入天数超出限制');
+				return false;
+			}
+			return true;
 		}
 	</script>
 </body>

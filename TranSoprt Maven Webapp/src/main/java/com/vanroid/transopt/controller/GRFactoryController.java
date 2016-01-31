@@ -244,4 +244,11 @@ public class GRFactoryController extends Controller {
 		}
 		renderFile(file);
 	}
+
+	public void getOrderInfo() {
+		int oid = getParaToInt("oid");
+		GROrder order = GROrder.dao.findById(oid);
+		order.getAttrFromOtherTable();
+		renderJson("order", order);
+	}
 }

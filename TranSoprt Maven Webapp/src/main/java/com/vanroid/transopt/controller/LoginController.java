@@ -36,7 +36,7 @@ public class LoginController extends Controller {
 				admin = as.getByName(username);
 				setSessionAttr("user", admin);
 				setSessionAttr("rank", Constant.USER_TYPE_ADMIN);
-				redirect("/order/distorder/1");//登陆成功跳转到首页
+				redirect("/order/distorder/1");// 登陆成功跳转到首页
 			} else {
 				setAttr("error", "帐号或密码不正确");
 				forwardAction("/account");
@@ -68,4 +68,5 @@ public class LoginController extends Controller {
 	public void main() {
 		render("jsp/index.jsp");
 	}
+
 }

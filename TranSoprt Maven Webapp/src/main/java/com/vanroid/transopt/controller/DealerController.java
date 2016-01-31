@@ -127,20 +127,14 @@ public class DealerController extends Controller {
 	 */
 	@Before(DealerValidate.class)
 	public void singleInsert() {
-		String token = (String) getSession().getAttribute("token");
-		String tokenValue = getPara("token");
-		if (token != null && token.equals(tokenValue)) {
-			getSession().removeAttribute("token");
-			String dname = getPara("dname");
-			long phone = getParaToLong("phone");
-			String province = getPara("province");
-			int limitdays = getParaToInt("limitdays");
-			String dpwd = MD5Utils.MD5("123456");
-			service.saveDealer(dname, dpwd, phone, province, limitdays);
-			forwardAction("/manager/dealer");
-		} else {
-			forwardAction("/manager/dealer");
-		}
+		getSession().removeAttribute("token");
+		String dname = getPara("dname");
+		long phone = getParaToLong("phone");
+		String province = getPara("province");
+		int limitdays = getParaToInt("limitdays");
+		String dpwd = MD5Utils.MD5("123456");
+		service.saveDealer(dname, dpwd, phone, province, limitdays);
+		forwardAction("/manager/dealer");
 	}
 
 	@Before(UploadExcelValidate.class)
