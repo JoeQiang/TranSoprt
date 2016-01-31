@@ -188,30 +188,6 @@
 		src="${pageContext.request.contextPath }/js/plugins/pace/pace.min.js"></script>
 
 
-	<button type="button" onclick="hello()">点击</button>
-	<script>
-		/* js是一种事件驱动的语言,原生的js有个缺点是触发他必须要绑定
-		html的事件才可以使用，如上,点击按钮就会调用hello()这个函数绑定了button标签的onclick事件
-		代码量一大的话，有个缺点是难以找到触发事件的源*/
-		function hello() {
-			alert('hello！');
-		}
-	</script>
-
-	<button type="button">点击</button>
-
-	<script>
-	/* jquery写法,这样的话不用显性绑定button,方便代码的维护，
-	而且jquery对于html的DOM操作比原生的js容易多 */
-		$(document).ready(function() {
-			$("button").click(function() {
-				alert('hello!');
-			});
-		});
-	</script>
-
-
-
 </body>
 
 </html>
