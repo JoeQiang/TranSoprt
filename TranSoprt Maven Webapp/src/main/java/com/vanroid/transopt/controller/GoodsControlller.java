@@ -93,8 +93,12 @@ public class GoodsControlller extends Controller {
 	// 修改商品ajax
 
 	public void updgoods() {
-		gs.updateByGid(getParaToInt("gid"), getPara("gname"),
-				getParaValuesToInt("weight"));
+		try {
+			gs.updateByGid(getParaToInt("gid"), getPara("gname"),
+					getParaValuesToInt("weight"));
+		} catch (NullPointerException e) {
+			gs.updateByGid(getParaToInt("gid"), getPara("gname"), null);
+		}
 		redirect("/goods/list/" + getParaToInt("page"));
 	}
 
