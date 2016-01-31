@@ -31,6 +31,20 @@ public class DealerController extends Controller {
 	}
 
 	/**
+	 * 根据手机号判断是否是经销商身份
+	 */
+	@Clear(LoginInterceptor.class)
+	public void isdealer() {
+
+		Dealer dealer = Dealer.dao.findFirst(
+				"select * from dealer where phone=?", getPara(0));
+		if (dealer == null)
+			renderJson(0);
+		else
+			renderJson(1);
+	}
+
+	/**
 	 * 经销商客户端登陆ajax
 	 */
 	@Clear(LoginInterceptor.class)
@@ -39,15 +53,16 @@ public class DealerController extends Controller {
 		int result = service.doLogin(phone, getPara("pwd"));
 		if (result == 1) {
 			setSessionAttr("user", phone);
-			}
+		}
 		renderJson(result);
 	}
+
 	/**
 	 * 客端点注销
 	 */
 	@Clear(LoginInterceptor.class)
 	@Before(DealerLoginInterceptor.class)
-	public void logout(){
+	public void logout() {
 		removeSessionAttr("user");
 		redirect("/dealer/login");
 	}
@@ -64,21 +79,24 @@ public class DealerController extends Controller {
 		int res = service.getDynamPwd(getPara(0));
 		renderJson(res);
 	}
+
 	/**
 	 * 跳转修改密码页面
 	 */
 	@Clear(LoginInterceptor.class)
 	@Before(DealerLoginInterceptor.class)
-	public void changepwdpage(){
+	public void changepwdpage() {
 		render("/jsp/modify.jsp");
 	}
+
 	/**
 	 * 修改固定密码ajax
 	 */
 	@Clear(LoginInterceptor.class)
 	@Before(DealerLoginInterceptor.class)
-	public void changepwd(){
-		int res=service.changePwd((String)getSessionAttr("user"), getPara("newPwd"));
+	public void changepwd() {
+		int res = service.changePwd((String) getSessionAttr("user"),
+				getPara("newPwd"));
 		renderJson(res);
 
 	}
@@ -124,6 +142,7 @@ public class DealerController extends Controller {
 			forwardAction("/manager/dealer");
 		}
 	}
+
 	@Before(UploadExcelValidate.class)
 	public void excelInsert() {
 		UploadFile uploadFile = getFile("excel");

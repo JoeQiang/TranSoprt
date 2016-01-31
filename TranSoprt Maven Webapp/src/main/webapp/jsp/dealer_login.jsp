@@ -171,7 +171,7 @@
 				return;
 			}
 			$.ajax({
-				url : '${pageContext.request.contextPath}/dealer/getdynamic/'
+				url : '${pageContext.request.contextPath}/dealer/isdealer/'
 						+ phone,
 				type : 'GET',
 				dataType : 'json',

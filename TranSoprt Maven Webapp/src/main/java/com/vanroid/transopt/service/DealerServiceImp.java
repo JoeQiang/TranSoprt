@@ -48,11 +48,7 @@ public class DealerServiceImp implements DealerService {
 	 * 获取动态密码
 	 * 
 	 * @param dname
-<<<<<<< HEAD
 	 * @return 0不存在该经销商,1获取成功
-=======
-	 * @return
->>>>>>> 8a252c50ec55153ff486ad7a4a233ce1b0aedeb2
 	 * @throws IOException
 	 * @throws ApiException
 	 */
