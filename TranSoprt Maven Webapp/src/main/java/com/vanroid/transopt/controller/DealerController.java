@@ -2,6 +2,9 @@ package com.vanroid.transopt.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import com.jfinal.aop.Before;
 import com.jfinal.aop.Clear;
@@ -192,4 +195,23 @@ public class DealerController extends Controller {
 		forwardAction("/manager/dealer");
 	}
 
+	public void checkpwd() {
+		String phone = getPara("phone");
+		Map<String, Object> map;
+		if ("".equals(phone) || phone != null) {
+			String sql = "select * from dealer where phone = ?";
+			List<Dealer> list = Dealer.dao.find(sql, phone);
+			map = new HashMap<String, Object>();
+			int count = list.size();
+			if (count != 0) {
+				map.put("status", "error");
+				map.put("msg", "该手机号码已经被注册,请更换！");
+				renderJson(map);
+			} else {
+				map.put("status", "success");
+				map.put("msg", "恭喜你！该手机号码还没有注册,可以使用");
+				renderJson(map);
+			}
+		}
+	}
 }

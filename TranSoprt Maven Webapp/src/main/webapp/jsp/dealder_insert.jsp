@@ -112,6 +112,7 @@
 										<label>联系电话</label> <input id="phone" type="text"
 											class="form-control" placeholder="联系电话" name="phone"
 											required="">
+										<p id="phoneMsg"></p>
 									</div>
 									<div class="form-group">
 										<label>所在省市</label> <input type="text" class="form-control"
@@ -165,28 +166,99 @@
 
 	<script>
 		var isCommitted = false;//表单是否已经提交标识，默认为false
-		$(document).ready(function() {
-			$("#select").change(function() {
-				var selectIndex = $("#select").get(0).selectedIndex;
-				if (selectIndex == 1) {
-					$("#panel1").slideToggle("slow");
-					$("#panel2").css("display", "none");
-				} else if (selectIndex == 2) {
-					$("#panel2").slideToggle("slow");
-					$("#panel1").css("display", "none");
-				} else {
-					$("#panel2").slideUp("slow");
-					$("#panel1").slideUp("slow");
-				}
-			});
-		});
+		var isRegedit = false; //手机号是否被注册
+		$(document)
+				.ready(
+						function() {
+							$("#select")
+									.change(
+											function() {
+												var selectIndex = $("#select")
+														.get(0).selectedIndex;
+												if (selectIndex == 1) {
+													$("#panel1").slideToggle(
+															"slow");
+													$("#panel2").css("display",
+															"none");
+												} else if (selectIndex == 2) {
+													$("#panel2").slideToggle(
+															"slow");
+													$("#panel1").css("display",
+															"none");
+												} else {
+													$("#panel2")
+															.slideUp("slow");
+													$("#panel1")
+															.slideUp("slow");
+												}
+											});
+							$("#phone")
+									.bind(
+											'blur',
+											function() {
+												var phone = $('#phone').val();
+												var ispass = true;
+												if (!/^1[3|4|5|8][0-9]\d{4,8}$/
+														.test(phone)) {
+													$('#phoneMsg').css("color",
+															"red");
+													$('#phoneMsg').html(
+															'输入手机号码不合法');
+													ispass = false;
+												}
+												if (ispass) {
+													$
+															.ajax({
+																url : '${pageContext.request.contextPath}/manager/dealer/checkpwd',
+																data : {
+																	'phone' : phone
+																},
+																success : function(
+																		data) {
+																	var result = eval(data);
+																	if (result.status == 'success') {
+																		$(
+																				'#phoneMsg')
+																				.css(
+																						"color",
+																						"green");
+																		$(
+																				'#phoneMsg')
+																				.html(
+																						result.msg);
+																		isRegedit = false;
+																	} else if (result.status == 'error') {
+																		$(
+																				'#phoneMsg')
+																				.css(
+																						"color",
+																						"red");
+																		$(
+																				'#phoneMsg')
+																				.html(
+																						result.msg);
+																		isRegedit = true;
+																	}
+																	console
+																			.log(result);
+																}
+															});
+												}
+											});
+						});
 		function dosubmit() {
 			var limitdays = $('#limitdays').val();
 			var phone = $('#phone').val();
+			if (isRegedit) {
+				alert('输入手机已经被注册,请更换!');
+				return false;
+			}
+
 			if (!/^1[3|4|5|8][0-9]\d{4,8}$/.test(phone)) {
 				$('#info').html('输入手机号码不合法');
 				return false;
 			}
+
 			if (isNaN(limitdays)) {
 				$('#info').html('天数只能输入数字');
 				return false;
