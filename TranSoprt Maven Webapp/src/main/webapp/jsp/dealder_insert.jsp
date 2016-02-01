@@ -13,6 +13,9 @@
 <link
 	href="${pageContext.request.contextPath }/css/bootstrap.min.css?v=3.4.0"
 	rel="stylesheet">
+	<link
+	href="${pageContext.request.contextPath }/font-awesome/css/font-awesome.css?v=4.3.0"
+	rel="stylesheet">
 <link
 	href="${pageContext.request.contextPath }/css/font-awesome.css?v=4.3.0"
 	rel="stylesheet">
