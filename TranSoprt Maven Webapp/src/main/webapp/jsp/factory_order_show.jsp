@@ -112,7 +112,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-sm-6">
+				<div class="col-sm-6 col-sm-offset-9">
 					<div class="dataTables_paginate paging_simple_numbers"
 						id="dataTables-example_paginate">
 						<ul class="pagination">
@@ -261,7 +261,7 @@
 	<script
 		src="${pageContext.request.contextPath }/js/plugins/pace/pace.min.js"></script>
 	<script>
-	$(document).ready(function() {
+		$(document).ready(function() {
 
 			var li_id = '${li_id}';
 			$("#" + li_id).addClass("active");

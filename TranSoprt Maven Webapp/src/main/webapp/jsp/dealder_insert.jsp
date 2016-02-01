@@ -13,7 +13,7 @@
 <link
 	href="${pageContext.request.contextPath }/css/bootstrap.min.css?v=3.4.0"
 	rel="stylesheet">
-	<link
+<link
 	href="${pageContext.request.contextPath }/font-awesome/css/font-awesome.css?v=4.3.0"
 	rel="stylesheet">
 <link
@@ -47,8 +47,7 @@
 					</div>
 					<ul class="nav navbar-top-links navbar-right">
 						<li><span class="m-r-sm text-muted welcome-message"><a
-								href="index.html" title="返回首页"></a>欢迎使用港荣后台管理系统</span>
-						</li>
+								href="index.html" title="返回首页"></a>欢迎使用港荣后台管理系统</span></li>
 						<li><c:if test="${sessionScope.user == null }">
 								<a href="login"> <i class="fa fa-sign-out"></i> 登录
 								</a>
@@ -64,7 +63,7 @@
 			<!-- 内容主体结束 -->
 			<div class="row wrapper border-bottom white-bg page-heading">
 				<!-- 导航条 -->
-				
+
 				<div class="row" style="margin-top: 20px">
 					<div class="col-sm-8">
 
@@ -160,20 +159,17 @@
 		src="${pageContext.request.contextPath }/js/plugins/pace/pace.min.js"></script>
 
 	<script>
-	
 		var isCommitted = false;//表单是否已经提交标识，默认为false
 		var isRegedit = false; //手机号是否被注册
 		$(document)
 				.ready(
 						function() {
-<<<<<<< HEAD
-=======
-						var li_id = '${li_id}';
-			$("#" + li_id).addClass("active");
-			if (li_id == "li_factory_order" || li_id == "li_dealer_order") {
-				$("#li_account").removeClass("active");
-			}
->>>>>>> refs/remotes/origin/master
+							var li_id = '${li_id}';
+							$("#" + li_id).addClass("active");
+							if (li_id == "li_factory_order"
+									|| li_id == "li_dealer_order") {
+								$("#li_account").removeClass("active");
+							}
 							$("#select")
 									.change(
 											function() {

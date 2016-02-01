@@ -142,7 +142,7 @@
 													value="${pager.totalRow }" /></span>&nbsp;&nbsp;条
 										</div>
 									</div>
-									<div class="col-sm-6">
+									<div class="col-sm-6 col-sm-offset-9">
 										<div class="dataTables_paginate paging_simple_numbers"
 											id="dataTables-example_paginate">
 											<ul class="pagination">

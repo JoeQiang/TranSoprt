@@ -52,7 +52,7 @@
 									<div class="ibox float-e-margins">
 										<div class="ibox-title">
 											<h5>商品管理</h5>
-											
+
 										</div>
 										<div class="ibox-content">
 											<div class="">
@@ -108,7 +108,7 @@
 								</div>
 							</div>
 							<!--分页 -->
-							<nav style="float:right">
+							<nav style="float:right;margin-right: 100px">
 								<ul class="pagination">
 									<li id="lipre"><c:if test="${pageNum!=1}">
 											<a
@@ -300,14 +300,13 @@
 	<script
 		src="${pageContext.request.contextPath }/js/plugins/iCheck/icheck.min.js"></script>
 	<script>
-	
 		$(document).ready(function() {
 			$('.i-checks').iCheck({
 				checkboxClass : 'icheckbox_square-green',
 				radioClass : 'iradio_square-green',
 			});
-		
-		var li_id = '${li_id}';
+
+			var li_id = '${li_id}';
 			$("#" + li_id).addClass("active");
 			if (li_id == "li_factory_order" || li_id == "li_dealer_order") {
 				$("#li_account").removeClass("active");
@@ -461,7 +460,6 @@
 			});
 			$("#aid4").click();
 		}
-		
 	</script>
 </body>
 

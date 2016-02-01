@@ -28,9 +28,11 @@ public class OrderController extends Controller {
 	 * 下单ajax
 	 */
 	public void makeorder() {
-		String phone=getSessionAttr("user");
-		int did=Dealer.dao.findFirst("select did from dealer where phone=?",phone).getInt("did");
-		boolean res = om.makeOrder(did,getParaToInt(0),getParaToInt(1),getParaToInt(2));
+		String phone = getSessionAttr("user");
+		int did = Dealer.dao.findFirst("select did from dealer where phone=?",
+				phone).getInt("did");
+		boolean res = om.makeOrder(did, getParaToInt(0), getParaToInt(1),
+				getParaToInt(2));
 		if (res == true)
 			renderJson(1);
 		else
@@ -44,7 +46,8 @@ public class OrderController extends Controller {
 		setAttr("pageNum", page.getPageNumber());
 		setAttr("totalPage", page.getTotalPage());
 		setAttr("factorys", om.getAllFactory());
-setAttr("li_id", "li_distorder");
+		setAttr("li_id", "li_distorder");
+		setAttr("pager", page);
 		render("/jsp/order_distribute.jsp");
 	}
 

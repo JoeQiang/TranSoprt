@@ -47,7 +47,7 @@
 								<div class="ibox float-e-margins">
 									<div class="ibox-title">
 										<h5>厂家设置</h5>
-										
+
 									</div>
 									<div class="ibox-content">
 										<div class="">
@@ -94,27 +94,33 @@
 						</div>
 						<!--分页 -->
 
-						<nav>
-							<ul class="pagination">
-								<li id="lipre"><c:if test="${pager.pageNumber ne 1}">
-										<a
-											href="${pageContext.request.contextPath}/factory/setting/${pager.pageNumber-1}"
-											aria-label="Previous"><span aria-hidden="true">上一页</span>
-										</a>
-									</c:if></li>
-								<c:forEach var="i" begin="1" end="${pager.totalPage }" step="1">
-									<li><a
-										href="${pageContext.request.contextPath}/factory/setting/${i}">${i}</a></li>
-								</c:forEach>
-
-								<li id="linext"><c:if
-										test="${pager.pageNumber ne pager.totalPage }">
-										<a
-											href="${pageContext.request.contextPath}/factory/setting/${pager.pageNumber+1}"
-											aria-label="Next"><span aria-hidden="true">下一页</span> </a>
-									</c:if></li>
-							</ul>
-						</nav>
+						<div class="col-sm-6 col-sm-offset-9">
+							<div class="dataTables_paginate paging_simple_numbers"
+								id="dataTables-example_paginate">
+								<ul class="pagination">
+									<li class="paginate_button previous" tabindex="0"
+										id="dataTables-example_previous"><a
+										href="${pageContext.request.contextPath}/factory/setting/${pager.pageNumber-1}">上一页</a></li>
+									<c:forEach var="i" begin="1" end="${pager.totalPage }">
+										<c:if test="${pager.pageNumber eq i}">
+											<li class="paginate_button active disabled" tabindex="0"><a
+												href="${pageContext.request.contextPath }/factory/setting/${i}"><c:out
+														value="${i }" /></a></li>
+										</c:if>
+										<c:if test="${pager.pageNumber ne i}">
+											<li class="paginate_button" tabindex="0"><a
+												href="${pageContext.request.contextPath }/factory/setting/${i}">
+													<c:out value="${i }" />
+											</a></li>
+										</c:if>
+									</c:forEach>
+									<li class="paginate_button next" tabindex="0"
+										id="dataTables-example_next"><a id="next"
+										href="${pageContext.request.contextPath }/factory/setting/<c:if test='${pager.pageNumber eq pager.totalPage }'>${pager.totalPage }</c:if>
+											<c:if test='${pager.pageNumber ne pager.totalPage }'>${pager.pageNumber+1}</c:if>">下一页</a></li>
+								</ul>
+							</div>
+						</div>
 					</div>
 
 					<!-- 内容主体结束 -->
@@ -230,9 +236,8 @@
 	<script
 		src="${pageContext.request.contextPath }/js/plugins/pace/pace.min.js"></script>
 	<script>
-	
 		$(document).ready(function() {
-		var li_id = '${li_id}';
+			var li_id = '${li_id}';
 			var li_id = '${li_id}';
 			$("#" + li_id).addClass("active");
 			if (li_id == "li_factory_order" || li_id == "li_dealer_order") {
