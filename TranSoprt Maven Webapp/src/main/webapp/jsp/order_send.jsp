@@ -7,9 +7,9 @@
 <meta name="renderer" content="webkit">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<title>港荣食品物流跟踪系统</title>
-<meta name="keywords" content="港荣食品物流跟踪系统">
-<meta name="description" content="港荣食品物流跟踪系统">
+<title>港荣食品订单管理系统</title>
+<meta name="keywords" content="港荣食品订单管理系统">
+<meta name="description" content="港荣食品订单管理系统">
 
 <link
 	href="${pageContext.request.contextPath }/css/bootstrap.min.css?v=3.4.0"
@@ -46,18 +46,7 @@
 						<div class="ibox float-e-margins">
 							<div class="ibox-title">
 								<h5>经销商发货</h5>
-								<div class="ibox-tools">
-									<a class="collapse-link"> <i class="fa fa-chevron-up"></i>
-									</a> <a class="dropdown-toggle" data-toggle="dropdown"
-										href="table_data_tables.html#"> <i class="fa fa-wrench"></i>
-									</a>
-									<ul class="dropdown-menu dropdown-user">
-										<li><a href="table_data_tables.html#">选项1</a></li>
-										<li><a href="table_data_tables.html#">选项2</a></li>
-									</ul>
-									<a class="close-link"> <i class="fa fa-times"></i>
-									</a>
-								</div>
+								
 							</div>
 							<div class="ibox-content">
 
@@ -178,7 +167,7 @@
 	                               By：<a href="#" target="_blank">港荣</a>
 	                           </div> -->
 				<div>
-					<strong>物流跟踪系统</strong>&copy; 港荣食品有限公司 &nbsp;&nbsp;2016
+					<strong>订单管理系统</strong>&copy; 港荣食品有限公司 &nbsp;&nbsp;2016
 				</div>
 			</div>
 
@@ -201,6 +190,14 @@
 		src="${pageContext.request.contextPath }/js/plugins/pace/pace.min.js"></script>
 
 	<script>
+	$(document).ready(function() {
+
+			var li_id = '${li_id}';
+			$("#" + li_id).addClass("active");
+			if (li_id == "li_factory_order" || li_id == "li_dealer_order") {
+				$("#li_account").removeClass("active");
+			}
+		});
 		function delivery(oid) {
 			$.ajax({
 				url : '${pageContext.request.contextPath}/order/delivery/'

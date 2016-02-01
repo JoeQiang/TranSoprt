@@ -6,9 +6,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="renderer" content="webkit">
-<title>港荣食品物流跟踪系统</title>
-<meta name="keywords" content="港荣食品物流跟踪系统">
-<meta name="description" content="港荣食品物流跟踪系统">
+<title>港荣食品订单管理系统</title>
+<meta name="keywords" content="港荣食品订单管理系统">
+<meta name="description" content="港荣食品订单管理系统">
 <link
 	href="${pageContext.request.contextPath }/css/bootstrap.min.css?v=3.4.0"
 	rel="stylesheet">
@@ -30,7 +30,7 @@
 		<!-- 搜索栏 -->
 		<div id="page-wrapper" class="gray-bg dashbard-1">
 			<div class="row border-bottom">
-				<%@include file="top.jsp" %>
+				<%@include file="top.jsp"%>
 			</div>
 			<!-- 搜索栏结束 -->
 			<!-- 内容主体结束 -->
@@ -55,16 +55,16 @@
 										<label>供应商信息</label>
 									</h2>
 									<p style="font-size: 16">
-										<label>供应商:</label> <span>家好月圆</span>
+										<label>供应商:</label> <span><c:out value="${dealer.dname }"/></span>
 									</p>
 									<p style="font-size: 16">
-										<label>联系电话:</label> <span>0750-5571493</span>
+										<label>联系电话:</label> <span><c:out value="${dealer.phone }"/></span>
 									</p>
 									<p style="font-size: 16">
-										<label>所在省市:</label> <span>广东广州</span>
+										<label>所在省市:</label> <span><c:out value="${dealer.province }"/></span>
 									</p>
 									<p style="font-size: 16">
-										<label>规定到达天数:</label> <span>3</span>
+										<label>规定到达天数:</label> <span><c:out value="${dealer.limitdays }"/></span>
 									</p>
 									<p>
 										<a class="btn btn-outline btn-default" type="button"
@@ -104,19 +104,17 @@
 		<script src="${pageContext.request.contextPath }/js/hplus.js?v=2.2.0"></script>
 		<script
 			src="${pageContext.request.contextPath }/js/plugins/pace/pace.min.js"></script>
-		<!-- 	<script>
-		$(document).ready(function() {
-			var pageNumber = ${pager.pageNumber };
-			var totalPage = ${pager.totalPage};
-			$("#next").click(function() {
-				if (pageNumber != totalPage) {
-					var number = pageNumber + 1;
-					alert(number);
-				}
+			<script>
+		
+			$(document).ready(function() {
 
-			});
+			var li_id = '${li_id}';
+			$("#" + li_id).addClass("active");
+			if (li_id == "li_factory_order" || li_id == "li_dealer_order") {
+				$("#li_account").removeClass("active");
+			}
 		});
-	</script> -->
+	</script>
 </body>
 
 </html>

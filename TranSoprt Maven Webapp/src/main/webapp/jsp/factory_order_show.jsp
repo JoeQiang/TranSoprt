@@ -7,9 +7,9 @@
 <meta name="renderer" content="webkit">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<title>港荣食品物流跟踪系统</title>
-<meta name="keywords" content="港荣食品物流跟踪系统">
-<meta name="description" content="港荣食品物流跟踪系统">
+<title>港荣食品订单管理系统</title>
+<meta name="keywords" content="港荣食品订单管理系统">
+<meta name="description" content="港荣食品订单管理系统">
 
 <link
 	href="${pageContext.request.contextPath }/css/bootstrap.min.css?v=3.4.0"
@@ -85,7 +85,7 @@
 											<td><c:out value="${order.arriveday }" /></td>
 											<td><c:out value="${order.status }" /></td>
 											<td><button class="btn btn-primary"
-													onclick="alert('${order.oid}')">查看</button></td>
+													onclick="getInfo(${order.oid})">查看</button></td>
 										</tr>
 									</c:forEach>
 								</c:if>
@@ -111,26 +111,36 @@
 					</div>
 				</div>
 			</div>
-			<nav>
-				<ul class="pagination">
-					<li id="lipre"><c:if test="${pager.pageNumber ne 1}">
-							<a
-								href="${pageContext.request.contextPath}/factory/showOrder/${pager.pageNumber-1}-${fid}"
-								aria-label="Previous"><span aria-hidden="true">上一页</span> </a>
-						</c:if></li>
-					<c:forEach var="i" begin="1" end="${pager.totalPage }" step="1">
-						<li><a
-							href="${pageContext.request.contextPath}/factory/manager/${i}-${fid}">${i}</a></li>
-					</c:forEach>
-
-					<li id="linext"><c:if
-							test="${pager.pageNumber ne pager.totalPage }">
-							<a
-								href="${pageContext.request.contextPath}/factory/showOrder/${pager.pageNumber+1}-${fid}"
-								aria-label="Next"><span aria-hidden="true">下一页</span> </a>
-						</c:if></li>
-				</ul>
-			</nav>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="dataTables_paginate paging_simple_numbers"
+						id="dataTables-example_paginate">
+						<ul class="pagination">
+							<li class="paginate_button previous" tabindex="0"
+								id="dataTables-example_previous"><a
+								href="${pageContext.request.contextPath }/factory/showOrder/<c:if test='${pager.pageNumber ge 1 }'>1</c:if>
+											<c:if test='${pager.pageNumber ne 1 }'>${pager.pageNumber-1}</c:if>-${fid }">上一页</a></li>
+							<c:forEach var="i" begin="1" end="${pager.totalPage }">
+								<c:if test="${pager.pageNumber eq i}">
+									<li class="paginate_button active disabled" tabindex="0"><a
+										href="${pageContext.request.contextPath }/factory/showOrder/${i}-${fid }"><c:out
+												value="${i }" /></a></li>
+								</c:if>
+								<c:if test="${pager.pageNumber ne i}">
+									<li class="paginate_button" tabindex="0"><a
+										href="${pageContext.request.contextPath }/factory/showOrder/${i}-${fid }">
+											<c:out value="${i }" />
+									</a></li>
+								</c:if>
+							</c:forEach>
+							<li class="paginate_button next" tabindex="0"
+								id="dataTables-example_next"><a id="next"
+								href="${pageContext.request.contextPath }/factory/showOrder/<c:if test='${pager.pageNumber eq pager.totalPage }'>${pager.totalPage }</c:if>
+											<c:if test='${pager.pageNumber ne pager.totalPage }'>${pager.pageNumber+1}</c:if>-${fid }">下一页</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
 			<!-- 内容主体结束 -->
 
 			<!-- Modal -->
@@ -143,14 +153,78 @@
 								aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
-							<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+							<h4 class="modal-title" id="myModalLabel">经销商信息</h4>
 						</div>
-						<div class="modal-body">...</div>
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-sm-2">
+									<label>经销商:</label>
+								</div>
+								<div class="col-sm-4">
+									<p id="dname">经销商1</p>
+								</div>
+								<div class="col-sm-2">
+									<label>电话号码:</label>
+								</div>
+								<div class="col-sm-4">
+									<p id="dphone">18826243710</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-2">
+									<label>所在省市:</label>
+								</div>
+								<div class="col-sm-4">
+									<p id="province">广东广州</p>
+								</div>
+								<div class="col-sm-2">
+									<label>货品详情:</label>
+								</div>
+								<div class="col-sm-4">
+									<p>
+										货品:<span id="gname">鸡蛋</span>,规格:<span id="sname">1kg</span>,数量:<span
+											id="num">11</span>
+									</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-2">
+									<label>下单时间:</label>
+								</div>
+								<div class="col-sm-4">
+									<p id="createday">2016-01-18</p>
+								</div>
+								<div class="col-sm-2">
+									<label>发货时间:</label>
+								</div>
+								<div class="col-sm-4">
+									<p id="sendday">2016-01-18</p>
+								</div>
+								<div class="col-sm-2">
+									<label>到货时间:</label>
+								</div>
+								<div class="col-sm-4">
+									<p id="arriveday">2016-01-18</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-2">
+									<label>发货厂家:</label>
+								</div>
+								<div class="col-sm-4">
+									<p id="fname">广东广州</p>
+								</div>
+								<div class="col-sm-3">
+									<label>规定到达时间:</label>
+								</div>
+								<div class="col-sm-2">
+									<p id="limitday"></p>
+								</div>
+							</div>
+						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-default"
-								data-dismiss="modal">Close</button>
-							<button type="button" class="btn btn-primary">Save
-								changes</button>
+							<button type="button" class="btn btn-primary"
+								data-dismiss="modal">确定</button>
 						</div>
 					</div>
 				</div>
@@ -166,7 +240,7 @@
 	                               By：<a href="#" target="_blank">港荣</a>
 	                           </div> -->
 				<div>
-					<strong>物流跟踪系统</strong>&copy; 港荣食品有限公司 &nbsp;&nbsp;2016
+					<strong>订单管理系统</strong>&copy; 港荣食品有限公司 &nbsp;&nbsp;2016
 				</div>
 			</div>
 
@@ -186,31 +260,61 @@
 	<script src="${pageContext.request.contextPath }/js/hplus.js?v=2.2.0"></script>
 	<script
 		src="${pageContext.request.contextPath }/js/plugins/pace/pace.min.js"></script>
-
-
-	<button type="button" onclick="hello()">点击</button>
 	<script>
-		/* js是一种事件驱动的语言,原生的js有个缺点是触发他必须要绑定
-		html的事件才可以使用，如上,点击按钮就会调用hello()这个函数绑定了button标签的onclick事件
-		代码量一大的话，有个缺点是难以找到触发事件的源*/
-		function hello() {
-			alert('hello！');
+	$(document).ready(function() {
+
+			var li_id = '${li_id}';
+			$("#" + li_id).addClass("active");
+			if (li_id == "li_factory_order" || li_id == "li_dealer_order") {
+				$("#li_account").removeClass("active");
+			}
+		});
+		function getInfo(oid) {
+			$
+					.ajax({
+						url : '${pageContext.request.contextPath}/factory/getOrderInfo',
+						data : {
+							'oid' : oid
+						},
+						dataType : 'json',
+						error : function(xhr) {
+							alert("错误提示： " + xhr.status + " " + xhr.statusText);
+						},
+						success : function(data) {
+
+							var result = eval(data);
+							var order = result.order;
+							//添加经销商名称
+							$('#dname').html(order.dealer.dname);
+							//添加经销商电话
+							$('#dphone').html(order.dealer.phone);
+							//添加经销商省市
+							$('#province').html(order.dealer.province);
+							//添加货品名称
+							$('#gname').html(order.gname);
+							//添加货品数量
+							$('#num').html(order.num);
+							//添加货品规格
+							$('#sname').html(order.sname);
+							//添加下单时间
+							$('#createday').html(order.createday);
+							//添加发货时间
+							$('#sendday').html(order.sendday);
+							//添加到货时间
+							$('#arriveday').html(order.arriveday);
+							//添加发货厂家
+							$('#fname').html(order.factoryname);
+							//添加限制天数
+							$('#limitday').html(order.dealer.limitdays);
+							//弹出模态框
+							$('#myModal').modal('show');
+
+							console.log(result);
+
+						}
+					});
 		}
 	</script>
-
-	<button type="button">点击</button>
-
-	<script>
-	/* jquery写法,这样的话不用显性绑定button,方便代码的维护，
-	而且jquery对于html的DOM操作比原生的js容易多 */
-		$(document).ready(function() {
-			$("button").click(function() {
-				alert('hello!');
-			});
-		});
-	</script>
-
-
 
 </body>
 

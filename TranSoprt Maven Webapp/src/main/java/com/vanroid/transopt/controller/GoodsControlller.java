@@ -56,7 +56,8 @@ public class GoodsControlller extends Controller {
 		setAttr("goodslist", list);
 		setAttr("totalPage", page.getTotalPage());// 多少页
 		setAttr("pageNum", page.getPageNumber());// 当前页
-		render("/jsp/goodsmanage.jsp");
+		setAttr("li_id","li_goods");
+		render("/jsp/goods_manage.jsp");
 	}
 
 	// ajax删除商品

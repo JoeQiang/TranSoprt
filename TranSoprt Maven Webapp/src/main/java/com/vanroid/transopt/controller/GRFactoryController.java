@@ -40,6 +40,7 @@ public class GRFactoryController extends Controller {
 		}
 		Page<GRFactory> pager = service.getFactoryList(pageNum);
 		setAttr("pager", pager);
+		setAttr("li_id","li_factory");
 		render("/jsp/acount_factory.jsp");
 	}
 
@@ -53,6 +54,7 @@ public class GRFactoryController extends Controller {
 		}
 		setAttr("pager", pager);
 		setAttr("fid", fid);
+		setAttr("li_id","li_factory");
 		render("/jsp/factory_order_show.jsp");
 	}
 
@@ -66,6 +68,7 @@ public class GRFactoryController extends Controller {
 		}
 		Page<GRFactory> pager = service.getFactoryList(pageNum);
 		setAttr("pager", pager);
+		setAttr("li_id", "li_factory_order");
 		render("/jsp/factory_manager.jsp");
 	}
 
@@ -79,6 +82,7 @@ public class GRFactoryController extends Controller {
 		}
 		Page<GRFactory> pager = service.getFactoryList(pageNum);
 		setAttr("pager", pager);
+		setAttr("li_id", "li_setting");
 		render("/jsp/acount_setting.jsp");
 	}
 
@@ -120,6 +124,7 @@ public class GRFactoryController extends Controller {
 		List<GROrder> list = service.getAllOrders(fid, filter, search);
 		setAttr("fid", fid);
 		setAttr("list", list);
+		setAttr("li_id", "li_factory_order");
 		render("/jsp/factory_order.jsp");
 	}
 
@@ -174,14 +179,24 @@ public class GRFactoryController extends Controller {
 				label = new Label(0, i, dealer.getStr("dname"));
 				sheet.addCell(label);
 				// 经销商联系电话
-				label = new Label(1, i, String.valueOf(dealer.get("phone")));
-				sheet.addCell(label);
+				if (dealer.get("phone") != null) {
+					label = new Label(1, i, String.valueOf(dealer.get("phone")));
+					sheet.addCell(label);
+				} else {
+					label = new Label(1, i, "");
+					sheet.addCell(label);
+				}
 				// 经销商所在省市
 				label = new Label(2, i, dealer.getStr("province"));
 				sheet.addCell(label);
 				// 货品的数量
-				label = new Label(3, i, String.valueOf(order.get("num")));
-				sheet.addCell(label);
+				if (order.get("num") != null) {
+					label = new Label(3, i, String.valueOf(order.get("num")));
+					sheet.addCell(label);
+				} else {
+					label = new Label(3, i, "");
+					sheet.addCell(label);
+				}
 				// 货品的品类
 				label = new Label(4, i, order.getGoodName());
 				sheet.addCell(label);
@@ -189,20 +204,43 @@ public class GRFactoryController extends Controller {
 				label = new Label(5, i, order.getStandardName());
 				sheet.addCell(label);
 				// 下单时间
-				label = new Label(6, i, order.getDate("createday").toString());
-				sheet.addCell(label);
+				if (order.getDate("createday") != null) {
+					label = new Label(6, i, order.getDate("createday")
+							.toString());
+					sheet.addCell(label);
+				} else {
+					label = new Label(6, i, "");
+					sheet.addCell(label);
+				}
 				// 发货时间
-				label = new Label(7, i, order.getDate("sendday").toString());
-				sheet.addCell(label);
+				if (order.getDate("sendday") != null) {
+					label = new Label(7, i, order.getDate("sendday").toString());
+					sheet.addCell(label);
+				} else {
+					label = new Label(7, i, "");
+					sheet.addCell(label);
+				}
 				// 发货厂家
 				label = new Label(8, i, order.get("factoryname").toString());
 				sheet.addCell(label);
 				// 发货后规定到达时间
-				label = new Label(9, i, String.valueOf(dealer.get("limitdays")));
-				sheet.addCell(label);
+				if (dealer.get("limitdays") != null) {
+					label = new Label(9, i, String.valueOf(dealer
+							.get("limitdays")));
+					sheet.addCell(label);
+				} else {
+					label = new Label(9, i, "");
+					sheet.addCell(label);
+				}
 				// 到货时间
-				label = new Label(10, i, order.getDate("arriveday").toString());
-				sheet.addCell(label);
+				if (order.getDate("arriveday") != null) {
+					label = new Label(10, i, order.getDate("arriveday")
+							.toString());
+					sheet.addCell(label);
+				} else {
+					label = new Label(10, i, "");
+					sheet.addCell(label);
+				}
 			}
 			wb.write();
 			wb.close();
@@ -212,4 +250,10 @@ public class GRFactoryController extends Controller {
 		renderFile(file);
 	}
 
+	public void getOrderInfo() {
+		int oid = getParaToInt("oid");
+		GROrder order = GROrder.dao.findById(oid);
+		order.getAttrFromOtherTable();
+		renderJson("order", order);
+	}
 }

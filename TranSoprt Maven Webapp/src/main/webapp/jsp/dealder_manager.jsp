@@ -6,11 +6,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="renderer" content="webkit">
-<title>港荣食品物流跟踪系统</title>
-<meta name="keywords" content="港荣食品物流跟踪系统">
-<meta name="description" content="港荣食品物流跟踪系统">
+<title>港荣食品订单管理系统</title>
+<meta name="keywords" content="港荣食品订单管理系统">
+<meta name="description" content="港荣食品订单管理系统">
 <link
 	href="${pageContext.request.contextPath }/css/bootstrap.min.css?v=3.4.0"
+	rel="stylesheet">
+	<link
+	href="${pageContext.request.contextPath }/font-awesome/css/font-awesome.css?v=4.3.0"
 	rel="stylesheet">
 <link
 	href="${pageContext.request.contextPath }/css/font-awesome.css?v=4.3.0"
@@ -36,18 +39,15 @@
 			<!-- 内容主体结束 -->
 			<div class="row wrapper border-bottom white-bg page-heading">
 				<!-- /.panel-heading -->
-				<div class="panel-body">
+				<div class="ibox float-e-margins">
 					<div class="dataTable_wrapper">
 						<div id="dataTables-example_wrapper"
-							class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-							<div class="row">
-								<div class="col-sm-6">
-									<ol class="breadcrumb">
-										<li><a href="#">账户</a></li>
-										<li class="active">经销商管理</li>
-									</ol>
-								</div>
+							>
+							<div class="ibox-title">
+								<h5>经销商管理</h5>
+								
 							</div>
+							<div class="ibox-content">
 							<div class="row" style="margin-top: 20px">
 								<div class="col-sm-6">
 									<div class="dataTables_length" id="dataTables-example_length">
@@ -76,7 +76,7 @@
 							<div class="row" style="margin: 10px">
 								<div class="col-sm-12">
 									<table
-										class="table table-striped table-bordered table-hover dataTable no-footer"
+										class="table table-striped table-bordered table-hover  no-footer"
 										id="dataTables-example" role="grid">
 										<thead>
 											<tr role="row">
@@ -104,9 +104,9 @@
 														<td class="center">
 															<div class="dropdown">
 																<button type="button"
-																	class="btn dropdown-toggle btn-circle btn-primary"
+																	class="btn dropdown-toggle btn-primary"
 																	id="dropdownMenu1" data-toggle="dropdown">
-																	<i class="fa fa-list"></i>
+																	操作
 																</button>
 																<ul class="dropdown-menu" role="menu" style="width:20px">
 																	<li role="presentation"><a role="menuitem"
@@ -171,7 +171,7 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</div></div>
 					</div>
 
 				</div>
@@ -228,6 +228,14 @@
 		<script
 			src="${pageContext.request.contextPath }/js/plugins/pace/pace.min.js"></script>
 		<script>
+		$(document).ready(function() {
+
+			var li_id = '${li_id}';
+			$("#" + li_id).addClass("active");
+			if (li_id == "li_factory_order" || li_id == "li_dealer_order") {
+				$("#li_account").removeClass("active");
+			}
+		});
 			function deleteItem(url) {
 				/* alert(url); */
 				$('#myModal').modal('toggle');

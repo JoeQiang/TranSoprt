@@ -2,6 +2,9 @@ package com.vanroid.transopt.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import com.jfinal.aop.Before;
 import com.jfinal.aop.Clear;
@@ -112,6 +115,7 @@ public class DealerController extends Controller {
 		}
 		Page<Dealer> pager = service.dealerList(pageNumber, pageSize);
 		setAttr("pager", pager);
+		setAttr("li_id", "li_dealer");
 		render("/jsp/dealder_manager.jsp");
 	}
 
@@ -119,6 +123,7 @@ public class DealerController extends Controller {
 	 * 跳转经销商插入页
 	 */
 	public void insert_page() {
+		setAttr("li_id", "li_dealer");
 		render("/jsp/dealder_insert.jsp");
 	}
 
@@ -127,20 +132,14 @@ public class DealerController extends Controller {
 	 */
 	@Before(DealerValidate.class)
 	public void singleInsert() {
-		String token = (String) getSession().getAttribute("token");
-		String tokenValue = getPara("token");
-		if (token != null && token.equals(tokenValue)) {
-			getSession().removeAttribute("token");
-			String dname = getPara("dname");
-			long phone = getParaToLong("phone");
-			String province = getPara("province");
-			int limitdays = getParaToInt("limitdays");
-			String dpwd = MD5Utils.MD5("123456");
-			service.saveDealer(dname, dpwd, phone, province, limitdays);
-			forwardAction("/manager/dealer");
-		} else {
-			forwardAction("/manager/dealer");
-		}
+		getSession().removeAttribute("token");
+		String dname = getPara("dname");
+		long phone = getParaToLong("phone");
+		String province = getPara("province");
+		int limitdays = getParaToInt("limitdays");
+		String dpwd = MD5Utils.MD5("123456");
+		service.saveDealer(dname, dpwd, phone, province, limitdays);
+		forwardAction("/manager/dealer");
 	}
 
 	@Before(UploadExcelValidate.class)
@@ -162,6 +161,7 @@ public class DealerController extends Controller {
 		int did = getParaToInt("did");
 		Dealer dealer = service.findById(did);
 		setAttr("dealer", dealer);
+		setAttr("li_id", "li_dealer");
 		render("/jsp/dealder_show.jsp");
 	}
 
@@ -172,6 +172,7 @@ public class DealerController extends Controller {
 		int did = getParaToInt("did");
 		Dealer dealer = service.findById(did);
 		setAttr("dealer", dealer);
+		setAttr("li_id", "li_dealer");
 		render("/jsp/dealder_update.jsp");
 	}
 
@@ -198,4 +199,23 @@ public class DealerController extends Controller {
 		forwardAction("/manager/dealer");
 	}
 
+	public void checkpwd() {
+		String phone = getPara("phone");
+		Map<String, Object> map;
+		if ("".equals(phone) || phone != null) {
+			String sql = "select * from dealer where phone = ?";
+			List<Dealer> list = Dealer.dao.find(sql, phone);
+			map = new HashMap<String, Object>();
+			int count = list.size();
+			if (count != 0) {
+				map.put("status", "error");
+				map.put("msg", "该手机号码已经被注册,请更换！");
+				renderJson(map);
+			} else {
+				map.put("status", "success");
+				map.put("msg", "恭喜你！该手机号码还没有注册,可以使用");
+				renderJson(map);
+			}
+		}
+	}
 }

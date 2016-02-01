@@ -6,9 +6,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="renderer" content="webkit">
-<title>港荣食品物流跟踪系统</title>
-<meta name="keywords" content="港荣食品物流跟踪系统">
-<meta name="description" content="港荣食品物流跟踪系统">
+<title>港荣食品订单管理系统</title>
+<meta name="keywords" content="港荣食品订单管理系统">
+<meta name="description" content="港荣食品订单管理系统">
 <link
 	href="${pageContext.request.contextPath }/css/bootstrap.min.css?v=3.4.0"
 	rel="stylesheet">
@@ -122,19 +122,17 @@
 	<script src="${pageContext.request.contextPath }/js/hplus.js?v=2.2.0"></script>
 	<script
 		src="${pageContext.request.contextPath }/js/plugins/pace/pace.min.js"></script>
-	<!-- 	<script>
+		<script>
 		$(document).ready(function() {
-			var pageNumber = ${pager.pageNumber };
-			var totalPage = ${pager.totalPage};
-			$("#next").click(function() {
-				if (pageNumber != totalPage) {
-					var number = pageNumber + 1;
-					alert(number);
-				}
 
-			});
+			var li_id = '${li_id}';
+			$("#" + li_id).addClass("active");
+			if (li_id == "li_factory_order" || li_id == "li_dealer_order") {
+				$("#li_account").removeClass("active");
+			}
 		});
-	</script> -->
+		
+	</script>
 </body>
 
 </html>

@@ -1,5 +1,8 @@
 package com.vanroid.transopt.controller;
 
+import javax.faces.view.facelets.Facelet;
+
+import com.jfinal.aop.Before;
 import com.jfinal.aop.Clear;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.PathKit;
@@ -11,6 +14,7 @@ import com.vanroid.transopt.service.AdminServiceImp;
 import com.vanroid.transopt.service.GRFactoryService;
 import com.vanroid.transopt.service.GRFactoryServiceImp;
 import com.vanroid.transopt.uitls.Constant;
+import com.vanroid.transopt.uitls.MD5Utils;
 
 public class LoginController extends Controller {
 	@Clear(LoginInterceptor.class)
@@ -36,7 +40,7 @@ public class LoginController extends Controller {
 				admin = as.getByName(username);
 				setSessionAttr("user", admin);
 				setSessionAttr("rank", Constant.USER_TYPE_ADMIN);
-				redirect("/order/distorder/1");//登陆成功跳转到首页
+				redirect("/order/distorder/1");// 登陆成功跳转到首页
 			} else {
 				setAttr("error", "帐号或密码不正确");
 				forwardAction("/account");
@@ -59,6 +63,7 @@ public class LoginController extends Controller {
 		}
 	}
 
+	
 	public void logout() {
 		getSession().removeAttribute("user");
 		getSession().invalidate();
@@ -66,6 +71,29 @@ public class LoginController extends Controller {
 	}
 
 	public void main() {
-		render("jsp/index.jsp");
+		redirect("/factory/order/1");
+	}
+
+	public void pwdpage() {
+		render("jsp/acount_pwd.jsp");
+	}
+
+	public void cheangepwd() {
+		String pwd = getPara("pwd");
+		String rank = getSessionAttr("rank");
+		boolean isUpdate = false;
+		if (Constant.USER_TYPE_ADMIN.equals(rank)) {
+			Admin admin = getSessionAttr("user");
+			isUpdate = admin.set("password", MD5Utils.MD5(pwd)).update();
+		} else if (Constant.USER_TYPE_FACTORY.equals(rank)) {
+			GRFactory factory = getSessionAttr("user");
+			isUpdate = factory.set("fpwd", MD5Utils.MD5(pwd)).update();
+		}
+		if (isUpdate) {
+			setAttr("msg", "修改密码成功");
+		} else {
+			setAttr("msg", "修改密码成功");
+		}
+		render("jsp/acount_pwd.jsp");
 	}
 }
