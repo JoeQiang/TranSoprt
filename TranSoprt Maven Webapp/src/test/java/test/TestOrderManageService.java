@@ -11,7 +11,6 @@ import com.vanroid.transopt.model.Dealer;
 import com.vanroid.transopt.model.GRFactory;
 import com.vanroid.transopt.model.GRGoods;
 import com.vanroid.transopt.model.GROrder;
-import com.vanroid.transopt.model.ShoppingCart;
 import com.vanroid.transopt.model.Standard;
 import com.vanroid.transopt.service.OrderManageService;
 

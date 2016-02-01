@@ -181,6 +181,7 @@
 		src="${pageContext.request.contextPath }/js/plugins/pace/pace.min.js"></script>
 
 	<script>
+	
 		function disfactory(oid) {
 			var fid = $("#td" + oid).find("select option:selected").val();
 			$.ajax({
@@ -195,6 +196,10 @@
 				dataType : 'json'
 			});
 		}
+		$(document).ready(function(){
+			$("table th").eq(3).css("width","80px");
+		});
+	
 	</script>
 </body>
 
