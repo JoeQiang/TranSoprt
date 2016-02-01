@@ -12,7 +12,7 @@
 	</div>
 	<ul class="nav navbar-top-links navbar-right">
 		<li><span class="m-r-sm text-muted welcom	e-message"><a
-				href="index.html" title="返回首页"><i class="fa fa-home"></i></a>欢迎使用港荣后台管理系统</span>
+				href="index.html" title="返回首页"></a>欢迎使用港荣后台管理系统</span>
 		</li>
 		<li><c:if test="${empty user }">
 				<a href="${pageContext.request.contextPath }/account"> <i

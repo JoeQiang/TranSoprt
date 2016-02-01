@@ -45,19 +45,8 @@
 					<div class="col-lg-12">
 						<div class="ibox float-e-margins">
 							<div class="ibox-title">
-								<h5>订单管理</h5>
-								<div class="ibox-tools">
-									<a class="collapse-link"> <i class="fa fa-chevron-up"></i>
-									</a> <a class="dropdown-toggle" data-toggle="dropdown"
-										href="table_data_tables.html#"> <i class="fa fa-wrench"></i>
-									</a>
-									<ul class="dropdown-menu dropdown-user">
-										<li><a href="table_data_tables.html#">选项1</a></li>
-										<li><a href="table_data_tables.html#">选项2</a></li>
-									</ul>
-									<a class="close-link"> <i class="fa fa-times"></i>
-									</a>
-								</div>
+								<h5>经销商发货</h5>
+								
 							</div>
 							<div class="ibox-content">
 
@@ -72,32 +61,43 @@
 											<th>货品种类</th>
 											<th>货品规格</th>
 											<th>下单时间</th>
+											<!-- <th>发货时间</th> -->
+											<th>发货厂家</th>
 											<th>发货后规定到达时间</th>
-											<th>分配厂家</th>
+											<th>状态</th>
+											<th>操作</th>
 										</tr>
 									</thead>
 									<tbody>
-										<c:if test="${fn:length(newOrder)==0 }">
+										<c:if test="${fn:length(delivOrder)==0 }">
 											<tr class="gradeB">
-												<td colspan="7">暂无未分配订单</td>
+												<td>暂无未发货订单</td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
 										</c:if>
-										<c:forEach items="${newOrder}" var="order">
-											<tr class="gradeB" id="td${order.oid }">
+										<c:forEach items="${delivOrder}" var="order">
+											<tr class="gradeB" id="tr${order.oid }">
 												<td>${order.dealer.dname}</td>
 												<td>${order.dealer.phone}</td>
 												<td>${order.dealer.province}</td>
-												<td>${order.num }</td>
-												<td>${order.gname }</td>
+												<td>${order.num}</td>
+												<td>${order.gname}</td>
 												<td>${order.sname}</td>
 												<td>${order.createday}</td>
+												<%-- 	<td>${order.sendday}</td> --%>
+												<td>${order.factoryname}</td>
 												<td>${order.dealer.limitdays}天</td>
-
-												<td><select name="disfactory">
-														<c:forEach items="${factorys}" var="factory">
-															<option value="${factory.fid}">${factory.fname}</option>
-														</c:forEach>
-												</select> <a type="button" class="btn btn-warning"
-													href="javascript:disfactory(${order.oid})">确定</a></td>
+												<td>${order.status}</td>
+												<td><a type="button" class="btn btn-warning"
+													href="javascript:delivery(${order.oid})">发货</a></td>
 											</tr>
 										</c:forEach>
 									</tbody>
@@ -110,12 +110,51 @@
 											<th>货品种类</th>
 											<th>货品规格</th>
 											<th>下单时间</th>
+											<!-- <th>发货时间</th> -->
+											<th>发货厂家</th>
 											<th>发货后规定到达时间</th>
-											<th>分配厂家</th>
+											<th>状态</th>
+											<th>操作</th>
 										</tr>
 									</tfoot>
 								</table>
 
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--分页 -->
+				<nav>
+					<ul class="pagination">
+						<li id="lipre"><c:if test="${pageNum!=1}">
+								<a
+									href="${pageContext.request.contextPath }/order/deliveryorder/${pageNum-1}"
+									aria-label="Previous">
+							</c:if> <span aria-hidden="true">上一页</span> </a></li>
+						<c:forEach var="i" begin="1" end="${totalPage}" step="1">
+							<li><a
+								href="${pageContext.request.contextPath}/order/deliveryorder/${i}">${i}</a></li>
+						</c:forEach>
+						<li id="linext"><c:if test="${pageNum<totalPage}">
+								<a
+									href="${pageContext.request.contextPath }/order/deliveryorder/${pageNum+1}"
+									aria-label="Next">
+							</c:if> <span aria-hidden="true">下一页</span> </a></li>
+					</ul>
+				</nav>
+				<!-- 短信信息编辑 -->
+				<div id="modal-form1" class="modal fade" aria-hidden="false">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-body">
+								<div class="row">
+									<div class="col-sm-6 b-r">
+										<h2>短信额外通知：</h2>
+										<div id="showsta"></div>
+
+
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -151,21 +190,27 @@
 		src="${pageContext.request.contextPath }/js/plugins/pace/pace.min.js"></script>
 
 	<script>
-		function disfactory(oid) {
-			var fid = $("#td" + oid).find("select option:selected").val();
+	$(document).ready(function() {
+
+			var li_id = '${li_id}';
+			$("#" + li_id).addClass("active");
+			if (li_id == "li_factory_order" || li_id == "li_dealer_order") {
+				$("#li_account").removeClass("active");
+			}
+		});
+		function delivery(oid) {
 			$.ajax({
-				url : '${pageContext.request.contextPath}/order/distfactory/'
-						+ fid + '-' + oid,
+				url : '${pageContext.request.contextPath}/order/delivery/'
+						+ oid,
 				type : 'GET',
 				success : function(data) {
-					alert(data);
-					if (data == 1)
-						$("#td" + oid).hide();
+					if (data == 1) {
+						$("#tr" + oid).hide();
+						alert("发货成功！已通知用户！");
+					}
 				},
 				dataType : 'json'
 			});
 		}
 	</script>
-</body>
-
-</html>
+</body></html>

@@ -63,7 +63,7 @@ public class LoginController extends Controller {
 		}
 	}
 
-	@Before(LoginInterceptor.class)
+	
 	public void logout() {
 		getSession().removeAttribute("user");
 		getSession().invalidate();
@@ -71,10 +71,9 @@ public class LoginController extends Controller {
 	}
 
 	public void main() {
-		render("jsp/index.jsp");
+		redirect("/factory/order/1");
 	}
 
-	@Before(LoginInterceptor.class)
 	public void pwdpage() {
 		render("jsp/acount_pwd.jsp");
 	}

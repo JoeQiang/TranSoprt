@@ -115,6 +115,7 @@ public class DealerController extends Controller {
 		}
 		Page<Dealer> pager = service.dealerList(pageNumber, pageSize);
 		setAttr("pager", pager);
+		setAttr("li_id", "li_dealer");
 		render("/jsp/dealder_manager.jsp");
 	}
 
@@ -122,6 +123,7 @@ public class DealerController extends Controller {
 	 * 跳转经销商插入页
 	 */
 	public void insert_page() {
+		setAttr("li_id", "li_dealer");
 		render("/jsp/dealder_insert.jsp");
 	}
 
@@ -159,6 +161,7 @@ public class DealerController extends Controller {
 		int did = getParaToInt("did");
 		Dealer dealer = service.findById(did);
 		setAttr("dealer", dealer);
+		setAttr("li_id", "li_dealer");
 		render("/jsp/dealder_show.jsp");
 	}
 
@@ -169,6 +172,7 @@ public class DealerController extends Controller {
 		int did = getParaToInt("did");
 		Dealer dealer = service.findById(did);
 		setAttr("dealer", dealer);
+		setAttr("li_id", "li_dealer");
 		render("/jsp/dealder_update.jsp");
 	}
 

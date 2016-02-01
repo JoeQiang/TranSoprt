@@ -40,6 +40,7 @@ public class GRFactoryController extends Controller {
 		}
 		Page<GRFactory> pager = service.getFactoryList(pageNum);
 		setAttr("pager", pager);
+		setAttr("li_id","li_factory");
 		render("/jsp/acount_factory.jsp");
 	}
 
@@ -53,6 +54,7 @@ public class GRFactoryController extends Controller {
 		}
 		setAttr("pager", pager);
 		setAttr("fid", fid);
+		setAttr("li_id","li_factory");
 		render("/jsp/factory_order_show.jsp");
 	}
 
@@ -66,6 +68,7 @@ public class GRFactoryController extends Controller {
 		}
 		Page<GRFactory> pager = service.getFactoryList(pageNum);
 		setAttr("pager", pager);
+		setAttr("li_id", "li_factory_order");
 		render("/jsp/factory_manager.jsp");
 	}
 
@@ -79,6 +82,7 @@ public class GRFactoryController extends Controller {
 		}
 		Page<GRFactory> pager = service.getFactoryList(pageNum);
 		setAttr("pager", pager);
+		setAttr("li_id", "li_setting");
 		render("/jsp/acount_setting.jsp");
 	}
 
@@ -120,6 +124,7 @@ public class GRFactoryController extends Controller {
 		List<GROrder> list = service.getAllOrders(fid, filter, search);
 		setAttr("fid", fid);
 		setAttr("list", list);
+		setAttr("li_id", "li_factory_order");
 		render("/jsp/factory_order.jsp");
 	}
 

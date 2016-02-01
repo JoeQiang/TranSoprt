@@ -44,7 +44,8 @@ public class OrderController extends Controller {
 		setAttr("pageNum", page.getPageNumber());
 		setAttr("totalPage", page.getTotalPage());
 		setAttr("factorys", om.getAllFactory());
-		render("/jsp/orderdistribute.jsp");
+setAttr("li_id", "li_distorder");
+		render("/jsp/order_distribute.jsp");
 	}
 
 	// 分配厂家ajax
@@ -63,7 +64,8 @@ public class OrderController extends Controller {
 			setAttr("delivOrder", page.getList());
 			setAttr("pageNum", page.getPageNumber());
 			setAttr("totalPage", page.getTotalPage());
-			render("/jsp/ordersend.jsp");
+			setAttr("li_id", "li_dealer_order");
+			render("/jsp/order_send.jsp");
 		}
 		/**
 		 * 厂家权限下看到自己的未发货订单
@@ -75,7 +77,7 @@ public class OrderController extends Controller {
 			setAttr("delivOrder", page.getList());
 			setAttr("pageNum", page.getPageNumber());
 			setAttr("totalPage", page.getTotalPage());
-			render("/jsp/ordersend.jsp");
+			render("/jsp/order_send.jsp");
 		}
 
 	}

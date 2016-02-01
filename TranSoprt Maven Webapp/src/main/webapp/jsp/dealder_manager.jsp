@@ -13,6 +13,9 @@
 	href="${pageContext.request.contextPath }/css/bootstrap.min.css?v=3.4.0"
 	rel="stylesheet">
 <link
+	href="${pageContext.request.contextPath }/font-awesome/css/font-awesome.css?v=4.3.0"
+	rel="stylesheet">
+<link
 	href="${pageContext.request.contextPath }/css/font-awesome.css?v=4.3.0"
 	rel="stylesheet">
 <link href="${pageContext.request.contextPath }/css/animate.css"
@@ -36,22 +39,18 @@
 			<!-- 内容主体结束 -->
 			<div class="row wrapper border-bottom white-bg page-heading">
 				<!-- /.panel-heading -->
-				<div class="panel-body">
+				<div class="ibox float-e-margins">
 					<div class="dataTable_wrapper">
-						<div id="dataTables-example_wrapper"
-							class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-							<div class="row">
-								<div class="col-sm-6">
-									<ol class="breadcrumb">
-										<li><a href="#">账户</a></li>
-										<li class="active">经销商管理</li>
-									</ol>
-								</div>
+						<div id="dataTables-example_wrapper">
+							<div class="ibox-title">
+								<h5>经销商管理</h5>
+
 							</div>
-							<div class="row" style="margin-top: 20px">
-								<div class="col-sm-6">
-									<div class="dataTables_length" id="dataTables-example_length">
-										<!-- <label>显示 <select id="show"
+							<div class="ibox-content">
+								<div class="row" style="margin-top: 20px">
+									<div class="col-sm-6">
+										<div class="dataTables_length" id="dataTables-example_length">
+											<!-- <label>显示 <select id="show"
 											name="dataTables-example_length"
 											class="form-control input-sm">
 												<option value="10"></option>
@@ -61,113 +60,114 @@
 												<option value="100">100</option>
 										</select> 记录
 										</label> -->
+										</div>
 									</div>
-								</div>
 
-								<div class="col-sm-6">
-									<div id="dataTables-example_filter" class="dataTables_filter">
-										<a
-											href="${pageContext.request.contextPath }/manager/dealer/insert_page"
-											type="button" class="btn btn-outline btn-primary"
-											style="float: right; margin-right: 40px" role="button">新增</a>
+									<div class="col-sm-6">
+										<div id="dataTables-example_filter" class="dataTables_filter">
+											<a
+												href="${pageContext.request.contextPath }/manager/dealer/insert_page"
+												type="button" class="btn btn-outline btn-primary"
+												style="float: right; margin-right: 40px" role="button">新增</a>
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="row" style="margin: 10px">
-								<div class="col-sm-12">
-									<table
-										class="table table-striped table-bordered table-hover dataTable no-footer"
-										id="dataTables-example" role="grid">
-										<thead>
-											<tr role="row">
-												<th class="sorting" tabindex="0" rowspan="1" colspan="1">经销商</th>
-												<th class="sorting" tabindex="0" rowspan="1" colspan="1">联系号码</th>
-												<th class="sorting" tabindex="0" rowspan="1" colspan="1">所在省市</th>
-												<th class="sorting" tabindex="0" rowspan="1" colspan="1">规定到达天数</th>
-												<th tabindex="0" rowspan="1" colspan="1">操作</th>
-											</tr>
-										</thead>
-										<tbody>
-											<c:if test="${empty pager.list }">
-												<tr>
-													<td colspan="5">暂无经销商记录！</td>
+								<div class="row" style="margin: 10px">
+									<div class="col-sm-12">
+										<table
+											class="table table-striped table-bordered table-hover  no-footer"
+											id="dataTables-example" role="grid">
+											<thead>
+												<tr role="row">
+													<th class="sorting" tabindex="0" rowspan="1" colspan="1">经销商</th>
+													<th class="sorting" tabindex="0" rowspan="1" colspan="1">联系号码</th>
+													<th class="sorting" tabindex="0" rowspan="1" colspan="1">所在省市</th>
+													<th class="sorting" tabindex="0" rowspan="1" colspan="1">规定到达天数</th>
+													<th tabindex="0" rowspan="1" colspan="1">操作</th>
 												</tr>
-											</c:if>
-											<c:if test="${!empty pager.list }">
-
-												<c:forEach items="${pager.list }" var="dealer">
-													<tr class="gradeA odd" role="row">
-														<td><c:out value="${dealer.dname }" /></td>
-														<td class="center">${dealer.phone }</td>
-														<td class="center">${dealer.province }</td>
-														<td class="center">${dealer.limitdays }</td>
-														<td class="center">
-															<div class="dropdown">
-																<button type="button"
-																	class="btn dropdown-toggle btn-primary"
-																	id="dropdownMenu1" data-toggle="dropdown">
-																	操作
-																</button>
-																<ul class="dropdown-menu" role="menu" style="width:20px">
-																	<li role="presentation"><a role="menuitem"
-																		tabindex="-1"
-																		href="${pageContext.request.contextPath }/manager/dealer/detial?did=${dealer.did}"><i
-																			class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;查看</a></li>
-																	<li role="presentation"><a role="menuitem"
-																		tabindex="-1"
-																		href="${pageContext.request.contextPath }/manager/dealer/update?did=${dealer.did}"><i
-																			class="fa fa-file-text-o"></i>&nbsp;&nbsp;&nbsp;修改</a></li>
-																	<li role="presentation"><a role="menuitem"
-																		tabindex="-1" id="item"
-																		onclick="deleteItem('${pageContext.request.contextPath }/manager/dealer/delete?did=${dealer.did}')">
-																			<input type="hidden" id="url_delete" value="">
-																			<i class="fa fa-trash-o"></i>&nbsp;&nbsp;&nbsp;删除
-																	</a></li>
-																	<li role="presentation" class="divider"></li>
-																</ul>
-															</div>
-														</td>
+											</thead>
+											<tbody>
+												<c:if test="${empty pager.list }">
+													<tr>
+														<td colspan="5">暂无经销商记录！</td>
 													</tr>
-												</c:forEach>
+												</c:if>
+												<c:if test="${!empty pager.list }">
 
-											</c:if>
-										</tbody>
-									</table>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-6">
-									<div class="dataTables_info" id="dataTables-example_info"
-										role="status" aria-live="polite">
-										总记录&nbsp;&nbsp; <span class="text-primary"><c:out
-												value="${pager.totalRow }" /></span>&nbsp;&nbsp;条
+													<c:forEach items="${pager.list }" var="dealer">
+														<tr class="gradeA odd" role="row">
+															<td><c:out value="${dealer.dname }" /></td>
+															<td class="center">${dealer.phone }</td>
+															<td class="center">${dealer.province }</td>
+															<td class="center">${dealer.limitdays }</td>
+															<td class="center">
+																<div class="dropdown">
+																	<button type="button"
+																		class="btn dropdown-toggle btn-primary"
+																		id="dropdownMenu1" data-toggle="dropdown">操作
+																	</button>
+																	<ul class="dropdown-menu" role="menu"
+																		style="width:20px">
+																		<li role="presentation"><a role="menuitem"
+																			tabindex="-1"
+																			href="${pageContext.request.contextPath }/manager/dealer/detial?did=${dealer.did}"><i
+																				class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;查看</a></li>
+																		<li role="presentation"><a role="menuitem"
+																			tabindex="-1"
+																			href="${pageContext.request.contextPath }/manager/dealer/update?did=${dealer.did}"><i
+																				class="fa fa-file-text-o"></i>&nbsp;&nbsp;&nbsp;修改</a></li>
+																		<li role="presentation"><a role="menuitem"
+																			tabindex="-1" id="item"
+																			onclick="deleteItem('${pageContext.request.contextPath }/manager/dealer/delete?did=${dealer.did}')">
+																				<input type="hidden" id="url_delete" value="">
+																				<i class="fa fa-trash-o"></i>&nbsp;&nbsp;&nbsp;删除
+																		</a></li>
+																		<li role="presentation" class="divider"></li>
+																	</ul>
+																</div>
+															</td>
+														</tr>
+													</c:forEach>
+
+												</c:if>
+											</tbody>
+										</table>
 									</div>
 								</div>
-								<div class="col-sm-6">
-									<div class="dataTables_paginate paging_simple_numbers"
-										id="dataTables-example_paginate">
-										<ul class="pagination">
-											<li class="paginate_button previous" tabindex="0"
-												id="dataTables-example_previous"><a
-												href="${pageContext.request.contextPath }/manager/dealer/${pager.pageNumber-1}">上一页</a></li>
-											<c:forEach var="i" begin="1" end="${pager.totalPage }">
-												<c:if test="${pager.pageNumber eq i}">
-													<li class="paginate_button active disabled" tabindex="0"><a
-														href="${pageContext.request.contextPath }/manager/dealer"><c:out
-																value="${i }" /></a></li>
-												</c:if>
-												<c:if test="${pager.pageNumber ne i}">
-													<li class="paginate_button" tabindex="0"><a
-														href="${pageContext.request.contextPath }/manager/dealer/${i}">
-															<c:out value="${i }" />
-													</a></li>
-												</c:if>
-											</c:forEach>
-											<li class="paginate_button next" tabindex="0"
-												id="dataTables-example_next"><a id="next"
-												href="${pageContext.request.contextPath }/manager/dealer/<c:if test='${pager.pageNumber eq pager.totalPage }'>${pager.totalPage }</c:if>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="dataTables_info" id="dataTables-example_info"
+											role="status" aria-live="polite">
+											总记录&nbsp;&nbsp; <span class="text-primary"><c:out
+													value="${pager.totalRow }" /></span>&nbsp;&nbsp;条
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="dataTables_paginate paging_simple_numbers"
+											id="dataTables-example_paginate">
+											<ul class="pagination">
+												<li class="paginate_button previous" tabindex="0"
+													id="dataTables-example_previous"><a
+													href="${pageContext.request.contextPath }/manager/dealer/${pager.pageNumber-1}">上一页</a></li>
+												<c:forEach var="i" begin="1" end="${pager.totalPage }">
+													<c:if test="${pager.pageNumber eq i}">
+														<li class="paginate_button active disabled" tabindex="0"><a
+															href="${pageContext.request.contextPath }/manager/dealer"><c:out
+																	value="${i }" /></a></li>
+													</c:if>
+													<c:if test="${pager.pageNumber ne i}">
+														<li class="paginate_button" tabindex="0"><a
+															href="${pageContext.request.contextPath }/manager/dealer/${i}">
+																<c:out value="${i }" />
+														</a></li>
+													</c:if>
+												</c:forEach>
+												<li class="paginate_button next" tabindex="0"
+													id="dataTables-example_next"><a id="next"
+													href="${pageContext.request.contextPath }/manager/dealer/<c:if test='${pager.pageNumber eq pager.totalPage }'>${pager.totalPage }</c:if>
 											<c:if test='${pager.pageNumber ne pager.totalPage }'>${pager.pageNumber+1}</c:if>">下一页</a></li>
-										</ul>
+											</ul>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -228,6 +228,14 @@
 		<script
 			src="${pageContext.request.contextPath }/js/plugins/pace/pace.min.js"></script>
 		<script>
+			$(document).ready(function() {
+
+				var li_id = '${li_id}';
+				$("#" + li_id).addClass("active");
+				if (li_id == "li_factory_order" || li_id == "li_dealer_order") {
+					$("#li_account").removeClass("active");
+				}
+			});
 			function deleteItem(url) {
 				/* alert(url); */
 				$('#myModal').modal('toggle');

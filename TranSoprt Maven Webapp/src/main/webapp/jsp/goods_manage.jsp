@@ -52,18 +52,7 @@
 									<div class="ibox float-e-margins">
 										<div class="ibox-title">
 											<h5>商品管理</h5>
-											<div class="ibox-tools">
-												<a class="collapse-link"> <i class="fa fa-chevron-up"></i>
-												</a> <a class="dropdown-toggle" data-toggle="dropdown"
-													href="table_data_tables.html#"> <i class="fa fa-wrench"></i>
-												</a>
-												<ul class="dropdown-menu dropdown-user">
-													<li><a href="table_data_tables.html#">选项1</a></li>
-													<li><a href="table_data_tables.html#">选项2</a></li>
-												</ul>
-												<a class="close-link"> <i class="fa fa-times"></i>
-												</a>
-											</div>
+											
 										</div>
 										<div class="ibox-content">
 											<div class="">
@@ -311,11 +300,18 @@
 	<script
 		src="${pageContext.request.contextPath }/js/plugins/iCheck/icheck.min.js"></script>
 	<script>
+	
 		$(document).ready(function() {
 			$('.i-checks').iCheck({
 				checkboxClass : 'icheckbox_square-green',
 				radioClass : 'iradio_square-green',
 			});
+		
+		var li_id = '${li_id}';
+			$("#" + li_id).addClass("active");
+			if (li_id == "li_factory_order" || li_id == "li_dealer_order") {
+				$("#li_account").removeClass("active");
+			}
 		});
 		function delGoods(gid) {
 			if (window.confirm('确定要删除该商品吗？')) {
@@ -465,6 +461,7 @@
 			});
 			$("#aid4").click();
 		}
+		
 	</script>
 </body>
 
