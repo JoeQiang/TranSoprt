@@ -47,7 +47,7 @@
 						<div class="ibox float-e-margins">
 							<div class="ibox-title">
 								<h5>订单管理</h5>
-								
+
 							</div>
 							<div class="ibox-content">
 
@@ -121,24 +121,34 @@
 				</div>
 
 				<!--分页 -->
-				<nav style="float:right">
-					<ul class="pagination">
-						<li id="lipre"><c:if test="${pageNum!=1}">
-								<a
-									href="${pageContext.request.contextPath }/order/distorder/${pageNum-1}"
-									aria-label="Previous">
-							</c:if> <span aria-hidden="true">上一页</span> </a></li>
-						<c:forEach var="i" begin="1" end="${totalPage}" step="1">
-							<li><a
-								href="${pageContext.request.contextPath}/order/distorder/${i}">${i}</a></li>
-						</c:forEach>
-						<li id="linext"><c:if test="${pageNum<totalPage}">
-								<a
-									href="${pageContext.request.contextPath }/order/distorder/${pageNum+1}"
-									aria-label="Next">
-							</c:if> <span aria-hidden="true">下一页</span> </a></li>
-					</ul>
-				</nav>
+				<div class="col-sm-6 col-sm-offset-9">
+					<div class="dataTables_paginate paging_simple_numbers"
+						id="dataTables-example_paginate">
+						<ul class="pagination">
+							<li class="paginate_button previous" tabindex="0"
+								id="dataTables-example_previous"><a
+								href="${pageContext.request.contextPath }/order/distorder/<c:if test='${pager.pageNumber ge 1 }'>1</c:if>
+											<c:if test='${pager.pageNumber ne 1 }'>${pager.pageNumber-1}</c:if>-${fid }">上一页</a></li>
+							<c:forEach var="i" begin="1" end="${pager.totalPage }">
+								<c:if test="${pager.pageNumber eq i}">
+									<li class="paginate_button active disabled" tabindex="0"><a
+										href="${pageContext.request.contextPath }/order/distorder/${i}"><c:out
+												value="${i }" /></a></li>
+								</c:if>
+								<c:if test="${pager.pageNumber ne i}">
+									<li class="paginate_button" tabindex="0"><a
+										href="${pageContext.request.contextPath }/order/distorder/${i}">
+											<c:out value="${i }" />
+									</a></li>
+								</c:if>
+							</c:forEach>
+							<li class="paginate_button next" tabindex="0"
+								id="dataTables-example_next"><a id="next"
+								href="${pageContext.request.contextPath }/order/distorder/<c:if test='${pager.pageNumber eq pager.totalPage }'>${pager.totalPage }</c:if>
+											<c:if test='${pager.pageNumber ne pager.totalPage }'>${pager.pageNumber+1}</c:if>-${fid }">下一页</a></li>
+						</ul>
+					</div>
+				</div>
 			</div>
 			<!-- 内容主体结束 -->
 			<!-- 脚部 -->
@@ -170,7 +180,6 @@
 		src="${pageContext.request.contextPath }/js/plugins/pace/pace.min.js"></script>
 
 	<script>
-	
 		function disfactory(oid) {
 			var fid = $("#td" + oid).find("select option:selected").val();
 			$.ajax({
@@ -185,16 +194,15 @@
 				dataType : 'json'
 			});
 		}
-				
-		$(document).ready(function(){
-			$("table th").eq(3).css("width","80px");
+
+		$(document).ready(function() {
+			$("table th").eq(3).css("width", "80px");
 			var li_id = '${li_id}';
 			$("#" + li_id).addClass("active");
 			if (li_id == "li_factory_order" || li_id == "li_dealer_order") {
 				$("#li_account").removeClass("active");
 			}
 		});
-	
 	</script>
 </body>
 

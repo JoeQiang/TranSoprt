@@ -46,7 +46,7 @@
 						<div class="ibox float-e-margins">
 							<div class="ibox-title">
 								<h5>修改密码</h5>
-								
+
 							</div>
 							<div class="ibox-content">
 								<div class="row">
@@ -82,18 +82,6 @@
 						</div>
 					</div>
 				</div>
-				<!-- 内容主体结束 -->
-				<!-- 脚部 -->
-				<!-- 		<div class="footer">
-							<div class="pull-right">
-	                               By：<a href="#" target="_blank">港荣</a>
-	                           </div>
-							<div>
-								<strong>订单管理系统</strong>&copy; 港荣食品有限公司 &nbsp;&nbsp;2016
-							</div>
-
-						</div> -->
-				<!-- 脚部 -->
 			</div>
 			<!-- Mainly scripts -->
 			<script
@@ -111,14 +99,16 @@
 				src="${pageContext.request.contextPath }/js/plugins/pace/pace.min.js"></script>
 
 			<script>
-			$(document).ready(function() {
+				$(document).ready(
+						function() {
 
-			var li_id = '${li_id}';
-			$("#" + li_id).addClass("active");
-			if (li_id == "li_factory_order" || li_id == "li_dealer_order") {
-				$("#li_account").removeClass("active");
-			}
-		});
+							var li_id = '${li_id}';
+							$("#" + li_id).addClass("active");
+							if (li_id == "li_factory_order"
+									|| li_id == "li_dealer_order") {
+								$("#li_account").removeClass("active");
+							}
+						});
 				function check() {
 					var npwd = $('#npwd').val();
 					var rpwd = $('#rpwd').val();

@@ -46,7 +46,7 @@
 						<div class="ibox float-e-margins">
 							<div class="ibox-title">
 								<h5>厂家</h5>
-								
+
 							</div>
 							<div class="ibox-content">
 
@@ -87,27 +87,33 @@
 					</div>
 				</div>
 				<!--分页 -->
-
-				<nav>
-					<ul class="pagination">
-						<li id="lipre"><c:if test="${pager.pageNumber ne 1}">
-								<a
-									href="${pageContext.request.contextPath}/factory/manager/${pager.pageNumber-1}"
-									aria-label="Previous"><span aria-hidden="true">上一页</span> </a>
-							</c:if></li>
-						<c:forEach var="i" begin="1" end="${pager.totalPage }" step="1">
-							<li><a
-								href="${pageContext.request.contextPath}/factory/manager/${i}">${i}</a></li>
-						</c:forEach>
-
-						<li id="linext"><c:if
-								test="${pager.pageNumber ne pager.totalPage }">
-								<a
-									href="${pageContext.request.contextPath}/factory/manager/${pager.pageNumber+1}"
-									aria-label="Next"><span aria-hidden="true">下一页</span> </a>
-							</c:if></li>
-					</ul>
-				</nav>
+				<div class="col-sm-6 col-sm-offset-9">
+					<div class="dataTables_paginate paging_simple_numbers"
+						id="dataTables-example_paginate">
+						<ul class="pagination">
+							<li class="paginate_button previous" tabindex="0"
+								id="dataTables-example_previous"><a
+								href="${pageContext.request.contextPath}/factory/manager/${pager.pageNumber-1}">上一页</a></li>
+							<c:forEach var="i" begin="1" end="${pager.totalPage }">
+								<c:if test="${pager.pageNumber eq i}">
+									<li class="paginate_button active disabled" tabindex="0"><a
+										href="${pageContext.request.contextPath }/factory/manager"><c:out
+												value="${i }" /></a></li>
+								</c:if>
+								<c:if test="${pager.pageNumber ne i}">
+									<li class="paginate_button" tabindex="0"><a
+										href="${pageContext.request.contextPath }/factory/manager/${i}">
+											<c:out value="${i }" />
+									</a></li>
+								</c:if>
+							</c:forEach>
+							<li class="paginate_button next" tabindex="0"
+								id="dataTables-example_next"><a id="next"
+								href="${pageContext.request.contextPath }/factory/manager/<c:if test='${pager.pageNumber eq pager.totalPage }'>${pager.totalPage }</c:if>
+											<c:if test='${pager.pageNumber ne pager.totalPage }'>${pager.pageNumber+1}</c:if>">下一页</a></li>
+						</ul>
+					</div>
+				</div>
 			</div>
 			<!-- 内容主体结束 -->
 			<!-- 脚部 -->

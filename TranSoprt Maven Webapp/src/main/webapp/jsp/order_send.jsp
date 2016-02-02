@@ -46,7 +46,7 @@
 						<div class="ibox float-e-margins">
 							<div class="ibox-title">
 								<h5>经销商发货</h5>
-								
+
 							</div>
 							<div class="ibox-content">
 
@@ -124,7 +124,7 @@
 					</div>
 				</div>
 				<!--分页 -->
-				<nav>
+				<nav style="float:right;margin-right: 100px">
 					<ul class="pagination">
 						<li id="lipre"><c:if test="${pageNum!=1}">
 								<a
@@ -190,7 +190,7 @@
 		src="${pageContext.request.contextPath }/js/plugins/pace/pace.min.js"></script>
 
 	<script>
-	$(document).ready(function() {
+		$(document).ready(function() {
 
 			var li_id = '${li_id}';
 			$("#" + li_id).addClass("active");
@@ -213,4 +213,5 @@
 			});
 		}
 	</script>
-</body></html>
+</body>
+</html>
