@@ -81,7 +81,7 @@
 												<tr role="row">
 													<th class="sorting" tabindex="0" rowspan="1" colspan="1">经销商</th>
 													<th class="sorting" tabindex="0" rowspan="1" colspan="1">联系号码</th>
-													<th class="sorting" tabindex="0" rowspan="1" colspan="1">所在省市</th>
+													<th class="sorting" tabindex="0" rowspan="1" colspan="1">详细地址</th>
 													<th class="sorting" tabindex="0" rowspan="1" colspan="1">规定到达天数</th>
 													<th tabindex="0" rowspan="1" colspan="1">操作</th>
 												</tr>
@@ -131,6 +131,15 @@
 
 												</c:if>
 											</tbody>
+											<thead>
+												<tr role="row">
+													<th class="sorting" tabindex="0" rowspan="1" colspan="1">经销商</th>
+													<th class="sorting" tabindex="0" rowspan="1" colspan="1">联系号码</th>
+													<th class="sorting" tabindex="0" rowspan="1" colspan="1">详细地址</th>
+													<th class="sorting" tabindex="0" rowspan="1" colspan="1">规定到达天数</th>
+													<th tabindex="0" rowspan="1" colspan="1">操作</th>
+												</tr>
+											</thead>
 										</table>
 									</div>
 								</div>

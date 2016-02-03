@@ -1,5 +1,7 @@
-jdbcUrl = jdbc:mysql://127.0.0.1:3306/transport?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
-user = root
-password = root
+jdbcUrl = jdbc:mysql://127.0.0.1:3306/grordermysqlali?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+#user = grOrderMySqlAli
+user=root
+#password = 0768MysqlAliGrRoot
+password=root
 driver =com.mysql.jdbc.Driver
 

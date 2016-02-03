@@ -11,15 +11,10 @@ import com.vanroid.transopt.uitls.MD5Utils;
 
 public class MD5UtilTest {
 
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	public void test() {
-		System.out.println(MD5Utils.MD5("19940816"));
-	}
-
+	
 	@Test
-	public void testDealer() {
+	public void test() {
+		System.out.println(MD5Utils.MD5("123"));
 	}
+
 }
