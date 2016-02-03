@@ -52,9 +52,9 @@
 					<c:when test="${order.status=='已确认签收' }">
 						<li class="list-group-item history-order">
 							<div class="row">
-								<div class="col-xs-5">${order.gname }&nbsp;${order.sname }*${order.num }箱</div>
+								<div class="col-xs-5"><div>${order.gname }</div><div>${order.sname }</div><div>${order.num }箱</div></div>
 								<div class="col-xs-7">
-									<div class="">下单时间:${order.createday }</div>
+									<div class=""><div>下单时间:</div><div>${order.createday }<div></div></div>
 									<div id="sta${order.oid }" class="">状态：${order.status}</div>
 								</div>
 							</div>
@@ -63,13 +63,13 @@
 					<c:otherwise>
 						<li id="li${order.oid }" class="list-group-item">
 							<div class="row">
-								<div class="col-xs-5">${order.gname }&nbsp;${order.sname }*${order.num }箱</div>
+								<div class="col-xs-5"><div>${order.gname }</div><div>${order.sname }</div><div>${order.num }箱</div></div>
 								<div class="col-xs-7">
-									<div class="">下单时间:${order.createday }</div>
+									<div class=""><div>下单时间:</div><div>${order.createday }<div></div></div>
 									<div id="sta${order.oid }" class="">状态：${order.status}</div>
 								</div>
 								<c:if test="${order.status=='已发货' }">
-									<div class="col-xs-4 col-xs-offset-9">
+									<div class="col-xs-4 col-xs-offset-7">
 										<button onclick="confirm(${order.oid })" type="button"
 											id="btn${order.oid }"
 											class="btnShouhuo btn btn-success btn-xs" role="button">确认收货</button>
