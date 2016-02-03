@@ -210,9 +210,9 @@ public class OrderManageService {
 	 * @param oid
 	 */
 	public boolean confirmArrive(int oid) {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		String today = sdf.format(new Date());
-		return GROrder.dao.findById(oid).set("status", "已确认签收").set("arriveday", today)
+		/*SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String today = sdf.format(new Date());*/
+		return GROrder.dao.findById(oid).set("status", "已确认签收")
 				.update();
 	}
 }
