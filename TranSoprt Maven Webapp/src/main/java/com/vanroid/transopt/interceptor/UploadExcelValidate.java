@@ -43,14 +43,15 @@ public class UploadExcelValidate implements Interceptor {
 			controller.setAttr("error", "上传文件必须是以.xls结尾的Excel文件");
 			controller.render("/jsp/dealder_insert.jsp");
 		}
-		String token = (String) controller.getSession().getAttribute("token");
-		String tokenValue = controller.getPara("token");
-		if (token != null && token.equals(tokenValue)) {
-			controller.getSession().removeAttribute("token");
-		} else {
-			uploadFile.getFile().delete();
-			controller.forwardAction("/manager/dealer");
-		}
+		/*
+		 * String token = (String)
+		 * controller.getSession().getAttribute("token"); String tokenValue =
+		 * controller.getPara("token"); if (token != null &&
+		 * token.equals(tokenValue)) {
+		 * controller.getSession().removeAttribute("token"); } else {
+		 * uploadFile.getFile().delete();
+		 * controller.forwardAction("/manager/dealer"); }
+		 */
 
 	}
 
