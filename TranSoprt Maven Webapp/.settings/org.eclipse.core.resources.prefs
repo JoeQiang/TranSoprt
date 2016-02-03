@@ -1,13 +1,13 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=8a252c50ec55153ff486ad7a4a233ce1b0aedeb2
 eclipse.preferences.version=1
 encoding//src/main/resources/excelTemplate/supplier.xml=UTF-8
 encoding//src/main/resources/excelTemplate/template_list.xml=UTF-8
 encoding//src/main/webapp/jsp/booking.jsp=UTF-8
 encoding//src/main/webapp/jsp/dealer_login.jsp=UTF-8
 encoding//src/main/webapp/jsp/index.jsp=UTF-8
-<<<<<<< HEAD
 encoding//src/main/webapp/jsp/modify.jsp=UTF-8
 encoding//src/main/webapp/jsp/order_dealer.jsp=UTF-8
-=======
 encoding//src/main/webapp/jsp/order_excel.jsp=UTF-8
->>>>>>> 8a252c50ec55153ff486ad7a4a233ce1b0aedeb2
 encoding/<project>=UTF-8

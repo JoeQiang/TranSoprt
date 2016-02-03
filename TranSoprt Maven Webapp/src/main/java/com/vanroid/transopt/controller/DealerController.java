@@ -150,7 +150,7 @@ public class DealerController extends Controller {
 		if (validate) {
 			forwardAction("/manager/dealer");
 		} else {
-			renderText("数据格式不正确");
+			render("/jsp/dealder_insert.jsp");
 		}
 	}
 

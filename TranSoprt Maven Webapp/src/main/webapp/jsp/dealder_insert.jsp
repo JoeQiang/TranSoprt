@@ -52,8 +52,7 @@
 							<div id="panel1" style="display: none;">
 								<form
 									action="${pageContext.request.contextPath }/manager/dealer/excelInsert"
-									method="post" onsubmit="return dosubmit()"
-									enctype="multipart/form-data">
+									method="post" enctype="multipart/form-data">
 									<div class="form-group">
 										<%-- <input type="hidden" name="token" value="<%=tokenValue%>"> --%>
 										<label>请选择Excel文件</label> <input type="file" name="excel"
@@ -100,6 +99,9 @@
 								</form>
 							</div>
 						</div>
+						<%-- <label><p style="color: red;">
+								<c:out value="${error }" />
+							</p></label> --%>
 					</div>
 
 				</div>

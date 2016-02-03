@@ -15,6 +15,7 @@ import org.apache.commons.lang.StringUtils;
 
 import com.jfinal.aop.Before;
 import com.jfinal.aop.Clear;
+import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.tx.Tx;
 import com.taobao.api.ApiException;
@@ -171,6 +172,11 @@ public class DealerServiceImp implements DealerService {
 							request.setAttribute("error", "导入错误:电话号码   "
 									+ phone + "不是正确手机号码");
 						}
+						if (findPhone(phone) != 0) {
+							validate = false;
+							request.setAttribute("error", "手机号为" + phone
+									+ "的经销商已经存在，若要添加，请更换手机号码");
+						}
 					} else if ("limitdays".equals(key)) {
 						String limitdays = (String) map.get(key);
 						boolean isNumeric = StringUtils.isNumeric(limitdays);
@@ -201,4 +207,9 @@ public class DealerServiceImp implements DealerService {
 		return validate;
 	}
 
+	public long findPhone(String phone) {
+		String sql = "select * from dealer where phone = ?";
+		List list = Db.query(sql, phone);
+		return list.size();
+	}
 }
