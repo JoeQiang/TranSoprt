@@ -55,7 +55,7 @@ public class DealerController extends Controller {
 		String phone = getPara("phone");
 		int result = service.doLogin(phone, getPara("pwd"));
 		if (result == 1) {
-			setSessionAttr("user", phone);
+			setSessionAttr("userphone", phone);
 		}
 		renderJson(result);
 	}
@@ -66,7 +66,7 @@ public class DealerController extends Controller {
 	@Clear(LoginInterceptor.class)
 	@Before(DealerLoginInterceptor.class)
 	public void logout() {
-		removeSessionAttr("user");
+		removeSessionAttr("userphone");
 		redirect("/dealer/login");
 	}
 
@@ -98,7 +98,7 @@ public class DealerController extends Controller {
 	@Clear(LoginInterceptor.class)
 	@Before(DealerLoginInterceptor.class)
 	public void changepwd() {
-		int res = service.changePwd((String) getSessionAttr("user"),
+		int res = service.changePwd((String) getSessionAttr("userphone"),
 				getPara("newPwd"));
 		renderJson(res);
 

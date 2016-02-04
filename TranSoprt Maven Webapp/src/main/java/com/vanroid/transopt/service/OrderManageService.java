@@ -40,14 +40,15 @@ public class OrderManageService {
 	/**
 	 * 经销商下确认订单
 	 */
-	public boolean makeOrder(int did,int gid,int sid,int num) {
+	public boolean makeOrder(int did, int gid, int sid, int num) {
 
 		String today = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		Dealer dealer = Dealer.dao.findById(did);
 		GROrder order = new GROrder().set("dealerid", did)
-				.set("createday", today).set("status", "未分配")
-				.set("gid", gid)
-				.set("sid", sid)
-				.set("num", num);
+				.set("createday", today).set("status", "可撤销").set("gid", gid)
+				.set("sid", sid).set("num", num)
+				// 默认订单的规定到达时间是经销商的设定的时限
+				.set("reqarrday", dealer.getInt("limitdays"));
 		return order.save();
 	}
 
@@ -67,15 +68,13 @@ public class OrderManageService {
 	/**
 	 * 管理员管理的给新订单分配厂家 ajax 更新成功返回1，失敗返回0
 	 */
-	@Before(Tx.class)
-	public int distributeFactory(int oid, int fid) {
-		try {
-			new GROrder().findById(oid).set("factoryid", fid).update();
-			GROrder.dao.findById(oid).set("status", "未发货").update();
+	public int distributeFactory(int oid, int fid, int arrdays) {
+	 
+		boolean update = GROrder.dao.findById(oid).set("factoryid", fid)
+				.set("status", "未发货").set("reqarrday", arrdays).update();
+		if (update)
 			return 1;
-		} catch (Exception e) {
-			return 0;
-		}
+		return 0;
 	}
 
 	/**
@@ -164,15 +163,15 @@ public class OrderManageService {
 		AlibabaAliqinFcSmsNumSendRequest req = new AlibabaAliqinFcSmsNumSendRequest();
 		req.setSmsType("normal");
 		req.setSmsFreeSignName(NoteUtil.getSignName());
-	/*req.setSmsFreeSignName("港荣");*/
+		/* req.setSmsFreeSignName("港荣"); */
 		/**
 		 * 短信模板內容組合
 		 */
 		NoteTemplate nt = new NoteTemplate();
 		nt.setDname(((Dealer) order.get("dealer")).getStr("dname"));
 		nt.setFname(order.getStr("factoryname"));
-		String goods= order.getInt("num") + "箱" + order.getStr("sname")
-					+ "的" + order.getStr("gname") ;
+		String goods = order.getInt("num") + "箱" + order.getStr("sname") + "的"
+				+ order.getStr("gname");
 		nt.setOrder(goods);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date today = new Date();
@@ -210,10 +209,10 @@ public class OrderManageService {
 	 * @param oid
 	 */
 	public boolean confirmArrive(int oid) {
-		/*SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		String today = sdf.format(new Date());*/
-		return GROrder.dao.findById(oid).set("status", "已确认签收")
-				.update();
+		/*
+		 * SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); String
+		 * today = sdf.format(new Date());
+		 */
+		return GROrder.dao.findById(oid).set("status", "已确认签收").update();
 	}
 }
-

@@ -94,7 +94,7 @@
 												<td>${order.createday}</td>
 												<%-- 	<td>${order.sendday}</td> --%>
 												<td>${order.factoryname}</td>
-												<td>${order.dealer.limitdays}天</td>
+												<td>${order.reqarrday}天</td>
 												<td>${order.status}</td>
 												<td><a type="button" class="btn btn-warning"
 													href="javascript:delivery(${order.oid})">发货</a></td>

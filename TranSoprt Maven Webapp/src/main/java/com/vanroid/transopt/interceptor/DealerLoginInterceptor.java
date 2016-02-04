@@ -14,7 +14,7 @@ public class DealerLoginInterceptor implements Interceptor{
 	public void intercept(Invocation inv) {
 		// TODO 自动生成的方法存根
 		Controller c = inv.getController();
-		Object user = c.getSessionAttr("user");
+		Object user = c.getSessionAttr("userphone");
 		if (user == null) {
 			c.redirect("/dealer/login");
 		} else

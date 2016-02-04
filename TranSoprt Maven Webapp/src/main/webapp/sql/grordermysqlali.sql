@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50624
 File Encoding         : 65001
 
-Date: 2016-02-03 23:25:23
+Date: 2016-02-05 00:05:08
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -46,11 +46,12 @@ CREATE TABLE `dealer` (
   `dynamic` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`did`),
   UNIQUE KEY `index_phone` (`phone`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dealer
 -- ----------------------------
+INSERT INTO `dealer` VALUES ('2', 'jerry', '202cb962ac59075b964b07152d234b70', '18826243880', '广州', '3', 'a17d9b51192a0fefe5a6f6feba16411e');
 
 -- ----------------------------
 -- Table structure for `goods_standard`
@@ -68,6 +69,7 @@ CREATE TABLE `goods_standard` (
 -- ----------------------------
 -- Records of goods_standard
 -- ----------------------------
+INSERT INTO `goods_standard` VALUES ('2', '2');
 
 -- ----------------------------
 -- Table structure for `grfactory`
@@ -78,11 +80,12 @@ CREATE TABLE `grfactory` (
   `fname` varchar(255) DEFAULT NULL,
   `fpwd` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`fid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of grfactory
 -- ----------------------------
+INSERT INTO `grfactory` VALUES ('3', '甲', '202cb962ac59075b964b07152d234b70');
 
 -- ----------------------------
 -- Table structure for `grgoods`
@@ -92,11 +95,12 @@ CREATE TABLE `grgoods` (
   `gid` int(11) NOT NULL AUTO_INCREMENT,
   `gname` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`gid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of grgoods
 -- ----------------------------
+INSERT INTO `grgoods` VALUES ('2', '牛奶');
 
 -- ----------------------------
 -- Table structure for `grorder`
@@ -123,11 +127,14 @@ CREATE TABLE `grorder` (
   CONSTRAINT `fk_factory` FOREIGN KEY (`factoryid`) REFERENCES `grfactory` (`fid`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_gid45435` FOREIGN KEY (`gid`) REFERENCES `grgoods` (`gid`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_sid3432` FOREIGN KEY (`sid`) REFERENCES `standard` (`sid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of grorder
 -- ----------------------------
+INSERT INTO `grorder` VALUES ('3', null, '2', '2016-02-04', null, '8', '2', '2', '2', '3', '未发货');
+INSERT INTO `grorder` VALUES ('4', null, '2', '2016-02-04', null, '3', '2', '2', '23', '3', '未发货');
+INSERT INTO `grorder` VALUES ('5', null, '2', '2016-02-04', null, '19', '2', '2', '20', '3', '未发货');
 
 -- ----------------------------
 -- Table structure for `standard`
@@ -137,8 +144,24 @@ CREATE TABLE `standard` (
   `sid` int(11) NOT NULL AUTO_INCREMENT,
   `sname` varchar(255) NOT NULL,
   PRIMARY KEY (`sid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of standard
 -- ----------------------------
+INSERT INTO `standard` VALUES ('2', '1kg');
+
+-- ----------------------------
+-- Table structure for `t_public`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_public`;
+CREATE TABLE `t_public` (
+  `pid` int(11) NOT NULL AUTO_INCREMENT,
+  `content` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`pid`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_public
+-- ----------------------------
+INSERT INTO `t_public` VALUES ('1', '');

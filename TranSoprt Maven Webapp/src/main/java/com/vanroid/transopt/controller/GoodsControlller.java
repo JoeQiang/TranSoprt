@@ -1,5 +1,6 @@
 package com.vanroid.transopt.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -33,7 +34,13 @@ public class GoodsControlller extends Controller {
 	@Before(DealerLoginInterceptor.class)
 	public void totalgoods() {
 		List<GRGoods> allGoods = gs.getAllGoods();
-		List<HashMap<String, Object>> standard = allGoods.get(0).getStandard();
+		List<HashMap<String, Object>> standard=null;
+		try{
+	standard = allGoods.get(0).getStandard();
+		
+		}catch(Exception e){
+			standard=new ArrayList<HashMap<String,Object>>();
+		}
 		setAttr("g1standard", standard);
 		setAttr("allgoods", allGoods);
 		render("/jsp/booking.jsp");

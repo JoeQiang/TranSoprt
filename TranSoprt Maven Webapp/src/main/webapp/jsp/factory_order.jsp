@@ -135,7 +135,7 @@
 														<td><c:out value="${order.createday}" /></td>
 														<td><c:out value="${order.sendday}" /></td>
 														<td><c:out value="${order.factoryname }" /></td>
-														<td><c:out value="${order.dealer.limitdays }" /></td>
+														<td><c:out value="${order.reqarrday}" /></td>
 														<td><c:out value="${order.arriveday }" /></td>
 														<td><c:out value="${order.status }" /></td>
 														<!-- <td><button class="btn btn-primary" onclick="alert('hello')">查看</button></td> -->

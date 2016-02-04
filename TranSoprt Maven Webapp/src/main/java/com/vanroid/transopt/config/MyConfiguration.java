@@ -16,12 +16,14 @@ import com.vanroid.transopt.controller.GRFactoryController;
 import com.vanroid.transopt.controller.GoodsControlller;
 import com.vanroid.transopt.controller.LoginController;
 import com.vanroid.transopt.controller.OrderController;
+import com.vanroid.transopt.controller.PublicController;
 import com.vanroid.transopt.interceptor.LoginInterceptor;
 import com.vanroid.transopt.model.Admin;
 import com.vanroid.transopt.model.Dealer;
 import com.vanroid.transopt.model.GRFactory;
 import com.vanroid.transopt.model.GRGoods;
 import com.vanroid.transopt.model.GROrder;
+import com.vanroid.transopt.model.Public;
 import com.vanroid.transopt.model.Standard;
 
 public class MyConfiguration extends JFinalConfig {
@@ -51,6 +53,7 @@ public class MyConfiguration extends JFinalConfig {
 		me.add("/goods", GoodsControlller.class);
 		me.add("/order", OrderController.class);
 		me.add("/dealer", DealerController.class);
+		me.add("/public", PublicController.class);
 	}
 
 	/**
@@ -77,6 +80,7 @@ public class MyConfiguration extends JFinalConfig {
 		arp.addMapping("grgoods", "gid", GRGoods.class);
 		arp.addMapping("standard", "sid", Standard.class);
 		arp.addMapping("admin", Admin.class);
+		arp.addMapping("t_public","pid", Public.class);
 	}
 
 	@Override

@@ -83,7 +83,7 @@
 										<p id="phoneMsg"></p>
 									</div>
 									<div class="form-group">
-										<label>所在省市</label> <input type="text" class="form-control"
+										<label>详细地址</label> <input type="text" class="form-control"
 											placeholder="所在省市" name="province" required="">
 									</div>
 									<div class="form-group">

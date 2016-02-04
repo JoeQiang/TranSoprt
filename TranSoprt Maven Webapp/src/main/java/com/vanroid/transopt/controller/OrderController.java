@@ -11,7 +11,6 @@ import com.jfinal.aop.Duang;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
 import com.taobao.api.ApiException;
-import com.vanroid.transopt.dto.OrderParam;
 import com.vanroid.transopt.interceptor.DealerLoginInterceptor;
 import com.vanroid.transopt.interceptor.LoginInterceptor;
 import com.vanroid.transopt.model.Dealer;
@@ -27,8 +26,10 @@ public class OrderController extends Controller {
 	/**
 	 * 下单ajax
 	 */
+	@Clear(LoginInterceptor.class)
+	@Before(DealerLoginInterceptor.class)
 	public void makeorder() {
-		String phone = getSessionAttr("user");
+		String phone = getSessionAttr("userphone");
 		int did = Dealer.dao.findFirst("select did from dealer where phone=?",
 				phone).getInt("did");
 		boolean res = om.makeOrder(did, getParaToInt(0), getParaToInt(1),
@@ -53,7 +54,7 @@ public class OrderController extends Controller {
 
 	// 分配厂家ajax
 	public void distfactory() {
-		int result = om.distributeFactory(getParaToInt(1), getParaToInt(0));
+		int result = om.distributeFactory(getParaToInt(1), getParaToInt(0),getParaToInt(2));
 		renderJson(result);
 	}
 
@@ -80,6 +81,7 @@ public class OrderController extends Controller {
 			setAttr("delivOrder", page.getList());
 			setAttr("pageNum", page.getPageNumber());
 			setAttr("totalPage", page.getTotalPage());
+			setAttr("li_id", "li_dealer_order");
 			render("/jsp/order_send.jsp");
 		}
 
@@ -95,7 +97,7 @@ public class OrderController extends Controller {
 	@Clear(LoginInterceptor.class)
 	@Before(DealerLoginInterceptor.class)
 	public void getOrderbydealer() {
-		String phone = getSessionAttr("user");
+		String phone = getSessionAttr("userphone");
 		int did = Dealer.dao.findFirst("select * from dealer where phone=?",
 				phone).getInt("did");
 		List<GROrder> list = om.getOrderByDealer(1, did).getList();
@@ -110,7 +112,7 @@ public class OrderController extends Controller {
 	@Clear(LoginInterceptor.class)
 	@Before(DealerLoginInterceptor.class)
 	public void getOrderbydealerAjax() {
-		String phone = getSessionAttr("user");
+		String phone = getSessionAttr("userphone");
 		int did = Dealer.dao.findFirst("select * from dealer where phone=?",
 				phone).getInt("did");
 		List<GROrder> list = om.getOrderByDealer(getParaToInt(0), did)

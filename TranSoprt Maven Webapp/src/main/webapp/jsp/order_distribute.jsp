@@ -89,8 +89,21 @@
 												<td>${order.gname }</td>
 												<td>${order.sname}</td>
 												<td>${order.createday}</td>
-												<td>${order.dealer.limitdays}天</td>
-												<td><select name="disfactory">
+												<td><select id="chaarrday${order.oid }">
+														<c:forEach var="i" begin="1" end="20">
+															<c:choose>
+																<c:when test="${i==order.reqarrday}">
+																	<option  selected = selected" value="${i }">${i }</option>
+																</c:when>
+																<c:otherwise>
+																	<option value="${i }">${i }</option>
+																</c:otherwise>
+															</c:choose>
+
+														</c:forEach>
+												</select>&nbsp;天
+												</td>
+												<td ><select id="factory${order.oid }">
 														<c:forEach items="${factorys}" var="factory">
 															<option value="${factory.fid}">${factory.fname}</option>
 														</c:forEach>
@@ -181,10 +194,11 @@
 
 	<script>
 		function disfactory(oid) {
-			var fid = $("#td" + oid).find("select option:selected").val();
+			var fid = $("#factory" + oid).find("option:selected").val();
+			var arrdays = $("#chaarrday"+oid).find("option:selected").val();
 			$.ajax({
 				url : '${pageContext.request.contextPath}/order/distfactory/'
-						+ fid + '-' + oid,
+						+ fid + '-' + oid+'-'+arrdays,
 				type : 'GET',
 				success : function(data) {
 					/* alert(data); */

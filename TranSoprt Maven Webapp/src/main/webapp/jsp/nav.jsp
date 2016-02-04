@@ -27,9 +27,8 @@
 					<div class="dropdown profile-element">
 						<span> <img alt="image" class="img-circle"
 							src="img/business_man.png" />
-						</span> <a data-toggle="dropdown" class="dropdown-toggle"
-							href="#"> <span class="clear"> <span
-								class="block m-t-xs"> <!-- <strong class="font-bold">Beaut-zihan</strong> -->
+						</span> <a data-toggle="dropdown" class="dropdown-toggle" href="#"> <span
+							class="clear"> <span class="block m-t-xs"> <!-- <strong class="font-bold">Beaut-zihan</strong> -->
 							</span> <span class="text-muted text-xs block"><c:if
 										test="${!empty user.nickname }">管理员</c:if> <c:if
 										test="${empty user.nickname }">
@@ -38,7 +37,8 @@
 						</span>
 						</a>
 						<ul class="dropdown-menu animated fadeInRight m-t-xs">
-							<li><a href="${pageContext.request.contextPath }/account/pwdpage">修改密码</a></li>
+							<li><a
+								href="${pageContext.request.contextPath }/account/pwdpage">修改密码</a></li>
 							<li class="divider"></li>
 							<li><a
 								href="${pageContext.request.contextPath }/account/logout">安全退出</a></li>
@@ -49,31 +49,33 @@
 				</li>
 				<!-- 账户模块-->
 				<c:if test="${!empty user.nickname }">
-				<li id="li_account" class="active"><a href="#"><i class="fa fa-th-large"></i> <span
-						class="nav-label">账户</span> <span
-						class="fa arrow"></span></a>
-					<ul class="nav nav-second-level">
+					<li id="li_account" class="active"><a href="#"><i
+							class="fa fa-th-large"></i> <span class="nav-label">账户</span> <span
+							class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
 
-						
-							<li id="li_distorder" ><a
+
+							<li id="li_distorder"><a
 								href="${pageContext.request.contextPath}/order/distorder/1">订单管理</a></li>
 							<li id="li_factory"><a
 								href="${pageContext.request.contextPath}/factory/account/1">厂家管理</a></li>
-							<li id="li_dealer" ><a
+							<li id="li_dealer"><a
 								href="${pageContext.request.contextPath}/manager/dealer">经销商管理</a></li>
 							<li id="li_goods"><a
 								href="${pageContext.request.contextPath}/goods/list/1">商品管理</a></li>
 
 							<li id="li_setting"><a
 								href="${pageContext.request.contextPath }/factory/setting/1">厂家设置</a></li>
-						
-						
-					</ul></li></c:if>
+
+
+						</ul></li>
+				</c:if>
 				<!-- 厂家模块 -->
 				<li><c:if test="${!empty user.nickname}">
-					<li id="li_factory_order">	<a href="${pageContext.request.contextPath}/factory/manager/1"><i
-							class="fa fa-flask "></i> <span class="nav-label">厂家</span><span
-							class="label label-danger pull-right"></span></a>
+						<li id="li_factory_order"><a
+							href="${pageContext.request.contextPath}/factory/manager/1"><i
+								class="fa fa-flask "></i> <span class="nav-label">厂家</span><span
+								class="label label-danger pull-right"></span></a>
 					</c:if> <c:if test="${empty user.nickname }">
 						<a
 							href="${pageContext.request.contextPath}/factory/order/${user.fid }"><i
@@ -85,7 +87,13 @@
 					href="${pageContext.request.contextPath}/order/deliveryorder/1"><i
 						class="fa fa-comments"></i> <span class="nav-label">经销商</span><span
 						class="label label-danger pull-right"></span></a></li>
-
+				<!-- 公告 -->
+				<li><c:if test="${!empty user.nickname}">
+						<li id="li_public"><a
+							href="${pageContext.request.contextPath}/public"><i
+								class="fa fa-flask "></i> <span class="nav-label">公告</span><span
+								class="label label-danger pull-right"></span></a>
+					</c:if>
 			</ul>
 		</div>
 	</nav>
