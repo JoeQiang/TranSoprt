@@ -170,8 +170,8 @@ public class GRFactoryController extends Controller {
 			WritableWorkbook wb = Workbook.createWorkbook(file);
 			WritableSheet sheet = wb.createSheet("sheel0", 0);
 			Label label = null;
-			String[] title = { "经销商", "电话号码", "所在省市", "货品数量", "货品品类", "货品规格",
-					"下单时间", "发货时间", "发货厂家", "发货后规定到达时间", "到货时间" };
+			String[] title = { "序号", "经销商", "电话号码", "详细地址", "货品数量", "货品品类",
+					"货品规格", "下单时间", "发货时间", "发货厂家", "发货后规定到达时间" };
 			for (int i = 0; i < title.length; i++) {
 				label = new Label(i, 0, title[i]);
 				sheet.addCell(label);
@@ -179,67 +179,61 @@ public class GRFactoryController extends Controller {
 			for (int i = 1; i <= list.size(); i++) {
 				GROrder order = list.get(i - 1);
 				Dealer dealer = order.get("dealer");
+				// 订单序号
+				label = new Label(0, i, order.getStr("seqnum"));
+				sheet.addCell(label);
 				// 经销商名称
-				label = new Label(0, i, dealer.getStr("dname"));
+				label = new Label(1, i, dealer.getStr("dname"));
 				sheet.addCell(label);
 				// 经销商联系电话
 				if (dealer.get("phone") != null) {
-					label = new Label(1, i, String.valueOf(dealer.get("phone")));
+					label = new Label(2, i, String.valueOf(dealer.get("phone")));
 					sheet.addCell(label);
 				} else {
-					label = new Label(1, i, "");
+					label = new Label(2, i, "");
 					sheet.addCell(label);
 				}
 				// 经销商所在省市
-				label = new Label(2, i, dealer.getStr("province"));
+				label = new Label(3, i, dealer.getStr("province"));
 				sheet.addCell(label);
 				// 货品的数量
 				if (order.get("num") != null) {
-					label = new Label(3, i, String.valueOf(order.get("num")));
+					label = new Label(4, i, String.valueOf(order.get("num")));
 					sheet.addCell(label);
 				} else {
-					label = new Label(3, i, "");
+					label = new Label(4, i, "");
 					sheet.addCell(label);
 				}
 				// 货品的品类
-				label = new Label(4, i, order.getGoodName());
+				label = new Label(5, i, order.getGoodName());
 				sheet.addCell(label);
 				// 货品的规格
-				label = new Label(5, i, order.getStandardName());
+				label = new Label(6, i, order.getStandardName());
 				sheet.addCell(label);
 				// 下单时间
 				if (order.getDate("createday") != null) {
-					label = new Label(6, i, order.getDate("createday")
+					label = new Label(7, i, order.getDate("createday")
 							.toString());
-					sheet.addCell(label);
-				} else {
-					label = new Label(6, i, "");
-					sheet.addCell(label);
-				}
-				// 发货时间
-				if (order.getDate("sendday") != null) {
-					label = new Label(7, i, order.getDate("sendday").toString());
 					sheet.addCell(label);
 				} else {
 					label = new Label(7, i, "");
 					sheet.addCell(label);
 				}
-				// 发货厂家
-				label = new Label(8, i, order.get("factoryname").toString());
-				sheet.addCell(label);
-				// 发货后规定到达时间
-				if (dealer.get("limitdays") != null) {
-					label = new Label(9, i, String.valueOf(dealer
-							.get("limitdays")));
+				// 发货时间
+				if (order.getDate("sendday") != null) {
+					label = new Label(8, i, order.getDate("sendday").toString());
 					sheet.addCell(label);
 				} else {
-					label = new Label(9, i, "");
+					label = new Label(8, i, "");
 					sheet.addCell(label);
 				}
-				// 到货时间
-				if (order.getDate("arriveday") != null) {
-					label = new Label(10, i, order.getDate("arriveday")
-							.toString());
+				// 发货厂家
+				label = new Label(9, i, order.get("factoryname").toString());
+				sheet.addCell(label);
+				// 发货后规定到达时间
+				if (order.get("reqarrday") != null) {
+					label = new Label(10, i, String.valueOf(order
+							.get("reqarrday")));
 					sheet.addCell(label);
 				} else {
 					label = new Label(10, i, "");

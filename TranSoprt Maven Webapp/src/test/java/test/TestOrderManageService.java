@@ -38,7 +38,7 @@ public class TestOrderManageService {
 
 	@Test
 	public void testDisFactory() {
-		System.out.println(os.distributeFactory(1, 1, 14));
+	/*	System.out.println(os.distributeFactory(1, 1, 14));*/
 		;
 
 	}
