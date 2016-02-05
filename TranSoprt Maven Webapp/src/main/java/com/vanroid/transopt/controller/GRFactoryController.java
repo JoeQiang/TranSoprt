@@ -3,6 +3,8 @@ package com.vanroid.transopt.controller;
 import java.io.File;
 import java.util.List;
 
+import javax.faces.view.facelets.Facelet;
+
 import jxl.Workbook;
 import jxl.write.Label;
 import jxl.write.WritableSheet;
@@ -18,6 +20,7 @@ import com.vanroid.transopt.model.GRFactory;
 import com.vanroid.transopt.model.GROrder;
 import com.vanroid.transopt.service.GRFactoryService;
 import com.vanroid.transopt.service.GRFactoryServiceImp;
+import com.vanroid.transopt.uitls.Constant;
 
 /**
  * 厂家控制类
@@ -40,7 +43,7 @@ public class GRFactoryController extends Controller {
 		}
 		Page<GRFactory> pager = service.getFactoryList(pageNum);
 		setAttr("pager", pager);
-		setAttr("li_id","li_factory");
+		setAttr("li_id", "li_factory");
 		render("/jsp/acount_factory.jsp");
 	}
 
@@ -54,7 +57,7 @@ public class GRFactoryController extends Controller {
 		}
 		setAttr("pager", pager);
 		setAttr("fid", fid);
-		setAttr("li_id","li_factory");
+		setAttr("li_id", "li_factory");
 		render("/jsp/factory_order_show.jsp");
 	}
 
@@ -135,6 +138,7 @@ public class GRFactoryController extends Controller {
 		List<GROrder> list = service.searchOrder(fid, option, search);
 		setAttr("fid", fid);
 		setAttr("list", list);
+		setAttr("li_id", "li_factory_order");
 		render("/jsp/factory_order.jsp");
 
 	}
@@ -255,5 +259,51 @@ public class GRFactoryController extends Controller {
 		GROrder order = GROrder.dao.findById(oid);
 		order.getAttrFromOtherTable();
 		renderJson("order", order);
+	}
+
+	/**
+	 * 经销商栏目下的条件搜索
+	 */
+	public void searchOption() {
+		int option = getParaToInt("option");
+		String search = getPara("search");
+		List<GROrder> list = null;
+		String rank = getSessionAttr("rank");
+		if (rank.equalsIgnoreCase(Constant.USER_TYPE_ADMIN)) {
+			list = service.searchOrder(-1, option, search);
+		} else if (rank.equalsIgnoreCase(Constant.USER_TYPE_FACTORY)) {
+			GRFactory factory = getSessionAttr("user");
+			list = service.searchOrder(factory.getInt("fid"), option, search);
+		}
+		Page<GROrder> pager = new Page<GROrder>(list, 1, 1000, 1, list.size());
+		setAttr("delivOrder", pager.getList());
+		setAttr("pageNum", pager.getPageNumber());
+		setAttr("totalPage", pager.getTotalPage());
+		setAttr("li_id", "li_dealer_order");
+		render("/jsp/order_send.jsp");
+	}
+
+	/**
+	 * 经销商栏目下的按日期搜索
+	 */
+	public void filterDay2() {
+		int dateType = getParaToInt("dateType");
+		String beginDay = getPara("begin");
+		String endDay = getPara("end");
+		List<GROrder> list = null;
+		String rank = getSessionAttr("rank");
+		if (rank.equalsIgnoreCase(Constant.USER_TYPE_ADMIN)) {
+			list = service.dateOrder(-1, dateType, beginDay, endDay);
+		} else if (rank.equalsIgnoreCase(Constant.USER_TYPE_FACTORY)) {
+			GRFactory factory = getSessionAttr("user");
+			list = service.dateOrder(factory.getInt("fid"), dateType, beginDay,
+					endDay);
+		}
+		Page<GROrder> pager = new Page<GROrder>(list, 1, 1000, 1, list.size());
+		setAttr("delivOrder", pager.getList());
+		setAttr("pageNum", pager.getPageNumber());
+		setAttr("totalPage", pager.getTotalPage());
+		setAttr("li_id", "li_dealer_order");
+		render("/jsp/order_send.jsp");
 	}
 }

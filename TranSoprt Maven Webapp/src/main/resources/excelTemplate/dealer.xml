@@ -5,7 +5,7 @@
 		<tr>
 			<th value="经销商" />
 			<th value="电话号码" />
-			<th value="所在省市" />
+			<th value="详细地址" />
 			<th value="规定到达天数" />
 		</tr>
 	</thead>

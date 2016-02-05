@@ -46,14 +46,48 @@
 						<div class="ibox float-e-margins">
 							<div class="ibox-title">
 								<h5>经销商发货</h5>
-
 							</div>
 							<div class="ibox-content">
-
+								<form class="form-inline"
+									action="${pageContext.request.contextPath}/factory/searchOption"
+									method="post">
+									<div class="col-sm-2">
+										<select name="option" class="form-control" required="">
+											<option value="">条件查询</option>
+											<option value="4">地域查询</option>
+											<option value="6">品类查询</option>
+											<option value="7">规格查询</option>
+											<option value="5">货品数量查询</option>
+											<option value="9">订单编号查询</option>
+											<option value="10">经销商姓名查询</option>
+											<option value="11">电话号码查询</option>
+										</select>
+									</div>
+									<input id="search" name="search" type="text"
+										placeholder="请选择查询条件" class="form-control" required="" />
+									<button type="submit" class="btn btn-info">筛选</button>
+								</form>
+								<form
+									action="${pageContext.request.contextPath}/factory/filterDay2"
+									method="post" class="form-inline">
+									<div class="col-sm-2">
+										<select name="dateType" id="option" class="form-control"
+											required="">
+											<option value="">时间查询</option>
+											<option value="1">按下单时间查询</option>
+										</select>
+									</div>
+									<input name="begin" type="date" placeholder="起始时间"
+										class="form-control" required="" /> <label>-</label> <input
+										style="display: inline;" name="end" type="date"
+										placeholder="结束时间" class="form-control" required="" />
+									<button type="submit" class="btn btn-primary">查询</button>
+								</form>
 								<table class="table table-striped table-bordered table-hover "
 									id="editable">
 									<thead>
 										<tr>
+											<th>序号</th>
 											<th>经销商</th>
 											<th>电话号码</th>
 											<th>所在省市</th>
@@ -61,7 +95,6 @@
 											<th>货品种类</th>
 											<th>货品规格</th>
 											<th>下单时间</th>
-											<!-- <th>发货时间</th> -->
 											<th>发货厂家</th>
 											<th>发货后规定到达时间</th>
 											<th>状态</th>
@@ -85,6 +118,7 @@
 										</c:if>
 										<c:forEach items="${delivOrder}" var="order">
 											<tr class="gradeB" id="tr${order.oid }">
+												<td>${order.seqnum}</td>
 												<td>${order.dealer.dname}</td>
 												<td>${order.dealer.phone}</td>
 												<td>${order.dealer.province}</td>
@@ -103,6 +137,7 @@
 									</tbody>
 									<tfoot>
 										<tr>
+											<th>序号</th>
 											<th>经销商</th>
 											<th>电话号码</th>
 											<th>所在省市</th>

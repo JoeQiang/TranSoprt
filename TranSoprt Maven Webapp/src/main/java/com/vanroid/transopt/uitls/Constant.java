@@ -1,6 +1,12 @@
 package com.vanroid.transopt.uitls;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.apache.log4j.Logger;
+
 public class Constant {
+	private static Logger logger = Logger.getLogger(Constant.class);
 	// Excel单元格数据类型
 	public static final String CELL_TYPE_STRING = "string";
 	public static final String CELL_TYPE_DATE = "date";
@@ -22,4 +28,41 @@ public class Constant {
 	public static final int SEARCH_TYPE_NUM = 5;
 	public static final int SEARCH_TYPE_GNAME = 6;
 	public static final int SEARCH_TYPE_SNAME = 7;
+	public static final int SEARCH_TYPE_STATUS = 8;
+	public static final int SEARCH_TYPE_SUQNUM = 9;
+	public static final int SEARCH_TYPE_DNAME = 10;
+	public static final int SEARCH_TYPE_PHONE = 11;
+
+	/**
+	 * 拼接字符串
+	 * 
+	 * @return
+	 */
+	public static String concat(Date date, int id) {
+
+		String[] dates = new SimpleDateFormat("yyyy-MM-dd").format(date).split(
+				"-");
+		StringBuilder fomatDate = new StringBuilder();
+		for (int i = 0; i < dates.length; i++) {
+			fomatDate.append(dates[i]);
+		}
+		String oid = String.valueOf(id);
+		String seqNum = "";
+		switch (oid.length()) {
+		case 1:
+			seqNum = "00".concat(oid);
+			break;
+		case 2:
+			seqNum = "0".concat(oid);
+			break;
+		default:
+			seqNum = oid;
+			break;
+		}
+		StringBuilder seq = new StringBuilder(fomatDate).append(seqNum);
+		logger.info("序号:" + seq.toString());
+		logger.debug("序号:" + seq.toString());
+		return seq.toString();
+	}
+
 }

@@ -25,6 +25,7 @@ import com.vanroid.transopt.model.Dealer;
 import com.vanroid.transopt.model.GRFactory;
 import com.vanroid.transopt.model.GROrder;
 import com.vanroid.transopt.model.NoteTemplate;
+import com.vanroid.transopt.uitls.Constant;
 import com.vanroid.transopt.uitls.NoteUtil;
 
 /**
@@ -69,9 +70,18 @@ public class OrderManageService {
 	 * 管理员管理的给新订单分配厂家 ajax 更新成功返回1，失敗返回0
 	 */
 	public int distributeFactory(int oid, int fid, int arrdays) {
-	 
-		boolean update = GROrder.dao.findById(oid).set("factoryid", fid)
-				.set("status", "未发货").set("reqarrday", arrdays).update();
+
+		boolean update = GROrder.dao.findById(oid)
+				.set("factoryid", fid)
+				.set("status", "未发货")
+				.set("reqarrday", arrdays)
+				// 分配序号
+				.set("seqnum",
+						Constant.concat(
+								GROrder.dao.findById(oid).getDate("createday"),
+								oid))
+				// 更新
+				.update();
 		if (update)
 			return 1;
 		return 0;

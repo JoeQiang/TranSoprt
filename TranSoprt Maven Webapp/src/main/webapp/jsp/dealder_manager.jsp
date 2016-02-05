@@ -50,25 +50,29 @@
 								<div class="row" style="margin-top: 20px">
 									<div class="col-sm-6">
 										<div class="dataTables_length" id="dataTables-example_length">
-											<!-- <label>显示 <select id="show"
-											name="dataTables-example_length"
-											class="form-control input-sm">
-												<option value="10"></option>
-												<option value="10">10</option>
-												<option value="25">25</option>
-												<option value="50">50</option>
-												<option value="100">100</option>
-										</select> 记录
-										</label> -->
 										</div>
 									</div>
 
-									<div class="col-sm-6">
-										<div id="dataTables-example_filter" class="dataTables_filter">
+									<div id="dataTables-example_filter" class="dataTables_filter">
+										<form
+											action="${pageContext.request.contextPath }/manager/dealer/search"
+											method="post" class="form-inline" onsubmit="return check()">
+											<div style="margin-left: 30px" class="col-sm-8">
+												<select style="margin-right: 10px" class="form-control"
+													name="screen"><option value="#">筛选项</option>
+													<option value="dname">经销商姓名</option>
+													<option value="phone">电话号码</option></select><input type="text"
+													placeholder="搜索" name="keyword" class="form-control"
+													required="">
+												<button type="submit" class="btn btn-primary">筛选</button>
+											</div>
+
+										</form>
+										<div class="col-sm-3">
 											<a
 												href="${pageContext.request.contextPath }/manager/dealer/insert_page"
 												type="button" class="btn btn-outline btn-primary"
-												style="float: right; margin-right: 40px" role="button">新增</a>
+												style="float: right;  role="button">新增</a>
 										</div>
 									</div>
 								</div>
@@ -251,6 +255,14 @@
 				$('#delete').click(function() {
 					location.href = url;
 				});
+			}
+			function check() {
+				var value = $("[name='screen']").val();
+				if (value == "#") {
+					alert("请选择筛选项再进行查询!");
+					return false;
+				}
+				return true;
 			}
 		</script>
 </body>

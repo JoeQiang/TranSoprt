@@ -4,4 +4,3 @@ user=root
 #password = 0768MysqlAliGrRoot
 password=root
 driver =com.mysql.jdbc.Driver
-

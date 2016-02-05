@@ -99,19 +99,12 @@
 								</form>
 							</div>
 						</div>
-						<%-- <label><p style="color: red;">
-								<c:out value="${error }" />
-							</p></label> --%>
 					</div>
-
 				</div>
 			</div>
 			<!-- 内容主体结束 -->
 			<!-- 脚部 -->
 			<div class="footer">
-				<!-- <div class="pull-right">
-	                               By：<a href="#" target="_blank">港荣</a>
-	                           </div> -->
 				<div>
 					<strong>订单管理系统</strong>&copy; 港荣食品有限公司 &nbsp;&nbsp;2016
 				</div>

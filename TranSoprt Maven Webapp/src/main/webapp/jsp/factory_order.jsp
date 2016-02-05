@@ -46,7 +46,6 @@
 						<div class="ibox float-e-margins">
 							<div class="ibox-title">
 								<h5>厂家订单</h5>
-								
 							</div>
 							<div class="ibox-content">
 								<form class="form-inline"
@@ -61,6 +60,8 @@
 											<option value="5">货品数量查询</option>
 											<option value="6">品类查询</option>
 											<option value="7">规格查询</option>
+											<option value="8">状态查询</option>
+											<option value="9">订单编号查询</option>
 										</select>
 									</div>
 									<input id="search" name="search" type="text"
@@ -77,7 +78,6 @@
 											<option value="">时间查询</option>
 											<option value="1">按下单时间查询</option>
 											<option value="2">按发货时间查询</option>
-											<option value="3">按到货时间查询</option>
 										</select>
 									</div>
 									<input name="begin" type="date" placeholder="起始时间"
@@ -85,19 +85,21 @@
 										style="display: inline;" name="end" type="date"
 										placeholder="结束时间" class="form-control" required="" />
 									<button type="submit" class="btn btn-primary">查询</button>
+									<button type="button" class="btn btn-warning" onclick="dow()">数据下载</button>
 								</form>
+
 							</div>
-							<form
+							<form id="download"
 								action="${pageContext.request.contextPath}/factory/excelOrder"
-								method="post" onsubmit="return checkSelect()">
-								<button type="submit" href="" class="btn btn-warning"
-									style="position:absolute;left:90%;bottom:75%;">数据下载</button>
+								method="post" onsubmit="return checkSelect()"
+								style="display: inline;">
 								<table class="table table-striped table-bordered table-hover "
 									id="editable">
 									<thead>
 										<tr>
 											<th><input id="CheckAll" type="checkbox"
 												class="form-control"></th>
+											<th>序号</th>
 											<th>经销商</th>
 											<th>电话号码</th>
 											<th>所在省市</th>
@@ -108,7 +110,6 @@
 											<th>发货时间</th>
 											<th>发货厂家</th>
 											<th>规定到达时间</th>
-											<th>到货时间</th>
 											<th>状态</th>
 											<!-- <th>操作</th> -->
 										</tr>
@@ -121,43 +122,40 @@
 										</c:if>
 										<c:if test="${!empty list }">
 											<c:forEach items="${list }" var="order">
-												<c:if
-													test="${!empty order.gname &&!empty order.dealer && !empty order.sname}">
-													<tr>
-														<td><input name="select" type="checkbox"
-															class="form-control" value="${order.oid }"></td>
-														<td><c:out value="${order.dealer.dname}" /></td>
-														<td><c:out value="${order.dealer.phone}" /></td>
-														<td><c:out value="${order.dealer.province}" /></td>
-														<td><c:out value="${order.num }" /></td>
-														<td><c:out value="${order.gname }" /></td>
-														<td><c:out value="${order.sname }" /></td>
-														<td><c:out value="${order.createday}" /></td>
-														<td><c:out value="${order.sendday}" /></td>
-														<td><c:out value="${order.factoryname }" /></td>
-														<td><c:out value="${order.reqarrday}" /></td>
-														<td><c:out value="${order.arriveday }" /></td>
-														<td><c:out value="${order.status }" /></td>
-														<!-- <td><button class="btn btn-primary" onclick="alert('hello')">查看</button></td> -->
-													</tr>
-												</c:if>
+												<tr>
+													<td><input name="select" type="checkbox"
+														class="form-control" value="${order.oid }"></td>
+													<td>${order.seqnum}</td>
+													<td><c:out value="${order.dealer.dname}" /></td>
+													<td><c:out value="${order.dealer.phone}" /></td>
+													<td><c:out value="${order.dealer.province}" /></td>
+													<td><c:out value="${order.num }" /></td>
+													<td><c:out value="${order.gname }" /></td>
+													<td><c:out value="${order.sname }" /></td>
+													<td><c:out value="${order.createday}" /></td>
+													<td><c:out value="${order.sendday}" /></td>
+													<td><c:out value="${order.factoryname }" /></td>
+													<td><c:out value="${order.reqarrday}" />天</td>
+													<td><c:out value="${order.status }" /></td>
+												</tr>
 											</c:forEach>
 										</c:if>
+
 									</tbody>
 									<tfoot>
 										<tr>
 											<th>&nbsp;&nbsp;&nbsp;</th>
+											<th>序号</th>
 											<th>经销商</th>
 											<th>电话号码</th>
 											<th>所在省市</th>
-											<th>货品数量</th>
+											<th>货品数量(箱)</th>
 											<th>货品品类</th>
 											<th>货品规格</th>
 											<th>下单时间</th>
 											<th>发货时间</th>
 											<th>发货厂家</th>
 											<th>规定到达时间</th>
-											<th>到货时间</th>
 											<th>状态</th>
 											<!-- <th>操作</th> -->
 										</tr>
@@ -212,9 +210,9 @@
 				var selectIndex = $("#option").get(0).selectedIndex;
 				return false;
 			} */
-	
+
 		$(document).ready(function() {
-	var li_id = '${li_id}';
+			var li_id = '${li_id}';
 			$("#" + li_id).addClass("active");
 			if (li_id == "li_factory_order" || li_id == "li_dealer_order") {
 				$("#li_account").removeClass("active");
@@ -241,6 +239,16 @@
 						'type' : 'text',
 						'placeholder' : '请输入货品规格进行查询'
 					});
+				} else if (selectIndex == 5) {
+					$('#search').attr({
+						'type' : 'text',
+						'placeholder' : '请输入状态进行查询'
+					});
+				} else if (selectIndex == 6) {
+					$('#search').attr({
+						'type' : 'text',
+						'placeholder' : '请输入订单编号进行查询'
+					});
 				}
 			});
 		});
@@ -255,6 +263,9 @@
 				});
 			});
 		});
+		function dow() {
+			$('#download').submit();
+		}
 	</script>
 </body>
 

@@ -18,11 +18,13 @@ import com.vanroid.transopt.model.Dealer;
 public interface DealerService {
 	/**
 	 * 修改密码
+	 * 
 	 * @param phone
 	 * @param newPwd
 	 * @return
 	 */
 	public int changePwd(String phone, String newPwd);
+
 	/**
 	 * 经销商登陆
 	 * 
@@ -30,7 +32,7 @@ public interface DealerService {
 	 *            经销商实体
 	 * @return
 	 */
-	public int doLogin(String phone,String pwd);
+	public int doLogin(String phone, String pwd);
 
 	/**
 	 * 根据名称查找经销商
@@ -87,6 +89,17 @@ public interface DealerService {
 	 * @param did
 	 */
 	public void deleteDealer(int did);
-	public int getDynamPwd(String phone) throws IOException, ApiException ;
+
+	public int getDynamPwd(String phone) throws IOException, ApiException;
+
 	public boolean batchSaveDealer(File file, HttpServletRequest request);
+
+	/**
+	 * 搜索筛选经销商
+	 * 
+	 * @param screen
+	 * @param keyword
+	 * @return
+	 */
+	public Page<Dealer> seach(int pageNum, String screen, String keyword);
 }

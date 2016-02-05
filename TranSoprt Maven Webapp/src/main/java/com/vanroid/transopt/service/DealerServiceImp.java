@@ -212,4 +212,22 @@ public class DealerServiceImp implements DealerService {
 		List list = Db.query(sql, phone);
 		return list.size();
 	}
+
+	@Override
+	public Page<Dealer> seach(int pageNumber, String screen, String keyword) {
+		StringBuilder sql = new StringBuilder("from dealer where 1=1 ");
+		Page<Dealer> pager = null;
+		if (screen != null && !"".equals(screen.trim()) && !"#".equals(screen)) {
+			if (screen.equals("dname")) {
+				sql.append(" and dname like ? ");
+			} else if (screen.equals("phone")) {
+				sql.append(" and phone like ? ");
+			}
+			sql.append(" order by did desc ");
+			pager = Dealer.dao.paginate(pageNumber, 1000, "select *",
+					sql.toString(), new Object[] { "%" + keyword + "%" });
+		}
+
+		return pager;
+	}
 }

@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.jfinal.aop.Before;
+import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Page;
+import com.jfinal.plugin.activerecord.Record;
 import com.jfinal.plugin.activerecord.tx.Tx;
 import com.vanroid.transopt.model.Dealer;
 import com.vanroid.transopt.model.GRFactory;
@@ -95,76 +97,98 @@ public class GRFactoryServiceImp implements GRFactoryService {
 	/**
 	 * 搜索筛选订单
 	 */
-	@Override
 	public List<GROrder> searchOrder(int fid, int option, String search) {
 		StringBuilder sql = new StringBuilder(
-				"select * from grorder where factoryid = ? ");
-		List<GROrder> list = null;
-		// 根据省份模糊查找
-		if (Constant.SEARCH_TYPE_PROVINCE == option) {
-			Dealer dealer = null;
-			list = GROrder.dao.find(sql.toString(), fid);
-			for (GROrder order : list) {
-				order.getGoodName();
-				order.getStandardName();
-				order.getFactory();
-				dealer = order.getDealer(search);
-			}
-			if (dealer == null)
-				list = null;
-		}// 根据货品数量模糊查询
-		else if (Constant.SEARCH_TYPE_NUM == option) {
-			sql.append(" and num like ?");
-			list = GROrder.dao.find(sql.toString(), fid, search + "%");
-			for (GROrder order : list) {
-				order.getAttrFromOtherTable();
-			}
-		}// 根据 货品品类模糊搜索
-		else if (Constant.SEARCH_TYPE_GNAME == option) {
-			String goodName = null;
-			list = GROrder.dao.find(sql.toString(), fid);
-			for (GROrder order : list) {
-				goodName = order.getGoodName(search);
-				order.getStandardName();
-				order.getFactory();
-				order.getDealer();
-			}
-			if (goodName == null)
-				list = null;
-		}// 根据货品规格进行模糊查询
-		else if (Constant.SEARCH_TYPE_SNAME == option) {
-			String standardName = null;
-			list = GROrder.dao.find(sql.toString(), fid);
-			for (GROrder order : list) {
-				order.getGoodName();
-				standardName = order.getStandardName(search);
-				order.getFactory();
-				order.getDealer();
-			}
-			if (standardName == null)
-				list = null;
+				" select * from grorder,grfactory,dealer,standard,grgoods ")
+				.append(" where 1=1 and grorder.dealerid = dealer.did ")
+				.append(" and grorder.factoryid = grfactory.fid and grorder.gid = grgoods.gid  ")
+				.append(" and grorder.sid = standard.sid");
+		List<Object> params = new ArrayList<Object>();
+		if (fid > 0) {
+			sql.append("  and grorder.factoryid = ?  ");
+			params.add(fid);
 		}
+		switch (option) {
+		case Constant.SEARCH_TYPE_GNAME:
+			sql.append(" and grgoods.gname like ?");
+			params.add("%" + search + "%");
+			break;
+		case Constant.SEARCH_TYPE_NUM:
+			sql.append(" and grorder.num = ?");
+			params.add(search);
+			break;
+		case Constant.SEARCH_TYPE_PROVINCE:
+			sql.append(" and dealer.province like ?");
+			params.add("%" + search + "%");
+			break;
+		case Constant.SEARCH_TYPE_SNAME:
+			sql.append(" and standard.sname like ?");
+			params.add("%" + search + "%");
+			break;
+		case Constant.SEARCH_TYPE_STATUS:
+			sql.append(" and grorder.status like ?");
+			params.add("%" + search + "%");
+			break;
+		case Constant.SEARCH_TYPE_SUQNUM:
+			sql.append(" and grorder.seqnum like ?");
+			params.add("%" + search + "%");
+			break;
+		case Constant.SEARCH_TYPE_DNAME:
+			sql.append(" and dealer.dname like ?");
+			params.add("%" + search + "%");
+			break;
+		case Constant.SEARCH_TYPE_PHONE:
+			sql.append(" and dealer.phone like ?");
+			params.add("%" + search + "%");
+			break;
+		default:
+			break;
+		}
+		List<Record> records = Db.find(sql.toString(), params.toArray());
+		List<GROrder> orders = new ArrayList<GROrder>();
+		for (Record record : records) {
+			Dealer dealer = new Dealer()
+					.put("province", record.getStr("province"))
+					.put("phone", Long.valueOf(record.getStr("phone")))
+					.put("dname", record.getStr("dname"));
+			GROrder order = new GROrder()
+					.put("status", record.getStr("status"))
+					.put("num", record.getInt("num"))
+					.put("sendday", record.getDate("sendday"))
+					.put("createday", record.getDate("createday"))
+					.put("factoryname", record.getStr("fname"))
+					.put("gname", record.get("gname"))
+					.put("sname", record.get("sname")).put("dealer", dealer)
+					.put("reqarrday", record.getInt("reqarrday"))
+					.put("seqnum", record.getStr("seqnum"));
+			orders.add(order);
+		}
+		return orders;
 
-		return list;
 	}
 
 	@Override
 	public List<GROrder> dateOrder(int fid, int type, String beginDay,
 			String endDay) {
 		StringBuilder sql = new StringBuilder(
-				"select * from grorder where factoryid = ? ");
-		if (Constant.DAY_TYPE_ARRIVED == type) {
-			sql.append("and arriveday between ? and ?");
-		} else if (Constant.DAY_TYPE_CREATE == type) {
-			sql.append("and createday between ? and ?");
-		} else if (Constant.DAY_TYPE_SEND == type) {
-			sql.append("and sendday between ? and ?");
+				"select * from grorder where 1=1 ");
+		List<Object> params = new ArrayList<Object>();
+		if (fid > 0) {
+			sql.append(" factoryid = ? ");
+			params.add(fid);
 		}
-		List<GROrder> list = GROrder.dao.find(sql.toString(), fid, beginDay,
-				endDay);
+		if (Constant.DAY_TYPE_CREATE == type) {
+			sql.append(" and createday between ? and ? ");
+		} else if (Constant.DAY_TYPE_SEND == type) {
+			sql.append(" and sendday between ? and ? ");
+		}
+		params.add(beginDay);
+		params.add(endDay);
+		List<GROrder> list = GROrder.dao.find(sql.toString(), params.toArray());
 		for (GROrder order : list) {
 			order.getAttrFromOtherTable();
 		}
 		return list;
 	}
+
 }

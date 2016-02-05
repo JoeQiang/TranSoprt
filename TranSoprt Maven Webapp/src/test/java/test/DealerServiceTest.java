@@ -1,17 +1,28 @@
 package test;
 
-import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.junit.Test;
-
-import com.vanroid.transopt.service.DealerServiceImp;
 
 public class DealerServiceTest {
 	@Test
 	public void test() {
-
-		boolean flag = new DealerServiceImp().batchSaveDealer(new File("D:"
-				+ File.separator + "经销商批量导入.xls"), null);
-		System.out.println(flag);
+		SimpleDateFormat format = new SimpleDateFormat("yyyymmdd");
+		String date = format.format(new Date());
+		String id = String.valueOf(41);
+		String seqNum = "";
+		switch (id.length()) {
+		case 1:
+			seqNum = "00".concat(id);
+			break;
+		case 2:
+			seqNum = "0".concat(id);
+			break;
+		default:
+			seqNum = id;
+			break;
+		}
+		StringBuilder seq = new StringBuilder(date).append(seqNum);
 	}
 }

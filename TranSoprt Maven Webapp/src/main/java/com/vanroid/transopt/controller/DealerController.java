@@ -218,4 +218,13 @@ public class DealerController extends Controller {
 			}
 		}
 	}
+
+	public void search() {
+		String screen = getPara("screen");
+		String keyword = getPara("keyword");
+		Page<Dealer> pager = service.seach(1, screen, keyword);
+		setAttr("pager", pager);
+		setAttr("li_id", "li_dealer");
+		render("/jsp/dealder_manager.jsp");
+	}
 }
