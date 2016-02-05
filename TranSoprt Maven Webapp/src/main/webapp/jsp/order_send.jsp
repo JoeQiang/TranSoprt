@@ -125,7 +125,7 @@
 												<td>${order.num}</td>
 												<td>${order.gname}</td>
 												<td>${order.sname}</td>
-												<td>${order.createtime}</td>
+												<td>${order.createday}</td>
 												<%-- 	<td>${order.sendday}</td> --%>
 												<td>${order.factoryname}</td>
 												<td>${order.reqarrday}天</td>
