@@ -49,10 +49,10 @@
 				</li>
 				<!-- 账户模块-->
 				<c:if test="${!empty user.nickname }">
-					<li id="li_account" class="active"><a href="#"><i
+					<li id="li_account" ><a href="#"><i
 							class="fa fa-th-large"></i> <span class="nav-label">账户</span> <span
 							class="fa arrow"></span></a>
-						<ul class="nav nav-second-level">
+						<ul id="ulsecond"class="nav nav-second-level">
 
 
 							<li id="li_distorder"><a
@@ -97,6 +97,20 @@
 			</ul>
 		</div>
 	</nav>
+	<script	src="${pageContext.request.contextPath }/js/jquery-2.1.1.min.js"></script>
+	<script>
+	$(document).ready(
+							function() {
+
+								var li_id = '${li_id}';
+								$("#" + li_id).addClass("active");
+								if (!(li_id == "li_factory_order"
+										|| li_id == "li_dealer_order"||li_id=="li_public")) {
+									$("#li_account").addClass("active");
+									
+								}
+							});
+	</script>
 </body>
 
 </html>

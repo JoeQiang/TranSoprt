@@ -88,7 +88,7 @@
 												<td>${order.num }</td>
 												<td>${order.gname }</td>
 												<td>${order.sname}</td>
-												<td>${order.createday}</td>
+												<td>${order.createtime}</td>
 												<td><select id="chaarrday${order.oid }">
 														<c:forEach var="i" begin="1" end="20">
 															<c:choose>
@@ -211,11 +211,7 @@
 
 		$(document).ready(function() {
 			$("table th").eq(3).css("width", "80px");
-			var li_id = '${li_id}';
-			$("#" + li_id).addClass("active");
-			if (li_id == "li_factory_order" || li_id == "li_dealer_order") {
-				$("#li_account").removeClass("active");
-			}
+			
 		});
 	</script>
 </body>

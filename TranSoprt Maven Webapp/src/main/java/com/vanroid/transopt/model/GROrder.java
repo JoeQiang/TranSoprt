@@ -142,9 +142,10 @@ public class GROrder extends Model<GROrder> {
 		getStandardName();
 		getFactory();
 		getDealer();
+		
 	}
 
-	// 下订单
+	/*// 下订单
 	public void setGoods(List<HashMap<String, Object>> list) {
 		for (HashMap<String, Object> map : list) {
 			Record record = new Record().set("oid", getInt("oid"))
@@ -153,5 +154,5 @@ public class GROrder extends Model<GROrder> {
 			Db.save("shoppingcart", "did", record);
 		}
 
-	}
+	}*/
 }

@@ -65,7 +65,7 @@
 							<div class="row">
 								<div class="col-xs-5"><div>${order.gname }</div><div>${order.sname }</div><div>${order.num }箱</div></div>
 								<div class="col-xs-7">
-									<div class=""><div>下单时间:</div><div>${order.createday }<div></div></div>
+									<div class=""><div>下单时间:</div><div>${order.createtime}<div></div></div>
 									<div id="sta${order.oid }" class="">状态：${order.status}</div>
 								</div>
 								<c:if test="${order.status=='已发货' }">

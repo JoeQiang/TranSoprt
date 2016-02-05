@@ -1,6 +1,7 @@
 package com.vanroid.transopt.service;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -43,10 +44,9 @@ public class OrderManageService {
 	 */
 	public boolean makeOrder(int did, int gid, int sid, int num) {
 
-		String today = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 		Dealer dealer = Dealer.dao.findById(did);
 		GROrder order = new GROrder().set("dealerid", did)
-				.set("createday", today).set("status", "可撤销").set("gid", gid)
+				.set("createtime", new Date()).set("status", "可撤销").set("gid", gid)
 				.set("sid", sid).set("num", num)
 				// 默认订单的规定到达时间是经销商的设定的时限
 				.set("reqarrday", dealer.getInt("limitdays"));
@@ -68,17 +68,21 @@ public class OrderManageService {
 
 	/**
 	 * 管理员管理的给新订单分配厂家 ajax 更新成功返回1，失敗返回0
+	 * @throws ParseException 
 	 */
-	public int distributeFactory(int oid, int fid, int arrdays) {
-
+	public int distributeFactory(int oid, int fid, int arrdays) throws ParseException {
+		;
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+		Date today=GROrder.dao.findById(oid).getDate("createtime");
+//		Date today =sdf.parse(GROrder.dao.findById(oid).getDate("createtime")+"");
 		boolean update = GROrder.dao.findById(oid)
 				.set("factoryid", fid)
 				.set("status", "未发货")
 				.set("reqarrday", arrdays)
 				// 分配序号
 				.set("seqnum",
-						Constant.concat(
-								GROrder.dao.findById(oid).getDate("createday"),
+						Constant.concat(today
+								,
 								oid))
 				// 更新
 				.update();
@@ -186,7 +190,7 @@ public class OrderManageService {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date today = new Date();
 		Date arriveDay = DateUtils.addDays(today,
-				((Dealer) order.get("dealer")).getInt("limitdays"));
+				order.getInt("reqarrday"));
 		nt.setSendday(sdf.format(today));
 		nt.setArriveday(sdf.format(arriveDay));
 		Gson gson = new Gson();

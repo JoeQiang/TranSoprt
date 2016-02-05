@@ -123,14 +123,7 @@
 	<script
 		src="${pageContext.request.contextPath }/js/plugins/pace/pace.min.js"></script>
 		<script>
-		$(document).ready(function() {
-
-			var li_id = '${li_id}';
-			$("#" + li_id).addClass("active");
-			if (li_id == "li_factory_order" || li_id == "li_dealer_order") {
-				$("#li_account").removeClass("active");
-			}
-		});
+		
 		
 	</script>
 </body>

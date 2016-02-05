@@ -306,11 +306,7 @@
 				radioClass : 'iradio_square-green',
 			});
 
-			var li_id = '${li_id}';
-			$("#" + li_id).addClass("active");
-			if (li_id == "li_factory_order" || li_id == "li_dealer_order") {
-				$("#li_account").removeClass("active");
-			}
+			
 		});
 		function delGoods(gid) {
 			if (window.confirm('确定要删除该商品吗？')) {

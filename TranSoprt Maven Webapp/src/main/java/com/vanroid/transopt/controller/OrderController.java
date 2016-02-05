@@ -1,6 +1,7 @@
 package com.vanroid.transopt.controller;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -53,7 +54,7 @@ public class OrderController extends Controller {
 	}
 
 	// 分配厂家ajax
-	public void distfactory() {
+	public void distfactory() throws ParseException {
 		int result = om.distributeFactory(getParaToInt(1), getParaToInt(0),getParaToInt(2));
 		renderJson(result);
 	}
