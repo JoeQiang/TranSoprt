@@ -132,7 +132,7 @@
 													<td><c:out value="${order.num }" /></td>
 													<td><c:out value="${order.gname }" /></td>
 													<td><c:out value="${order.sname }" /></td>
-													<td><c:out value="${order.createtime}" /></td>
+													<td><c:out value="${order.createday}" /></td>
 													<td><c:out value="${order.sendday}" /></td>
 													<td><c:out value="${order.factoryname }" /></td>
 													<td><c:out value="${order.reqarrday}" />天</td>

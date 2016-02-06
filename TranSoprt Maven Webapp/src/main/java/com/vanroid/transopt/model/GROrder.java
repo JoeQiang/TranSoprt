@@ -23,7 +23,7 @@ public class GROrder extends Model<GROrder> {
 		put("dealer", dealer);
 		return dealer;
 	}
-	
+
 	// 根据省份查询经销商
 	public Dealer getDealer(String province) {
 		String sql = "select * from dealer where did = ? and province like ?";
@@ -142,17 +142,16 @@ public class GROrder extends Model<GROrder> {
 		getStandardName();
 		getFactory();
 		getDealer();
-		
+
 	}
 
-	/*// 下订单
-	public void setGoods(List<HashMap<String, Object>> list) {
-		for (HashMap<String, Object> map : list) {
-			Record record = new Record().set("oid", getInt("oid"))
-					.set("gid", map.get("gid")).set("sid", map.get("sid"))
-					.set("num", map.get("num"));
-			Db.save("shoppingcart", "did", record);
-		}
-
-	}*/
+	/*
+	 * // 下订单 public void setGoods(List<HashMap<String, Object>> list) { for
+	 * (HashMap<String, Object> map : list) { Record record = new
+	 * Record().set("oid", getInt("oid")) .set("gid", map.get("gid")).set("sid",
+	 * map.get("sid")) .set("num", map.get("num")); Db.save("shoppingcart",
+	 * "did", record); }
+	 * 
+	 * }
+	 */
 }
