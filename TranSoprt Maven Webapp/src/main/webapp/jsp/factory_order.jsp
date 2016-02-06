@@ -108,7 +108,7 @@
 											<th>货品品类</th>
 											<th>货品规格</th>
 											<th>下单时间</th>
-											<th>发货时间</th>
+											<th>发货日期</th>
 											<th>发货厂家</th>
 											<th>规定到达时间</th>
 											<th>状态</th>
@@ -133,7 +133,7 @@
 													<td><c:out value="${order.num }" /></td>
 													<td><c:out value="${order.gname }" /></td>
 													<td><c:out value="${order.sname }" /></td>
-																							   <td><fmt:formatDate value="${order.createtime }"  type="both"  pattern="yyyy-MM-dd HH:mm:ss" /></td>
+													<td><fmt:formatDate value="${order.createtime }"  type="both"  pattern="yyyy-MM-dd HH:mm:ss" /></td>
 
 													<td><c:out value="${order.sendday}" /></td>
 													<td><c:out value="${order.factoryname }" /></td>
@@ -155,7 +155,7 @@
 											<th>货品品类</th>
 											<th>货品规格</th>
 											<th>下单时间</th>
-											<th>发货时间</th>
+											<th>发货日期</th>
 											<th>发货厂家</th>
 											<th>规定到达时间</th>
 											<th>状态</th>

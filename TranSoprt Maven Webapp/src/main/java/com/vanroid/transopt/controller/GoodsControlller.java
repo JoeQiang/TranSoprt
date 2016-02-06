@@ -45,7 +45,7 @@ public class GoodsControlller extends Controller {
 		}
 		setAttr("g1standard", standard);
 		setAttr("allgoods", allGoods);
-		setAttr("public",Public.dao.findById(1).getStr("content"));
+		setAttr("info_public",Public.dao.findById(1).getStr("content"));
 		render("/jsp/booking.jsp");
 	}
 

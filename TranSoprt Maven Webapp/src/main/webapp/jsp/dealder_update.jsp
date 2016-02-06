@@ -13,7 +13,7 @@
 	href="${pageContext.request.contextPath }/css/bootstrap.min.css?v=3.4.0"
 	rel="stylesheet">
 <link
-	href="${pageContext.request.contextPath }/css/font-awesome.css?v=4.3.0"
+	href="${pageContext.request.contextPath }/font-awesome/css/font-awesome.css?v=4.3.0"
 	rel="stylesheet">
 <link href="${pageContext.request.contextPath }/css/animate.css"
 	rel="stylesheet">
@@ -41,13 +41,7 @@
 						<div id="dataTables-example_wrapper"
 							class="dataTables_wrapper dt-bootstrap no-footer">
 							<div class="row">
-								<div class="col-sm-6">
-									<ol class="breadcrumb">
-										<li><a href="#">账户</a></li>
-										<li>经销商管理</li>
-										<li>更新</li>
-									</ol>
-								</div>
+								
 							</div>
 							<div class="row" style="margin-top: 20px">
 								<div class="col-sm-6">

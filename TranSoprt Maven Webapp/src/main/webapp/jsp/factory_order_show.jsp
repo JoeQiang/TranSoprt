@@ -80,8 +80,7 @@
 											<td><c:out value="${order.num }" /></td>
 											<td><c:out value="${order.gname }" /></td>
 											<td><c:out value="${order.sname }" /></td>
-																					   <td><fmt:formatDate value="${order.createtime }"  type="both"  pattern="yyyy-MM-dd HH:mm:ss" /></td>
-
+											 <td><fmt:formatDate value="${order.createtime }"  type="both"  pattern="yyyy-MM-dd HH:mm:ss" /></td>
 											<td><c:out value="${order.sendday}" /></td>
 											<td><c:out value="${order.factoryname }" /></td>
 											<td><c:out value="${order.reqarrday}" /></td>

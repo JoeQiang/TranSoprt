@@ -93,10 +93,10 @@
 		</div>
 		 <div class="news">
 		 <c:choose>
-		 <c:when test="${empty public }">
+		 <c:when test="${empty info_public }">
 		 暂无公告信息
 		 </c:when><c:otherwise>
-		 ${public }
+		 ${info_public }
 		 </c:otherwise>
 		 </c:choose>
 		 </div>
