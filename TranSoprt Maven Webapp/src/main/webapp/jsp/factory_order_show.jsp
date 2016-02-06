@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="renderer" content="webkit">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <title>港荣食品订单管理系统</title>
 <meta name="keywords" content="港荣食品订单管理系统">
@@ -49,7 +49,7 @@
 							id="editable">
 							<thead>
 								<tr>
-								<th>订单号</th>
+									<th>订单号</th>
 									<th>经销商</th>
 									<th>电话号码</th>
 									<th>详细地址</th>
@@ -73,14 +73,15 @@
 								<c:if test="${!empty pager.list }">
 									<c:forEach items="${pager.list }" var="order">
 										<tr>
-										<td><c:out value="${order.seqnum}" /></td>
+											<td><c:out value="${order.seqnum}" /></td>
 											<td><c:out value="${order.dealer.dname}" /></td>
 											<td><c:out value="${order.dealer.phone}" /></td>
 											<td><c:out value="${order.dealer.province}" /></td>
 											<td><c:out value="${order.num }" /></td>
 											<td><c:out value="${order.gname }" /></td>
 											<td><c:out value="${order.sname }" /></td>
-											 <td><fmt:formatDate value="${order.createtime }"  type="both"  pattern="yyyy-MM-dd HH:mm:ss" /></td>
+											<td><fmt:formatDate value="${order.createtime }"
+													type="both" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 											<td><c:out value="${order.sendday}" /></td>
 											<td><c:out value="${order.factoryname }" /></td>
 											<td><c:out value="${order.reqarrday}" /></td>
@@ -93,7 +94,7 @@
 							</tbody>
 							<tfoot>
 								<tr>
-								<th>订单号</th>
+									<th>订单号</th>
 									<th>经销商</th>
 									<th>电话号码</th>
 									<th>详细地址</th>
@@ -290,7 +291,7 @@
 							//添加货品规格
 							$('#sname').html(order.sname);
 							//添加下单时间
-							$('#createday').html(order.createday);
+							$('#createday').html(order.createtime);
 							//添加发货时间
 							$('#sendday').html(order.sendday);
 							//添加到货时间
@@ -298,7 +299,7 @@
 							//添加发货厂家
 							$('#fname').html(order.factoryname);
 							//添加限制天数
-							$('#limitday').html(order.dealer.limitdays);
+							$('#limitday').html(order.reqarrday);
 							//弹出模态框
 							$('#myModal').modal('show');
 

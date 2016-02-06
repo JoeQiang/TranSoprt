@@ -135,7 +135,7 @@ public class GRFactoryController extends Controller {
 		int fid = getParaToInt("fid");
 		int option = getParaToInt("option");
 		String search = getPara("search");
-		List<GROrder> list = service.searchOrder(fid, option, search);
+		List<GROrder> list = service.searchOrder(null, fid, option, search);
 		setAttr("fid", fid);
 		setAttr("list", list);
 		setAttr("li_id", "li_factory_order");
@@ -148,7 +148,8 @@ public class GRFactoryController extends Controller {
 		int dateType = getParaToInt("dateType");
 		String beginDay = getPara("begin");
 		String endDay = getPara("end");
-		List<GROrder> list = service.dateOrder(fid, dateType, beginDay, endDay);
+		List<GROrder> list = service.dateOrder(null, fid, dateType, beginDay,
+				endDay);
 		setAttr("fid", fid);
 		setAttr("list", list);
 		render("/jsp/factory_order.jsp");
@@ -171,7 +172,7 @@ public class GRFactoryController extends Controller {
 			WritableSheet sheet = wb.createSheet("sheel0", 0);
 			Label label = null;
 			String[] title = { "序号", "经销商", "电话号码", "详细地址", "货品数量", "货品品类",
-					"货品规格", "下单时间", "发货时间", "发货厂家", "发货后规定到达时间" };
+					"货品规格", "下单时间", "发货时间", "发货厂家", "发货后规定到达时间", "状态" };
 			for (int i = 0; i < title.length; i++) {
 				label = new Label(i, 0, title[i]);
 				sheet.addCell(label);
@@ -211,9 +212,8 @@ public class GRFactoryController extends Controller {
 				label = new Label(6, i, order.getStandardName());
 				sheet.addCell(label);
 				// 下单时间
-				if (order.getDate("createday") != null) {
-					label = new Label(7, i, order.getDate("createday")
-							.toString());
+				if (order.getDate("createtime") != null) {
+					label = new Label(7, i, order.get("createtime").toString());
 					sheet.addCell(label);
 				} else {
 					label = new Label(7, i, "");
@@ -239,6 +239,8 @@ public class GRFactoryController extends Controller {
 					label = new Label(10, i, "");
 					sheet.addCell(label);
 				}
+				label = new Label(11, i, order.get("status").toString());
+				sheet.addCell(label);
 			}
 			wb.write();
 			wb.close();
@@ -264,10 +266,12 @@ public class GRFactoryController extends Controller {
 		List<GROrder> list = null;
 		String rank = getSessionAttr("rank");
 		if (rank.equalsIgnoreCase(Constant.USER_TYPE_ADMIN)) {
-			list = service.searchOrder(-1, option, search);
+			list = service.searchOrder(Constant.SEARCH_FILTER, -1, option,
+					search);
 		} else if (rank.equalsIgnoreCase(Constant.USER_TYPE_FACTORY)) {
 			GRFactory factory = getSessionAttr("user");
-			list = service.searchOrder(factory.getInt("fid"), option, search);
+			list = service.searchOrder(Constant.SEARCH_FILTER,
+					factory.getInt("fid"), option, search);
 		}
 		Page<GROrder> pager = new Page<GROrder>(list, 1, 1000, 1, list.size());
 		setAttr("delivOrder", pager.getList());
@@ -287,11 +291,12 @@ public class GRFactoryController extends Controller {
 		List<GROrder> list = null;
 		String rank = getSessionAttr("rank");
 		if (rank.equalsIgnoreCase(Constant.USER_TYPE_ADMIN)) {
-			list = service.dateOrder(-1, dateType, beginDay, endDay);
+			list = service.dateOrder(Constant.SEARCH_FILTER, -1, dateType,
+					beginDay, endDay);
 		} else if (rank.equalsIgnoreCase(Constant.USER_TYPE_FACTORY)) {
 			GRFactory factory = getSessionAttr("user");
-			list = service.dateOrder(factory.getInt("fid"), dateType, beginDay,
-					endDay);
+			list = service.dateOrder(Constant.SEARCH_FILTER,
+					factory.getInt("fid"), dateType, beginDay, endDay);
 		}
 		Page<GROrder> pager = new Page<GROrder>(list, 1, 1000, 1, list.size());
 		setAttr("delivOrder", pager.getList());

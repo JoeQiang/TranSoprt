@@ -1,6 +1,11 @@
 package com.vanroid.transopt.service;
 
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.jfinal.aop.Before;
@@ -97,7 +102,8 @@ public class GRFactoryServiceImp implements GRFactoryService {
 	/**
 	 * 搜索筛选订单
 	 */
-	public List<GROrder> searchOrder(int fid, int option, String search) {
+	public List<GROrder> searchOrder(String operation, int fid, int option,
+			String search) {
 		StringBuilder sql = new StringBuilder(
 				" select * from grorder,grfactory,dealer,standard,grgoods ")
 				.append(" where 1=1 and grorder.dealerid = dealer.did ")
@@ -107,6 +113,10 @@ public class GRFactoryServiceImp implements GRFactoryService {
 		if (fid > 0) {
 			sql.append("  and grorder.factoryid = ?  ");
 			params.add(fid);
+		}
+		if (operation != null && operation.equals(Constant.SEARCH_FILTER)) {
+			sql.append(" and grorder.status = ?");
+			params.add(Constant.ORDER_STATUS);
 		}
 		switch (option) {
 		case Constant.SEARCH_TYPE_GNAME:
@@ -155,7 +165,7 @@ public class GRFactoryServiceImp implements GRFactoryService {
 					.put("status", record.getStr("status"))
 					.put("num", record.getInt("num"))
 					.put("sendday", record.getDate("sendday"))
-					.put("createday", record.getDate("createday"))
+					.put("createtime", record.get("createtime"))
 					.put("factoryname", record.getStr("fname"))
 					.put("gname", record.get("gname"))
 					.put("sname", record.get("sname")).put("dealer", dealer)
@@ -168,27 +178,34 @@ public class GRFactoryServiceImp implements GRFactoryService {
 	}
 
 	@Override
-	public List<GROrder> dateOrder(int fid, int type, String beginDay,
-			String endDay) {
+	public List<GROrder> dateOrder(String option, int fid, int type,
+			String beginDay, String endDay) {
 		StringBuilder sql = new StringBuilder(
 				"select * from grorder where 1=1 ");
 		List<Object> params = new ArrayList<Object>();
 		if (fid > 0) {
-			sql.append(" factoryid = ? ");
+			sql.append("and factoryid = ? ");
 			params.add(fid);
 		}
+		if (option != null && option.equals(Constant.SEARCH_FILTER)) {
+			sql.append(" and status = ? ");
+			params.add(Constant.ORDER_STATUS);
+		}
 		if (Constant.DAY_TYPE_CREATE == type) {
-			sql.append(" and createday between ? and ? ");
+			String edate = Constant.concatDate(endDay);
+			String bdate = Constant.concatDate(beginDay);
+			params.add(Timestamp.valueOf(bdate));
+			params.add(Timestamp.valueOf(edate));
+			sql.append(" and createtime between ? and ? ");
 		} else if (Constant.DAY_TYPE_SEND == type) {
+			params.add(beginDay);
+			params.add(endDay);
 			sql.append(" and sendday between ? and ? ");
 		}
-		params.add(beginDay);
-		params.add(endDay);
 		List<GROrder> list = GROrder.dao.find(sql.toString(), params.toArray());
 		for (GROrder order : list) {
 			order.getAttrFromOtherTable();
 		}
 		return list;
 	}
-
 }

@@ -1,5 +1,7 @@
 package com.vanroid.transopt.uitls;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -32,6 +34,23 @@ public class Constant {
 	public static final int SEARCH_TYPE_SUQNUM = 9;
 	public static final int SEARCH_TYPE_DNAME = 10;
 	public static final int SEARCH_TYPE_PHONE = 11;
+	
+	//过滤筛选
+	public static final String SEARCH_FILTER = "filter";
+	public static final String ORDER_STATUS = "未发货";
+	
+	public static String concatDate(String date) {
+		StringBuilder formateDate = new StringBuilder(date).append(" 00:00:00");
+		// DateFormat formater = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		// Date nDate = null;
+		// try {
+		// nDate = formater.parse(formateDate.toString());
+		// } catch (ParseException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		return formateDate.toString();
+	}
 
 	/**
 	 * 拼接字符串
@@ -64,5 +83,4 @@ public class Constant {
 		logger.debug("序号:" + seq.toString());
 		return seq.toString();
 	}
-
 }
