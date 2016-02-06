@@ -71,7 +71,9 @@ public class LoginController extends Controller {
 	}
 
 	public void main() {
-		redirect("/factory/order/1");
+		GRFactory factory=getSessionAttr("user");
+		setAttr("li_id", "li_factory_order");
+		redirect("/factory/order/"+factory.getInt("fid"));
 	}
 
 	public void pwdpage() {

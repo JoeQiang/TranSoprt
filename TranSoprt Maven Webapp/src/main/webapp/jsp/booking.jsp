@@ -91,6 +91,15 @@
 					id="btn_mkorder" class="btn btn-success btn-lg">下单</button>
 			</div>
 		</div>
+		 <div class="news">
+		 <c:choose>
+		 <c:when test="${empty public }">
+		 暂无公告信息
+		 </c:when><c:otherwise>
+		 ${public }
+		 </c:otherwise>
+		 </c:choose>
+		 </div>
 	</div>
 	<!-- <footer>
 		&copy;vanroid团队<br />All rights reserved.

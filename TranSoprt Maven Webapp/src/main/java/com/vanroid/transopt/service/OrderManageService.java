@@ -46,7 +46,7 @@ public class OrderManageService {
 
 		Dealer dealer = Dealer.dao.findById(did);
 		GROrder order = new GROrder().set("dealerid", did)
-				.set("createtime", new Date()).set("status", "可撤销")
+				.set("createtime", new Date()).set("status", "未分配")
 				.set("gid", gid).set("sid", sid).set("num", num)
 				// 默认订单的规定到达时间是经销商的设定的时限
 				.set("reqarrday", dealer.getInt("limitdays"));
@@ -59,7 +59,7 @@ public class OrderManageService {
 	public Page<GROrder> getNewOrderPage(int pageNum) {
 		// 查询为分配厂家的订单
 		Page<GROrder> page = GROrder.dao.paginate(pageNum, 10, "select *",
-				"from grorder where factoryid is null");
+				"from grorder where factoryid is null and status='未分配'");
 		for (GROrder order : page.getList()) {
 			order.getAttrFromOtherTable();
 		}
@@ -233,6 +233,6 @@ public class OrderManageService {
 	 */
 	public boolean cancleOrder(int oid) {
 		// TODO 自动生成的方法存根
-		return GROrder.dao.deleteById(oid);
+		 return GROrder.dao.findById(oid).set("status", "已撤销").update();
 	}
 }

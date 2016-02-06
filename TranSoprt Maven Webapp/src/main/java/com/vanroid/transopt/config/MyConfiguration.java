@@ -33,7 +33,7 @@ public class MyConfiguration extends JFinalConfig {
 	@Override
 	public void configConstant(Constants me) {
 		// 开发模式
-		me.setDevMode(true);
+		me.setDevMode(false);
 		// 设置默认视图
 		me.setViewType(ViewType.JSP);
 		// 配置下载文件下载路径

@@ -1,10 +1,14 @@
 package com.vanroid.transopt.model;
 
-import java.util.HashMap;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+
+import org.apache.commons.lang.time.DateUtils;
+
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Model;
-import com.jfinal.plugin.activerecord.Record;
 import com.vanroid.transopt.uitls.Constant;
 
 /**
@@ -136,13 +140,15 @@ public class GROrder extends Model<GROrder> {
 
 	/**
 	 * 触发三个方法，将数据put到GROrder的实例里面
+	 * 
+	 * @throws ParseException
 	 */
 	public void getAttrFromOtherTable() {
 		getGoodName();
 		getStandardName();
 		getFactory();
 		getDealer();
-
+		getArrDay();
 	}
 
 	/*
@@ -154,4 +160,12 @@ public class GROrder extends Model<GROrder> {
 	 * 
 	 * }
 	 */
+	public void getArrDay() {
+		if (getStr("status").equals("已发货")) {
+			Date date = getDate("sendday");
+			Date arrDay = DateUtils.addDays(date, getInt("reqarrday"));
+			String format = new SimpleDateFormat("yyyy/MM/dd").format(arrDay);
+			put("arrday", format);
+		}
+	}
 }

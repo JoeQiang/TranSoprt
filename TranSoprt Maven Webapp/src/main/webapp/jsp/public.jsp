@@ -47,19 +47,29 @@
 
 							</div>
 							<div class="ibox-content">
-
-								<textarea id="textarea" class="form-control" rows="5">${cont }</textarea>
-								<div>
+								<textarea id="textarea" class="form-control" style="margin-bottom:3em" rows="5">${cont }</textarea>
+								<div class="buttonInfo">
 									<button id="btn_upd" onclick="update()" type="button"
 										class="btn btn-info">发布</button>
 								</div>
 							</div>
 						</div>
-						<!-- 内容主体结束 -->
+						
 
 
 					</div>
 					<!-- 脚部 -->
+			<div class="footer">
+				<!-- <div class="pull-right">
+	                               By：<a href="#" target="_blank">港荣</a>
+	                           </div> -->
+				<div>
+					<strong>订单管理系统</strong>&copy; 港荣食品有限公司 &nbsp;&nbsp;2016
+				</div>
+			</div>
+
+		</div>
+		<!-- 脚部 -->
 				</div>
 				<!-- Mainly scripts -->
 				<script
@@ -92,6 +102,7 @@
 							}
 						});
 					}
+					
 				</script>
 </body>
 

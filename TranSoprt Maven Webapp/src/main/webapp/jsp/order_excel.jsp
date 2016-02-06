@@ -121,7 +121,7 @@ rt {
 				<td height=18 class=xl154616 width=72
 					style='height:13.5pt;width:54pt'>经销商</td>
 				<td class=xl634616 width=144 style='width:108pt'>电话号码</td>
-				<td class=xl154616 width=72 style='width:54pt'>所在省市</td>
+				<td class=xl154616 width=72 style='width:54pt'>详细地址</td>
 				<td class=xl154616 width=72 style='width:54pt'>货品数量</td>
 				<td class=xl154616 width=72 style='width:54pt'>货品品类</td>
 				<td class=xl154616 width=72 style='width:54pt'>货品规格</td>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Excel模版列表 -->
 <list>
-	<!-- 供应商信息统计表 -->
+	<!-- 经销商信息统计表 -->
 	<sheet name="supplier" class="com.vanroid.transopt.uitls.SupplierExcel" />
 	<sheet name="dealer" class="com.vanroid.transopt.uitls.DealerExcel" />
 </list>

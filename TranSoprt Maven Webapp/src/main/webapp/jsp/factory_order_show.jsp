@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="renderer" content="webkit">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <title>港荣食品订单管理系统</title>
 <meta name="keywords" content="港荣食品订单管理系统">
@@ -51,7 +52,7 @@
 								<th>订单号</th>
 									<th>经销商</th>
 									<th>电话号码</th>
-									<th>所在省市</th>
+									<th>详细地址</th>
 									<th>货品数量</th>
 									<th>货品品类</th>
 									<th>货品规格</th>
@@ -59,7 +60,6 @@
 									<th>发货时间</th>
 									<th>发货厂家</th>
 									<th>规定到达时间</th>
-									<th>到货时间</th>
 									<th>状态</th>
 									<th>操作</th>
 								</tr>
@@ -80,11 +80,11 @@
 											<td><c:out value="${order.num }" /></td>
 											<td><c:out value="${order.gname }" /></td>
 											<td><c:out value="${order.sname }" /></td>
-											<td><c:out value="${order.createday}" /></td>
+																					   <td><fmt:formatDate value="${order.createtime }"  type="both"  pattern="yyyy-MM-dd HH:mm:ss" /></td>
+
 											<td><c:out value="${order.sendday}" /></td>
 											<td><c:out value="${order.factoryname }" /></td>
 											<td><c:out value="${order.reqarrday}" /></td>
-											<td><c:out value="${order.arriveday }" /></td>
 											<td><c:out value="${order.status }" /></td>
 											<td><button class="btn btn-primary"
 													onclick="getInfo(${order.oid})">查看</button></td>
@@ -97,7 +97,7 @@
 								<th>订单号</th>
 									<th>经销商</th>
 									<th>电话号码</th>
-									<th>所在省市</th>
+									<th>详细地址</th>
 									<th>货品数量</th>
 									<th>货品品类</th>
 									<th>货品规格</th>
@@ -105,7 +105,6 @@
 									<th>发货时间</th>
 									<th>发货厂家</th>
 									<th>规定到达时间</th>
-									<th>到货时间</th>
 									<th>状态</th>
 									<th>操作</th>
 								</tr>
@@ -156,7 +155,7 @@
 								aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
-							<h4 class="modal-title" id="myModalLabel">经销商信息</h4>
+							<h4 class="modal-title" id="myModalLabel">订单信息</h4>
 						</div>
 						<div class="modal-body">
 							<div class="row">
@@ -175,7 +174,7 @@
 							</div>
 							<div class="row">
 								<div class="col-sm-2">
-									<label>所在省市:</label>
+									<label>详细地址:</label>
 								</div>
 								<div class="col-sm-4">
 									<p id="province">广东广州</p>
@@ -203,12 +202,12 @@
 								<div class="col-sm-4">
 									<p id="sendday">2016-01-18</p>
 								</div>
-								<div class="col-sm-2">
+								<!-- <div class="col-sm-2">
 									<label>到货时间:</label>
 								</div>
 								<div class="col-sm-4">
 									<p id="arriveday">2016-01-18</p>
-								</div>
+								</div> -->
 							</div>
 							<div class="row">
 								<div class="col-sm-2">

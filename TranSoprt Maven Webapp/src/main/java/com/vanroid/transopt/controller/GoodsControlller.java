@@ -15,8 +15,10 @@ import com.vanroid.transopt.interceptor.DealerLoginInterceptor;
 import com.vanroid.transopt.interceptor.LoginInterceptor;
 import com.vanroid.transopt.model.GRGoods;
 import com.vanroid.transopt.model.GROrder;
+import com.vanroid.transopt.model.Public;
 import com.vanroid.transopt.model.Standard;
 import com.vanroid.transopt.service.GoodsManageService;
+import com.vanroid.transopt.service.PublicService;
 
 /**
  * 商品管理的action类
@@ -43,6 +45,7 @@ public class GoodsControlller extends Controller {
 		}
 		setAttr("g1standard", standard);
 		setAttr("allgoods", allGoods);
+		setAttr("public",Public.dao.findById(1).getStr("content"));
 		render("/jsp/booking.jsp");
 	}
 

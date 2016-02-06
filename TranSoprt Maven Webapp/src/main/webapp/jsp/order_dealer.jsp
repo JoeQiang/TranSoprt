@@ -2,6 +2,7 @@
 <html>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <head lang="en">
 <meta charset="UTF-8">
 <meta name="viewport"
@@ -50,33 +51,141 @@
 			<c:forEach items="${myorders }" var="order">
 				<c:choose>
 					<c:when test="${order.status=='已确认签收' }">
-						<li class="list-group-item history-order">
-							<div class="row">
-								<div class="col-xs-5"><div>${order.gname }</div><div>${order.sname }</div><div>${order.num }箱</div></div>
-								<div class="col-xs-7">
-									<div class=""><div>下单时间:</div><div>${order.createday }<div></div></div>
-									<div id="sta${order.oid }" class="">状态：${order.status}</div>
-								</div>
-							</div>
-						</li>
+					<li class="list-group-item history-order">
+                <div class="row">
+                    <div class="col-xs-12 shopName">
+                        <div class="iconShop"></div>
+                        <div>${order.factoryname }</div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div>${order.gname }</div>
+                        <div>${order.sname }</div>
+                        <div>${order.num }箱</div>
+                    </div>
+                    <div class="col-xs-7">
+                        <div>
+                            下单时间:
+                        </div>
+                        <div><fmt:formatDate value="${order.createtime }"  type="both"  pattern="yyyy-MM-dd HH:mm:ss" /></div>
+                        <div  id="sta${order.oid }">
+                            状态：${order.status }
+                        </div>
+                    </div>
+                   
+                </div>
+            </li>
+					</c:when>
+					<c:when test="${order.status=='未分配' }">
+					<li id="li${order.oid }" class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-12 shopName">
+                        <div class="iconShop"></div>
+                        <div>未分配厂家</div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div>${order.gname }</div>
+                        <div>${order.sname }</div>
+                        <div>${order.num }箱</div>
+                    </div>
+                    <div class="col-xs-7">
+                        <div>
+                            下单时间:
+                        </div>
+                         <div><fmt:formatDate value="${order.createtime }"  type="both"  pattern="yyyy-MM-dd HH:mm:ss" /></div>
+                        <div  id="sta${order.oid }">
+                            状态：${order.status }
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-xs-offset-9">
+                        <button id="btn${order.oid }"type="button" onclick="cancle(${order.oid})" class="btn btn-warning btn-xs" role="button">撤销订单</button>
+                    </div>
+                </div>
+            </li>
+					
+					</c:when>
+					<c:when test="${order.status=='未发货' }">
+					<li class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-12 shopName">
+                        <div class="iconShop"></div>
+                        <div>${order.factoryname }</div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div>${order.gname }</div>
+                        <div>${order.sname }</div>
+                        <div>${order.num }箱</div>
+                    </div>
+                    <div class="col-xs-7">
+                        <div>
+                            下单时间:
+                        </div>
+                        <div><fmt:formatDate value="${order.createtime }"  type="both"  pattern="yyyy-MM-dd HH:mm:ss" /></div>
+                        <div  id="sta${order.oid }">
+                            状态：${order.status }
+                        </div>
+                    </div>
+                   
+                </div>
+            </li>
+					
+					</c:when>
+					<c:when test="${order.status=='已撤销' }">
+					<li class="list-group-item history-order">
+                <div class="row">
+                    <div class="col-xs-12 shopName">
+                        <div class="iconShop"></div>
+                        <div>未分配厂家</div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div>${order.gname }</div>
+                        <div>${order.sname }</div>
+                        <div>${order.num }箱</div>
+                    </div>
+                    <div class="col-xs-7">
+                        <div>
+                            下单时间:
+                        </div>
+                        <div><fmt:formatDate value="${order.createtime }"  type="both"  pattern="yyyy-MM-dd HH:mm:ss" /></div>
+                        <div  id="sta${order.oid }">
+                            状态：${order.status }
+                        </div>
+                    </div>
+                   
+                </div>
+            </li>
+					
 					</c:when>
 					<c:otherwise>
-						<li id="li${order.oid }" class="list-group-item">
-							<div class="row">
-								<div class="col-xs-5"><div>${order.gname }</div><div>${order.sname }</div><div>${order.num }箱</div></div>
-								<div class="col-xs-7">
-									<div class=""><div>下单时间:</div><div>${order.createtime}<div></div></div>
-									<div id="sta${order.oid }" class="">状态：${order.status}</div>
-								</div>
-								<c:if test="${order.status=='已发货' }">
-									<div class="col-xs-4 col-xs-offset-7">
-										<button onclick="confirm(${order.oid })" type="button"
+					 <li id="li${order.oid }"class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-12 shopName">
+                        <div class="iconShop"></div>
+                        <div>${order.factoryname }</div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div>${order.gname }</div>
+                        <div>${order.sname }</div>
+                        <div>${order.num }箱</div>
+                    </div>
+                    <div class="col-xs-7">
+                        <div>
+                            下单时间:
+                        </div>
+                        
+                        <div><fmt:formatDate value="${order.createtime }"  type="both"  pattern="yyyy-MM-dd HH:mm:ss" /></div>
+                        <div id="sta${order.oid }">
+                            状态：${order.status }
+                        </div>
+                    </div>
+                    <div id="arr${order.oid }"class="col-xs-12 arrTime">预计到货日期：${order.arrday }</div>
+                    <div class="col-xs-4 col-xs-offset-9">
+                        <button onclick="confirm(${order.oid })" type="button"
 											id="btn${order.oid }"
 											class="btnShouhuo btn btn-success btn-xs" role="button">确认收货</button>
-									</div>
-								</c:if>
-							</div>
-						</li>
+                    </div>
+                </div>
+            </li>
+					
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
@@ -111,14 +220,7 @@
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath }/js/project.js"></script>
 	<script>
-			$(document).ready(function() {
-
-		var li_id = '${li_id}';
-			$("#" + li_id).addClass("active");
-			if (li_id == "li_factory_order" || li_id == "li_dealer_order") {
-				$("#li_account").removeClass("active");
-			}
-		});
+			
 		var pageNum = 2;
 		/* 显示更多 */
 		function getMoreOrder() {
@@ -132,27 +234,38 @@
 							if (data.length == 0)
 								alert("已显示所有订单！！！");
 							for (i = 0; i < data.length; i++) {
-								var str = "<li  id='li"+data[i].oid+"' class='list-group-item'><div class='row'><div class='col-xs-5'>"
+							if(data[i].factoryname==""||data[i].factoryname==null)
+							data[i].factoryname="未分配厂家";
+								var str = "<li  id='li"+data[i].oid+"' class='list-group-item'><div class='row'><div class='col-xs-12 shopName'><div class='iconShop'></div><div>"+data[i].factoryname +"</div></div><div class='col-xs-5'><div>"
 										+ data[i].gname
-										+ "&nbsp;"
+										+ "</div><div>"
 										+ data[i].sname
-										+ "*"
+										+ "</div><div>"
 										+ data[i].num
-										+ "箱</div><div class='col-xs-7'><div class=''>下单时间:"
-										+ data[i].createday
+										+ "箱</div></div><div class='col-xs-7'><div >下单时间:</div><div>"
+										+ data[i].createtime
 										+ "</div><div id='sta"+data[i].oid+"'>状态："
 										+ data[i].status + "</div></div>";
 								if (data[i].status == "已发货") {
-									str += "<div class='col-xs-4 col-xs-offset-9'><button id='btn"
+								
+									str += "<div id='arr"+data[i].oid+"'class='col-xs-12 arrTime'>预计到货日期："+data[i].arrday+"</div><div class='col-xs-4 col-xs-offset-9'><button id='btn"
 											+ data[i].oid
 											+ "' type='button' onclick='confirm("
 											+ data[i].oid
 											+ ")' class='btnShouhuo btn btn-success btn-xs'role='button'>确认收货</button></div></div></li>";
-								} else {
+								} 
+								if(data[i].status=="未分配"){
+								str += "<div class='col-xs-4 col-xs-offset-9'><button id='btn"
+											+ data[i].oid
+											+ "' type='button' onclick='cancle("
+											+ data[i].oid
+											+ ")' class='btn btn-warning btn-xs'role='button'>撤销订单</button></div></div></li>";
+								}
+								else {
 									str += "</div></li>";
 								}
 								$("#ulOrder").append(str);
-								if (data[i].status == "已确认签收")
+								if (data[i].status == "已确认签收"||data[i].status =="已撤销")
 									$("#li" +data[i].oid).addClass("history-order");
 							}
 							pageNum++;
@@ -170,6 +283,25 @@
 						success : function(data) {
 							if (data == 1) {
 								$("#sta" + oid).text("状态：已确认签收");
+								$("#li" + oid).addClass("history-order");
+							
+								$("#arr" + oid).hide();
+								$("#btn" + oid).hide();
+							} else
+								alert("订单异常，请稍后再试！");
+						}
+					});
+		}
+		function cancle(oid){
+		$
+					.ajax({
+						url : '${pageContext.request.contextPath }/order/cancleorder/'
+								+ oid,
+						type : 'GET',
+						dataType : 'json',
+						success : function(data) {
+							if (data == 1) {
+								$("#sta" + oid).text("状态：已撤销");
 								$("#li" + oid).addClass("history-order");
 								$("#btn" + oid).hide();
 							} else

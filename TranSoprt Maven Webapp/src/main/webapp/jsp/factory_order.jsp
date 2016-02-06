@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="renderer" content="webkit">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <title>港荣食品订单管理系统</title>
 <meta name="keywords" content="港荣食品订单管理系统">
@@ -102,7 +103,7 @@
 											<th>订单号</th>
 											<th>经销商</th>
 											<th>电话号码</th>
-											<th>所在省市</th>
+											<th>详细地址</th>
 											<th>货品数量</th>
 											<th>货品品类</th>
 											<th>货品规格</th>
@@ -132,7 +133,8 @@
 													<td><c:out value="${order.num }" /></td>
 													<td><c:out value="${order.gname }" /></td>
 													<td><c:out value="${order.sname }" /></td>
-													<td><c:out value="${order.createday}" /></td>
+																							   <td><fmt:formatDate value="${order.createtime }"  type="both"  pattern="yyyy-MM-dd HH:mm:ss" /></td>
+
 													<td><c:out value="${order.sendday}" /></td>
 													<td><c:out value="${order.factoryname }" /></td>
 													<td><c:out value="${order.reqarrday}" />天</td>
@@ -148,7 +150,7 @@
 											<th>订单号</th>
 											<th>经销商</th>
 											<th>电话号码</th>
-											<th>所在省市</th>
+											<th>详细地址</th>
 											<th>货品数量(箱)</th>
 											<th>货品品类</th>
 											<th>货品规格</th>

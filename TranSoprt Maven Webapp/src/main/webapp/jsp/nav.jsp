@@ -48,7 +48,7 @@
 
 				</li>
 				<!-- 账户模块-->
-				<c:if test="${!empty user.nickname }">
+				<c:if test="${sessionScope.rank=='admin'}">
 					<li id="li_account" ><a href="#"><i
 							class="fa fa-th-large"></i> <span class="nav-label">账户</span> <span
 							class="fa arrow"></span></a>
@@ -71,13 +71,13 @@
 						</ul></li>
 				</c:if>
 				<!-- 厂家模块 -->
-				<li><c:if test="${!empty user.nickname}">
+				<li><c:if test="${rank=='admin'}">
 						<li id="li_factory_order"><a
 							href="${pageContext.request.contextPath}/factory/manager/1"><i
 								class="fa fa-flask "></i> <span class="nav-label">厂家</span><span
 								class="label label-danger pull-right"></span></a>
-					</c:if> <c:if test="${empty user.nickname }">
-						<a
+					</c:if> <c:if test="${rank!='admin'}">
+						<li id="li_factory_order"><a
 							href="${pageContext.request.contextPath}/factory/order/${user.fid }"><i
 							class="fa fa-flask"></i> <span class="nav-label">厂家</span><span
 							class="label label-danger pull-right"></span></a>
@@ -88,7 +88,7 @@
 						class="fa fa-comments"></i> <span class="nav-label">经销商</span><span
 						class="label label-danger pull-right"></span></a></li>
 				<!-- 公告 -->
-				<li><c:if test="${!empty user.nickname}">
+				<li><c:if test="${rank=='admin'}">
 						<li id="li_public"><a
 							href="${pageContext.request.contextPath}/public"><i
 								class="fa fa-edit "></i> <span class="nav-label">公告</span><span
