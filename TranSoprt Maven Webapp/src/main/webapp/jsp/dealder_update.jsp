@@ -58,8 +58,8 @@
 											<input type="hidden" name="did" value="${dealer.did }">
 											<input type="hidden" name="operation" value="update">
 											<div class="form-group">
-												<label>供应商</label> <input type="text" class="form-control"
-													placeholder="供应商名称" name="dname" value="${dealer.dname }">
+												<label>经销商</label> <input type="text" class="form-control"
+													placeholder="经销商名称" name="dname" value="${dealer.dname }">
 												<label style="color: red;"> <c:out
 														value="${dnameMsg }" /></label>
 											</div>
@@ -70,7 +70,7 @@
 														value="${phoneMsg }" /></label>
 											</div>
 											<div class="form-group">
-												<label>所在省市</label> <input type="text" class="form-control"
+												<label>详细地址</label> <input type="text" class="form-control"
 													placeholder="所在省市" name="province"
 													value="${dealer.province }"> <label
 													style="color: red;"> <c:out value="${provinceMsg }" /></label>

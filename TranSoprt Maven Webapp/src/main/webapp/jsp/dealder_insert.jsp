@@ -73,8 +73,8 @@
 									method="post" onsubmit="return dosubmit()">
 									<input type="hidden" name="operation" value="insert">
 									<div class="form-group">
-										<label>供应商</label> <input type="text" class="form-control"
-											placeholder="供应商名称" name="dname" required="">
+										<label>经销商</label> <input type="text" class="form-control"
+											placeholder="经销商名称" name="dname" required="">
 									</div>
 									<div class="form-group">
 										<label>联系电话</label> <input id="phone" type="text"

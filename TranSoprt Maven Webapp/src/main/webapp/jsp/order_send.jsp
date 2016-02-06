@@ -87,7 +87,7 @@
 									id="editable">
 									<thead>
 										<tr>
-											<th>序号</th>
+											<th>订单号</th>
 											<th>经销商</th>
 											<th>电话号码</th>
 											<th>所在省市</th>
@@ -137,7 +137,7 @@
 									</tbody>
 									<tfoot>
 										<tr>
-											<th>序号</th>
+											<th>订单号</th>
 											<th>经销商</th>
 											<th>电话号码</th>
 											<th>所在省市</th>

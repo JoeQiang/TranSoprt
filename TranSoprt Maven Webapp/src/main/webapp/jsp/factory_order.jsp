@@ -99,7 +99,7 @@
 										<tr>
 											<th><input id="CheckAll" type="checkbox"
 												class="form-control"></th>
-											<th>序号</th>
+											<th>订单号</th>
 											<th>经销商</th>
 											<th>电话号码</th>
 											<th>所在省市</th>
@@ -145,7 +145,7 @@
 									<tfoot>
 										<tr>
 											<th>&nbsp;&nbsp;&nbsp;</th>
-											<th>序号</th>
+											<th>订单号</th>
 											<th>经销商</th>
 											<th>电话号码</th>
 											<th>所在省市</th>
@@ -212,7 +212,7 @@
 			} */
 
 		$(document).ready(function() {
-			
+
 			$("#option").change(function() {
 				var selectIndex = $("#option").get(0).selectedIndex;
 				if (selectIndex == 1) {

@@ -48,6 +48,7 @@
 							id="editable">
 							<thead>
 								<tr>
+								<th>订单号</th>
 									<th>经销商</th>
 									<th>电话号码</th>
 									<th>所在省市</th>
@@ -72,6 +73,7 @@
 								<c:if test="${!empty pager.list }">
 									<c:forEach items="${pager.list }" var="order">
 										<tr>
+										<td><c:out value="${order.seqnum}" /></td>
 											<td><c:out value="${order.dealer.dname}" /></td>
 											<td><c:out value="${order.dealer.phone}" /></td>
 											<td><c:out value="${order.dealer.province}" /></td>
@@ -92,6 +94,7 @@
 							</tbody>
 							<tfoot>
 								<tr>
+								<th>订单号</th>
 									<th>经销商</th>
 									<th>电话号码</th>
 									<th>所在省市</th>

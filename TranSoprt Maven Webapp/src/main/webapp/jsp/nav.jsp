@@ -91,7 +91,7 @@
 				<li><c:if test="${!empty user.nickname}">
 						<li id="li_public"><a
 							href="${pageContext.request.contextPath}/public"><i
-								class="fa fa-flask "></i> <span class="nav-label">公告</span><span
+								class="fa fa-edit "></i> <span class="nav-label">公告</span><span
 								class="label label-danger pull-right"></span></a>
 					</c:if>
 			</ul>
@@ -101,14 +101,13 @@
 	<script>
 	$(document).ready(
 							function() {
-
 								var li_id = '${li_id}';
-								$("#" + li_id).addClass("active");
 								if (!(li_id == "li_factory_order"
 										|| li_id == "li_dealer_order"||li_id=="li_public")) {
 									$("#li_account").addClass("active");
-									
 								}
+								$("#" + li_id).addClass("active");
+								
 							});
 	</script>
 </body>

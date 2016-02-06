@@ -40,7 +40,17 @@ public class OrderController extends Controller {
 		else
 			renderJson(0);
 	}
-
+	/**
+	 * 撤销订单ajax
+	 */
+	@Clear(LoginInterceptor.class)
+	@Before(DealerLoginInterceptor.class)
+	public void cancleorder() {
+		if(om.cancleOrder(getParaToInt(0))){
+			renderJson(1); 
+		}else
+			renderJson(0); 
+	}
 	// 分配订单
 	public void distorder() {
 		Page<GROrder> page = om.getNewOrderPage(getParaToInt(0));// 查询未分配的订到分页

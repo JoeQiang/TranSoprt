@@ -46,8 +46,8 @@ public class OrderManageService {
 
 		Dealer dealer = Dealer.dao.findById(did);
 		GROrder order = new GROrder().set("dealerid", did)
-				.set("createtime", new Date()).set("status", "可撤销").set("gid", gid)
-				.set("sid", sid).set("num", num)
+				.set("createtime", new Date()).set("status", "可撤销")
+				.set("gid", gid).set("sid", sid).set("num", num)
 				// 默认订单的规定到达时间是经销商的设定的时限
 				.set("reqarrday", dealer.getInt("limitdays"));
 		return order.save();
@@ -68,22 +68,20 @@ public class OrderManageService {
 
 	/**
 	 * 管理员管理的给新订单分配厂家 ajax 更新成功返回1，失敗返回0
-	 * @throws ParseException 
+	 * 
+	 * @throws ParseException
 	 */
-	public int distributeFactory(int oid, int fid, int arrdays) throws ParseException {
+	public int distributeFactory(int oid, int fid, int arrdays)
+			throws ParseException {
 		;
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
-		Date today=GROrder.dao.findById(oid).getDate("createtime");
-//		Date today =sdf.parse(GROrder.dao.findById(oid).getDate("createtime")+"");
-		boolean update = GROrder.dao.findById(oid)
-				.set("factoryid", fid)
-				.set("status", "未发货")
-				.set("reqarrday", arrdays)
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+		Date today = GROrder.dao.findById(oid).getDate("createtime");
+		// Date today
+		// =sdf.parse(GROrder.dao.findById(oid).getDate("createtime")+"");
+		boolean update = GROrder.dao.findById(oid).set("factoryid", fid)
+				.set("status", "未发货").set("reqarrday", arrdays)
 				// 分配序号
-				.set("seqnum",
-						Constant.concat(today
-								,
-								oid))
+				.set("seqnum", Constant.concat(today, oid))
 				// 更新
 				.update();
 		if (update)
@@ -189,8 +187,7 @@ public class OrderManageService {
 		nt.setOrder(goods);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date today = new Date();
-		Date arriveDay = DateUtils.addDays(today,
-				order.getInt("reqarrday"));
+		Date arriveDay = DateUtils.addDays(today, order.getInt("reqarrday"));
 		nt.setSendday(sdf.format(today));
 		nt.setArriveday(sdf.format(arriveDay));
 		Gson gson = new Gson();
@@ -228,5 +225,14 @@ public class OrderManageService {
 		 * today = sdf.format(new Date());
 		 */
 		return GROrder.dao.findById(oid).set("status", "已确认签收").update();
+	}
+
+	/**
+	 * 撤销订单
+	 * @param oid
+	 */
+	public boolean cancleOrder(int oid) {
+		// TODO 自动生成的方法存根
+		return GROrder.dao.deleteById(oid);
 	}
 }

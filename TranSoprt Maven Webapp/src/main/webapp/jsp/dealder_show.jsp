@@ -52,16 +52,16 @@
 							<div class="row" style="margin-top: 20px">
 								<div class="col-sm-6 col-sm-offset-1">
 									<h2 style="margin-bottom: 20px">
-										<label>供应商信息</label>
+										<label>经销商信息</label>
 									</h2>
 									<p style="font-size: 16">
-										<label>供应商:</label> <span><c:out value="${dealer.dname }"/></span>
+										<label>经销商:</label> <span><c:out value="${dealer.dname }"/></span>
 									</p>
 									<p style="font-size: 16">
 										<label>联系电话:</label> <span><c:out value="${dealer.phone }"/></span>
 									</p>
 									<p style="font-size: 16">
-										<label>所在省市:</label> <span><c:out value="${dealer.province }"/></span>
+										<label>详细地址:</label> <span><c:out value="${dealer.province }"/></span>
 									</p>
 									<p style="font-size: 16">
 										<label>规定到达天数:</label> <span><c:out value="${dealer.limitdays }"/></span>
