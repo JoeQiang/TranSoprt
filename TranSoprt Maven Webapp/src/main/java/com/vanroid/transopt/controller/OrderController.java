@@ -19,7 +19,7 @@ import com.vanroid.transopt.model.GRFactory;
 import com.vanroid.transopt.model.GROrder;
 import com.vanroid.transopt.service.OrderManageService;
 import com.vanroid.transopt.uitls.Constant;
-
+@Before(LoginInterceptor.class)
 public class OrderController extends Controller {
 	private OrderManageService om = Duang.duang(OrderManageService.class);
 	private Logger logger = Logger.getLogger(OrderController.class);
@@ -51,7 +51,8 @@ public class OrderController extends Controller {
 		}else
 			renderJson(0); 
 	}
-	// 分配订单
+	
+	//分配订单
 	public void distorder() {
 		Page<GROrder> page = om.getNewOrderPage(getParaToInt(0));// 查询未分配的订到分页
 		setAttr("newOrder", page.getList());
@@ -96,6 +97,13 @@ public class OrderController extends Controller {
 			render("/jsp/order_send.jsp");
 		}
 
+	}
+	//撤回已分配订单为未分配ajax
+	public void backdelivery(){
+		if(om.backDelivery(getParaToInt(0))){
+			renderJson(1);
+		}else
+			renderJson(0);
 	}
 
 	// 发货ajax

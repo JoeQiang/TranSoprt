@@ -158,6 +158,16 @@ public class OrderManageService {
 	}
 
 	/**
+	 * 订单撤回，状态由已分配变为未分配
+	 * 
+	 * @param oid
+	 */
+	public boolean backDelivery(int oid) {
+		return GROrder.dao.findById(oid).set("status", "未分配").set("factoryid", null)
+				.update();
+	}
+
+	/**
 	 * 短信信息通知
 	 * 
 	 * @param oid
@@ -229,10 +239,11 @@ public class OrderManageService {
 
 	/**
 	 * 撤销订单
+	 * 
 	 * @param oid
 	 */
 	public boolean cancleOrder(int oid) {
 		// TODO 自动生成的方法存根
-		 return GROrder.dao.findById(oid).set("status", "已撤销").update();
+		return GROrder.dao.findById(oid).set("status", "已撤销").update();
 	}
 }

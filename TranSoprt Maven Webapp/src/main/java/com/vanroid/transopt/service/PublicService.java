@@ -20,6 +20,8 @@ public class PublicService {
 			for (String string : split) {
 				htmlStr += "<p>" + string + "</p>";
 			}
+		}else{
+			htmlStr += "<p>" + text + "</p>";
 		}
 		return htmlStr;
 	}

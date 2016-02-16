@@ -116,6 +116,7 @@
 												<td></td>
 												<td></td>
 												<td></td>
+												<td></td>
 										</c:if>
 										<c:forEach items="${delivOrder}" var="order">
 											<tr class="gradeB" id="tr${order.oid }">
@@ -131,8 +132,16 @@
 												<td>${order.factoryname}</td>
 												<td>${order.reqarrday}天</td>
 												<td>${order.status}</td>
-												<td><a type="button" class="btn btn-warning"
+												<c:choose>
+												<c:when test="${sessionScope.rank=='admin' }">
+												<td><a type="button" class="btn btn-danger"
+													href="javascript:backdelivery(${order.oid})">撤回</a></td>
+											
+											</c:when>
+											<c:otherwise>
+											<td><a type="button" class="btn btn-warning"
 													href="javascript:delivery(${order.oid})">发货</a></td>
+											</c:otherwise>  </c:choose>
 											</tr>
 										</c:forEach>
 									</tbody>
@@ -178,23 +187,7 @@
 							</c:if> <span aria-hidden="true">下一页</span> </a></li>
 					</ul>
 				</nav>
-				<!-- 短信信息编辑 -->
-				<div id="modal-form1" class="modal fade" aria-hidden="false">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-body">
-								<div class="row">
-									<div class="col-sm-6 b-r">
-										<h2>短信额外通知：</h2>
-										<div id="showsta"></div>
-
-
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				
 			</div>
 			<!-- 内容主体结束 -->
 			<!-- 脚部 -->
@@ -236,6 +229,20 @@
 					if (data == 1) {
 						$("#tr" + oid).hide();
 						alert("发货成功！已通知用户！");
+					}
+				},
+				dataType : 'json'
+			});
+		}
+		function backdelivery(oid) {
+			$.ajax({
+				url : '${pageContext.request.contextPath}/order/backdelivery/'
+						+ oid,
+				type : 'GET',
+				success : function(data) {
+					if (data == 1) {
+						$("#tr" + oid).hide();
+						alert("订单已撤回");
 					}
 				},
 				dataType : 'json'

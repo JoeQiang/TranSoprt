@@ -33,7 +33,7 @@ public class MyConfiguration extends JFinalConfig {
 	@Override
 	public void configConstant(Constants me) {
 		// 开发模式
-		me.setDevMode(false);
+		me.setDevMode(true);
 		// 设置默认视图
 		me.setViewType(ViewType.JSP);
 		// 配置下载文件下载路径
@@ -86,6 +86,7 @@ public class MyConfiguration extends JFinalConfig {
 	@Override
 	public void configInterceptor(Interceptors me) {
 		// 添加登录全局拦截器、拦截除登录外其余的请求
+//		me.add(new LoginInterceptor());
 	}
 
 	@Override

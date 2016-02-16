@@ -1,6 +1,8 @@
 package com.vanroid.transopt.controller;
 
+import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
+import com.vanroid.transopt.interceptor.LoginInterceptor;
 import com.vanroid.transopt.model.Public;
 import com.vanroid.transopt.service.PublicService;
 
@@ -10,6 +12,7 @@ import com.vanroid.transopt.service.PublicService;
  * @author Jerry
  * 
  */
+@Before(LoginInterceptor.class)
 public class PublicController extends Controller {
 	public void index() {
 		setAttr("li_id", "li_public");
